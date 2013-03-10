@@ -1,0 +1,64 @@
+
+<?php \Laravel\Section::start('header'); ?>
+	<?php echo view('header')->with(get_defined_vars())->render(); ?>
+<?php \Laravel\Section::stop(); ?>
+
+<?php \Laravel\Section::start('container'); ?>
+	<h2>Registreren</h2>
+
+	<?php echo  Form::open('users') ; ?>
+
+		<?php echo  Form::label('voornaam', 'Voornaam') ; ?>
+		<?php echo  Form::text('voornaam', Session::get('form_values')['voornaam']) ; ?>
+		<?php echo  $errors->first('voornaam', '<p>:message</p>') ; ?>
+		<br />
+
+		<?php echo  Form::label('achternaam', 'Achternaam') ; ?>
+		<?php echo  Form::text('achternaam', Session::get('form_values')['achternaam']) ; ?>
+		<?php echo  $errors->first('achternaam', '<p>:message</p>') ; ?>
+		<br />
+
+		<?php echo  Form::label('email', 'E-Mail Address') ; ?>
+		<?php echo  Form::text('email', Session::get('form_values')['email']) ; ?>
+		<?php echo  $errors->first('email', '<p>:message</p>') ; ?>
+		<br />
+
+		<?php echo  Form::label('password', 'Password') ; ?>
+		<?php echo  Form::password('password') ; ?>
+		<?php echo  $errors->first('password', '<p>:message</p>') ; ?>
+		<br />
+
+		<?php echo  Form::label('password_confirmation', 'Password controller') ; ?>
+		<?php echo  Form::password('password_confirmation') ; ?>
+		<?php echo  $errors->first('password_confirmation', '<p>:message</p>') ; ?>
+		<br />
+
+		<?php echo  Form::label('adres', 'Adres') ; ?>
+		<?php echo  Form::text('adres', Session::get('form_values')['adres']) ; ?>
+		<?php echo  $errors->first('adres', '<p>:message</p>') ; ?>
+		<br />
+
+		<?php echo  Form::label('postcode', 'Postcode') ; ?>
+		<?php echo  Form::text('postcode', Session::get('form_values')['postcode']) ; ?>
+		<?php echo  $errors->first('postcode', '<p>:message</p>') ; ?>
+		<br />
+
+		<?php echo  Form::label('city', 'Stad') ; ?>
+		<?php echo  Form::text('city', Session::get('form_values')['city']) ; ?>
+		<?php echo  $errors->first('city', '<p>:message</p>') ; ?>
+		<br />
+
+		<?php echo  Form::label('land', 'Land') ; ?>
+		<?php echo  Form::text('land', Session::get('form_values')['land']) ; ?>
+		<?php echo  $errors->first('land', '<p>:message</p>') ; ?>
+		<br />
+
+		<?php echo  Form::submit('save') ; ?>
+	<?php echo  Form::close() ; ?>
+
+<?php \Laravel\Section::stop(); ?>
+
+<?php \Laravel\Section::start('footer'); ?>
+	<?php echo view('footer')->with(get_defined_vars())->render(); ?>
+<?php \Laravel\Section::stop(); ?>
+<?php echo view('master')->with(get_defined_vars())->render(); ?>
