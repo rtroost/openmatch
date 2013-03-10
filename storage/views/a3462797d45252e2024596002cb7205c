@@ -1,0 +1,20 @@
+
+<?php \Laravel\Section::start('header'); ?>
+	<?php echo view('header')->with(get_defined_vars())->render(); ?>
+<?php \Laravel\Section::stop(); ?>
+
+<?php \Laravel\Section::start('container'); ?>
+
+	<?php if (Session::has('message')): ?>
+		<p><?php echo  Session::get('message') ; ?></p>
+	<?php endif; ?>
+
+	<p>Dit is de maincontainer<p>
+
+	
+<?php \Laravel\Section::stop(); ?>
+
+<?php \Laravel\Section::start('footer'); ?>
+	<?php echo view('footer')->with(get_defined_vars())->render(); ?>
+<?php \Laravel\Section::stop(); ?>
+<?php echo view('master')->with(get_defined_vars())->render(); ?>

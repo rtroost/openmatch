@@ -1,0 +1,13 @@
+<h1>OpenMatch - laravel example</h1>
+<nav>
+	<ul>
+		<li><a href="<?php echo  URL::to_route('index') ; ?>"> Home </a></li>
+		<?php if (Auth::guest()): ?>
+			<li><a href="<?php echo  URL::to_route('new_user') ; ?>"> Register </a></li>
+			<li><a href="<?php echo  URL::to_route('login') ; ?>"> Login </a></li>
+		<?php else: ?>
+			<li><a href="<?php echo  URL::to_route('edit_user') ; ?>">Edit account</a></li>
+			<li><a href="<?php echo  URL::to_route('logout') ; ?>"> Logout </a></li>
+		<?php endif; ?>
+	</ul>
+<nav>
