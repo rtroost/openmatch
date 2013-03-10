@@ -16,7 +16,7 @@
 
 		<?php echo  Form::label('voornaam', 'Voornaam') ; ?>
 		<?php if(Session::has('form_values')): ?>
-			<?php echo  Form::text('voornaam', Session::get('form_values')['voornaam']) ; ?>
+			<?php echo  Form::text('voornaam', Session::get('form_values.voornaam')) ; ?>
 		<?php else: ?>
 			<?php echo  Form::text('voornaam', $userdata->voornaam) ; ?>
 		<?php endif; ?>
@@ -25,7 +25,7 @@
 
 		<?php echo  Form::label('achternaam', 'Achternaam') ; ?>
 		<?php if(Session::has('form_values')): ?>
-			<?php echo  Form::text('achternaam', Session::get('form_values')['achternaam']) ; ?>
+			<?php echo  Form::text('achternaam', Session::get('form_values.achternaam')) ; ?>
 		<?php else: ?>
 			<?php echo  Form::text('achternaam', $userdata->achternaam) ; ?>
 		<?php endif; ?>
@@ -34,7 +34,7 @@
 
 		<?php echo  Form::label('adres', 'Adres') ; ?>
 		<?php if(Session::has('form_values')): ?>
-			<?php echo  Form::text('adres', Session::get('form_values')['adres']) ; ?>
+			<?php echo  Form::text('adres', Session::get('form_values.adres')) ; ?>
 		<?php else: ?>
 			<?php echo  Form::text('adres', $userdata->adres) ; ?>
 		<?php endif; ?>
@@ -43,7 +43,7 @@
 
 		<?php echo  Form::label('postcode', 'Postcode') ; ?>
 		<?php if(Session::has('form_values')): ?>
-			<?php echo  Form::text('postcode', Session::get('form_values')['postcode']) ; ?>
+			<?php echo  Form::text('postcode', Session::get('form_values.postcode')) ; ?>
 		<?php else: ?>
 			<?php echo  Form::text('postcode', $userdata->postcode) ; ?>
 		<?php endif; ?>
@@ -52,7 +52,7 @@
 
 		<?php echo  Form::label('city', 'Stad') ; ?>
 		<?php if(Session::has('form_values')): ?>
-			<?php echo  Form::text('city', Session::get('form_values')['city']) ; ?>
+			<?php echo  Form::text('city', Session::get('form_values.city')) ; ?>
 		<?php else: ?>
 			<?php echo  Form::text('city', $userdata->city) ; ?>
 		<?php endif; ?>
@@ -61,7 +61,7 @@
 
 		<?php echo  Form::label('land', 'Land') ; ?>
 		<?php if(Session::has('form_values')): ?>
-			<?php echo  Form::text('land', Session::get('form_values')['land']) ; ?>
+			<?php echo  Form::text('land', Session::get('form_values.land')) ; ?>
 		<?php else: ?>
 			<?php echo  Form::text('land', $userdata->land) ; ?>
 		<?php endif; ?>
