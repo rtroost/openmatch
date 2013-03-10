@@ -1,0 +1,79 @@
+
+<?php \Laravel\Section::start('header'); ?>
+	<?php echo view('header')->with(get_defined_vars())->render(); ?>
+<?php \Laravel\Section::stop(); ?>
+
+<?php \Laravel\Section::start('container'); ?>
+	<h2>Registreren</h2>
+
+	<?php if (Session::has('message')): ?>
+		<p><?php echo  Session::get('message') ; ?></p>
+	<?php endif; ?>
+
+	<?php echo  Form::open('users', 'PUT') ; ?>
+
+		<p> Your email address: <?php echo  $userdata->email ; ?> </p>
+
+		<?php echo  Form::label('voornaam', 'Voornaam') ; ?>
+		<?php if(Session::has('form_values')): ?>
+			<?php echo  Form::text('voornaam', Session::get('form_values')['voornaam']) ; ?>
+		<?php else: ?>
+			<?php echo  Form::text('voornaam', $userdata->voornaam) ; ?>
+		<?php endif; ?>
+		<?php echo  $errors->first('voornaam', '<p>:message</p>') ; ?>
+		<br />
+
+		<?php echo  Form::label('achternaam', 'Achternaam') ; ?>
+		<?php if(Session::has('form_values')): ?>
+			<?php echo  Form::text('achternaam', Session::get('form_values')['achternaam']) ; ?>
+		<?php else: ?>
+			<?php echo  Form::text('achternaam', $userdata->achternaam) ; ?>
+		<?php endif; ?>
+		<?php echo  $errors->first('achternaam', '<p>:message</p>') ; ?>
+		<br />
+
+		<?php echo  Form::label('adres', 'Adres') ; ?>
+		<?php if(Session::has('form_values')): ?>
+			<?php echo  Form::text('adres', Session::get('form_values')['adres']) ; ?>
+		<?php else: ?>
+			<?php echo  Form::text('adres', $userdata->adres) ; ?>
+		<?php endif; ?>
+		<?php echo  $errors->first('adres', '<p>:message</p>') ; ?>
+		<br />
+
+		<?php echo  Form::label('postcode', 'Postcode') ; ?>
+		<?php if(Session::has('form_values')): ?>
+			<?php echo  Form::text('postcode', Session::get('form_values')['postcode']) ; ?>
+		<?php else: ?>
+			<?php echo  Form::text('postcode', $userdata->postcode) ; ?>
+		<?php endif; ?>
+		<?php echo  $errors->first('postcode', '<p>:message</p>') ; ?>
+		<br />
+
+		<?php echo  Form::label('city', 'Stad') ; ?>
+		<?php if(Session::has('form_values')): ?>
+			<?php echo  Form::text('city', Session::get('form_values')['city']) ; ?>
+		<?php else: ?>
+			<?php echo  Form::text('city', $userdata->city) ; ?>
+		<?php endif; ?>
+		<?php echo  $errors->first('city', '<p>:message</p>') ; ?>
+		<br />
+
+		<?php echo  Form::label('land', 'Land') ; ?>
+		<?php if(Session::has('form_values')): ?>
+			<?php echo  Form::text('land', Session::get('form_values')['land']) ; ?>
+		<?php else: ?>
+			<?php echo  Form::text('land', $userdata->land) ; ?>
+		<?php endif; ?>
+		<?php echo  $errors->first('land', '<p>:message</p>') ; ?>
+		<br />
+
+		<?php echo  Form::submit('save') ; ?>
+	<?php echo  Form::close() ; ?>
+
+<?php \Laravel\Section::stop(); ?>
+
+<?php \Laravel\Section::start('footer'); ?>
+	<?php echo view('footer')->with(get_defined_vars())->render(); ?>
+<?php \Laravel\Section::stop(); ?>
+<?php echo view('master')->with(get_defined_vars())->render(); ?>

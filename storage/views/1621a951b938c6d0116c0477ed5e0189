@@ -1,0 +1,32 @@
+
+<?php \Laravel\Section::start('header'); ?>
+	<?php echo view('header')->with(get_defined_vars())->render(); ?>
+<?php \Laravel\Section::stop(); ?>
+
+<?php \Laravel\Section::start('container'); ?>
+	<h2>Login</h2>
+
+	<?php echo  $errors->first('password', '<p>:message</p>') ; ?>
+	<?php if (Session::has('message')): ?>
+		<p><?php echo  Session::get('message') ; ?></p>
+	<?php endif; ?>
+
+	<?php echo  Form::open('login') ; ?>
+		<?php echo  Form::label('email', 'E-Mail Address') ; ?>
+		<?php echo  Form::text('email', Session::get('form_values')['email']) ; ?>
+		<?php echo  $errors->first('email', '<p>:message</p>') ; ?>
+		<br />
+
+		<?php echo  Form::label('password', 'Password') ; ?>
+		<?php echo  Form::password('password') ; ?>
+		<br />
+
+		<?php echo  Form::submit('save') ; ?>
+	<?php echo  Form::close() ; ?>
+
+<?php \Laravel\Section::stop(); ?>
+
+<?php \Laravel\Section::start('footer'); ?>
+	<?php echo view('footer')->with(get_defined_vars())->render(); ?>
+<?php \Laravel\Section::stop(); ?>
+<?php echo view('master')->with(get_defined_vars())->render(); ?>
