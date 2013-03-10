@@ -14,7 +14,7 @@
 
 	{{ Form::open('login') }}
 		{{ Form::label('email', 'E-Mail Address') }}
-		{{ Form::text('email', Session::get('form_values')['email']) }}
+		{{ Form::text('email', Session::get('form_values.email')) }}
 		{{ $errors->first('email', '<p>:message</p>') }}
 		<br />
 
