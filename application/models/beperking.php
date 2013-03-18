@@ -1,6 +1,6 @@
 <?php
 
-class Beperking extends Eloquent {
+class Beperking extends Basemodel {
 	
 	public static $timestamps = false;
 

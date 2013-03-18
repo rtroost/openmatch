@@ -1,6 +1,6 @@
 <?php
 
-class Interesse extends Eloquent {
+class Interesse extends Basemodel {
 	
 	public static $timestamps = false;
 

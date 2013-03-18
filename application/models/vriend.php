@@ -1,6 +1,6 @@
 <?php
 
-class Vriend extends Eloquent {
+class Vriend extends extends Basemodel {
 
 	public static $timestamps = false;
 
