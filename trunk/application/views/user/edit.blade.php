@@ -17,59 +17,41 @@
 
 		<p> Your email address: {{ $userdata->email }} </p>
 
-		{{ Form::label('voornaam', 'Voornaam') }}
-		@if(Input::old('voornaam'))
-			{{ Form::text('voornaam', Input::old('voornaam')) }}
-		@else
-			{{ Form::text('voornaam', $userdata->voornaam) }}
-		@endif
-		{{ $errors->first('voornaam', '<p>:message</p>') }}
-		<br />
+		<p>
+			{{ Form::label('voornaam', 'Voornaam') }}
+			{{ Form::text('voornaam', Input::old('voornaam', $userdata->voornaam)) }}
+			{{ $errors->first('voornaam', '<p>:message</p>') }}
+		</p>
 
-		{{ Form::label('achternaam', 'Achternaam') }}
-		@if(Input::old('achternaam'))
-			{{ Form::text('achternaam', Input::old('achternaam')) }}
-		@else
-			{{ Form::text('achternaam', $userdata->achternaam) }}
-		@endif
-		{{ $errors->first('achternaam', '<p>:message</p>') }}
-		<br />
+		<p>
+			{{ Form::label('achternaam', 'Achternaam') }}
+			{{ Form::text('achternaam', Input::old('achternaam', $userdata->achternaam)) }}
+			{{ $errors->first('achternaam', '<p>:message</p>') }}
+		</p>
 
-		{{ Form::label('adres', 'Adres') }}
-		@if(inptu::old('adres'))
-			{{ Form::text('adres', Input::old('adres')) }}
-		@else
-			{{ Form::text('adres', $userdata->adres) }}
-		@endif
-		{{ $errors->first('adres', '<p>:message</p>') }}
-		<br />
+		<p>
+			{{ Form::label('adres', 'Adres') }}
+			{{ Form::text('adres', Input::old('adres', $userdata->adres)) }}
+			{{ $errors->first('adres', '<p>:message</p>') }}
+		</p>
+		
+		<p>
+			{{ Form::label('postcode', 'Postcode') }}
+			{{ Form::text('postcode', Input::old('postcode', $userdata->postcode)) }}
+			{{ $errors->first('postcode', '<p>:message</p>') }}
+		</p>
 
-		{{ Form::label('postcode', 'Postcode') }}
-		@if(Input::old('postcode'))
-			{{ Form::text('postcode', Input::old('postcode')) }}
-		@else
-			{{ Form::text('postcode', $userdata->postcode) }}
-		@endif
-		{{ $errors->first('postcode', '<p>:message</p>') }}
-		<br />
+		<p>
+			{{ Form::label('woonplaats', 'Woonplaats') }}
+			{{ Form::text('woonplaats', Input::old('woonplaats', $userdata->woonplaats)) }}
+			{{ $errors->first('woonplaats', '<p>:message</p>') }}
+		</p>
 
-		{{ Form::label('woonplaats', 'Woonplaats') }}
-		@if(Input::old('woonplaats'))
-			{{ Form::text('woonplaats', Input::old('woonplaats')) }}
-		@else
-			{{ Form::text('woonplaats', $userdata->woonplaats) }}
-		@endif
-		{{ $errors->first('woonplaats', '<p>:message</p>') }}
-		<br />
-
-		{{ Form::label('land', 'Land') }}
-		@if(Input::old('land'))
-			{{ Form::text('land', Input::old('land')) }}
-		@else
-			{{ Form::text('land', $userdata->land) }}
-		@endif
-		{{ $errors->first('land', '<p>:message</p>') }}
-		<br />
+		<p>
+			{{ Form::label('land', 'Land') }}
+			{{ Form::text('land', Input::old('land', $userdata->land)) }}
+			{{ $errors->first('land', '<p>:message</p>') }}
+		</p>
 
 		{{ Form::submit('save') }}
 	{{ Form::close() }}

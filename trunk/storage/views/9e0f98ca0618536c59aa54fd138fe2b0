@@ -16,59 +16,41 @@
 
 		<p> Your email address: <?php echo  $userdata->email ; ?> </p>
 
-		<?php echo  Form::label('voornaam', 'Voornaam') ; ?>
-		<?php if(Input::old('voornaam')): ?>
-			<?php echo  Form::text('voornaam', Input::old('voornaam')) ; ?>
-		<?php else: ?>
-			<?php echo  Form::text('voornaam', $userdata->voornaam) ; ?>
-		<?php endif; ?>
-		<?php echo  $errors->first('voornaam', '<p>:message</p>') ; ?>
-		<br />
+		<p>
+			<?php echo  Form::label('voornaam', 'Voornaam') ; ?>
+			<?php echo  Form::text('voornaam', Input::old('voornaam', $userdata->voornaam)) ; ?>
+			<?php echo  $errors->first('voornaam', '<p>:message</p>') ; ?>
+		</p>
 
-		<?php echo  Form::label('achternaam', 'Achternaam') ; ?>
-		<?php if(Session::has('form_values')): ?>
-			<?php echo  Form::text('achternaam', Input::old('achternaam')) ; ?>
-		<?php else: ?>
-			<?php echo  Form::text('achternaam', $userdata->achternaam) ; ?>
-		<?php endif; ?>
-		<?php echo  $errors->first('achternaam', '<p>:message</p>') ; ?>
-		<br />
+		<p>
+			<?php echo  Form::label('achternaam', 'Achternaam') ; ?>
+			<?php echo  Form::text('achternaam', Input::old('achternaam', $userdata->achternaam)) ; ?>
+			<?php echo  $errors->first('achternaam', '<p>:message</p>') ; ?>
+		</p>
 
-		<?php echo  Form::label('adres', 'Adres') ; ?>
-		<?php if(Session::has('form_values')): ?>
-			<?php echo  Form::text('adres', Input::old('adres')) ; ?>
-		<?php else: ?>
-			<?php echo  Form::text('adres', $userdata->adres) ; ?>
-		<?php endif; ?>
-		<?php echo  $errors->first('adres', '<p>:message</p>') ; ?>
-		<br />
+		<p>
+			<?php echo  Form::label('adres', 'Adres') ; ?>
+			<?php echo  Form::text('adres', Input::old('adres', $userdata->adres)) ; ?>
+			<?php echo  $errors->first('adres', '<p>:message</p>') ; ?>
+		</p>
+		
+		<p>
+			<?php echo  Form::label('postcode', 'Postcode') ; ?>
+			<?php echo  Form::text('postcode', Input::old('postcode', $userdata->postcode)) ; ?>
+			<?php echo  $errors->first('postcode', '<p>:message</p>') ; ?>
+		</p>
 
-		<?php echo  Form::label('postcode', 'Postcode') ; ?>
-		<?php if(Session::has('form_values')): ?>
-			<?php echo  Form::text('postcode', Input::old('postcode')) ; ?>
-		<?php else: ?>
-			<?php echo  Form::text('postcode', $userdata->postcode) ; ?>
-		<?php endif; ?>
-		<?php echo  $errors->first('postcode', '<p>:message</p>') ; ?>
-		<br />
+		<p>
+			<?php echo  Form::label('woonplaats', 'Woonplaats') ; ?>
+			<?php echo  Form::text('woonplaats', Input::old('woonplaats', $userdata->woonplaats)) ; ?>
+			<?php echo  $errors->first('woonplaats', '<p>:message</p>') ; ?>
+		</p>
 
-		<?php echo  Form::label('woonplaats', 'Woonplaats') ; ?>
-		<?php if(Session::has('form_values')): ?>
-			<?php echo  Form::text('woonplaats', Input::old('woonplaats')) ; ?>
-		<?php else: ?>
-			<?php echo  Form::text('woonplaats', $userdata->woonplaats) ; ?>
-		<?php endif; ?>
-		<?php echo  $errors->first('woonplaats', '<p>:message</p>') ; ?>
-		<br />
-
-		<?php echo  Form::label('land', 'Land') ; ?>
-		<?php if(Session::has('form_values')): ?>
-			<?php echo  Form::text('land', Input::old('land')) ; ?>
-		<?php else: ?>
-			<?php echo  Form::text('land', $userdata->land) ; ?>
-		<?php endif; ?>
-		<?php echo  $errors->first('land', '<p>:message</p>') ; ?>
-		<br />
+		<p>
+			<?php echo  Form::label('land', 'Land') ; ?>
+			<?php echo  Form::text('land', Input::old('land', $userdata->land)) ; ?>
+			<?php echo  $errors->first('land', '<p>:message</p>') ; ?>
+		</p>
 
 		<?php echo  Form::submit('save') ; ?>
 	<?php echo  Form::close() ; ?>
