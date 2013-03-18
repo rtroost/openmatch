@@ -1,6 +1,6 @@
 <?php
 
-class Avtiviteit extends Eloquent {
+class Avtiviteit extends Basemodel {
 
 	public static $timestamps = false;
 

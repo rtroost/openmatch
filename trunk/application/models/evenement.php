@@ -1,6 +1,6 @@
 <?php
 
-class Evenement extends Eloquent {
+class Evenement extends Basemodel {
 
 	public static $timestamps = false;
 

@@ -1,6 +1,6 @@
 <?php
 
-class Review extends Eloquent {
+class Review extends extends Basemodel {
 
 	public static $timestamps = false;
 

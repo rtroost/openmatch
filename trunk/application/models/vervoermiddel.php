@@ -1,6 +1,6 @@
 <?php
 
-class Vervoermiddel extends Eloquent {
+class Vervoermiddel extends Basemodel {
 
 	public static $timestamps = false;
 
