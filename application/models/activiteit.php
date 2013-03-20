@@ -4,8 +4,6 @@ class Avtiviteit extends Basemodel {
 
 	public static $timestamps = false;
 
-	public static $key = 'activiteit_id';
-
 	public static $table = 'activiteiten';
 
 	public function users(){

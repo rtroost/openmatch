@@ -1,0 +1,35 @@
+
+<?php \Laravel\Section::start('content'); ?>
+
+	<div class="container">
+
+		<div class="row-fluid">
+			<h2>Login</h2>
+
+			<?php echo  $errors->first('password', '<p>:message</p>') ; ?>
+
+			<?php echo  Form::open('login', 'POST') ; ?>
+
+				<?php echo  Form::token() ; ?>
+				
+				<p>
+					<?php echo  Form::label('email', 'E-Mail Address') ; ?>
+					<?php echo  Form::text('email', Input::old('email')) ; ?>
+					<?php echo  $errors->first('email', '<p>:message</p>') ; ?>
+				</p>
+
+				<p>
+					<?php echo  Form::label('password', 'Password') ; ?>
+					<?php echo  Form::password('password') ; ?>
+				</p>
+
+				<?php echo  Form::submit('Secure Login', array('class' => 'btn btn-large btn-primary')) ; ?>
+
+			<?php echo  Form::close() ; ?>
+
+		</div>
+
+	</div>
+
+<?php \Laravel\Section::stop(); ?>
+<?php echo view('layouts.default')->with(get_defined_vars())->render(); ?>

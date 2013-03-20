@@ -4,8 +4,6 @@ class Beperking extends Basemodel {
 	
 	public static $timestamps = false;
 
-	public static $key = 'beperking_id';
-
 	public static $table = 'beperkingen';
 
 	public function users(){

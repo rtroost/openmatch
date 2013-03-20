@@ -1,6 +1,5 @@
-
 #content {
-	padding-top: 48px;
+	padding-top: 51px;
 }
 
 .navbar-inner {
@@ -10,7 +9,7 @@
 
 .navbar .brand {
 	padding: 6px 8px 6px;
-	margin: 6px 20px 6px -20px;
+	margin: 6px 20px 6px 0px;
 
 	font: 700 20px 'Roboto', sans-serif;
 	background: #18a3d3;
@@ -84,4 +83,8 @@
 .well {
 	background: rgba(0,0,0,.02);
 	border: 1px solid rgba(0,0,0,0.05);
+}
+
+#session-message {
+	margin-top: 20px;
 }

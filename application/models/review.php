@@ -4,8 +4,6 @@ class Review extends extends Basemodel {
 
 	public static $timestamps = false;
 
-	public static $key = 'review_id';
-
 	public static $table = 'reviews';
 
 	public function evenement(){

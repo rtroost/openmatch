@@ -4,8 +4,6 @@ class Vervoermiddel extends Basemodel {
 
 	public static $timestamps = false;
 
-	public static $key = 'vervoermiddel_id';
-
 	public static $table = 'vervoermiddelen';
 
 	public function activiteiten(){

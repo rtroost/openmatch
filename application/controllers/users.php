@@ -10,12 +10,12 @@ class Users_Controller extends Base_Controller {
 
 	public function post_login(){
 
-		$user = array(
+		$credentials = array(
 			'username' => Input::get('email'),
 			'password' => Input::get('password')
-			);
+		);
 
-		if(Auth::attempt($user)) {
+		if(Auth::attempt($credentials)) {
 			return Redirect::to_route('home')
 			-> with('message', 'You are now logged in!');
 		} else {
@@ -33,7 +33,11 @@ class Users_Controller extends Base_Controller {
 
 		$validation = User::validate(Input::all());
 
-		if($validation->passes()) {
+		if($validation->fails()) {
+			return Redirect::to_route('register')
+				-> with_errors($validation)
+				-> with_input();
+		} else {
 			User::create(array(
 				'voornaam' => Input::get('voornaam'),
 				'achternaam' => Input::get('achternaam'),
@@ -41,7 +45,7 @@ class Users_Controller extends Base_Controller {
 				'password' => Hash::make(Input::get('password')),
 				'adres' => Input::get('adres'),
 				'postcode' => Input::get('postcode'),
-				'city' => Input::get('city'),
+				'woonplaats' => Input::get('woonplaats'),
 				'land' => Input::get('land')
 			));
 
@@ -50,12 +54,7 @@ class Users_Controller extends Base_Controller {
 
 			return Redirect::to_route('home')
 				->with('message', 'Thanks for registering. You are now logged in.');
-		} else {
-			return Redirect::to_route('register')
-				-> with_errors($validation)
-				-> with_input();
 		}
-
 	}
 
 	public function get_show(){
@@ -66,7 +65,7 @@ class Users_Controller extends Base_Controller {
 
 		$user = Auth::user();
 
-		return View::make('user.edit_profile', array('userdata' => $user));
+		return View::make('user.edit', array('userdata' => $user));
 	}
 
 	public function put_update(){
@@ -74,9 +73,9 @@ class Users_Controller extends Base_Controller {
 		$validation = User::validate_update(Input::all());
 
 		if ($validation->fails()) {
-			return Redirect::to_route('edit_user')->with_input()->with_errors($validation);
+			return Redirect::to_route('edit_user', Auth::user() -> id)->with_input()->with_errors($validation);
 		} else {
-			User::update(Input::get('user_id'), array(
+			User::update(Input::get('id'), array(
 				'voornaam' => Input::get('voornaam'),
 				'achternaam' => Input::get('achternaam'),
 				'adres' => Input::get('adres'),
@@ -85,7 +84,7 @@ class Users_Controller extends Base_Controller {
 				'land' => Input::get('land')
 				));
 
-			return Redirect::to_route('edit_user')->with('message', 'your account had been edited');
+			return Redirect::to_route('edit_user', Auth::user() -> id)->with('message', 'your account had been edited');
 		}
 	}
 
@@ -96,7 +95,7 @@ class Users_Controller extends Base_Controller {
 	public function get_logout() {
 		if(Auth::check()) {
 			Auth::logout();
-			return Redirect::to_route('login')
+			return Redirect::to_route('home')
 			->with('message', 'You are now logged out!');
 		} else {
 			return Redirect::to_route('home');
