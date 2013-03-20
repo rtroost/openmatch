@@ -1,64 +1,77 @@
-@layout('master')
+@layout('layouts.default')
 
-@section('header')
-	@include('header')
-@endsection
+@section('content')
 
-@section('container')
-	<h2>Registreren</h2>
+	<div class="container">
 
-	{{ Form::open('users') }}
+		<div class="row-fluid">
 
-		{{ Form::label('voornaam', 'Voornaam') }}
-		{{ Form::text('voornaam', Input::old('voornaam')) }}
-		{{ $errors->first('voornaam', '<p>:message</p>') }}
-		<br />
+			<h2>Registreren</h2>
 
-		{{ Form::label('achternaam', 'Achternaam') }}
-		{{ Form::text('achternaam', Input::old('achternaam')) }}
-		{{ $errors->first('achternaam', '<p>:message</p>') }}
-		<br />
+			{{ Form::open('users') }}
 
-		{{ Form::label('email', 'E-Mail Address') }}
-		{{ Form::text('email', Input::old('email')) }}
-		{{ $errors->first('email', '<p>:message</p>') }}
-		<br />
+				{{ Form::token() }}
 
-		{{ Form::label('password', 'Password') }}
-		{{ Form::password('password') }}
-		{{ $errors->first('password', '<p>:message</p>') }}
-		<br />
+				<p>
+					{{ Form::label('voornaam', 'Voornaam') }}
+					{{ Form::text('voornaam', Input::old('voornaam')) }}
+					{{ $errors->first('voornaam', '<p>:message</p>') }}
+				</p>
 
-		{{ Form::label('password_confirmation', 'Password controller') }}
-		{{ Form::password('password_confirmation') }}
-		{{ $errors->first('password_confirmation', '<p>:message</p>') }}
-		<br />
+				<p>
+					{{ Form::label('achternaam', 'Achternaam') }}
+					{{ Form::text('achternaam', Input::old('achternaam')) }}
+					{{ $errors->first('achternaam', '<p>:message</p>') }}
+				</p>
 
-		{{ Form::label('adres', 'Adres') }}
-		{{ Form::text('adres', Input::old('adres')) }}
-		{{ $errors->first('adres', '<p>:message</p>') }}
-		<br />
+				<p>
+					{{ Form::label('email', 'E-Mail Address') }}
+					{{ Form::text('email', Input::old('email')) }}
+					{{ $errors->first('email', '<p>:message</p>') }}
+				</p>
 
-		{{ Form::label('postcode', 'Postcode') }}
-		{{ Form::text('postcode', Input::old('postcode')) }}
-		{{ $errors->first('postcode', '<p>:message</p>') }}
-		<br />
+				<p>
+					{{ Form::label('password', 'Password') }}
+					{{ Form::password('password') }}
+					{{ $errors->first('password', '<p>:message</p>') }}
+				</p>
 
-		{{ Form::label('woonplaats', 'Woonplaats') }}
-		{{ Form::text('woonplaats', Input::old('woonplaats')) }}
-		{{ $errors->first('woonplaats', '<p>:message</p>') }}
-		<br />
+				<p>
+					{{ Form::label('password_confirmation', 'Password (Confirm)') }}
+					{{ Form::password('password_confirmation') }}
+					{{ $errors->first('password_confirmation', '<p>:message</p>') }}
+				</p>
 
-		{{ Form::label('land', 'Land') }}
-		{{ Form::text('land', Input::old('land')) }}
-		{{ $errors->first('land', '<p>:message</p>') }}
-		<br />
+				<p>
+					{{ Form::label('adres', 'Adres') }}
+					{{ Form::text('adres', Input::old('adres')) }}
+					{{ $errors->first('adres', '<p>:message</p>') }}
+				</p>
 
-		{{ Form::submit('save') }}
-	{{ Form::close() }}
+				<p>
+					{{ Form::label('postcode', 'Postcode') }}
+					{{ Form::text('postcode', Input::old('postcode')) }}
+					{{ $errors->first('postcode', '<p>:message</p>') }}
+				</p>
 
-@endsection
+				<p>
+					{{ Form::label('woonplaats', 'Woonplaats') }}
+					{{ Form::text('woonplaats', Input::old('woonplaats')) }}
+					{{ $errors->first('woonplaats', '<p>:message</p>') }}
+				</p>
 
-@section('footer')
-	@include('footer')
+				<p>
+					{{ Form::label('land', 'Land') }}
+					{{ Form::text('land', Input::old('land')) }}
+					{{ $errors->first('land', '<p>:message</p>') }}
+				</p>
+
+				{{ Form::submit('Sign Me Up!') }}
+
+			{{ Form::close() }}
+
+		</div>
+
+	</div>
+
 @endsection

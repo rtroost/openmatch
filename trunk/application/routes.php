@@ -1,18 +1,18 @@
 <?php
 
-Route::get('/', array('as' => 'index', 'uses' => 'home@index'));
+//Home route
+Route::get('/', array('as' => 'home', 'uses' => 'home@index'));
 
 // user Resource
-Route::get('login', array('as' => 'login', 'uses' => 'users@login')); 									// form login
-Route::post('login', array('as' => 'login_post', 'uses' => 'users@login')); 							// POST login
-Route::get('logout', array('as' => 'logout', 'before' => 'authuser', 'uses' => 'users@logout')); 		// logout
-
-Route::get('users/(:num)', array('as' => 'user', 'uses' => 'users@show')); 								// eventueel profile pagina ~
-Route::get('users/new', array('as' => 'new_user', 'uses' => 'users@new')); 								// form register
-Route::get('users/edit', array('as' => 'edit_user', 'before' => 'authuser', 'uses' => 'users@edit')); 	// form edit
-Route::post('users', 'users@create'); 																	// POST register
-Route::put('users', array('before' => 'authuser', 'uses' => 'users@update')); 							// POST/PUT update
-Route::delete('users/(:num)', 'users@destroy'); 														// niet gebruikt ~
+Route::get('login', 											array('as' => 'login', 						'uses' => 'users@login'																						));		// form login
+Route::get('logout', 											array('as' => 'logout', 					'uses' => 'users@logout'																					)); 	// logout
+Route::get('register', 										array('as' => 'register',					'uses' => 'users@new'																							));		// form register
+Route::get('user/(:num)', 								array('as' => 'show_user',				'uses' => 'users@show'																						));		// eventueel profile pagina ~
+Route::get('user/(:num)/edit', 						array('as' => 'edit_user', 				'uses' => 'users@edit'																						));		// form edit
+Route::post('login', 											array('as' => 'login_post', 			'uses' => 'users@login', 					'before' => 'csrf'							));		// POST login
+Route::post('register', 									array('as' => 'register_user', 		'uses' => 'users@create', 				'before' => 'csrf'							));		// POST register
+Route::put('user/update', 								array( 														'uses' => 'users@update', 				'before' => 'csrf'							)); 	// POST/PUT update
+Route::delete('user/(:num)', 							array(														'uses' => 'users@destroy'																					)); 	// niet gebruikt ~
 
 
 /*
@@ -83,7 +83,7 @@ Route::filter('csrf', function()
 	if (Request::forged()) return Response::error('500');
 });
 
-Route::filter('authuser', function()
+Route::filter('auth', function()
 {
 	if (Auth::guest()) return Redirect::to('login');
 });

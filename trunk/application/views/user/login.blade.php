@@ -1,32 +1,32 @@
-@layout('master')
+@layout('layouts.default')
 
-@section('header')
-	@include('header')
-@endsection
+@section('content')
 
-@section('container')
-	<h2>Login</h2>
+	<div class="container">
 
-	{{ $errors->first('password', '<p>:message</p>') }}
-	@if (Session::has('message'))
-		<p>{{ Session::get('message') }}</p>
-	@endif
+		<div class="row-fluid">
+			<h2>Login</h2>
 
-	{{ Form::open('login') }}
-		{{ Form::label('email', 'E-Mail Address') }}
-		{{ Form::text('email', Input::old('email')) }}
-		{{ $errors->first('email', '<p>:message</p>') }}
-		<br />
+			{{ $errors->first('password', '<p>:message</p>') }}
 
-		{{ Form::label('password', 'Password') }}
-		{{ Form::password('password') }}
-		<br />
+			{{ Form::open('login', 'POST') }}
+				<p>
+					{{ Form::label('email', 'E-Mail Address') }}
+					{{ Form::text('email', Input::old('email')) }}
+					{{ $errors->first('email', '<p>:message</p>') }}
+				</p>
 
-		{{ Form::submit('save') }}
-	{{ Form::close() }}
+				<p>
+					{{ Form::label('password', 'Password') }}
+					{{ Form::password('password') }}
+				</p>
 
-@endsection
+				{{ Form::submit('Secure Login') }}
 
-@section('footer')
-	@include('footer')
+			{{ Form::close() }}
+
+		</div>
+
+	</div>
+
 @endsection
