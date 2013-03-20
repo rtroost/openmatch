@@ -1,11 +1,7 @@
-@layout('master')
+@layout('layouts.default')
 
-@section('header')
-	@include('header')
-@endsection
-
-@section('container')
-	<h2>Registreren</h2>
+@section('content')
+	<h2>Your profile</h2>
 
 	@if (Session::has('message'))
 		<p>{{ Session::get('message') }}</p>
@@ -13,9 +9,11 @@
 
 	{{ Form::open('users', 'PUT') }}
 
-		{{ Form::hidden('id', $userdata->user_id) }}
+		{{ Form::token() }}
 
-		<p> Your email address: {{ $userdata->email }} </p>
+		{{ Form::hidden('user_id', $userdata -> user_id) }}
+
+		<p> Your email address: {{ $userdata -> email }} </p>
 
 		<p>
 			{{ Form::label('voornaam', 'Voornaam') }}
@@ -34,7 +32,7 @@
 			{{ Form::text('adres', Input::old('adres', $userdata->adres)) }}
 			{{ $errors->first('adres', '<p>:message</p>') }}
 		</p>
-		
+
 		<p>
 			{{ Form::label('postcode', 'Postcode') }}
 			{{ Form::text('postcode', Input::old('postcode', $userdata->postcode)) }}
@@ -53,11 +51,8 @@
 			{{ $errors->first('land', '<p>:message</p>') }}
 		</p>
 
-		{{ Form::submit('save') }}
+		{{ Form::submit('Save my profile') }}
+
 	{{ Form::close() }}
 
-@endsection
-
-@section('footer')
-	@include('footer')
 @endsection
