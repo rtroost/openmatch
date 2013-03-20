@@ -10,6 +10,9 @@
 			{{ $errors->first('password', '<p>:message</p>') }}
 
 			{{ Form::open('login', 'POST') }}
+
+				{{ Form::token() }}
+				
 				<p>
 					{{ Form::label('email', 'E-Mail Address') }}
 					{{ Form::text('email', Input::old('email')) }}
@@ -21,7 +24,7 @@
 					{{ Form::password('password') }}
 				</p>
 
-				{{ Form::submit('Secure Login') }}
+				{{ Form::submit('Secure Login', array('class' => 'btn btn-large btn-primary')) }}
 
 			{{ Form::close() }}
 

@@ -4,8 +4,6 @@ class Evenement extends Basemodel {
 
 	public static $timestamps = false;
 
-	public static $key = 'evenement_id';
-
 	public static $table = 'evenementen';
 
 	public function activiteiten(){

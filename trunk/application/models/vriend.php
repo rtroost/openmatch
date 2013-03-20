@@ -4,8 +4,6 @@ class Vriend extends extends Basemodel {
 
 	public static $timestamps = false;
 
-	public static $key = 'id';
-
 	public static $table = 'vrienden';
 
 	public function user(){
