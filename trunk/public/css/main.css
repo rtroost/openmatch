@@ -35,6 +35,10 @@
 	margin-bottom: 30px;
 }
 
+.content {
+	margin-top: 30px;
+}
+
 #frontpage-maps_locations {
 	background:url('../img/placeholders/maps.png') no-repeat center center;
 	width: 100%;
@@ -87,4 +91,79 @@
 
 #session-message {
 	margin-top: 20px;
+}
+
+
+
+
+#event_list ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+#event_list li {
+	margin:0;
+	position: relative;
+	padding: 12px 8px;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #eee;
+}
+
+#event_list li:hover {
+	background: rgba(0,0,0,0.01);
+	border-top-color: transparent;
+}
+
+#event_list li a {
+	text-decoration: none;
+}
+
+.event-list-thumb {
+	float: left;
+	height: 80px;
+	margin-right: 20px;
+}
+
+.event-list-body {
+	margin-left: 145px;
+	position: relative;
+	color: #555;
+}
+
+.event-list-body-title {
+	font-size: 1.6em;
+	font-weight: 700;
+	margin: 4px 0 8px;
+	display: block;
+	color: #444;
+}
+
+.event-list-body-description {
+	margin-bottom: 6px;
+	display: block;
+}
+
+.event-list-body-metadata {
+	display:block;
+	font-size: 0.85em;
+	color: #999;
+}
+
+.event-list-rating {
+	float: right;
+	font-size: 3em;
+	margin-left: 20px;
+	font: 400 2.4em/1.2 'Roboto', sans-serif;
+	color: #fff;
+	padding: 4px 6px;
+	border-top: 5px solid #18a3d3;
+	border-radius: 4px 4px 0 0;
+	background: #444;
 }

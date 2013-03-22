@@ -41,6 +41,7 @@
 				<div class="nav-collapse collapse">
 					<ul class="nav">
 						<li>{{ HTML::link_to_route('home', 'Home') }}</li>
+						<li>{{ HTML::link_to_route('events', 'Match') }}</li>
 						@if( ! Auth::check())
 							<li>{{ HTML::link_to_route('register', 'Registreren') }}</li>
 							<li>{{ HTML::link_to_route('login', 'Inloggen') }}</li>
@@ -55,7 +56,7 @@
 	</div>
 
 	<div id="content">
-		
+
 		@if(Session::has('message'))
 			<div class="container alert alert-info" id="session-message">
 				<button type="button" class="close" data-dismiss="alert">×</button>
