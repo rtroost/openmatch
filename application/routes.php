@@ -12,7 +12,15 @@ Route::get('user/(:num)/edit', 	array('as' => 'edit_user', 		'uses' => 'users@ed
 Route::post('login', 			array('as' => 'login_post', 	'uses' => 'users@login', 	'before' => 'csrf'	));		// POST login
 Route::post('register', 		array('as' => 'register_user', 	'uses' => 'users@create',	'before' => 'csrf'	));		// POST register
 Route::put('user',		 		array('uses' => 'users@update', 'before' => 'csrf|auth'							)); 	// POST/PUT update
-Route::delete('user/(:num)', 	array('uses' => 'users@destroy'													)); 
+Route::delete('user/(:num)', 	array('uses' => 'users@destroy'													));
+
+
+Route::get('events', 			array('as' => 'events', 'uses' => 'events@index'));
+
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------
