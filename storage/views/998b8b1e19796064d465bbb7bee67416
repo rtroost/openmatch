@@ -1,6 +1,5 @@
-@layout('layouts.default')
 
-@section('content')
+<?php \Laravel\Section::start('content'); ?>
 
 <div class="content">
 
@@ -129,47 +128,47 @@
 					<ul class="unstyled" >
 						<li>
 							<label class="checkbox">
-									{{ Form::checkbox('restaurant', 'restaurant') }} Restaurant
+									<?php echo  Form::checkbox('restaurant', 'restaurant') ; ?> Restaurant
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									{{ Form::checkbox('cafe', 'cafe') }} Cafe
+									<?php echo  Form::checkbox('cafe', 'cafe') ; ?> Cafe
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									{{ Form::checkbox('bioskoop', 'bioskoop') }} Bioskoop
+									<?php echo  Form::checkbox('bioskoop', 'bioskoop') ; ?> Bioskoop
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									{{ Form::checkbox('museum', 'museum') }} Museum
+									<?php echo  Form::checkbox('museum', 'museum') ; ?> Museum
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									{{ Form::checkbox('casino', 'casino') }} Casino
+									<?php echo  Form::checkbox('casino', 'casino') ; ?> Casino
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									{{ Form::checkbox('pretpark', 'pretpark') }} Pretpark
+									<?php echo  Form::checkbox('pretpark', 'pretpark') ; ?> Pretpark
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									{{ Form::checkbox('zwembad', 'zwembad') }} Zwembad
+									<?php echo  Form::checkbox('zwembad', 'zwembad') ; ?> Zwembad
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									{{ Form::checkbox('bolingbaan', 'bolingbaan') }} Bolingbaan
+									<?php echo  Form::checkbox('bolingbaan', 'bolingbaan') ; ?> Bolingbaan
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									{{ Form::checkbox('theater', 'theater') }} Theater
+									<?php echo  Form::checkbox('theater', 'theater') ; ?> Theater
 							</label>
 						</li>
 					</ul>
@@ -184,10 +183,10 @@
 					<h5>Indoor / Outdoor</h5>
 					<div class="inoutdoor">
 						<label class="radio inline notop">
-							{{ Form::radio('inout', 'indoor') }} Indoor
+							<?php echo  Form::radio('inout', 'indoor') ; ?> Indoor
 						</label>
 						<label class="radio inline notop">
-							{{ Form::radio('inout', 'outdoor') }} Outdoor
+							<?php echo  Form::radio('inout', 'outdoor') ; ?> Outdoor
 						</label>
 					</div>
 
@@ -209,4 +208,5 @@
 	}
 </script>
 
-@endsection
+<?php \Laravel\Section::stop(); ?>
+<?php echo view('layouts.default')->with(get_defined_vars())->render(); ?>
