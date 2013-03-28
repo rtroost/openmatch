@@ -1,13 +1,75 @@
 
 <?php \Laravel\Section::start('content'); ?>
 
-	<div id="frontpage-maps_locations"></div>
+	<div id="map_canvas"></div>
+
+	<div id="map_overlay">
+		<div class="container">
+			<div class="row-fluid">
+				<div class="span3 offset9">
+					<div id="map_overlay_inner_header">
+						<h3>Zoeken</h3>
+					</div>
+					<div id="map_overlay_inner">
+						<h5>Type uitgaansgelegenheden</h5>
+					<ul class="unstyled" >
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('restaurant', 'restaurant') ; ?> Restaurant
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('cafe', 'cafe') ; ?> Cafe
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('bioskoop', 'bioskoop') ; ?> Bioskoop
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('museum', 'museum') ; ?> Museum
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('casino', 'casino') ; ?> Casino
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('pretpark', 'pretpark') ; ?> Pretpark
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('zwembad', 'zwembad') ; ?> Zwembad
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('bolingbaan', 'bolingbaan') ; ?> Bolingbaan
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('theater', 'theater') ; ?> Theater
+							</label>
+						</li>
+					</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div class="container">
 
 		<div class="row-fluid">
-			<h1 class="frontpage_title">Het leven hoeft niet stil te staan. Ook voor u niet!</h1>
-			<h3 class="frontpage_subtletitle">Stap samen met duizende andere mensen het leven weer in met <span>OpenMatch</span></h3>
+			<h1 class="frontpage_title">Hier komt een welkoms tekst te staan.</h1>
+			<h3 class="frontpage_subtletitle">En hier kan bijvoorbeeld een slogan komen te staan <span>OpenMatch</span></h3>
 		</div>
 
 	</div>
@@ -93,6 +155,40 @@
 		</div><!--/.row-fluid-->
 
 	</div><!-- /container -->
+
+
+
+
+<?php \Laravel\Section::stop(); ?>
+
+<?php \Laravel\Section::start('scripts'); ?>
+	<?php echo  HTML::Script('https://maps.googleapis.com/maps/api/js?key=AIzaSyAgla0GXZ3SEtW2NT1eAzdYRqYSX0J2-YA&sensor=true') ; ?>
+	<?php echo  HTML::Script('js/maps.js') ; ?>
+	<script>
+		(function( $ ){
+
+			maps_class.init({
+			'positions' : [{
+				'lng': 51.92479,
+				'lat': 4.46869,
+				'text': 'Centraal Station',
+				'img': 'travel'
+			}, {
+				'lng': 51.91701,
+				'lat': 4.48405,
+				'text': 'Hogeschool Rotterdam',
+				'img': 'education'
+			}],
+			'container' : document.getElementById("map_canvas")
+			});
+
+			var zoekenInner = $('div#map_overlay_inner');
+			var zoekenHeader = $('div#map_overlay_inner_header');
+			zoekenHeader.on('click', function(){
+				zoekenInner.slideToggle();
+			});
+		})( jQuery );
+	</script>
 
 <?php \Laravel\Section::stop(); ?>
 <?php echo view('layouts.default')->with(get_defined_vars())->render(); ?>

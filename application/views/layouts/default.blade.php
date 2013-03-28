@@ -42,6 +42,10 @@
 					<ul class="nav">
 						<li>{{ HTML::link_to_route('home', 'Home') }}</li>
 						<li>{{ HTML::link_to_route('events', 'Match') }}</li>
+						<li>{{ HTML::link_to_route('overons', 'Over ons') }}</li>
+						<li>{{ HTML::link_to_route('contact', 'Contact') }}</li>
+					</ul>
+					<ul class="nav pull-right">
 						@if( ! Auth::check())
 							<li>{{ HTML::link_to_route('register', 'Registreren') }}</li>
 							<li>{{ HTML::link_to_route('login', 'Inloggen') }}</li>
@@ -77,11 +81,14 @@
 
 	</div> <!-- /container -->
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> <!-- In productie 'http' weghalen -->
+	{{ HTML::Script('http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js') }} <!-- In productie 'http' weghalen -->
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 
 	{{ HTML::Script('js/vendor/bootstrap.min.js') }}
 
 	{{ HTML::Script('js/main.js') }}
+
+	@yield('scripts')
+
 </body>
 </html>
