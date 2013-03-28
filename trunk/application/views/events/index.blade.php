@@ -125,7 +125,7 @@
 					<h4>Filters</h4>
 					<hr class="hr-small" />
 
-					<h5>Evenementen</h5>
+					<h5>Type uitgaansgelegenheden</h5>
 					<ul class="unstyled" >
 						<li>
 							<label class="checkbox">
@@ -174,23 +174,6 @@
 						</li>
 					</ul>
 
-					<h5>Afstand van jou locatie</h5>
-					<input class="afstand" type="range" min="0" max="100" value="20" onchange="showValue(this.value)" style="display:block" />
-					<p>
-						<span id="afstand_range">20</span>
-						<span> Km</span>
-					</p>
-
-					<h5>Indoor / Outdoor</h5>
-					<div class="inoutdoor">
-						<label class="radio inline notop">
-							{{ Form::radio('inout', 'indoor') }} Indoor
-						</label>
-						<label class="radio inline notop">
-							{{ Form::radio('inout', 'outdoor') }} Outdoor
-						</label>
-					</div>
-
 					<div>
 						<button class="btn btn-info" type="button">Doorvoeren</button>
 						<button class="btn" type="button">Reset</button>
@@ -202,11 +185,5 @@
 		</div><!--/row-fluid-->
 	</div><!--/container-->
 </div><!--/content-->
-
-<script>
-	function showValue(newValue){
-		document.getElementById("afstand_range").innerHTML=newValue;
-	}
-</script>
 
 @endsection

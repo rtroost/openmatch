@@ -2,6 +2,8 @@
 
 //Home route
 Route::get('/', array('as' => 'home', 'uses' => 'home@index'));
+Route::get('/overons', array('as' => 'overons', 'uses' => 'home@overons'));
+Route::get('/contact', array('as' => 'contact', 'uses' => 'home@contact'));
 
 // user Resource
 Route::get('login', 			array('as' => 'login', 			'uses' => 'users@login'							));		// form login

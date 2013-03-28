@@ -1,0 +1,34 @@
+@layout('layouts.default')
+
+@section('content')
+
+<div class="content">
+
+	<div class="container">
+
+		<div class="row-fluid">
+
+			<div class="span9">
+				<h1>Over ons</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				
+			</div><!--/span9-->
+
+			<div class="span3">
+				<div class="sidebar">
+					<h4>Sidebar</h4>
+					<hr class="hr-small" />
+					
+				</div><!--/sidebar_block-->
+			</div><!--/span3-->
+
+		</div><!--/row-fluid-->
+	</div><!--/container-->
+</div><!--/content-->
+
+@endsection
