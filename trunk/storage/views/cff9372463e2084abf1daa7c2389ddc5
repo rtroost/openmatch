@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>		<html class="no-js"> <![endif]-->
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>OpenMatch - Home</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+
+	<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,700' rel='stylesheet' type='text/css'>
+
+	<?php echo  HTML::style('css/bootstrap.min.css') ; ?>
+
+	<?php echo  HTML::style('css/bootstrap-responsive.min.css') ; ?>
+	<?php echo  HTML::style('css/main.css') ; ?>
+
+	<?php echo  HTML::script('js/vendor/modernizr-2.6.2-respond-1.1.0.min.js') ; ?>
+</head>
+<body>
+
+	<!--[if lt IE 7]>
+	<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+	<![endif]-->
+
+	<!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<?php echo  HTML::link('/', 'OpenMatch', array('class' => 'brand')) ; ?>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li><?php echo  HTML::link_to_route('home', 'Home') ; ?></li>
+						<li><?php echo  HTML::link_to_route('events', 'Match') ; ?></li>
+						<li><?php echo  HTML::link_to_route('overons', 'Over ons') ; ?></li>
+						<li><?php echo  HTML::link_to_route('contact', 'Contact') ; ?></li>
+					</ul>
+					<ul class="nav pull-right">
+						<?php if( ! Auth::check()): ?>
+							<li><?php echo  HTML::link_to_route('register', 'Registreren') ; ?></li>
+							<li><?php echo  HTML::link_to_route('login', 'Inloggen') ; ?></li>
+						<?php else: ?>
+							<li><?php echo  HTML::link_to_route('edit_user', 'Mijn profiel', Auth::user() -> id) ; ?></li>
+							<li><?php echo  HTML::link_to_route('logout', 'Uitloggen') ; ?></li>
+						<?php endif; ?>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+
+	<div id="content">
+
+		<?php if(Session::has('message')): ?>
+			<div class="container alert alert-info" id="session-message">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				<?php echo  Session::get('message') ; ?>
+			</div>
+		<?php endif; ?>
+
+		<?php echo \Laravel\Section::yield('content'); ?>
+	</div>
+
+	<div class="container">
+
+		<hr>
+
+		<footer>
+			<p>&copy; Company 2012</p>
+		</footer>
+
+	</div> <!-- /container -->
+
+	<?php echo  HTML::Script('http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js') ; ?> <!-- In productie 'http' weghalen -->
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+	<?php echo  HTML::Script('js/vendor/bootstrap.min.js') ; ?>
+
+	<?php echo  HTML::Script('js/main.js') ; ?>
+
+	<?php echo \Laravel\Section::yield('scripts'); ?>
+
+</body>
+</html>

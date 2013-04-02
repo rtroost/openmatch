@@ -1,20 +1,199 @@
 
-<?php \Laravel\Section::start('header'); ?>
-	<?php echo view('header')->with(get_defined_vars())->render(); ?>
+<?php \Laravel\Section::start('content'); ?>
+
+	<div id="map_canvas"></div>
+
+	<div id="map_overlay">
+		<div class="container">
+			<div class="row-fluid">
+				<div class="span3 offset9">
+					<div id="map_overlay_inner_header">
+						<h3>Zoeken</h3>
+					</div>
+					<div id="map_overlay_inner">
+						<h5>Type uitgaansgelegenheden</h5>
+					<ul class="unstyled" >
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('restaurant', 'restaurant') ; ?> Restaurant
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('cafe', 'cafe') ; ?> Cafe
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('bioskoop', 'bioskoop') ; ?> Bioskoop
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('museum', 'museum') ; ?> Museum
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('casino', 'casino') ; ?> Casino
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('pretpark', 'pretpark') ; ?> Pretpark
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('zwembad', 'zwembad') ; ?> Zwembad
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('bolingbaan', 'bolingbaan') ; ?> Bolingbaan
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('theater', 'theater') ; ?> Theater
+							</label>
+						</li>
+					</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+
+		<div class="row-fluid">
+			<h1 class="frontpage_title">Hier komt een welkoms tekst te staan.</h1>
+			<h3 class="frontpage_subtletitle">En hier kan bijvoorbeeld een slogan komen te staan <span>OpenMatch</span></h3>
+		</div>
+
+	</div>
+
+	<div class="alternate_color_block">
+
+		<div class="container">
+
+			<div class="row-fluid">
+
+				<div id="frontpage-about_us_block">
+
+					<div class="span6">
+						<h3>Wat is OpenMatch?</h3>
+						<p>
+							Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+						</p>
+						<p>
+							Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+						</p>
+					</div><!--/.span6-->
+
+					<div class="span6">
+						<h3>Ik doe mee!</h3>
+						<p>
+							Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+						</p>
+						<p>
+							<a href="#" class="btn btn-primary btn-large">Match mij!</a>
+						</p>
+					</div><!--/.span6-->
+
+				</div><!--/.frontpage-about_us_block-->
+
+			</div><!--/.row-fluid-->
+
+		</div><!--/.container-->
+
+	</div>
+
+	<div class="container">
+
+		<div class="row-fluid">
+
+			<div class="span8">
+
+				<div class="row-fluid">
+
+					<div class="span6">
+						<h3>Stap 1</h3>
+						<div class="well"></div>
+					</div><!--/.span6-->
+
+					<div class="span6">
+						<h3>Stap 2</h3>
+						<div class="well"></div>
+					</div><!--/.span6-->
+
+				</div><!--/.row-fluid-->
+
+				<div class="row-fluid">
+
+					<div class="span6">
+						<h3>Stap 3</h3>
+						<div class="well"></div>
+					</div><!--/.span6-->
+
+					<div class="span6">
+						<h3>Stap 4</h3>
+						<div class="well"></div>
+					</div><!--/.span6-->
+
+				</div><!--/.row-fluid-->
+			</div><!--/.span8-->
+
+			<div class="span4" id="sidebar">
+
+				<div class="side_block">
+					<h3>Sign Up Now!</h3>
+				</div>
+
+			</div><!--/.span4-->
+		</div><!--/.row-fluid-->
+
+	</div><!-- /container -->
+
+
+
+
 <?php \Laravel\Section::stop(); ?>
 
-<?php \Laravel\Section::start('container'); ?>
+<?php \Laravel\Section::start('scripts'); ?>
+	<?php echo  HTML::Script('https://maps.googleapis.com/maps/api/js?key=AIzaSyAgla0GXZ3SEtW2NT1eAzdYRqYSX0J2-YA&sensor=true') ; ?>
+	<?php echo  HTML::Script('js/maps.js') ; ?>
+	<script>
+		(function( $ ){
 
-	<?php if (Session::has('message')): ?>
-		<p><?php echo  Session::get('message') ; ?></p>
-	<?php endif; ?>
+			maps_class.init({
+			'positions' : [{
+				'lat': 51.92479,
+				'lng': 4.46869,
+				'text': 'Centraal Station',
+				'img': 'travel'
+			}, {
+				'lat': 51.91701,
+				'lng': 4.48405,
+				'text': 'Hogeschool Rotterdam',
+				'img': 'education'
+			}, {
+				'lat': 51.919753600882,
+				'lng': 4.5019220984303,
+				'text': 'Tropicana',
+				'img': 'sports'
+			}],
+			'container' : document.getElementById("map_canvas")
+			});
 
-	<p>Dit is de maincontainer<p>
+			var zoekenInner = $('div#map_overlay_inner');
+			var zoekenHeader = $('div#map_overlay_inner_header');
+			zoekenHeader.on('click', function(){
+				zoekenInner.slideToggle();
+			});
+		})( jQuery );
+	</script>
 
-	
 <?php \Laravel\Section::stop(); ?>
-
-<?php \Laravel\Section::start('footer'); ?>
-	<?php echo view('footer')->with(get_defined_vars())->render(); ?>
-<?php \Laravel\Section::stop(); ?>
-<?php echo view('master')->with(get_defined_vars())->render(); ?>
+<?php echo view('layouts.default')->with(get_defined_vars())->render(); ?>
