@@ -78,6 +78,12 @@ body {
 #map_overlay_inner_header h3 {
 	margin: 0px auto 2px;
 	text-align: center;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 #map_overlay_inner {

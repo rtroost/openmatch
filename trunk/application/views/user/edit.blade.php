@@ -15,51 +15,51 @@
 
 				<p> Your email address: {{ $userdata -> email }} </p>
 				
-				<div class="control-group {{ ($errors->first('voornaam') ? 'error' : '') }}">
-					{{ Form::label('voornaam', 'Voornaam', array('class' => 'control-label')) }}
+				<div class="control-group {{ ($errors->first('name') ? 'error' : '') }}">
+					{{ Form::label('name', 'Voornaam', array('class' => 'control-label')) }}
 					<div class="controls">
-						{{ Form::text('voornaam', Input::old('voornaam', $userdata->voornaam)) }}
-						{{ $errors->first('voornaam', '<span class="help-inline">:message</span>') }}
+						{{ Form::text('name', Input::old('name', $userdata->name)) }}
+						{{ $errors->first('name', '<span class="help-inline">:message</span>') }}
 					</div>
 				</div>
 
-				<div class="control-group {{ ($errors->first('achternaam') ? 'error' : '') }}">
-					{{ Form::label('achternaam', 'Achternaam', array('class' => 'control-label')) }}
+				<div class="control-group {{ ($errors->first('surname') ? 'error' : '') }}">
+					{{ Form::label('surname', 'Achternaam', array('class' => 'control-label')) }}
 					<div class="controls">
-						{{ Form::text('achternaam', Input::old('achternaam', $userdata->achternaam)) }}
-						{{ $errors->first('achternaam', '<span class="help-inline">:message</span>') }}
+						{{ Form::text('surname', Input::old('surname', $userdata->surname)) }}
+						{{ $errors->first('surname', '<span class="help-inline">:message</span>') }}
 					</div>
 				</div>
 
-				<div class="control-group {{ ($errors->first('adres') ? 'error' : '') }}">
-					{{ Form::label('adres', 'Adres', array('class' => 'control-label')) }}
+				<div class="control-group {{ ($errors->first('address') ? 'error' : '') }}">
+					{{ Form::label('address', 'Adres', array('class' => 'control-label')) }}
 					<div class="controls">
-						{{ Form::text('adres', Input::old('adres', $userdata->adres)) }}
-						{{ $errors->first('adres', '<span class="help-inline">:message</span>') }}
+						{{ Form::text('address', Input::old('address', $userdata->address)) }}
+						{{ $errors->first('address', '<span class="help-inline">:message</span>') }}
 					</div>
 				</div>
 
-				<div class="control-group {{ ($errors->first('postcode') ? 'error' : '') }}">
-					{{ Form::label('postcode', 'Postcode', array('class' => 'control-label')) }}
+				<div class="control-group {{ ($errors->first('zipcode') ? 'error' : '') }}">
+					{{ Form::label('zipcode', 'Postcode', array('class' => 'control-label')) }}
 					<div class="controls">
-						{{ Form::text('postcode', Input::old('postcode', $userdata->postcode)) }}
-						{{ $errors->first('postcode', '<span class="help-inline">:message</span>') }}
+						{{ Form::text('zipcode', Input::old('zipcode', $userdata->zipcode)) }}
+						{{ $errors->first('zipcode', '<span class="help-inline">:message</span>') }}
 					</div>
 				</div>
 
-				<div class="control-group {{ ($errors->first('woonplaats') ? 'error' : '') }}">
-					{{ Form::label('woonplaats', 'Woonplaats', array('class' => 'control-label')) }}
+				<div class="control-group {{ ($errors->first('city') ? 'error' : '') }}">
+					{{ Form::label('city', 'Woonplaats', array('class' => 'control-label')) }}
 					<div class="controls">
-						{{ Form::text('woonplaats', Input::old('woonplaats', $userdata->woonplaats)) }}
-						{{ $errors->first('woonplaats', '<span class="help-inline">:message</span>') }}
+						{{ Form::text('city', Input::old('city', $userdata->city)) }}
+						{{ $errors->first('city', '<span class="help-inline">:message</span>') }}
 					</div>
 				</div>
 
-				<div class="control-group {{ ($errors->first('land') ? 'error' : '') }}">
-					{{ Form::label('land', 'Land', array('class' => 'control-label')) }}
+				<div class="control-group {{ ($errors->first('country') ? 'error' : '') }}">
+					{{ Form::label('country', 'Land', array('class' => 'control-label')) }}
 					<div class="controls">
-						{{ Form::text('land', Input::old('land', $userdata->land)) }}
-						{{ $errors->first('land', '<span class="help-inline">:message</span>') }}
+						{{ Form::text('country', Input::old('country', $userdata->country)) }}
+						{{ $errors->first('country', '<span class="help-inline">:message</span>') }}
 					</div>
 				</div>
 
