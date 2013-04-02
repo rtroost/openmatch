@@ -10,21 +10,21 @@ class User extends Basemodel {
 		'email' => 'required|unique:users|email',
 		'password' => 'required|alpha_num|min:4|confirmed',
 		'password_confirmation' => 'required|alpha_num|min:4',
-		'voornaam' => 'required',
-		'achternaam' => 'required',
-		'adres' => 'required',
-		'postcode' => 'alpha_num',
-		'woonplaats' => 'required',
-		'land' => 'required'
+		'name' => 'required',
+		'surname' => 'required',
+		'address' => 'required',
+		'zipcode' => 'alpha_num',
+		'city' => 'required',
+		'country' => 'required'
 	);
 
 	public static $update_rules = array(
-		'voornaam' => 'required',
-		'achternaam' => 'required',
-		'adres' => 'required',
-		'postcode' => 'required',
-		'woonplaats' => 'required',
-		'land' => 'required'	
+		'name' => 'required',
+		'surname' => 'required',
+		'address' => 'required',
+		'zipcode' => 'required',
+		'city' => 'required',
+		'country' => 'required'	
 	);
 
 	public function interesses(){

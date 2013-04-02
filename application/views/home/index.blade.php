@@ -190,8 +190,15 @@
 
 			var zoekenInner = $('div#map_overlay_inner');
 			var zoekenHeader = $('div#map_overlay_inner_header');
+			var slide = false;
 			zoekenHeader.on('click', function(){
-				zoekenInner.slideToggle();
+				if(!slide){
+					slide = true;
+					zoekenInner.slideToggle('normal', function() {
+						slide = false;
+					});
+				}
+				
 			});
 		})( jQuery );
 	</script>

@@ -1,63 +1,73 @@
 
-<?php \Laravel\Section::start('header'); ?>
-	<?php echo view('header')->with(get_defined_vars())->render(); ?>
+<?php \Laravel\Section::start('content'); ?>
+
+	<div class="container">
+
+		<div class="row-fluid">
+			<h2>Your profile</h2>
+
+			<?php echo  Form::open('user', 'PUT') ; ?>
+
+				<?php echo  Form::token() ; ?>
+
+				<?php echo  Form::hidden('id', $userdata -> id) ; ?>
+
+				<p> Your email address: <?php echo  $userdata -> email ; ?> </p>
+				
+				<div class="control-group <?php echo  ($errors->first('name') ? 'error' : '') ; ?>">
+					<?php echo  Form::label('name', 'Voornaam', array('class' => 'control-label')) ; ?>
+					<div class="controls">
+						<?php echo  Form::text('name', Input::old('name', $userdata->name)) ; ?>
+						<?php echo  $errors->first('name', '<span class="help-inline">:message</span>') ; ?>
+					</div>
+				</div>
+
+				<div class="control-group <?php echo  ($errors->first('surname') ? 'error' : '') ; ?>">
+					<?php echo  Form::label('surname', 'Achternaam', array('class' => 'control-label')) ; ?>
+					<div class="controls">
+						<?php echo  Form::text('surname', Input::old('surname', $userdata->surname)) ; ?>
+						<?php echo  $errors->first('surname', '<span class="help-inline">:message</span>') ; ?>
+					</div>
+				</div>
+
+				<div class="control-group <?php echo  ($errors->first('address') ? 'error' : '') ; ?>">
+					<?php echo  Form::label('address', 'Adres', array('class' => 'control-label')) ; ?>
+					<div class="controls">
+						<?php echo  Form::text('address', Input::old('address', $userdata->address)) ; ?>
+						<?php echo  $errors->first('address', '<span class="help-inline">:message</span>') ; ?>
+					</div>
+				</div>
+
+				<div class="control-group <?php echo  ($errors->first('zipcode') ? 'error' : '') ; ?>">
+					<?php echo  Form::label('zipcode', 'Postcode', array('class' => 'control-label')) ; ?>
+					<div class="controls">
+						<?php echo  Form::text('zipcode', Input::old('zipcode', $userdata->zipcode)) ; ?>
+						<?php echo  $errors->first('zipcode', '<span class="help-inline">:message</span>') ; ?>
+					</div>
+				</div>
+
+				<div class="control-group <?php echo  ($errors->first('city') ? 'error' : '') ; ?>">
+					<?php echo  Form::label('city', 'Woonplaats', array('class' => 'control-label')) ; ?>
+					<div class="controls">
+						<?php echo  Form::text('city', Input::old('city', $userdata->city)) ; ?>
+						<?php echo  $errors->first('city', '<span class="help-inline">:message</span>') ; ?>
+					</div>
+				</div>
+
+				<div class="control-group <?php echo  ($errors->first('country') ? 'error' : '') ; ?>">
+					<?php echo  Form::label('country', 'Land', array('class' => 'control-label')) ; ?>
+					<div class="controls">
+						<?php echo  Form::text('country', Input::old('country', $userdata->country)) ; ?>
+						<?php echo  $errors->first('country', '<span class="help-inline">:message</span>') ; ?>
+					</div>
+				</div>
+
+				<?php echo  Form::submit('Save my profile', array('class' => 'btn btn-large btn-primary')) ; ?>
+
+			<?php echo  Form::close() ; ?>
+		</div>
+
+	</div>
+
 <?php \Laravel\Section::stop(); ?>
-
-<?php \Laravel\Section::start('container'); ?>
-	<h2>Registreren</h2>
-
-	<?php if (Session::has('message')): ?>
-		<p><?php echo  Session::get('message') ; ?></p>
-	<?php endif; ?>
-
-	<?php echo  Form::open('users', 'PUT') ; ?>
-
-		<?php echo  Form::hidden('id', $userdata->user_id) ; ?>
-
-		<p> Your email address: <?php echo  $userdata->email ; ?> </p>
-
-		<p>
-			<?php echo  Form::label('voornaam', 'Voornaam') ; ?>
-			<?php echo  Form::text('voornaam', Input::old('voornaam', $userdata->voornaam)) ; ?>
-			<?php echo  $errors->first('voornaam', '<p>:message</p>') ; ?>
-		</p>
-
-		<p>
-			<?php echo  Form::label('achternaam', 'Achternaam') ; ?>
-			<?php echo  Form::text('achternaam', Input::old('achternaam', $userdata->achternaam)) ; ?>
-			<?php echo  $errors->first('achternaam', '<p>:message</p>') ; ?>
-		</p>
-
-		<p>
-			<?php echo  Form::label('adres', 'Adres') ; ?>
-			<?php echo  Form::text('adres', Input::old('adres', $userdata->adres)) ; ?>
-			<?php echo  $errors->first('adres', '<p>:message</p>') ; ?>
-		</p>
-		
-		<p>
-			<?php echo  Form::label('postcode', 'Postcode') ; ?>
-			<?php echo  Form::text('postcode', Input::old('postcode', $userdata->postcode)) ; ?>
-			<?php echo  $errors->first('postcode', '<p>:message</p>') ; ?>
-		</p>
-
-		<p>
-			<?php echo  Form::label('woonplaats', 'Woonplaats') ; ?>
-			<?php echo  Form::text('woonplaats', Input::old('woonplaats', $userdata->woonplaats)) ; ?>
-			<?php echo  $errors->first('woonplaats', '<p>:message</p>') ; ?>
-		</p>
-
-		<p>
-			<?php echo  Form::label('land', 'Land') ; ?>
-			<?php echo  Form::text('land', Input::old('land', $userdata->land)) ; ?>
-			<?php echo  $errors->first('land', '<p>:message</p>') ; ?>
-		</p>
-
-		<?php echo  Form::submit('save') ; ?>
-	<?php echo  Form::close() ; ?>
-
-<?php \Laravel\Section::stop(); ?>
-
-<?php \Laravel\Section::start('footer'); ?>
-	<?php echo view('footer')->with(get_defined_vars())->render(); ?>
-<?php \Laravel\Section::stop(); ?>
-<?php echo view('master')->with(get_defined_vars())->render(); ?>
+<?php echo view('layouts.default')->with(get_defined_vars())->render(); ?>

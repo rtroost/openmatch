@@ -39,14 +39,14 @@ class Users_Controller extends Base_Controller {
 				-> with_input();
 		} else {
 			User::create(array(
-				'voornaam' => Input::get('voornaam'),
-				'achternaam' => Input::get('achternaam'),
+				'name' => Input::get('name'),
+				'surname' => Input::get('surname'),
 				'email' => Input::get('email'),
 				'password' => Hash::make(Input::get('password')),
-				'adres' => Input::get('adres'),
-				'postcode' => Input::get('postcode'),
-				'woonplaats' => Input::get('woonplaats'),
-				'land' => Input::get('land')
+				'address' => Input::get('address'),
+				'zipcode' => Input::get('zipcode'),
+				'city' => Input::get('city'),
+				'country' => Input::get('country')
 			));
 
 			$user = User::where_email(Input::get('email')) -> first();
@@ -76,12 +76,12 @@ class Users_Controller extends Base_Controller {
 			return Redirect::to_route('edit_user', Auth::user() -> id)->with_input()->with_errors($validation);
 		} else {
 			User::update(Input::get('id'), array(
-				'voornaam' => Input::get('voornaam'),
-				'achternaam' => Input::get('achternaam'),
-				'adres' => Input::get('adres'),
-				'postcode' => Input::get('postcode'),
-				'woonplaats' => Input::get('woonplaats'),
-				'land' => Input::get('land')
+				'name' => Input::get('name'),
+				'surname' => Input::get('surname'),
+				'address' => Input::get('address'),
+				'zipcode' => Input::get('zipcode'),
+				'city' => Input::get('city'),
+				'country' => Input::get('country')
 				));
 
 			return Redirect::to_route('edit_user', Auth::user() -> id)->with('message', 'your account had been edited');
