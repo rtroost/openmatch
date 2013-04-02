@@ -39,7 +39,7 @@ var maps_class = {
 
 			pos = self.positions[pos];
 			var marker = new google.maps.Marker({
-				position: new google.maps.LatLng(pos['lng'], pos['lat']),
+				position: new google.maps.LatLng(pos['lat'], pos['lng']),
 				map: self.map,
 				title: pos['text'],
 				icon: self.IMGMAPSLOC + pos['img'] + '.png',

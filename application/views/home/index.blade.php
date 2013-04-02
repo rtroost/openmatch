@@ -170,15 +170,20 @@
 
 			maps_class.init({
 			'positions' : [{
-				'lng': 51.92479,
-				'lat': 4.46869,
+				'lat': 51.92479,
+				'lng': 4.46869,
 				'text': 'Centraal Station',
 				'img': 'travel'
 			}, {
-				'lng': 51.91701,
-				'lat': 4.48405,
+				'lat': 51.91701,
+				'lng': 4.48405,
 				'text': 'Hogeschool Rotterdam',
 				'img': 'education'
+			}, {
+				'lat': 51.919753600882,
+				'lng': 4.5019220984303,
+				'text': 'Tropicana',
+				'img': 'sports'
 			}],
 			'container' : document.getElementById("map_canvas")
 			});
