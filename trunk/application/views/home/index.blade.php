@@ -157,50 +157,5 @@
 
 	</div><!-- /container -->
 
-
-
-
 @endsection
 
-@section('scripts')
-	{{ HTML::Script('https://maps.googleapis.com/maps/api/js?key=AIzaSyAgla0GXZ3SEtW2NT1eAzdYRqYSX0J2-YA&sensor=true') }}
-	{{ HTML::Script('js/maps.js') }}
-	<script>
-		(function( $ ){
-
-			maps_class.init({
-			'positions' : [{
-				'lat': 51.92479,
-				'lng': 4.46869,
-				'text': 'Centraal Station',
-				'img': 'travel'
-			}, {
-				'lat': 51.91701,
-				'lng': 4.48405,
-				'text': 'Hogeschool Rotterdam',
-				'img': 'education'
-			}, {
-				'lat': 51.919753600882,
-				'lng': 4.5019220984303,
-				'text': 'Tropicana',
-				'img': 'sports'
-			}],
-			'container' : document.getElementById("map_canvas")
-			});
-
-			var zoekenInner = $('div#map_overlay_inner');
-			var zoekenHeader = $('div#map_overlay_inner_header');
-			var slide = false;
-			zoekenHeader.on('click', function(){
-				if(!slide){
-					slide = true;
-					zoekenInner.slideToggle('normal', function() {
-						slide = false;
-					});
-				}
-				
-			});
-		})( jQuery );
-	</script>
-
-@endsection

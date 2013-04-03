@@ -156,39 +156,7 @@
 
 	</div><!-- /container -->
 
-
-
-
 <?php \Laravel\Section::stop(); ?>
 
-<?php \Laravel\Section::start('scripts'); ?>
-	<?php echo  HTML::Script('https://maps.googleapis.com/maps/api/js?key=AIzaSyAgla0GXZ3SEtW2NT1eAzdYRqYSX0J2-YA&sensor=true') ; ?>
-	<?php echo  HTML::Script('js/maps.js') ; ?>
-	<script>
-		(function( $ ){
 
-			maps_class.init({
-			'positions' : [{
-				'lng': 51.92479,
-				'lat': 4.46869,
-				'text': 'Centraal Station',
-				'img': 'travel'
-			}, {
-				'lng': 51.91701,
-				'lat': 4.48405,
-				'text': 'Hogeschool Rotterdam',
-				'img': 'education'
-			}],
-			'container' : document.getElementById("map_canvas")
-			});
-
-			var zoekenInner = $('div#map_overlay_inner');
-			var zoekenHeader = $('div#map_overlay_inner_header');
-			zoekenHeader.on('click', function(){
-				zoekenInner.slideToggle();
-			});
-		})( jQuery );
-	</script>
-
-<?php \Laravel\Section::stop(); ?>
 <?php echo view('layouts.default')->with(get_defined_vars())->render(); ?>

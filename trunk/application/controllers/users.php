@@ -93,12 +93,7 @@ class Users_Controller extends Base_Controller {
 	}
 
 	public function get_logout() {
-		if(Auth::check()) {
-			Auth::logout();
-			return Redirect::to_route('home')
-			->with('message', 'You are now logged out!');
-		} else {
-			return Redirect::to_route('home');
-		}
+		Auth::logout();
+		return Redirect::to_route('home')->with('message', 'You are now logged out!');
 	}
 }

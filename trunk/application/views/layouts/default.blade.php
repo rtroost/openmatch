@@ -12,14 +12,10 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
 
-	<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,700' rel='stylesheet' type='text/css'>
+	{{ Asset::styles() }}
 
-	{{ HTML::style('css/bootstrap.min.css') }}
+	{{ Asset::container('header')->scripts() }}
 
-	{{ HTML::style('css/bootstrap-responsive.min.css') }}
-	{{ HTML::style('css/main.css') }}
-
-	{{ HTML::script('js/vendor/modernizr-2.6.2-respond-1.1.0.min.js') }}
 </head>
 <body>
 
@@ -81,14 +77,7 @@
 
 	</div> <!-- /container -->
 
-	{{ HTML::Script('http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js') }} <!-- In productie 'http' weghalen -->
-	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-
-	{{ HTML::Script('js/vendor/bootstrap.min.js') }}
-
-	{{ HTML::Script('js/main.js') }}
-
-	@yield('scripts')
+	{{ Asset::container('footer')->scripts() }}
 
 </body>
 </html>
