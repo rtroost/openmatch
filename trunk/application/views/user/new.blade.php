@@ -4,7 +4,7 @@
 
 <div class="pageTitle">
 	<div class="container">
-		<h1>Wordt lid! <small>via een aantal kleine stappen</small></h1>
+		<h1>Wordt lid! <small>met een aantal kleine stappen</small></h1>
 	</div>
 </div>
 
