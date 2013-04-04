@@ -19,6 +19,8 @@ Route::delete('user/(:num)', 	array('uses' => 'users@destroy'													));
 
 Route::get('events', 			array('as' => 'events', 'uses' => 'events@index'));
 
+Route::get('locations', array('as' => 'locations', 'uses' => 'locations@index'));
+
 
 
 

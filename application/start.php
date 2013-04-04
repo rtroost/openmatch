@@ -171,3 +171,6 @@ if ( ! Request::cli() and Config::get('session.driver') !== '')
 {
 	Session::load();
 }
+
+// Zet de timestamps voor intersectie tabelen standaard uit
+Laravel\Database\Eloquent\Pivot::$timestamps = false;

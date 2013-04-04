@@ -33,7 +33,9 @@ class Home_Controller extends Base_Controller {
 	public function action_index(){
 
 		Asset::container('footer')->script('googlemaps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAgla0GXZ3SEtW2NT1eAzdYRqYSX0J2-YA&sensor=true');
-		Asset::container('footer')->add('maps', 'js/maps.js', array('googlemaps', 'jquery'));
+		Asset::container('footer')->add('maps', 'js/googlemaps/maps.js', array('googlemaps', 'jquery'));
+		Asset::container('footer')->add('maps_control', 'js/googlemaps/maps_control.js', array('googlemaps', 'jquery'));
+		Asset::container('footer')->add('home_index', 'js/home.index.js', array('googlemaps', 'jquery', 'maps', 'maps_control'));
 
 		return View::make('home.index');
 	}

@@ -15,47 +15,72 @@
 					<ul class="unstyled" >
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('restaurant', 'restaurant') ; ?> Restaurant
+									<?php echo  Form::checkbox('bibliotheken', 'bibliotheken') ; ?> Bibliotheken
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('cafe', 'cafe') ; ?> Cafe
+									<?php echo  Form::checkbox('bioscopen', 'bioscopen') ; ?> Bioscopen
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('bioskoop', 'bioskoop') ; ?> Bioskoop
+									<?php echo  Form::checkbox('campings', 'campings') ; ?> Campings
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('museum', 'museum') ; ?> Museum
+									<?php echo  Form::checkbox('sportgelegenheden', 'sportgelegenheden') ; ?> Sportgelegenheden
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('casino', 'casino') ; ?> Casino
+									<?php echo  Form::checkbox('kinderboerderijen', 'kinderboerderijen') ; ?> Kinderboerderijen
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('pretpark', 'pretpark') ; ?> Pretpark
+									<?php echo  Form::checkbox('kindervermaak', 'kindervermaak') ; ?> Kindervermaak
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('zwembad', 'zwembad') ; ?> Zwembad
+									<?php echo  Form::checkbox('theaters', 'theaters') ; ?> Theaters
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('bolingbaan', 'bolingbaan') ; ?> Bolingbaan
+									<?php echo  Form::checkbox('recreatieterreinen', 'recreatieterreinen') ; ?> Recreatieterreinen
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('theater', 'theater') ; ?> Theater
+									<?php echo  Form::checkbox('zwembaden', 'zwembaden') ; ?> Zwembaden
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('musea', 'musea') ; ?> Musea
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('restaurants', 'restaurants') ; ?> Restaurants
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('dierentuin', 'dierentuin') ; ?> Dierentuin
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('attracties', 'attracties') ; ?> Attracties
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('speeltuinen', 'speeltuinen') ; ?> Speeltuinen
 							</label>
 						</li>
 					</ul>
