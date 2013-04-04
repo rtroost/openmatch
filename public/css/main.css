@@ -2,6 +2,27 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
+.pageTitle {
+	background: #eee;
+	border-bottom: 1px solid #ddd;
+	margin: 0 0 20px;
+	padding: 10px 0 16px;
+	display: block;
+}
+
+.pageTitle h1 {
+	font: 700 4em/1.5 'Monda', sans-serif;
+	margin: 0;
+	color: #18a3d3;
+	text-shadow: 0 -1px 0 #888;
+}
+
+.pageTitle h1 small {
+	text-shadow: none;
+	color: #18a3d3;
+	font-size: 0.45em;
+}
+
 #content {
 	padding-top: 51px;
 }
@@ -40,7 +61,7 @@ body {
 }
 
 .content {
-	margin-top: 30px;
+	margin-top: 10px;
 }
 
 #map_canvas {
@@ -234,4 +255,9 @@ body {
 
 .hr-small {
 	margin: 10px 0;
+}
+
+form h3 {
+	border-left: 5px solid #18a3d3;
+	padding-left: 16px;
 }

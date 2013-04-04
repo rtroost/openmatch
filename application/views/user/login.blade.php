@@ -2,31 +2,47 @@
 
 @section('content')
 
+<div class="pageTitle">
+	<div class="container">
+		<h1>Inloggen <small>voor terugkomende bezoekers</small></h1>
+	</div>
+</div>
+
 	<div class="container">
 
 		<div class="row-fluid">
-			<h2>Login</h2>
+			<div class="span9 offset3">
 
-			{{ $errors->first('password', '<p>:message</p>') }}
+				{{ $errors->first('password', '<p>:message</p>') }}
 
-			{{ Form::open('login', 'POST') }}
+				{{ Form::open('login', 'POST', array('class' => 'form-horizontal')) }}
 
-				{{ Form::token() }}
-				
-				<p>
-					{{ Form::label('email', 'E-Mail Address') }}
-					{{ Form::text('email', Input::old('email')) }}
-					{{ $errors->first('email', '<p>:message</p>') }}
-				</p>
+					{{ Form::token() }}
 
-				<p>
-					{{ Form::label('password', 'Password') }}
-					{{ Form::password('password') }}
-				</p>
+					<div class="control-group {{ ($errors->first('name') ? 'error' : '') }}">
+						{{ Form::label('email', 'E-Mail', array('class' => 'control-label')) }}
+						<div class="controls">
+							{{ Form::text('email', Input::old('email')) }}
+							{{ $errors->first('email', '<span class="help-inline">:message</span>') }}
+						</div>
+					</div>
 
-				{{ Form::submit('Secure Login', array('class' => 'btn btn-large btn-primary')) }}
+					<div class="control-group {{ ($errors->first('name') ? 'error' : '') }}">
+						{{ Form::label('password', 'Wachtwoord', array('class' => 'control-label')) }}
+						<div class="controls">
+							{{ Form::text('password', Input::old('password')) }}
+							{{ $errors->first('password', '<span class="help-inline">:message</span>') }}
+						</div>
+					</div>
 
-			{{ Form::close() }}
+					<div class="control-group">
+						<div class="controls">
+							{{ Form::submit('Secure Login', array('class' => 'btn btn-primary')) }}
+						</div>
+					</div>
+
+				{{ Form::close() }}
+			</div>
 
 		</div>
 
