@@ -30,7 +30,7 @@
 					<div class="control-group {{ ($errors->first('name') ? 'error' : '') }}">
 						{{ Form::label('password', 'Wachtwoord', array('class' => 'control-label')) }}
 						<div class="controls">
-							{{ Form::text('password', Input::old('password')) }}
+							{{ Form::password('password', Input::old('password')) }}
 							{{ $errors->first('password', '<span class="help-inline">:message</span>') }}
 						</div>
 					</div>
