@@ -79,7 +79,5 @@
 
 	<?php echo  Asset::container('footer')->scripts() ; ?>
 
-	<?php echo \Laravel\Section::yield('scripts'); ?>
-
 </body>
 </html>
