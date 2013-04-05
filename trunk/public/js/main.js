@@ -1,4 +1,5 @@
 $(document).ready(function() {
-	window.BASE = "http://127.0.0.1/OpenMatch/public/";
+	var path = location.pathname.split("/");
+	window.BASE = "http://"+ location.hostname + "/" + path[1] + "/" + path[2] + "/";
 	window.IMGLOC = BASE + "img/";
 });
