@@ -2,6 +2,12 @@
 
 @section('content')
 
+<div class="pageTitle">
+	<div class="container">
+		<h1>Hier kan een titel <small>om te pagina te verduidelijken</small></h1>
+	</div>
+</div>
+
 <div class="content">
 
 	<div class="container">
@@ -13,12 +19,6 @@
 					<ul>
 						<li class="clearfix">
 							<a href="#">
-								<div class="event-list-thumb">
-									<img src="http://placehold.it/125x80" />
-								</div>
-								<div class="event-list-rating">
-									98%
-								</div>
 								<div class="event-list-body">
 									<span class="event-list-body-title">
 										Pathé Schouwburgplein
@@ -34,12 +34,6 @@
 						</li>
 						<li class="clearfix">
 							<a href="#">
-								<div class="event-list-thumb">
-									<img src="http://placehold.it/125x80" />
-								</div>
-								<div class="event-list-rating">
-									92%
-								</div>
 								<div class="event-list-body">
 									<span class="event-list-body-title">
 										De dronken geit
@@ -55,12 +49,6 @@
 						</li>
 						<li class="clearfix">
 							<a href="#">
-								<div class="event-list-thumb">
-									<img src="http://placehold.it/125x80" />
-								</div>
-								<div class="event-list-rating">
-									89%
-								</div>
 								<div class="event-list-body">
 									<span class="event-list-body-title">
 										Op de horizon
@@ -76,12 +64,6 @@
 						</li>
 						<li class="clearfix">
 							<a href="#">
-								<div class="event-list-thumb">
-									<img src="http://placehold.it/125x80" />
-								</div>
-								<div class="event-list-rating">
-									78%
-								</div>
 								<div class="event-list-body">
 									<span class="event-list-body-title">
 										Pathé Schouwburgplein
@@ -97,12 +79,6 @@
 						</li>
 						<li class="clearfix">
 							<a href="#">
-								<div class="event-list-thumb">
-									<img src="http://placehold.it/125x80" />
-								</div>
-								<div class="event-list-rating">
-									67%
-								</div>
 								<div class="event-list-body">
 									<span class="event-list-body-title">
 										Pathé Schouwburgplein

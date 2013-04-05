@@ -13,92 +13,92 @@
 					</div>
 					<div id="map_overlay_inner">
 						<h5>Type uitgaansgelegenheden</h5>
-					<ul class="unstyled" >
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('bibliotheken', 'bibliotheken') }} Bibliotheken
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('bioscopen', 'bioscopen') }} Bioscopen
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('campings', 'campings') }} Campings
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('sportgelegenheden', 'sportgelegenheden') }} Sportgelegenheden
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('kinderboerderijen', 'kinderboerderijen') }} Kinderboerderijen
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('kindervermaak', 'kindervermaak') }} Kindervermaak
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('theaters', 'theaters') }} Theaters
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('recreatieterreinen', 'recreatieterreinen') }} Recreatieterreinen
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('zwembaden', 'zwembaden') }} Zwembaden
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('musea', 'musea') }} Musea
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('restaurants', 'restaurants') }} Restaurants
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('dierentuin', 'dierentuin') }} Dierentuin
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('attracties', 'attracties') }} Attracties
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('speeltuinen', 'speeltuinen') }} Speeltuinen
-							</label>
-						</li>
-					</ul>
-					</div>
+						<ul class="unstyled" >
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('bibliotheken', 'bibliotheken') }} Bibliotheken
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('bioscopen', 'bioscopen') }} Bioscopen
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('campings', 'campings') }} Campings
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('sportgelegenheden', 'sportgelegenheden') }} Sportgelegenheden
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('kinderboerderijen', 'kinderboerderijen') }} Kinderboerderijen
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('kindervermaak', 'kindervermaak') }} Kindervermaak
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('theaters', 'theaters') }} Theaters
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('recreatieterreinen', 'recreatieterreinen') }} Recreatieterreinen
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('zwembaden', 'zwembaden') }} Zwembaden
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('musea', 'musea') }} Musea
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('restaurants', 'restaurants') }} Restaurants
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('dierentuin', 'dierentuin') }} Dierentuin
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('attracties', 'attracties') }} Attracties
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('speeltuinen', 'speeltuinen') }} Speeltuinen
+								</label>
+							</li>
+						</ul>
+					</div><!--/map_overlay_inner-->
 				</div>
-			</div>
-		</div>
-	</div>
+			</div><!--/row-fluid-->
+		</div><!--/container-->
+	</div><!--/map_overlay-->
 
 	<div class="container">
 
 		<div class="row-fluid">
 			<h1 class="frontpage_title">Hier komt een welkoms tekst te staan.</h1>
 			<h3 class="frontpage_subtletitle">En hier kan bijvoorbeeld een slogan komen te staan <span>OpenMatch</span></h3>
-		</div>
+		</div><!--/row-fluid-->
 
-	</div>
+	</div><!--/container-->
 
 	<div class="alternate_color_block">
 
@@ -140,44 +140,100 @@
 
 		<div class="row-fluid">
 
-			<div class="span8">
+			<div class="span6">
+				<h3>Populair</h3>
+				<table class="styledTable" id="fpPopular">
+					<tbody>
+						<tr class="styledTable-position-highlight">
+							<td class="styledTable-position styledTable-position-first">1</td>
+							<td>
+								Pathé Schouwburgplein
+								<span class="styledTable-tags">Type: Restaurant - Tags: Groepsevenement</span>
+							</td>
+							<td class="styledTable-rating"><span href="" class="styledTable-rating-stars" style="width: 150px"></span></td>
+						</tr>
+						<tr>
+							<td class="styledTable-position styledTable-position-second">2</td>
+							<td>
+								Pathé Schouwburgplein
+								<span class="styledTable-tags">Type: Restaurant - Tags: Groepsevenement</span>
+							</td>
+							<td class="styledTable-rating"><span href="" class="styledTable-rating-stars" style="width: 135px"></span></td>
+						</tr>
+						<tr>
+							<td class="styledTable-position styledTable-position-third">3</td>
+							<td>
+								Pathé Schouwburgplein
+								<span class="styledTable-tags">Type: Restaurant - Tags: Groepsevenement</span>
+							</td>
+							<td class="styledTable-rating"><span href="" class="styledTable-rating-stars" style="width: 120px"></span></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>
+								Pathé Schouwburgplein
+								<span class="styledTable-tags">Type: Restaurant - Tags: Groepsevenement</span>
+							</td>
+							<td class="styledTable-rating"><span href="" class="styledTable-rating-stars" style="width: 75px"></span></td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>
+								Pathé Schouwburgplein
+								<span class="styledTable-tags">Type: Restaurant - Tags: Groepsevenement</span>
+							</td>
+							<td class="styledTable-rating"><span href="" class="styledTable-rating-stars" style="width: 30px"></span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div><!--/.span6-->
 
-				<div class="row-fluid">
+			<div class="span6">
+				<h3>Recent toegevoegd</h3>
+				<table class="styledTable" id="fpRecent">
+					<thead>
+						<tr>
+							<td>Omschrijving</td>
+							<td>Moment</td>
+							<td>Plaatsen beschikbaar</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Pathé Schouwburgplein<span class="styledTable-tags">Type: Restaurant - Tags: Fun</span></td>
+							<td>23 maart 2013 om 21:00</td>
+							<td>12/12</td>
+							<td><a href="#">Meer informatie?</a></td>
+						</tr>
+						<tr>
+							<td>Pathé Schouwburgplein<span class="styledTable-tags">Type: Restaurant - Tags: Fun</span></td>
+							<td>2 maart 2013 om 13:00</td>
+							<td>3/3</td>
+							<td><a href="#">Meer informatie?</a></td>
+						</tr>
+						<tr>
+							<td>Pathé Schouwburgplein<span class="styledTable-tags">Type: Restaurant - Tags: Fun</span></td>
+							<td>19 februari 2013 om 23:00</td>
+							<td>5/32</td>
+							<td><a href="#">Meer informatie?</a></td>
+						</tr>
+						<tr>
+							<td>Pathé Schouwburgplein<span class="styledTable-tags">Type: Restaurant - Tags: Fun</span></td>
+							<td>6 februari 2013 om 22:00</td>
+							<td>11/20</td>
+							<td><a href="#">Meer informatie?</a></td>
+						</tr>
+						<tr>
+							<td>Pathé Schouwburgplein<span class="styledTable-tags">Type: Restaurant - Tags: Fun</span></td>
+							<td>1 februari 2013 om 16:00</td>
+							<td>4/6</td>
+							<td><a href="#">Meer informatie?</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div><!--/.span6-->
 
-					<div class="span6">
-						<h3>Stap 1</h3>
-						<div class="well"></div>
-					</div><!--/.span6-->
-
-					<div class="span6">
-						<h3>Stap 2</h3>
-						<div class="well"></div>
-					</div><!--/.span6-->
-
-				</div><!--/.row-fluid-->
-
-				<div class="row-fluid">
-
-					<div class="span6">
-						<h3>Stap 3</h3>
-						<div class="well"></div>
-					</div><!--/.span6-->
-
-					<div class="span6">
-						<h3>Stap 4</h3>
-						<div class="well"></div>
-					</div><!--/.span6-->
-
-				</div><!--/.row-fluid-->
-			</div><!--/.span8-->
-
-			<div class="span4" id="sidebar">
-
-				<div class="side_block">
-					<h3>Sign Up Now!</h3>
-				</div>
-
-			</div><!--/.span4-->
 		</div><!--/.row-fluid-->
 
 	</div><!-- /container -->
