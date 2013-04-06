@@ -15,7 +15,6 @@ Route::post('register', 		array('as' => 'register_user', 	'uses' => 'users@creat
 Route::put('user',		 		array('uses' => 'users@update', 'before' => 'csrf|auth'							)); 	// POST/PUT update
 Route::delete('user/(:num)', 	array('uses' => 'users@destroy'													));
 
-
 Route::get('events', 			array('as' => 'events', 'uses' => 'events@index'));
 
 Route::get('locations', array('as' => 'locations', 'uses' => 'locations@index'));

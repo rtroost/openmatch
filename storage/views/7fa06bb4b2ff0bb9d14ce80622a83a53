@@ -1,95 +1,126 @@
 
 <?php \Laravel\Section::start('content'); ?>
 
+<div class="pageTitle">
+	<div class="container">
+		<h1>Wordt lid! <small>met een aantal kleine stappen</small></h1>
+	</div>
+</div>
+
+<div class="content">
+
 	<div class="container">
 
 		<div class="row-fluid">
 
-			<h2>Registreren</h2>
-
-			<?php echo  Form::open('register') ; ?>
+			<?php echo  Form::open('register', 'POST', array('class' => 'form-horizontal')) ; ?>
 
 				<?php echo  Form::token() ; ?>
+				<div class="container">
 
-				<div class="control-group <?php echo  ($errors->first('name') ? 'error' : '') ; ?>">
-					<?php echo  Form::label('name', 'Voornaam', array('class' => 'control-label')) ; ?>
-					<div class="controls">
-						<?php echo  Form::text('name', Input::old('name')) ; ?>
-						<?php echo  $errors->first('name', '<span class="help-inline">:message</span>') ; ?>
-					</div>
-				</div>
+					<div class="row-fluid">
 
-				<div class="control-group <?php echo  ($errors->first('surname') ? 'error' : '') ; ?>">
-					<?php echo  Form::label('surname', 'Achternaam', array('class' => 'control-label')) ; ?>
-					<div class="controls">
-						<?php echo  Form::text('surname', Input::old('surname')) ; ?>
-						<?php echo  $errors->first('surname', '<span class="help-inline">:message</span>') ; ?>
-					</div>
-				</div>
+						<div class="span6">
 
-				<div class="control-group <?php echo  ($errors->first('email') ? 'error' : '') ; ?>">
-					<?php echo  Form::label('email', 'E-mail adres', array('class' => 'control-label')) ; ?>
-					<div class="controls">
-						<?php echo  Form::text('email', Input::old('email')) ; ?>
-						<?php echo  $errors->first('email', '<span class="help-inline">:message</span>') ; ?>
-					</div>
-				</div>
+							<h3>Account informatie</h3>
 
-				<div class="control-group <?php echo  ($errors->first('password') ? 'error' : '') ; ?>">
-					<?php echo  Form::label('password', 'Password', array('class' => 'control-label')) ; ?>
-					<div class="controls">
-						<?php echo  Form::password('password') ; ?>
-						<?php echo  $errors->first('password', '<span class="help-inline">:message</span>') ; ?>
-					</div>
-				</div>
+							<div class="control-group <?php echo  ($errors->first('email') ? 'error' : '') ; ?>">
+								<?php echo  Form::label('email', 'E-mail adres', array('class' => 'control-label')) ; ?>
+								<div class="controls">
+									<?php echo  Form::text('email', Input::old('email')) ; ?>
+									<?php echo  $errors->first('email', '<span class="help-inline">:message</span>') ; ?>
+								</div>
+							</div>
 
-				<div class="control-group <?php echo  ($errors->first('password_confirmation') ? 'error' : '') ; ?>">
-					<?php echo  Form::label('password_confirmation', 'Password (Confirm)', array('class' => 'control-label')) ; ?>
-					<div class="controls">
-						<?php echo  Form::password('password_confirmation') ; ?>
-						<?php echo  $errors->first('password_confirmation', '<span class="help-inline">:message</span>') ; ?>
-					</div>
-				</div>
+							<div class="control-group <?php echo  ($errors->first('password') ? 'error' : '') ; ?>">
+								<?php echo  Form::label('password', 'Password', array('class' => 'control-label')) ; ?>
+								<div class="controls">
+									<?php echo  Form::password('password') ; ?>
+									<?php echo  $errors->first('password', '<span class="help-inline">:message</span>') ; ?>
+								</div>
+							</div>
 
-				<div class="control-group <?php echo  ($errors->first('address') ? 'error' : '') ; ?>">
-					<?php echo  Form::label('address', 'Adres', array('class' => 'control-label')) ; ?>
-					<div class="controls">
-						<?php echo  Form::text('address', Input::old('address')) ; ?>
-						<?php echo  $errors->first('address', '<span class="help-inline">:message</span>') ; ?>
-					</div>
-				</div>
+							<div class="control-group <?php echo  ($errors->first('password_confirmation') ? 'error' : '') ; ?>">
+								<?php echo  Form::label('password_confirmation', 'Password (Confirm)', array('class' => 'control-label')) ; ?>
+								<div class="controls">
+									<?php echo  Form::password('password_confirmation') ; ?>
+									<?php echo  $errors->first('password_confirmation', '<span class="help-inline">:message</span>') ; ?>
+								</div>
+							</div>
 
-				<div class="control-group <?php echo  ($errors->first('zipcode') ? 'error' : '') ; ?>">
-					<?php echo  Form::label('zipcode', 'Postcode', array('class' => 'control-label')) ; ?>
-					<div class="controls">
-						<?php echo  Form::text('zipcode', Input::old('zipcode')) ; ?>
-						<?php echo  $errors->first('zipcode', '<span class="help-inline">:message</span>') ; ?>
-					</div>
-				</div>
+						</div><!--/span6-->
 
-				<div class="control-group <?php echo  ($errors->first('city') ? 'error' : '') ; ?>">
-					<?php echo  Form::label('city', 'Woonplaats', array('class' => 'control-label')) ; ?>
-					<div class="controls">
-						<?php echo  Form::text('city', Input::old('city')) ; ?>
-						<?php echo  $errors->first('city', '<span class="help-inline">:message</span>') ; ?>
-					</div>
-				</div>
+						<div class="span6">
 
-				<div class="control-group <?php echo  ($errors->first('country') ? 'error' : '') ; ?>">
-					<?php echo  Form::label('country', 'Land', array('class' => 'control-label')) ; ?>
-					<div class="controls">
-						<?php echo  Form::text('country', Input::old('country')) ; ?>
-						<?php echo  $errors->first('country', '<span class="help-inline">:message</span>') ; ?>
-					</div>
-				</div>
+							<h3>Persoonlijke informatie</h3>
 
-				<?php echo  Form::submit('Sign Me Up!', array('class' => 'btn btn-large btn-primary')) ; ?>
+							<div class="control-group <?php echo  ($errors->first('name') ? 'error' : '') ; ?>">
+								<?php echo  Form::label('name', 'Voornaam', array('class' => 'control-label')) ; ?>
+								<div class="controls">
+									<?php echo  Form::text('name', Input::old('name')) ; ?>
+									<?php echo  $errors->first('name', '<span class="help-inline">:message</span>') ; ?>
+								</div>
+							</div>
+
+							<div class="control-group <?php echo  ($errors->first('surname') ? 'error' : '') ; ?>">
+								<?php echo  Form::label('surname', 'Achternaam', array('class' => 'control-label')) ; ?>
+								<div class="controls">
+									<?php echo  Form::text('surname', Input::old('surname')) ; ?>
+									<?php echo  $errors->first('surname', '<span class="help-inline">:message</span>') ; ?>
+								</div>
+							</div>
+
+							<div class="control-group <?php echo  ($errors->first('address') ? 'error' : '') ; ?>">
+								<?php echo  Form::label('address', 'Adres', array('class' => 'control-label')) ; ?>
+								<div class="controls">
+									<?php echo  Form::text('address', Input::old('address')) ; ?>
+									<?php echo  $errors->first('address', '<span class="help-inline">:message</span>') ; ?>
+								</div>
+							</div>
+
+							<div class="control-group <?php echo  ($errors->first('zipcode') ? 'error' : '') ; ?>">
+								<?php echo  Form::label('zipcode', 'Postcode', array('class' => 'control-label')) ; ?>
+								<div class="controls">
+									<?php echo  Form::text('zipcode', Input::old('zipcode')) ; ?>
+									<?php echo  $errors->first('zipcode', '<span class="help-inline">:message</span>') ; ?>
+								</div>
+							</div>
+
+							<div class="control-group <?php echo  ($errors->first('city') ? 'error' : '') ; ?>">
+								<?php echo  Form::label('city', 'Woonplaats', array('class' => 'control-label')) ; ?>
+								<div class="controls">
+									<?php echo  Form::text('city', Input::old('city')) ; ?>
+									<?php echo  $errors->first('city', '<span class="help-inline">:message</span>') ; ?>
+								</div>
+							</div>
+
+							<div class="control-group <?php echo  ($errors->first('country') ? 'error' : '') ; ?>">
+								<?php echo  Form::label('country', 'Land', array('class' => 'control-label')) ; ?>
+								<div class="controls">
+									<?php echo  Form::text('country', Input::old('country')) ; ?>
+									<?php echo  $errors->first('country', '<span class="help-inline">:message</span>') ; ?>
+								</div>
+							</div>
+
+							<div class="control-group">
+								<div class="controls">
+									<?php echo  Form::submit('Doorgaan &rarr;', array('class' => 'btn btn-primary')) ; ?>
+								</div>
+							</div>
+
+						</div><!--/span6-->
+
+					</div><!--/row-fluid-->
+
+				</div><!--container-->
 
 			<?php echo  Form::close() ; ?>
 
 		</div>
 
 	</div>
+
+</div>
 
 <?php \Laravel\Section::stop(); ?>
 <?php echo view('layouts.default')->with(get_defined_vars())->render(); ?>
