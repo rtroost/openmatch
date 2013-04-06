@@ -31,11 +31,16 @@ class Locations_Controller extends Base_Controller {
 					case 'speeltuinen':			$temp['img'] = 'sports'; break;
 					default:					$temp['img'] = 'automotive'; break;
 				}
+				$temp2 = null;
+				foreach ($value->types as $key2 => $value2) {
+					$temp2[] = $value2->naam;
+				}
+				$temp['types'] = $temp2;
 				$jsonLocs[] = $temp;
 			}
 			return json_encode($jsonLocs);
 		}
-
+		
 		// hier moet eventueel nog een view komen
 		dd($locations);
 	}

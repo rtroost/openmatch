@@ -1,6 +1,12 @@
 
 <?php \Laravel\Section::start('content'); ?>
 
+<div class="pageTitle">
+	<div class="container">
+		<h1>Hier kan een titel <small>om te pagina te verduidelijken</small></h1>
+	</div>
+</div>
+
 <div class="content">
 
 	<div class="container">
@@ -12,12 +18,6 @@
 					<ul>
 						<li class="clearfix">
 							<a href="#">
-								<div class="event-list-thumb">
-									<img src="http://placehold.it/125x80" />
-								</div>
-								<div class="event-list-rating">
-									98%
-								</div>
 								<div class="event-list-body">
 									<span class="event-list-body-title">
 										Pathé Schouwburgplein
@@ -33,12 +33,6 @@
 						</li>
 						<li class="clearfix">
 							<a href="#">
-								<div class="event-list-thumb">
-									<img src="http://placehold.it/125x80" />
-								</div>
-								<div class="event-list-rating">
-									92%
-								</div>
 								<div class="event-list-body">
 									<span class="event-list-body-title">
 										De dronken geit
@@ -54,12 +48,6 @@
 						</li>
 						<li class="clearfix">
 							<a href="#">
-								<div class="event-list-thumb">
-									<img src="http://placehold.it/125x80" />
-								</div>
-								<div class="event-list-rating">
-									89%
-								</div>
 								<div class="event-list-body">
 									<span class="event-list-body-title">
 										Op de horizon
@@ -75,12 +63,6 @@
 						</li>
 						<li class="clearfix">
 							<a href="#">
-								<div class="event-list-thumb">
-									<img src="http://placehold.it/125x80" />
-								</div>
-								<div class="event-list-rating">
-									78%
-								</div>
 								<div class="event-list-body">
 									<span class="event-list-body-title">
 										Pathé Schouwburgplein
@@ -96,12 +78,6 @@
 						</li>
 						<li class="clearfix">
 							<a href="#">
-								<div class="event-list-thumb">
-									<img src="http://placehold.it/125x80" />
-								</div>
-								<div class="event-list-rating">
-									67%
-								</div>
 								<div class="event-list-body">
 									<span class="event-list-body-title">
 										Pathé Schouwburgplein
@@ -128,47 +104,72 @@
 					<ul class="unstyled" >
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('restaurant', 'restaurant') ; ?> Restaurant
+									<?php echo  Form::checkbox('bibliotheken', 'bibliotheken') ; ?> Bibliotheken
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('cafe', 'cafe') ; ?> Cafe
+									<?php echo  Form::checkbox('bioscopen', 'bioscopen') ; ?> Bioscopen
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('bioskoop', 'bioskoop') ; ?> Bioskoop
+									<?php echo  Form::checkbox('campings', 'campings') ; ?> Campings
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('museum', 'museum') ; ?> Museum
+									<?php echo  Form::checkbox('sportgelegenheden', 'sportgelegenheden') ; ?> Sportgelegenheden
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('casino', 'casino') ; ?> Casino
+									<?php echo  Form::checkbox('kinderboerderijen', 'kinderboerderijen') ; ?> Kinderboerderijen
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('pretpark', 'pretpark') ; ?> Pretpark
+									<?php echo  Form::checkbox('kindervermaak', 'kindervermaak') ; ?> Kindervermaak
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('zwembad', 'zwembad') ; ?> Zwembad
+									<?php echo  Form::checkbox('theaters', 'theaters') ; ?> Theaters
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('bolingbaan', 'bolingbaan') ; ?> Bolingbaan
+									<?php echo  Form::checkbox('recreatieterreinen', 'recreatieterreinen') ; ?> Recreatieterreinen
 							</label>
 						</li>
 						<li>
 							<label class="checkbox">
-									<?php echo  Form::checkbox('theater', 'theater') ; ?> Theater
+									<?php echo  Form::checkbox('zwembaden', 'zwembaden') ; ?> Zwembaden
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('musea', 'musea') ; ?> Musea
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('restaurants', 'restaurants') ; ?> Restaurants
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('dierentuin', 'dierentuin') ; ?> Dierentuin
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('attracties', 'attracties') ; ?> Attracties
+							</label>
+						</li>
+						<li>
+							<label class="checkbox">
+									<?php echo  Form::checkbox('speeltuinen', 'speeltuinen') ; ?> Speeltuinen
 							</label>
 						</li>
 					</ul>

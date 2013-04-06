@@ -12,7 +12,7 @@
 					</div>
 					<div id="map_overlay_inner">
 						<h5>Type uitgaansgelegenheden</h5>
-					<ul class="unstyled" >
+					<ul id="filter" class="unstyled" >
 						<li>
 							<label class="checkbox">
 									<?php echo  Form::checkbox('bibliotheken', 'bibliotheken') ; ?> Bibliotheken

@@ -4,15 +4,14 @@ var maps_class = {
 
 		this.deferred = new $.Deferred();
 
-		this.container = config['container'];
-		this.markers = [];
+		this.container = config;
+		this.markers = {};
 
 		google.maps.event.addDomListener(window, 'load', this.initialize);
 
 		return this.deferred.promise();
 
 	},
-
 
 	initialize: function() {
 
@@ -61,7 +60,7 @@ var maps_class = {
 
 		self.makeInfoWindowEvent(self.map, self.infowindow, contentInfowindow, marker);
 
-		self.markers.push(marker);
+		self.markers[pos['location_id']] = marker;
 	},
 
 	makeInfoWindowEvent: function(map, infowindow, contentString, marker) {
@@ -73,6 +72,16 @@ var maps_class = {
 			infowindow.open(self.map, marker);
 			self.map.setCenter(marker.getPosition());
 		});
+	},
+
+	hideMarker: function(id){
+		var self = maps_class;
+		self.markers[id].setVisible(false);
+	},
+
+	displayMarker: function(id){
+		var self = maps_class;
+		self.markers[id].setVisible(true);
 	}
 
 };
