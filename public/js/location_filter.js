@@ -25,6 +25,12 @@ var location_filter = {
 			self.checked.push(checkbox.attr('value'));
 		} else {
 			self.checked.splice( $.inArray(checkbox.attr('value'), self.checked) ,1 );
+			if(self.checked.length == 0){
+				for (var i in self.index) {
+					self.displayFunction(self.index[i]['location_id']);
+				}
+				return;
+			}
 		}
 
 		for (var i in self.index) {
