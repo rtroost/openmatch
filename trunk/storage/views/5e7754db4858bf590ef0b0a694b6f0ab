@@ -1,0 +1,31 @@
+
+<?php \Laravel\Section::start('content'); ?>
+
+<div class="pageTitle">
+	<div class="container">
+		<h1>Hier kan een titel <small>om te pagina te verduidelijken</small></h1>
+	</div>
+</div>
+
+<div class="content">
+
+	<div class="container">
+
+		<div class="row-fluid">
+
+			<div class="span12">
+				<h3>Locatie:</h3>
+
+				<p><?php echo  $location->title ; ?></p>
+
+
+			</div><!--/span9-->
+
+		</div><!--/row-fluid-->
+	</div><!--/container-->
+</div><!--/content-->
+
+<?php echo view('handlebar-templates/locationrow')->with(get_defined_vars())->render(); ?>
+
+<?php \Laravel\Section::stop(); ?>
+<?php echo view('layouts.default')->with(get_defined_vars())->render(); ?>
