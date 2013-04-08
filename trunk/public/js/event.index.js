@@ -3,6 +3,7 @@ $(document).ready(function() {
 	var locations;
 	var template = Handlebars.compile( $("#locationRow").html() );
 	var locationWrapper = $("#locationWrapper");
+	var index = {};
 
 	// Haal alle locations op uit de database
 	loadLocations().done(
@@ -43,15 +44,18 @@ $(document).ready(function() {
 
 		for (var i in locations) {
 			locationWrapper.append( template(locations[i]) );
+			index[locations[i]['location_id']] = locationWrapper.children('li#'+locations[i]['location_id']);
 		}
+
+		console.log(index);
 	}
 
 	function hideRow(id){
-		locationWrapper.children('li#'+id).hide();
+		index[id].hide();
 	}
 
 	function showRow(id){
-		locationWrapper.children('li#'+id).show();
+		index[id].show();
 	}
 
 });
