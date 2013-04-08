@@ -8,6 +8,7 @@ var maps_locations = {
 		maps_locations.deferred = new $.Deferred();
 		$.ajax({
 			url: BASE + 'locations',
+			data: {'action': 'geo'},
 			dataType: 'json'
 		}).promise().then(
 			function( results ){ //success

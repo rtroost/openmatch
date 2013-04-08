@@ -37,7 +37,7 @@
 				<div class="nav-collapse collapse">
 					<ul class="nav">
 						<li>{{ HTML::link_to_route('home', 'Home') }}</li>
-						<li>{{ HTML::link_to_route('events', 'Match') }}</li>
+						<li>{{ HTML::link_to_route('locations', 'Match') }}</li>
 						<li>{{ HTML::link_to_route('contact', 'Contact') }}</li>
 					</ul>
 					<ul class="nav pull-right">

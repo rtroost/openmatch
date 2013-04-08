@@ -1,0 +1,43 @@
+
+<?php \Laravel\Section::start('content'); ?>
+
+<div class="pageTitle">
+	<div class="container">
+		<h1>Hier kan een titel <small>om te pagina te verduidelijken</small></h1>
+	</div>
+</div>
+
+<div class="content">
+
+	<div class="container">
+
+		<div class="row-fluid">
+
+			<div class="span12">
+
+				<h3><?php echo  $location->name ; ?></h3>
+				<?php if( $location->website ): ?>
+					<a href="<?php echo  $location->website ; ?>"> Website </a>
+				<?php endif; ?>
+
+				<p>Plaats: <?php echo  $location->city ; ?></p>
+				<p>Adres: <?php echo  $location->street ; ?> <?php echo  $location->number ; ?></p>
+				<p>Postcode: <?php echo  $location->postalcode ; ?></p>
+
+				<p>Types: 
+					<?php foreach($location->types as $type): ?>
+						<?php echo  $type->naam ; ?>
+					<?php endforeach; ?>
+				</p>
+
+
+			</div><!--/span9-->
+
+		</div><!--/row-fluid-->
+	</div><!--/container-->
+</div><!--/content-->
+
+<?php echo view('handlebar-templates/locationrow')->with(get_defined_vars())->render(); ?>
+
+<?php \Laravel\Section::stop(); ?>
+<?php echo view('layouts.default')->with(get_defined_vars())->render(); ?>
