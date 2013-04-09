@@ -18,7 +18,7 @@ class Locations_Controller extends Base_Controller {
 					$temp['website'] = $value->website;
 					switch ($value->types[0]->naam) {
 						case 'bibliotheken':		$temp['img'] = 'education'; break;
-						case 'bioscopen':			$temp['img'] = 'company'; break;
+						case 'bioscopen':			$temp['img'] = 'automotive'; break;
 						case 'campings':			$temp['img'] = 'sports'; break;
 						case 'sportgelegenheden':	$temp['img'] = 'sports'; break;
 						case 'kinderboerderijen':	$temp['img'] = 'sports'; break;
