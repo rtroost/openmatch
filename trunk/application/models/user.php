@@ -13,7 +13,7 @@ class User extends Basemodel {
 		'name' => 'required',
 		'surname' => 'required',
 		'address' => 'required',
-		'zipcode' => 'alpha_num',
+		'zipcode' => 'required|alpha_num',
 		'city' => 'required',
 		'country' => 'required'
 	);
