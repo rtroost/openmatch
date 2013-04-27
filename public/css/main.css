@@ -362,6 +362,73 @@ body {
 	background: #444;
 }*/
 
+
+
+
+
+
+
+/******************/
+/* Location Style */
+/******************/
+
+.location {}
+.location-map { height: 400px; width: 100%; background: #ddd;}
+
+#comment-container {margin-bottom: 20px;}
+.comment {
+	display: block;
+}
+
+.comment-inner {
+	background: #fafafa;
+	color: #555;
+	padding:8px 16px;
+	border: 1px solid #ddd;
+}
+
+.comment-inner-author {
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.comment-inner-body {
+	font-size: 13px;
+	padding-left: 10px;
+}
+
+.comment .comment {
+	padding-left: 20px;
+	padding-top: 6px;
+}
+
+
+
+
+
+
+
+
+
+#comment_post {}
+
+.comment_post-notLoggedIn {
+	display: block;
+	font-size: 1.4em;
+	font-weight: 700;
+	padding: 14px;
+	background: #fafafa;
+	border: 1px solid #ddd;
+}
+
+
+
+
+
+
+
+
+
 /***************/
 /* Form Styles */
 /***************/
@@ -375,6 +442,10 @@ form h3 {
 /****************/
 /* Table Styles */
 /****************/
+
+table {
+	width: 100%;
+}
 
 .styledTable {
 	width: 100%;
