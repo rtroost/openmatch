@@ -53,6 +53,11 @@
 							</td>
 						</tr>
 					</table>
+
+					<hr />
+
+					<a href="#" class="btn">Routebeschrijving</a>
+					<a href="#" class="btn">Taxi bestellen</a>
 				</div><!--/span8-->
 
 			</div><!--/row-fluid-->
