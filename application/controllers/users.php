@@ -57,9 +57,14 @@ class Users_Controller extends Base_Controller {
 		}
 	}
 
-	public function get_show(){
+	public function get_show($user_id){
+		$user = User::find($user_id);
 
+		return View::make('user.show', array('user' => $user));
 	}
+
+	public function get_edit() {} // Administrator Edit functionality
+	public function put_edit() {} // Administrator Edit functionality
 
 	public function get_profile(){
 
