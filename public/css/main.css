@@ -385,7 +385,7 @@ body {
 	background: #fafafa;
 	color: #555;
 	padding:8px 16px;
-	border: 1px solid #ddd;
+	border: 1px solid #e2e2e2;
 }
 
 .comment-inner-author {
@@ -419,7 +419,7 @@ body {
 	font-weight: 700;
 	padding: 14px;
 	background: #fafafa;
-	border: 1px solid #ddd;
+	border: 1px solid #e2e2e2;
 }
 
 

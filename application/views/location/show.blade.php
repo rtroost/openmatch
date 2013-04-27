@@ -65,37 +65,27 @@
 
 				<div id="comment-container">
 
+					@forelse($location -> comments as $comment)
+
 					<div class="comment">
 
 						<div class="comment-inner">
 
 							<div class="comment-inner-author">
-								<a href="#">Remco van der Kleijn</a> <small>zei op 16 februari 2013:</small>
+								<a href="#">{{ ucwords($comment -> user -> name) . ' ' . ucwords($comment -> user -> surname) }}</a> <small>zei op {{ date('j F Y \o\m G:i', strtotime($comment -> created_at)) }}:</small>
 							</div><!--/comment-inner-author-->
 
 							<div class="comment-inner-body">
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
+								{{ $comment -> body }}
 							</div><!--/comment-inner-body-->
 
 						</div><!--/comment-inner-->
 
-						<div class="comment">
-
-							<div class="comment-inner">
-
-								<div class="comment-inner-author">
-									<a href="#">Robbie Troost</a> <small>antwoorde 16 februari 2013 met:</small>
-								</div><!--/comment-inner-author-->
-
-								<div class="comment-inner-body">
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
-								</div><!--/comment-inner-body-->
-
-							</div><!--/comment-inner-->
-
-						</div><!--/comment-->
-
 					</div><!--/comment-->
+
+					@empty
+						<p>Er zijn geen beoordelingen te tonen.</p>
+					@endforelse
 
 				</div><!--/comment-container-->
 
@@ -110,6 +100,28 @@
 					</div>
 
 					@else
+
+					{{ Form::open(URL::to_route('location_post_comment', $location -> id), 'POST', array('class' => 'form-verticle')) }}
+
+					{{ Form::token() }}
+
+					{{ Form::hidden('location_id', $location -> id) }}
+
+					<div class="control-group {{ ($errors->first('message_body') ? 'error' : '') }}">
+						{{ Form::label('message_body', 'Uw bericht', array('class' => 'control-label')) }}
+						<div class="controls">
+							{{ Form::textarea('message_body', Input::old('message_body'), array('class' => 'input-xxlarge')) }}
+							{{ $errors->first('message_body', '<span class="help-inline">:message</span>') }}
+						</div>
+					</div>
+
+					<div class="control-group">
+						<div class="controls">
+							{{ Form::submit('Verstuur', array('class' => 'btn btn-large')) }}
+						</div>
+					</div>
+
+				{{ Form::close() }}
 
 
 

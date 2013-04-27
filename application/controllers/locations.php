@@ -5,7 +5,7 @@ class Locations_Controller extends Base_Controller {
 	public $restful = true;
 
 	public function get_index(){
-		
+
 		if(Request::ajax()){
 			$locations = Location::with('types')->get();
 
@@ -59,7 +59,7 @@ class Locations_Controller extends Base_Controller {
 				return json_encode($jsonLocs);
 			}
 		}
-		
+
 		// hier moet eventueel nog een view komen
 		Asset::container('footer')->add('handlebars', 'js/vendor/handlebars.js');
 		Asset::container('footer')->add('location_filter', 'js/location_filter.js', 'jquery');
@@ -69,21 +69,22 @@ class Locations_Controller extends Base_Controller {
 	}
 
 	public function post_create(){
-		
+
 	}
 
 	public function get_show($index){
-		$location = Location::with('types')->where('id', '=' , $index)->first();
+
+		$location = Location::with('types') -> with('comments') -> where('id', '=' , $index) -> first();
 
 		return View::make('location.show')->with('location', $location);
 	}
 
 	public function get_edit($index){
-		
+
 	}
 
 	public function get_new(){
-		
+
 	}
 
 	public function put_update($index){
@@ -91,6 +92,35 @@ class Locations_Controller extends Base_Controller {
 	}
 
 	public function detele_destroy($index){
-	
+
+	}
+
+	public function post_comment() {
+
+		$rules = array('');
+
+		$location_id = Input::get('location_id');
+
+		$validation = LocationComment::Validate(Input::all());
+
+		if($validation -> fails()) {
+
+			return Redirect::to_route('location', $location_id)
+				-> with_input()
+				-> with_errors($validation)
+				-> with('message', 'Uw bericht is niet geplaatst.');
+		} else {
+
+			$comment = LocationComment::create(array(
+				'user_id' => Auth::user() -> id,
+				'location_id' => $location_id,
+				'body' => Input::get('message_body')
+			));
+
+			return Redirect::to_route('location', $location_id)
+				-> with('message', 'Uw bericht is niet geplaatst.')
+				-> with('new_comment', $comment);
+		}
+
 	}
 }
