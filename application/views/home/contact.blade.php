@@ -32,10 +32,6 @@
 
 				<h2>Iets te melden?</h2>
 
-				{{ $errors->first('fullname', '<p>:message</p>') }}
-				{{ $errors->first('email', '<p>:message</p>') }}
-				{{ $errors->first('message', '<p>:message</p>') }}
-
 				{{ Form::open('contact', 'POST', array('class' => 'form-vertical')) }}
 
 					{{ Form::token() }}
@@ -66,7 +62,7 @@
 
 					<div class="control-group">
 						<div class="controls">
-							{{ Form::submit('Secure Login', array('class' => 'btn btn-primary')) }}
+							{{ Form::submit('Verstuur', array('class' => 'btn btn-large')) }}
 						</div>
 					</div>
 
