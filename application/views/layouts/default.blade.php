@@ -45,7 +45,7 @@
 							<li>{{ HTML::link_to_route('register', 'Registreren') }}</li>
 							<li>{{ HTML::link_to_route('login', 'Inloggen') }}</li>
 						@else
-							<li>{{ HTML::link_to_route('edit_user', 'Mijn profiel', Auth::user() -> id) }}</li>
+							<li>{{ HTML::link_to_route('user_profile', 'Mijn profiel', Auth::user() -> id) }}</li>
 							<li>{{ HTML::link_to_route('logout', 'Uitloggen') }}</li>
 						@endif
 					</ul>

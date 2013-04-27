@@ -61,20 +61,24 @@ class Users_Controller extends Base_Controller {
 
 	}
 
-	public function get_edit(){
+	public function get_profile(){
 
 		$user = Auth::user();
 
-		return View::make('user.edit', array('userdata' => $user));
+		return View::make('user.profile', array('userdata' => $user));
 	}
 
-	public function put_update(){
+	public function put_updateData(){
 
 		$validation = User::validate_update(Input::all());
 
 		if ($validation->fails()) {
-			return Redirect::to_route('edit_user', Auth::user() -> id)->with_input()->with_errors($validation);
+
+			return Redirect::to_route('user_profile')
+				-> with_input()
+				-> with_errors($validation);
 		} else {
+
 			User::update(Input::get('id'), array(
 				'name' => Input::get('name'),
 				'surname' => Input::get('surname'),
@@ -84,7 +88,37 @@ class Users_Controller extends Base_Controller {
 				'country' => Input::get('country')
 				));
 
-			return Redirect::to_route('edit_user', Auth::user() -> id)->with('message', 'your account had been edited');
+			return Redirect::to_route('user_profile')
+				-> with('message', 'Je gegevens zijn succesvol aangepast!');
+		}
+	}
+
+	public function put_updatePassword(){
+
+		if( ! Hash::check(Input::get('old_password'), Auth::user() -> password)) {
+			return Redirect::to_route('user_profile')
+				-> with('message', 'Je oude wachtwoord was niet correct.');
+		}
+
+		$validation = User::validate_password(Input::all());
+
+		if ($validation->fails()) {
+
+			return Redirect::to_route('user_profile')
+				-> with_errors($validation);
+		} else {
+
+			User::update(Input::get('id'), array(
+				'name' => Input::get('name'),
+				'surname' => Input::get('surname'),
+				'address' => Input::get('address'),
+				'zipcode' => Input::get('zipcode'),
+				'city' => Input::get('city'),
+				'country' => Input::get('country')
+			));
+
+			return Redirect::to_route('user_profile')
+				-> with('message', 'Je wachtwoord is succesvol aangepast!');
 		}
 	}
 
@@ -96,4 +130,5 @@ class Users_Controller extends Base_Controller {
 		Auth::logout();
 		return Redirect::to_route('home')->with('message', 'You are now logged out!');
 	}
+
 }

@@ -1,14 +1,14 @@
 <?php
 
 class User extends Basemodel {
-	
+
 	public static $timestamps = false;
 
 	public static $table = 'users';
 
 	public static $rules = array(
 		'email' => 'required|unique:users|email',
-		'password' => 'required|alpha_num|min:4|confirmed',
+		'password' => 'required',
 		'password_confirmation' => 'required|alpha_num|min:4',
 		'name' => 'required',
 		'surname' => 'required',
@@ -24,7 +24,12 @@ class User extends Basemodel {
 		'address' => 'required',
 		'zipcode' => 'required',
 		'city' => 'required',
-		'country' => 'required'	
+		'country' => 'required'
+	);
+
+	public static $password_rules = array(
+		'password' => 'required|alpha_num|min:4|confirmed',
+		'password_confirmation' => 'required|alpha_num|min:4',
 	);
 
 	public function interesses(){
@@ -46,5 +51,9 @@ class User extends Basemodel {
 	public static function validate_update($data) {
 		return Validator::make($data, static::$update_rules);
 	}
-	
+
+	public static function validate_password($data) {
+		return Validator::make($data, static::$password_rules);
+	}
+
 }
