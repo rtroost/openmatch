@@ -16,17 +16,18 @@ Route::post('register', 		array('as' => 'register_user', 	'uses' => 'users@creat
 Route::put('user',		 		array('uses' => 'users@update', 'before' => 'csrf|auth'							)); 	// POST/PUT update
 Route::delete('user/(:num)', 	array('uses' => 'users@destroy'													));
 
-Route::get('profile',			array('as' => 'user_profile', 					'uses' => 'users@profile', 'before' => 'auth'));
-Route::put('profile/data', 		array('as' => 'user_profile_updateData', 		'uses' => 'users@updateData', 'before' => 'auth'));
-Route::put('profile/password', 	array('as' => 'user_profile_updatePassword', 	'uses' => 'users@updatePassword', 'before' => 'auth'));
-Route::get('profile/(:num)',	array('as' => 'show_profile', 					'uses' => 'users@show'));
-Route::get('profile/(:num)/comments',	array('as' => 'show_profile', 			'uses' => 'users@showComments'));
-Route::get('profile/(:num)/events',		array('as' => 'show_profile', 			'uses' => 'users@showEvents'));
-Route::get('profile/(:num)/messages',	array('as' => 'show_profile', 			'uses' => 'users@showMessages'));
+Route::get('profile',					array('as' => 'user_profile', 					'uses' => 'users@profile', 'before' => 'auth'));
+Route::put('profile/update/data', 		array('as' => 'user_profile_updateData', 		'uses' => 'users@updateData', 'before' => 'auth'));
+Route::put('profile/update/password', 	array('as' => 'user_profile_updatePassword', 	'uses' => 'users@updatePassword', 'before' => 'auth'));
+Route::get('profile/(:num)',			array('as' => 'show_profile', 					'uses' => 'users@show'));
+Route::get('profile/(:num)/comments',	array('as' => 'show_profile_comments', 			'uses' => 'users@showComments'));
+Route::get('profile/(:num)/events',		array('as' => 'show_profile_events', 			'uses' => 'users@showEvents'));
+Route::get('profile/(:num)/messages',	array('as' => 'show_profile_messages', 			'uses' => 'users@showMessages'));
 
 
-Route::get('locations', 		array('as' => 'locations', 'uses' => 'locations@index'));
-Route::get('location/(:num)', 	array('as' => 'location', 'uses' => 'locations@show'));
+Route::get('locations', 				array('as' => 'locations', 'uses' => 'locations@index'));
+Route::get('location/(:num)', 			array('as' => 'location', 'uses' => 'locations@show'));
+Route::post('location/(:num)/comment', 	array('as' => 'location_post_comment', 'uses' => 'locations@comment'));
 
 
 
