@@ -68,22 +68,27 @@ class Locations_Controller extends Base_Controller {
 		return View::make('location.index');
 	}
 
-	public function post_create(){
-
-	}
-
 	public function get_show($index){
 
 		$location = Location::with('types') -> with('comments') -> where('id', '=' , $index) -> first();
 
-		return View::make('location.show')->with('location', $location);
-	}
+		$thumbState = LocationThumb::where('user_id', '=', Auth::user() -> id) -> where('location_id', '=', $location -> id) -> first();
 
-	public function get_edit($index){
-
+		// dd($thumbState);
+		return View::make('location.show')
+		-> with('location', $location)
+		-> with('thumbState', $thumbState);
 	}
 
 	public function get_new(){
+
+	}
+
+	public function post_create(){
+
+	}
+
+	public function get_edit($index){
 
 	}
 
@@ -91,13 +96,11 @@ class Locations_Controller extends Base_Controller {
 
 	}
 
-	public function detele_destroy($index){
+	public function delete_destroy($index){
 
 	}
 
 	public function post_comment() {
-
-		$rules = array('');
 
 		$location_id = Input::get('location_id');
 
@@ -122,5 +125,29 @@ class Locations_Controller extends Base_Controller {
 				-> with('new_comment', $comment);
 		}
 
+	}
+
+	public function get_thumbsAction($location_id, $direction) {
+
+		$location = Location::find($location_id);
+
+		if($direction == 'up')
+			$action = true;
+		elseif($direction == 'down')
+			$action = false;
+		else
+			return Redirect::to_route('location', $location -> id);
+
+		$user = Auth::user();
+
+		$user -> locationThumbs() -> where('location_id', '=', $location -> id) -> delete();
+
+		LocationThumb::create(array(
+			'location_id' => $location_id,
+			'user_id' => $user -> id,
+			'positive' => $action
+		));
+
+		return Redirect::to_route('location', $location_id);
 	}
 }

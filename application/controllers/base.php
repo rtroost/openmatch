@@ -9,6 +9,7 @@ class Base_Controller extends Controller {
 		Asset::add('bootstrap-min', 'css/bootstrap.min.css');
 		Asset::add('bootstrap-responsive-min', 'css/bootstrap-responsive.min.css', 'bootstrap-min');
 		Asset::add('main', 'css/main.css', array('bootstrap-min', 'bootstrap-min'));
+		Asset::add('fontAwesome', 'css/font-awesome.min.css');
 
 		// scripts in the head of the page
 		Asset::container('header')->script('modernizr', 'js/vendor/modernizr-2.6.2-respond-1.1.0.min.js');

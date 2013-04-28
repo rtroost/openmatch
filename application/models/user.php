@@ -48,6 +48,10 @@ class User extends Basemodel {
 		return $this->has_many_and_belongs_to('activiteit', 'activiteiten_per_user');
 	}
 
+	public function locationThumbs() {
+		return $this -> has_many('locationThumb');
+	}
+
 	public static function validate_update($data) {
 		return Validator::make($data, static::$update_rules);
 	}
