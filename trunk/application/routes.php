@@ -27,6 +27,7 @@ Route::get('profile/(:num)/messages',	array('as' => 'show_profile_messages', 			
 
 Route::get('locations', 				array('as' => 'locations', 'uses' => 'locations@index'));
 Route::get('location/(:num)', 			array('as' => 'location', 'uses' => 'locations@show'));
+Route::get('location/(:num)/thumb/(:any)', array('as' => 'location_thumbAction', 'uses' => 'locations@thumbsAction'));
 Route::post('location/(:num)/comment', 	array('as' => 'location_post_comment', 'uses' => 'locations@comment'));
 
 

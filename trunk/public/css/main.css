@@ -374,7 +374,7 @@ body {
 /******************/
 
 .location {}
-.location-map { height: 400px; width: 100%; background: #ddd;}
+.location-map { height: 300px; width: 100%; background: #ddd;}
 
 #comment-container {margin-bottom: 20px;}
 .comment {
@@ -425,9 +425,25 @@ body {
 
 
 
+/************************/
+/* Thumb Rating Styling */
+/************************/
 
+.thumbRating {
+	height: 20px;
+	overflow:hidden;
+}
+.thumbRating.activePos {
+	background-color: green;
+}
 
+.thumbRating.activeNeg {
+	background-color: red;
+}
 
+.thumbRating.small {
+	width: 14px;
+}
 
 
 /***************/
