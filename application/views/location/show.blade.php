@@ -228,7 +228,7 @@ $(document).ready(function() {
 		e.preventDefault(); // Prevent form from submitting
 
 		var location_origin = encodeURIComponent($('#origin-input').val());
-		var location_destination = encodeURIComponent('{{ $location -> postalcode . '+' . $location -> number . ',+' . $location -> city }}');
+		var location_destination = encodeURIComponent('{{ $location -> postalcode . ' ' . $location -> number . ' ' . $location -> city }}');
 		var transport_mode = $('#transport-input').val();
 
 		$.ajax({
@@ -251,7 +251,7 @@ $(document).ready(function() {
 				$("#directions-result ul").html(directionsHTML);
 				$("#directions-result").slideDown(600);
 
-				$("#directions-gotoGMaps").attr('href').val('');
+				$("#directions-gotoGMaps").attr('href', 'https://maps.google.com/maps?saddr=' + location_origin + '&daddr=' + location_destination + '&mode=' + transport_mode);
 			},
 			function(){ //failed
 				console.log("Something went wrong during the ajax request.");
