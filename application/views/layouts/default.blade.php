@@ -78,5 +78,7 @@
 
 	{{ Asset::container('footer')->scripts() }}
 
+	@yield('extra_scripts')
+
 </body>
 </html>

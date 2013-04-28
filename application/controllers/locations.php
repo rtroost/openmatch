@@ -4,6 +4,12 @@ class Locations_Controller extends Base_Controller {
 
 	public $restful = true;
 
+	public function __construct() {
+		parent::__construct();
+		Asset::container('footer')->add('maps_api', 'http://maps.google.com/maps/api/js?sensor=false');
+		Asset::container('footer')->add('locations', 'js/locations.js');
+	}
+
 	public function get_index(){
 
 		if(Request::ajax()){
@@ -72,7 +78,10 @@ class Locations_Controller extends Base_Controller {
 
 		$location = Location::with('types') -> with('comments') -> where('id', '=' , $index) -> first();
 
-		$thumbState = LocationThumb::where('user_id', '=', Auth::user() -> id) -> where('location_id', '=', $location -> id) -> first();
+		if(Auth::check())
+			$thumbState = LocationThumb::where('user_id', '=', Auth::user() -> id) -> where('location_id', '=', $location -> id) -> first();
+		else
+			$thumbState = null;
 
 		// dd($thumbState);
 		return View::make('location.show')

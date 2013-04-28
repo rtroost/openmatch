@@ -374,7 +374,19 @@ body {
 /******************/
 
 .location {}
-.location-map { height: 300px; width: 100%; background: #ddd;}
+.location-map { height: 300px; width: 100%; background: #ddd; margin-bottom: 20px;}
+
+#directions-container {}
+
+#directions-result {
+	padding: 10px 14px 20px;
+	background: #fafafa;
+	/*border: 1px solid #e2e2e2;*/
+	border-radius: 4px;
+	display: none;
+}
+
+#get-geolocation { cursor: pointer; }
 
 #comment-container {margin-bottom: 20px;}
 .comment {
