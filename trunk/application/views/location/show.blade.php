@@ -28,6 +28,7 @@
 					  <li class="active"><a href="#general" data-toggle="tab">Informatie</a></li>
 					  <li><a href="#route" data-toggle="tab">Routebeschrijving</a></li>
 					  <li><a href="#taxi" data-toggle="tab">Taxi bestellen</a></li>
+					  <li><a href="#feedback" data-toggle="tab">Feedback geven</a></li>
 					</ul>
 
 					<div class="tab-content">
@@ -131,9 +132,46 @@
 							</div>
 
 					  </div>
+
 					  <div class="tab-pane" id="taxi">
 
 					  </div>
+
+					  <div class="tab-pane" id="feedback">
+
+					  	@if(Auth::check())
+
+					  	{{ Form::open(URL::to_route('location_feedback', $location -> id), 'POST', array('class' => 'form-vertical')) }}
+
+							{{ Form::token() }}
+
+							{{ Form::hidden('location_id', $location -> id) }}
+
+							<div class="control-group">
+								{{ Form::label('feedback-input', 'Welke fout in onze informatie wilt u doorgeven?', array('class' => 'control-label')) }}
+								<div class="controls">
+									<textarea class="input-xxlarge" type="text" name="feedback-input" id="feedback-input" rows="5" placeholder="Beschrijf alsjeblieft zo duidelijk mogelijk welk onderdeel aan informatie op deze pagina niet correct is"></textarea>
+								</div>
+							</div>
+
+							<div class="control-group">
+								<div class="controls">
+									{{ Form::submit('Feedback doorgeven', array('class' => 'btn btn-primary')) }}
+								</div>
+							</div>
+
+							@else
+
+							<p>Wij stellen het erg op prijs wanneer onze gebruikers mee willen helpen de informatie op de website in orde te houden maar hiervoor vragen wij wel van u om een account aan te maken of door in te loggen met een bestaande account.</p>
+							<a href="{{URL::to_route('login')}}" class="btn">Aanmelden</a>
+							<a href="{{URL::to_route('register')}}" class="btn">Registreren</a>
+
+							@endif
+
+							{{ Form::close() }}
+
+					  </div><!--#feedback-->
+
 					</div>
 
 				</div><!--/span8-->
@@ -146,16 +184,48 @@
 
 				<h3>Opmerkingen en beoordelingen</h3>
 
+				<div id="comment-feedback" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h3 id="myModalLabel">Een fout in de reacties doorgeven</h3>
+					</div>
+					<div class="modal-body">
+
+						{{ Form::open(NULL, NULL, array('id' => 'form-comment_feedback')) }}
+
+						{{ Form::token() }}
+
+						{{ Form::hidden('location_id', $location -> id, array('id' => 'comment-feedback-location_id')) }}
+						{{ Form::hidden('comment_id', NULL, array('id' => 'comment-feedback-comment_id')) }}
+
+						<label for="comment-feedback-message">Wat is er mis met dit bericht? Als je dit bericht als offensief ervaart, gebruik dan het vlag (<i class="icon-flag"></i>) icoontje.</label>
+						<textarea name="message" name="comment-feedback-message" id="comment-feedback-message" rows="5" class="span12"></textarea>
+
+						{{ Form::close() }}
+
+					</div>
+					<div class="modal-footer">
+						<button class="btn" data-dismiss="modal" aria-hidden="true">Sluiten</button>
+						<button class="btn btn-primary" onClick="javascript:comment_postFeedback()">Versturen</button>
+					</div>
+				</div>
+
 				<div id="comment-container">
 
 					@forelse($location -> comments as $comment)
 
-					<div class="comment">
+					<div class="comment" id="comment-{{$comment -> id}}">
 
 						<div class="comment-inner">
 
+							<div class="comment-inner-options">
+								<a href="#" data-toggle="tooltip" title="Reageer op dit bericht" class="hasTooltip"><i class="icon-reply"></i></a>
+								<a href="#" data-toggle="tooltip" title="Foutieve informatie in dit bericht?" class="hasTooltip" onClick="javascript:comment_openFeedback({{$comment -> id}})"><i class="icon-warning-sign"></i></a>
+								<a href="#" data-toggle="tooltip" title="Rapporteer dit bericht als offensief" class="hasTooltip"><i class="icon-flag"></i></a>
+							</div><!--/comment-inner-options-->
+
 							<div class="comment-inner-author">
-								<a href="#">{{ ucwords($comment -> user -> name) . ' ' . ucwords($comment -> user -> surname) }}</a> <small>zei op {{ date('j F Y \o\m G:i', strtotime($comment -> created_at)) }}:</small>
+								<a href="{{ URL::to_route('show_profile', $comment -> user -> id) }}">{{ ucwords($comment -> user -> name) . ' ' . ucwords($comment -> user -> surname) }}</a> <small>zei op {{ date('j F Y \o\m G:i', strtotime($comment -> created_at)) }}:</small>
 							</div><!--/comment-inner-author-->
 
 							<div class="comment-inner-body">
