@@ -9,11 +9,15 @@ class Location extends Basemodel {
 	}
 
 	public function comments() {
-		return $this -> has_many('locationComment');
+		return $this -> has_many('LocationComment');
 	}
 
 	public function locationThumbs() {
-		return $this -> has_many('locationThumb');
+		return $this -> has_many('LocationThumb');
+	}
+
+	public function locationFeedback() {
+		return $this -> has_many('LocationFeedback');
 	}
 
 }

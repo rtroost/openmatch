@@ -159,4 +159,53 @@ class Locations_Controller extends Base_Controller {
 
 		return Redirect::to_route('location', $location_id);
 	}
+
+	public function post_feedback() {
+
+		$validation = LocationFeedback::validate(Input::all());
+
+		$location = Location::find(Input::get('location_id'));
+
+		if($validation -> fails()) {
+
+			return Redirect::to_route('location', $location -> id)
+				-> with_input()
+				-> with_errors($validation);
+		} else {
+
+			LocationFeedback::create(array(
+				'location_id' => $location -> id,
+				'user_id' => Auth::user() -> id,
+				'message' => Input::get('feedback-input')
+			));
+
+			return Redirect::to_route('location', $location -> id)
+				-> with('message', 'Bedankt voor het geven van je feedback!');
+
+		}
+
+	}
+
+	public function post_feedback_comment() {
+
+		$validation = LocationCommentFeedback::validate(Input::all());
+
+		// $location = Location::find(Input::get('location_id'));
+		$comment = LocationComment::find(Input::get('comment_id'));
+
+		if($validation -> fails()) {
+			if(Request::ajax())
+				return json_encode("false");
+
+			return Redirect::to_route('location', $location -> id);
+		} else {
+			LocationCommentFeedback::create(array(
+				'locationcomment_id' => Input::get('comment_id'),
+				'user_id' => Auth::user() -> id,
+				'message' => Input::get('message')
+			));
+
+			return json_encode("true");
+		}
+	}
 }

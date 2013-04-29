@@ -400,6 +400,20 @@ body {
 	border: 1px solid #e2e2e2;
 }
 
+.comment-inner-options {
+	float: right;
+	font-size: 15px;
+}
+
+.comment-inner-options a {
+	color: #3bf;
+}
+
+.comment-inner-options a:hover {
+	color: #08c;
+	text-decoration: none;
+}
+
 .comment-inner-author {
 	font-size: 14px;
 	font-weight: 700;
