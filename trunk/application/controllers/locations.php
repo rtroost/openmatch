@@ -208,4 +208,34 @@ class Locations_Controller extends Base_Controller {
 			return json_encode("true");
 		}
 	}
+
+	public function get_takeAdvice() {
+		return View::make('location.advice');
+	}
+
+	public function post_takeAdvice() {
+
+		$validation = LocationAdvice::validate(Input::all());
+
+		if($validation->fails()) {
+
+			return Redirect::to_route('location_advice')
+				-> with_input()
+				-> with_errors($validation);
+
+		} else {
+
+			LocationAdvice::create(array(
+				'user_id' => Auth::user() -> id,
+				'title' => Input::get('location-title'),
+				'website' => Input::get('location-website'),
+				'address' => Input::get('location-address'),
+				'category' => Input::get('location-category'),
+			));
+
+			return Redirect::to_route('locations')
+				-> with('message', 'Je inzending is voltooid en zal zo snel mogelijk door een bevoegde bekeken worden.');
+
+		}
+	}
 }

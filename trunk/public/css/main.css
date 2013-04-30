@@ -1,7 +1,11 @@
 
 body {
-	font: 400 14px/1.5 'Roboto', sans-serif;
-	color: #444;
+	/*font: 400 14px/1.5 'Roboto', sans-serif;*/
+	color: #333;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	color: #222;
 }
 
 
@@ -21,16 +25,11 @@ body {
 	margin-top: 30px;
 }
 
-.sidebar {
+.sidebar_block {
 	background: rgba(0,0,0,.02);
 	border: 1px solid rgba(0,0,0,0.05);
 	padding: 10px 20px 20px;
-}
-
-.side_block {
-	background: rgba(0,0,0,.02);
-	border: 1px solid rgba(0,0,0,0.05);
-	padding: 10px 20px 20px;
+	margin-bottom: 30px;
 }
 
 .hr-small {
