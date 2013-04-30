@@ -36,9 +36,10 @@
 				{{ HTML::link('/', 'OpenMatch', array('class' => 'brand')) }}
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li>{{ HTML::link_to_route('home', 'Home') }}</li>
-						<li>{{ HTML::link_to_route('locations', 'Locatie\'s') }}</li>
-						<li>{{ HTML::link_to_route('contact', 'Contact') }}</li>
+						<li><a href="{{ URL::to_route('home') }}">Home</a></li>
+						<li><a href="{{ URL::to_route('locations') }}">Locatie's</a></li>
+						<li><a href="{{ URL::to_route('events') }}">Evenementen</a></li>
+						<li><a href="{{ URL::to_route('contact') }}">Contact</a></li>
 					</ul>
 					<ul class="nav pull-right">
 						@if( ! Auth::check())

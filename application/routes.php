@@ -25,12 +25,16 @@ Route::get('profile/(:num)/events',		array('as' => 'show_profile_events', 			'us
 Route::get('profile/(:num)/messages',	array('as' => 'show_profile_messages', 			'uses' => 'users@showMessages'));
 
 
-Route::get('locations', 				array('as' => 'locations', 'uses' => 'locations@index'));
-Route::get('location/(:num)', 			array('as' => 'location', 'uses' => 'locations@show'));
-Route::get('location/(:num)/thumb/(:any)', array('as' => 'location_thumbAction', 'uses' => 'locations@thumbsAction'));
+Route::get('locations', 					array('as' => 'locations', 'uses' => 'locations@index'));
+Route::get('location/(:num)', 				array('as' => 'location', 'uses' => 'locations@show'));
+Route::get('location/(:num)/thumb/(:any)', 	array('as' => 'location_thumbAction', 'uses' => 'locations@thumbsAction'));
 Route::post('location/(:num)/comment', 		array('as' => 'location_post_comment', 'uses' => 'locations@comment'));
 Route::post('location/(:num)/feedback', 	array('as' => 'location_feedback', 'uses' => 'locations@feedback', 'before' => 'auth'));
 Route::post('location/feedback/comment', 	array('as' => 'location_comment_feedback', 'uses' => 'locations@feedback_comment', 'before' => 'auth'));
+Route::get('location/advice', 				array('as' => 'location_advice', 'uses' => 'locations@takeAdvice'));
+Route::post('location/advice', 				array('as' => 'location_advice_post', 'uses' => 'locations@takeAdvice', 'before' => 'auth'));
+
+Route::get('events', 						array('as' => 'events', 'uses' => 'events@index'));
 
 Route::get('beheer', array('as' => 'dashboard', 'uses' => 'administration@index'));
 

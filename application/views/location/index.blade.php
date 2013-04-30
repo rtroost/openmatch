@@ -38,84 +38,88 @@
 
 			<div class="span3">
 				<div class="sidebar">
-					<h4>Filters</h4>
-					<hr class="hr-small" />
-
-					<h5>Type uitgaansgelegenheden</h5>
-					<ul class="unstyled" id="locationfilter" >
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('bibliotheken', 'bibliotheken') }} Bibliotheken
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('bioscopen', 'bioscopen') }} Bioscopen
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('campings', 'campings') }} Campings
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('sportgelegenheden', 'sportgelegenheden') }} Sportgelegenheden
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('kinderboerderijen', 'kinderboerderijen') }} Kinderboerderijen
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('kindervermaak', 'kindervermaak') }} Kindervermaak
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('theaters', 'theaters') }} Theaters
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('recreatieterreinen', 'recreatieterreinen') }} Recreatieterreinen
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('zwembaden', 'zwembaden') }} Zwembaden
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('musea', 'musea') }} Musea
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('restaurants', 'restaurants') }} Restaurants
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('dierentuin', 'dierentuin') }} Dierentuin
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('attracties', 'attracties') }} Attracties
-							</label>
-						</li>
-						<li>
-							<label class="checkbox">
-									{{ Form::checkbox('speeltuinen', 'speeltuinen') }} Speeltuinen
-							</label>
-						</li>
-					</ul>
-
-				</div><!--/sidebar_block-->
+					<div class="sidebar_block">
+						<p>Ken je een locatie die je graag in deze lijst terug zou willen zien? Laat het ons weten!</p>
+						<a href="{{ URL::to_route('location_advice') }}" class="btn btn-small">Geef advies</a>
+					</div>
+					<div class="sidebar_block">
+						<h4>Filters</h4>
+						<hr class="hr-small" />
+						<h5>Type uitgaansgelegenheden</h5>
+						<ul class="unstyled" id="locationfilter" >
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('bibliotheken', 'bibliotheken') }} Bibliotheken
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('bioscopen', 'bioscopen') }} Bioscopen
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('campings', 'campings') }} Campings
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('sportgelegenheden', 'sportgelegenheden') }} Sportgelegenheden
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('kinderboerderijen', 'kinderboerderijen') }} Kinderboerderijen
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('kindervermaak', 'kindervermaak') }} Kindervermaak
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('theaters', 'theaters') }} Theaters
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('recreatieterreinen', 'recreatieterreinen') }} Recreatieterreinen
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('zwembaden', 'zwembaden') }} Zwembaden
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('musea', 'musea') }} Musea
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('restaurants', 'restaurants') }} Restaurants
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('dierentuin', 'dierentuin') }} Dierentuin
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('attracties', 'attracties') }} Attracties
+								</label>
+							</li>
+							<li>
+								<label class="checkbox">
+										{{ Form::checkbox('speeltuinen', 'speeltuinen') }} Speeltuinen
+								</label>
+							</li>
+						</ul>
+					</div><!--/sidebar_block-->
+				</div><!--/sidebar-->
 			</div><!--/span3-->
 
 		</div><!--/row-fluid-->
