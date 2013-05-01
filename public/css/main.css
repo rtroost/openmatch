@@ -6,6 +6,7 @@ body {
 
 h1,h2,h3,h4,h5,h6 {
 	color: #222;
+	margin: 0 0 14px;
 }
 
 
@@ -553,4 +554,69 @@ table {
 
 #fpRecent tr td:nth-child(1) {
 	width: 230px;
+}
+
+
+
+
+
+
+
+
+
+.article-small-container {}
+.article-small {
+	border-bottom: 1px solid #eee;
+	padding: 14px 0;
+}
+.article-small:first-of-type {
+	padding-top: 0;
+}
+.article-small:last-of-type {
+	border: 0;
+	padding-bottom: 0;
+}
+.article-small-title {
+	font: 300 2em/1.2 'Roboto', sans-serif;
+}
+.article-small-body {
+	font: 400 13px/1.5 'Roboto', sans-serif;
+	color: #555;
+}
+.article-small-meta {
+	font: 400 12px/1.5 'Roboto', sans-serif;
+	color: #999;
+}
+.article-small-readmore {
+	margin-left: 6px;
+	display: inline-block;
+}
+
+.article {}
+.article-title {
+	font: 300 3.6em/1.2 'Roboto', sans-serif;
+}
+.article-body {
+	font: 400 14px/1.5 'Roboto', sans-serif;
+}
+.article-meta {
+	font: 400 14px/1.5 'Roboto', sans-serif;
+	color: #999;
+}
+
+
+.fpArticles-container {
+	margin-bottom: 14px;
+}
+.fpArticle {
+	display: block;
+	padding: 8px 0;
+}
+.fpArticle-title {
+	float: left;
+}
+.fpArticle-publishedDate {
+	float: left;
+	margin-right: 10px;
+	font-weight: 700;
 }
