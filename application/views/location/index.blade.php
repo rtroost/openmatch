@@ -14,7 +14,7 @@
 
 		<div class="row-fluid">
 
-			<div class="span9">
+			<div class="span8">
 				<div id="event_list" class="clearfix">
 					<ul id="locationWrapper">
 						<!-- <li class="clearfix">
@@ -36,11 +36,42 @@
 				</div><!--/event_list-->
 			</div><!--/span9-->
 
-			<div class="span3">
+			<div class="span4">
 				<div class="sidebar">
 					<div class="sidebar_block">
 						<p>Ken je een locatie die je graag in deze lijst terug zou willen zien? Laat het ons weten!</p>
 						<a href="{{ URL::to_route('location_advice') }}" class="btn btn-small">Geef advies</a>
+					</div>
+					<div class="sidebar_block">
+						<h4>Filter op locatie</h4>
+						{{ Form::open('tba', 'POST', array('class' => 'form-vertical', 'style' => 'margin:0')) }}
+
+						{{ Form::token() }}
+
+						<div class="control-group">
+							<!-- {{ Form::label('filter_location', '', array('class' => 'control-label')) }} -->
+							<div class="controls">
+								<div class="input-append" style="width:90%">
+									<input class="span12" id="filter_location-input" type="text" name="filter_location-input" placeholder="Wat is uw startadres?">
+									<span class="add-on" id="filter_location-get-geolocation"><i class="icon-screenshot"></i></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="control-group">
+							{{ Form::label('filter_location-range', 'Maximale afstand', array('class' => 'control-label')) }}
+							<div class="controls">
+								<input id="filter_location-range" name="filter_location-range" class="span9" type="range" min="1" max="500" value="1" /><span id="filter_location-range-value">1 km</span>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<div class="controls">
+								{{ Form::submit('Filter', array('class' => 'btn btn-primary', 'id' => 'btn_getDirections')) }}
+							</div>
+						</div>
+
+						{{ Form::close() }}
 					</div>
 					<div class="sidebar_block">
 						<h4>Filters</h4>
@@ -128,4 +159,38 @@
 
 @include('handlebar-templates/locationrow')
 
+@endsection
+
+@section('extra_scripts')
+<script>
+$(document).ready(function() {
+	$("#filter_location-range").change( function() {
+    $("#filter_location-range-value").html($(this).val() + ' km');
+	});
+
+	$('#filter_location-get-geolocation').on('click', function() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position) {
+
+				var geocoder = new google.maps.Geocoder();
+				var latLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+
+				if (geocoder) {
+					geocoder.geocode({'latLng': latLng}, function (results, status) {
+						if (status == google.maps.GeocoderStatus.OK) {
+							$('#filter_location-input').val(results[0].formatted_address);
+						} else {
+							console.log("Geocoding failed: " + status);
+						}
+					});
+				}
+
+			});
+		} else {
+			alert('Geolocation is not supported by this browser.');
+		}
+
+	});
+});
+</script>
 @endsection
