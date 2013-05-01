@@ -24,7 +24,6 @@ Route::get('profile/(:num)/comments',	array('as' => 'show_profile_comments', 			
 Route::get('profile/(:num)/events',		array('as' => 'show_profile_events', 			'uses' => 'users@showEvents'));
 Route::get('profile/(:num)/messages',	array('as' => 'show_profile_messages', 			'uses' => 'users@showMessages'));
 
-
 Route::get('locations', 					array('as' => 'locations', 'uses' => 'locations@index'));
 Route::get('location/(:num)', 				array('as' => 'location', 'uses' => 'locations@show'));
 Route::get('location/(:num)/thumb/(:any)', 	array('as' => 'location_thumbAction', 'uses' => 'locations@thumbsAction'));
@@ -34,9 +33,21 @@ Route::post('location/feedback/comment', 	array('as' => 'location_comment_feedba
 Route::get('location/advice', 				array('as' => 'location_advice', 'uses' => 'locations@takeAdvice'));
 Route::post('location/advice', 				array('as' => 'location_advice_post', 'uses' => 'locations@takeAdvice', 'before' => 'auth'));
 
+Route::get('news', 				array('as' => 'news', 'uses' => 'news@index'));
+Route::get('news/(:num)/edit', 	array('as' => 'news_edit', 'uses' => 'news@edit'));
+Route::put('news/update', 		array('as' => 'news_update', 'uses' => 'news@update'));
+Route::get('news/manage', 		array('as' => 'news_manage', 'uses' => 'news@manage'));
+Route::get('news/create', 		array('as' => 'news_create', 'uses' => 'news@new'));
+Route::post('news/create', 		array('as' => 'news_create_post', 'uses' => 'news@create'));
+Route::get('news/(:num)', 		array('as' => 'news_show', 'uses' => 'news@show'));
+
 Route::get('events', 						array('as' => 'events', 'uses' => 'events@index'));
 
-Route::get('beheer', array('as' => 'dashboard', 'uses' => 'administration@index'));
+Route::get('admin', 			array('as' => 'dashboard', 'uses' => 'administration@index'));
+
+
+
+
 
 
 

@@ -12,7 +12,10 @@ class Home_Controller extends Base_Controller {
 		Asset::container('footer')->add('location_filter', 'js/location_filter.js', 'jquery');
 		Asset::container('footer')->add('home_index', 'js/home.index.js', array('googlemaps', 'jquery', 'maps', 'maps_locations'));
 
-		return View::make('home.index');
+		$articles = Article::get_amount_published(5);
+
+		return View::make('home.index')
+			-> with('articles', $articles);
 	}
 
 	public function get_contact(){

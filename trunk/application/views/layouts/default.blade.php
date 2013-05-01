@@ -37,6 +37,7 @@
 				<div class="nav-collapse collapse">
 					<ul class="nav">
 						<li><a href="{{ URL::to_route('home') }}">Home</a></li>
+						<li><a href="{{ URL::to_route('news') }}">Nieuws</a></li>
 						<li><a href="{{ URL::to_route('locations') }}">Locatie's</a></li>
 						<li><a href="{{ URL::to_route('events') }}">Evenementen</a></li>
 						<li><a href="{{ URL::to_route('contact') }}">Contact</a></li>
