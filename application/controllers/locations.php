@@ -46,8 +46,11 @@ class Locations_Controller extends Base_Controller {
 					$temp['types'] = $temp2;
 					$jsonLocs[] = $temp;
 				}
+
 				return json_encode($jsonLocs);
+
 			} else {
+
 				foreach ($locations as $key => $value) {
 					$temp['location_id'] = $value->id;
 

@@ -135,6 +135,11 @@
 
 					  <div class="tab-pane" id="taxi">
 
+					  	<p>Wij raden De Roo Taxi en Autoverhuur aan voor al uw taxi-gerelateerde wensen.</p>
+					  	<img src="{{ URL::to_asset('img/de-roo-logo.png') }}" alt="De Roo" width="190" height="49" />
+					  	<br />
+					  	<p><b>Telefoonnummer: </b> 0174 624441</p>
+
 					  </div>
 
 					  <div class="tab-pane" id="feedback">

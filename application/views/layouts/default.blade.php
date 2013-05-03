@@ -52,9 +52,9 @@
 						@endif
 					</ul>
 				</div><!--/.nav-collapse -->
-			</div>
-		</div>
-	</div>
+			</div><!--/container-->
+		</div><!--/navbar-inner-->
+	</div><!--/navbar navbar-fixed-top-->
 
 	<div id="content">
 

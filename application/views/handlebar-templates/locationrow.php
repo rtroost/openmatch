@@ -2,11 +2,11 @@
 
 <li id="{{location_id}}">
 	<a href="{{link}}">
-		<div class="event-list-body">
-			<span class="event-list-body-title">
+		<div class="location-list-body">
+			<span class="location-list-body-title">
 				{{title}}
 			</span>
-			<span class="event-list-body-metadata">
+			<span class="location-list-body-metadata">
 
 				Type:
 				{{#each types}}
