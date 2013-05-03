@@ -15,7 +15,7 @@
 		<div class="row-fluid">
 
 			<div class="span8">
-				<div id="event_list" class="clearfix">
+				<div id="location_list" class="clearfix">
 					<ul id="locationWrapper">
 						<!-- <li class="clearfix">
 							<a href="#">
