@@ -17,8 +17,8 @@ Route::put('user',		 		array('uses' => 'users@update', 'before' => 'csrf|auth'		
 Route::delete('user/(:num)', 	array('uses' => 'users@destroy'													));
 
 Route::get('profile',					array('as' => 'user_profile', 					'uses' => 'users@profile', 'before' => 'auth'));
-Route::put('profile/update/data', 		array('as' => 'user_profile_updateData', 		'uses' => 'users@updateData', 'before' => 'auth'));
-Route::put('profile/update/password', 	array('as' => 'user_profile_updatePassword', 	'uses' => 'users@updatePassword', 'before' => 'auth'));
+Route::put('profile/update/data', 		array('as' => 'user_profile_updateData', 		'uses' => 'users@updateData', 'before' => 'csrf|auth'));
+Route::put('profile/update/password', 	array('as' => 'user_profile_updatePassword', 	'uses' => 'users@updatePassword', 'before' => 'csrf|auth'));
 Route::get('profile/(:num)',			array('as' => 'show_profile', 					'uses' => 'users@show'));
 Route::get('profile/(:num)/comments',	array('as' => 'show_profile_comments', 			'uses' => 'users@showComments'));
 Route::get('profile/(:num)/events',		array('as' => 'show_profile_events', 			'uses' => 'users@showEvents'));
@@ -27,21 +27,23 @@ Route::get('profile/(:num)/messages',	array('as' => 'show_profile_messages', 			
 Route::get('locations', 					array('as' => 'locations', 'uses' => 'locations@index'));
 Route::get('location/(:num)', 				array('as' => 'location', 'uses' => 'locations@show'));
 Route::get('location/(:num)/thumb/(:any)', 	array('as' => 'location_thumbAction', 'uses' => 'locations@thumbsAction'));
-Route::post('location/(:num)/comment', 		array('as' => 'location_post_comment', 'uses' => 'locations@comment'));
-Route::post('location/(:num)/feedback', 	array('as' => 'location_feedback', 'uses' => 'locations@feedback', 'before' => 'auth'));
-Route::post('location/feedback/comment', 	array('as' => 'location_comment_feedback', 'uses' => 'locations@feedback_comment', 'before' => 'auth'));
+Route::post('location/(:num)/comment', 		array('as' => 'location_post_comment', 'uses' => 'locations@comment', 'before' => 'csrf|auth'));
+Route::post('location/(:num)/feedback', 	array('as' => 'location_feedback', 'uses' => 'locations@feedback', 'before' => 'csrf|auth'));
+Route::post('location/feedback/comment', 	array('as' => 'location_comment_feedback', 'uses' => 'locations@feedback_comment', 'before' => 'csrf|auth'));
 Route::get('location/advice', 				array('as' => 'location_advice', 'uses' => 'locations@takeAdvice'));
-Route::post('location/advice', 				array('as' => 'location_advice_post', 'uses' => 'locations@takeAdvice', 'before' => 'auth'));
+Route::post('location/advice', 				array('as' => 'location_advice_post', 'uses' => 'locations@takeAdvice', 'before' => 'csrf|auth'));
 
 Route::get('news', 				array('as' => 'news', 'uses' => 'news@index'));
 Route::get('news/(:num)/edit', 	array('as' => 'news_edit', 'uses' => 'news@edit'));
-Route::put('news/update', 		array('as' => 'news_update', 'uses' => 'news@update'));
+Route::put('news/update', 		array('as' => 'news_update', 'uses' => 'news@update', 'before' => 'csrf|auth'));
 Route::get('news/manage', 		array('as' => 'news_manage', 'uses' => 'news@manage'));
 Route::get('news/create', 		array('as' => 'news_create', 'uses' => 'news@new'));
-Route::post('news/create', 		array('as' => 'news_create_post', 'uses' => 'news@create'));
+Route::post('news/create', 		array('as' => 'news_create_post', 'uses' => 'news@create', 'before' => 'csrf|auth'));
 Route::get('news/(:num)', 		array('as' => 'news_show', 'uses' => 'news@show'));
 
-Route::get('events', 						array('as' => 'events', 'uses' => 'events@index'));
+Route::get('events', 			array('as' => 'events', 'uses' => 'events@index'));
+Route::get('events/create', 	array('as' => 'events_create', 'uses' => 'events@new'));
+Route::post('events/new', 		array('as' => 'events_create_post', 'uses' => 'events@create', 'before' => 'csrf|auth'));
 
 Route::get('admin', 			array('as' => 'dashboard', 'uses' => 'administration@index'));
 

@@ -17,7 +17,7 @@ class Events_Controller extends Base_Controller
 	}
 
 	public function get_new(){
-
+		return View::make('events.new');
 	}
 
 	public function post_create(){
