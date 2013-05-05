@@ -44,6 +44,7 @@ class Locations_Controller extends Base_Controller {
 						$temp2[] = $value2->naam;
 					}
 					$temp['types'] = $temp2;
+					$temp['visible'] = true;
 					$jsonLocs[] = $temp;
 				}
 
@@ -63,6 +64,12 @@ class Locations_Controller extends Base_Controller {
 						$temp2[] = $value2->naam;
 					}
 					$temp['types'] = $temp2;
+
+					$temp['lat'] = $value->latitude;
+					$temp['lng'] = $value->longitude;
+
+					$temp['visible'] = true;
+
 					$jsonLocs[] = $temp;
 				}
 				return json_encode($jsonLocs);

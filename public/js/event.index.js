@@ -15,7 +15,8 @@ $(document).ready(function() {
 				$('ul#locationfilter'),			// geef de ul met de chekboxes mee
 				locations,						// geef alle locations mee
 				hideRow,						// geef een weghaal functie mee
-				showRow							// geen een weergeef functie mee
+				showRow,						// geef een weergeef functie mee
+				$("#filter_location-range")// geef het range filter mee
 			);
 
 		}

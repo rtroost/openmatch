@@ -61,7 +61,7 @@
 						<div class="control-group">
 							{{ Form::label('filter_location-range', 'Maximale afstand', array('class' => 'control-label')) }}
 							<div class="controls">
-								<input id="filter_location-range" name="filter_location-range" class="span9" type="range" min="1" max="500" value="1" /><span id="filter_location-range-value">1 km</span>
+								<input id="filter_location-range" name="filter_location-range" class="span9" type="range" min="1" max="100" value="1" /><span id="filter_location-range-value">1 km</span>
 							</div>
 						</div>
 
@@ -164,8 +164,12 @@
 @section('extra_scripts')
 <script>
 $(document).ready(function() {
+
+	window.curPlaceLat = undefined;
+	window.curPlaceLng = undefined;
+
 	$("#filter_location-range").change( function() {
-    $("#filter_location-range-value").html($(this).val() + ' km');
+		$("#filter_location-range-value").html($(this).val() + ' km');
 	});
 
 	$('#filter_location-get-geolocation').on('click', function() {
@@ -174,6 +178,10 @@ $(document).ready(function() {
 
 				var geocoder = new google.maps.Geocoder();
 				var latLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+				curPlaceLat = latLng['jb'];
+				curPlaceLng = latLng['kb'];
+				console.log("Lat = " + latLng['jb']);
+				console.log("Lng = " + latLng['kb']);
 
 				if (geocoder) {
 					geocoder.geocode({'latLng': latLng}, function (results, status) {
@@ -191,6 +199,8 @@ $(document).ready(function() {
 		}
 
 	});
+
+
 });
 </script>
 @endsection
