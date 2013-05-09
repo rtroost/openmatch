@@ -94,7 +94,7 @@ h1,h2,h3,h4,h5,h6 {
 /**************/
 
 .navbar-inner {
-	background: #f1f1f1;
+	background: #f6f6f6;
 	border-bottom: 1px solid #d4d4d4;;
 }
 
@@ -648,3 +648,6 @@ table {
 	color: #18a3d3;
 	margin-right: 6px;
 }
+
+
+

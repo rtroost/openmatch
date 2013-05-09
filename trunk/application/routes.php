@@ -33,19 +33,22 @@ Route::post('location/feedback/comment', 	array('as' => 'location_comment_feedba
 Route::get('location/advice', 				array('as' => 'location_advice', 'uses' => 'locations@takeAdvice'));
 Route::post('location/advice', 				array('as' => 'location_advice_post', 'uses' => 'locations@takeAdvice', 'before' => 'csrf|auth'));
 
-Route::get('news', 				array('as' => 'news', 'uses' => 'news@index'));
-Route::get('news/(:num)/edit', 	array('as' => 'news_edit', 'uses' => 'news@edit'));
-Route::put('news/update', 		array('as' => 'news_update', 'uses' => 'news@update', 'before' => 'csrf|auth'));
-Route::get('news/manage', 		array('as' => 'news_manage', 'uses' => 'news@manage'));
-Route::get('news/create', 		array('as' => 'news_create', 'uses' => 'news@new'));
-Route::post('news/create', 		array('as' => 'news_create_post', 'uses' => 'news@create', 'before' => 'csrf|auth'));
-Route::get('news/(:num)', 		array('as' => 'news_show', 'uses' => 'news@show'));
+Route::get('news', 						array('as' => 'news', 				'uses' => 'news@index'));
+Route::get('news/(:num)/edit'		, 	array('as' => 'news_edit', 			'uses' => 'news@edit'));
+Route::put('news/update', 				array('as' => 'news_update', 		'uses' => 'news@update', 'before' => 'csrf|auth'));
+Route::get('news/manage', 				array('as' => 'news_manage', 		'uses' => 'news@manage'));
+Route::get('news/create', 				array('as' => 'news_create', 		'uses' => 'news@new'));
+Route::post('news/create', 				array('as' => 'news_create_post', 	'uses' => 'news@create', 'before' => 'csrf|auth'));
+Route::get('news/(:num)', 				array('as' => 'news_show', 			'uses' => 'news@show'));
 
-Route::get('events', 			array('as' => 'events', 'uses' => 'events@index'));
-Route::get('events/create', 	array('as' => 'events_create', 'uses' => 'events@new'));
-Route::post('events/new', 		array('as' => 'events_create_post', 'uses' => 'events@create', 'before' => 'csrf|auth'));
+Route::get('events', 					array('as' => 'events', 			'uses' => 'events@index'));
+Route::get('events/create', 			array('as' => 'events_create', 		'uses' => 'events@new', 'before' => 'auth'));
+Route::post('events/new', 				array('as' => 'events_create_post', 'uses' => 'events@create', 'before' => 'csrf|auth'));
+Route::get('events/(:num)', 			array('as' => 'event_show', 		'uses' => 'events@show'));
+Route::get('events/(:num)/sign_up', 	array('as' => 'event_signup',		'uses' => 'events@signup', 'before' => 'auth'));
+Route::get('events/(:num)/sign_off', 	array('as' => 'event_signoff', 		'uses' => 'events@signoff', 'before' => 'auth'));
 
-Route::get('admin', 			array('as' => 'dashboard', 'uses' => 'administration@index'));
+Route::get('admin', 					array('as' => 'dashboard', 			'uses' => 'administration@index'));
 
 
 
