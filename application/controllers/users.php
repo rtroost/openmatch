@@ -41,6 +41,7 @@ class Users_Controller extends Base_Controller {
 			User::create(array(
 				'name' => Input::get('name'),
 				'surname' => Input::get('surname'),
+				'prefix' => Input::get('prefix'),
 				'email' => Input::get('email'),
 				'password' => Hash::make(Input::get('password')),
 				'address' => Input::get('address'),
@@ -84,9 +85,10 @@ class Users_Controller extends Base_Controller {
 				-> with_errors($validation);
 		} else {
 
-			User::update(Input::get('id'), array(
+			User::update(Input::get('user_id'), array(
 				'name' => Input::get('name'),
 				'surname' => Input::get('surname'),
+				'prefix' => Input::get('prefix'),
 				'address' => Input::get('address'),
 				'zipcode' => Input::get('zipcode'),
 				'city' => Input::get('city'),
@@ -113,13 +115,8 @@ class Users_Controller extends Base_Controller {
 				-> with_errors($validation);
 		} else {
 
-			User::update(Input::get('id'), array(
-				'name' => Input::get('name'),
-				'surname' => Input::get('surname'),
-				'address' => Input::get('address'),
-				'zipcode' => Input::get('zipcode'),
-				'city' => Input::get('city'),
-				'country' => Input::get('country')
+			User::update(Input::get('user_id'), array(
+				'password' => Hash::make(Input::get('password')),
 			));
 
 			return Redirect::to_route('user_profile')

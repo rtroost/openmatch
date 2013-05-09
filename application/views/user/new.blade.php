@@ -71,6 +71,14 @@
 								</div>
 							</div>
 
+							<div class="control-group {{ ($errors->first('prefix') ? 'error' : '') }}">
+								{{ Form::label('prefix', 'Prefix', array('class' => 'control-label')) }}
+								<div class="controls">
+									{{ Form::text('prefix', Input::old('prefix')) }}
+									{{ $errors->first('prefix', '<span class="help-inline">:message</span>') }}
+								</div>
+							</div>
+
 							<div class="control-group {{ ($errors->first('address') ? 'error' : '') }}">
 								{{ Form::label('address', 'Adres', array('class' => 'control-label')) }}
 								<div class="controls">

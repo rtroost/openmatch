@@ -45,6 +45,14 @@
 						</div>
 					</div>
 
+					<div class="control-group {{ ($errors->first('prefix') ? 'error' : '') }}">
+						{{ Form::label('prefix', 'Prefix', array('class' => 'control-label')) }}
+						<div class="controls">
+							{{ Form::text('prefix', Input::old('prefix', $userdata->prefix)) }}
+							{{ $errors->first('prefix', '<span class="help-inline">:message</span>') }}
+						</div>
+					</div>
+
 					<div class="control-group {{ ($errors->first('address') ? 'error' : '') }}">
 						{{ Form::label('address', 'Adres', array('class' => 'control-label')) }}
 						<div class="controls">
@@ -83,6 +91,8 @@
 						</div>
 					</div>
 
+					{{ Form::hidden('user_id', $userdata -> id) }}
+
 				{{ Form::close() }}
 			</div>
 			<div class="span6">
@@ -118,6 +128,8 @@
 							{{ Form::submit('Verander wachtwoord', array('class' => 'btn btn-primary')) }}
 						</div>
 					</div>
+
+					{{ Form::hidden('user_id', $userdata -> id) }}
 
 				{{ Form::close() }}
 			</div>
