@@ -28,4 +28,33 @@ class UserEvent extends Basemodel {
 	public function signups() {
 		return $this -> has_many('EventSignup', 'event_id');
 	}
+
+	public static function get_recommended($limit = NULL) {
+		return static::where('isFeatured', '=', true)
+			-> take($limit)
+			-> get();
+	}
+
+	public static function get_recent($limit = NULL) {
+		return static::where('participation_end_stamp', '>', strtotime('now'))
+			-> order_by('created_at', 'DESC')
+			-> take($limit)
+			-> get();
+	}
+
+	public static function get_ending($limit = NULL) {
+		return static::where('participants_percentage', '<', 100)
+			-> where('participation_end_stamp', '>', strtotime('now'))
+			-> order_by('participation_end_stamp', 'ASC')
+			-> take($limit)
+			-> get();
+	}
+
+	public static function get_nearfull($limit = NULL) {
+		return static::where('participation_end_stamp', '>', strtotime('now'))
+			// -> where('participants_percentage', '>', 70)
+			-> order_by('participants_percentage', 'DESC')
+			-> take($limit)
+			-> get();
+	}
 }

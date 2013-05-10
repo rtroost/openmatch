@@ -52,7 +52,39 @@ Route::get('admin', 					array('as' => 'dashboard', 			'uses' => 'administration
 
 
 
+Route::get('testerdetest', function() {
 
+	die("<h1>ALLEEN RUNNEN ALS ADRESSEN GEUPDATE MOETEN WORDEN!</h1>");
+
+	$locations = Location::all();
+
+	foreach($locations as $location)
+	{
+		// $address = $location -> number . ', ' . $location -> postalcode . ' ' .  $location -> city . ', The Netherlands';
+		// $url = 'http://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($address) . '&sensor=false';
+		// $location_data = json_decode(file_get_contents($url));
+
+		// dd($location_data -> results[0] -> formatted_address);
+
+
+
+		$url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' . $location -> latitude . ',' . $location -> longitude . '&sensor=false';
+		$location_data = json_decode(file_get_contents($url));
+
+		// dd($location_data -> results[0] -> formatted_address);
+
+
+
+
+		// $location -> postalcode = $location_data -> results[0] -> address_components[9] -> long_name;
+		if($location_data -> status == "OK")
+		{
+			$location -> formatted_address = $location_data -> results[0] -> formatted_address;
+			$location -> save();
+		}
+	}
+
+});
 
 
 
