@@ -7,7 +7,6 @@
 				{{title}}
 			</span>
 			<span class="location-list-body-metadata">
-
 				Type:
 				{{#each types}}
 					{{this}}

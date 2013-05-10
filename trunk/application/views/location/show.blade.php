@@ -43,7 +43,7 @@
 								@endif
 								<tr>
 									<td>Adres:</td>
-									<td>{{ $location->street }} {{ $location->number }}</td>
+									<td>{{ $location->formatted_address }}</td>
 								</tr>
 								<tr>
 									<td>Postcode:</td>

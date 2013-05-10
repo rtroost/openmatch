@@ -9,7 +9,18 @@ class Events_Controller extends Base_Controller
 	}
 
 	public function get_index() {
-		return View::make('events.index');
+
+		$events_recommended = UserEvent::get_recommended(10);
+		$events_recent = UserEvent::get_recent(10);
+		$events_ending = UserEvent::get_ending(10);
+		$events_nearfull = UserEvent::get_nearfull(10);
+
+
+		return View::make('events.index')
+			-> with('events_recommended', $events_recommended)
+			-> with('events_recent', $events_recent)
+			-> with('events_ending', $events_ending)
+			-> with('events_nearfull', $events_nearfull);
 	}
 
 	public function get_show($event_id) {
@@ -96,12 +107,24 @@ class Events_Controller extends Base_Controller
 			'event_id' => $id,
 		));
 
+		$percentage_full = round(((count($event -> signups) + 1 / $event -> max_participants) * 100), 0);
+
+		$event -> participants_percentage = $percentage_full;
+		$event -> save();
+
 		return Redirect::to_route('event_show', $id)
 			-> with('message', 'Je bent nu aangemeld voor dit evenement!');
 	}
 
 	public function get_signoff($id){
+
 		EventSignup::where('user_id', '=', Auth::user() -> id) -> where('event_id', '=', $id) -> delete();
+
+		$event = UserEvent::with('signups') -> where('id', '=', $id) -> first();
+
+		$percentage_full = round(((count($event -> signups) / $event -> max_participants) * 100), 0);
+		$event -> participants_percentage = $percentage_full;
+		$event -> save();
 
 		return Redirect::to_route('event_show', $id)
 			-> with('message', 'Je bent nu afgemeld van dit evenement.');

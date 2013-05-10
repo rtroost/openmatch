@@ -18,7 +18,6 @@
 
 				<a href="{{ URL::to_route('events_create') }}" class="btn">Aanmaken</a>
 
-
 			</div>
 
 		</div>
@@ -26,100 +25,44 @@
 		<div class="row-fluid">
 
 			<div class="span6">
+
 				<h3>Aanbevolen</h3>
+
+				@if($events_recommended)
 				<table class="table table-striped eventList">
 					<tbody>
+						@foreach($events_recommended as $event)
 						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #1</a></td>
-							<td>13 jan 2013</td>
+							<td><i class="icon-angle-right"></i><a href="{{ URL::to_route('event_show', $event -> id) }}">{{ $event -> title }}</a></td>
+							<td>{{ date('j M Y', strtotime($event -> event_start_stamp)) }}</td>
 						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #2</a></td>
-							<td>13 jan 2013</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #3</a></td>
-							<td>13 jan 2013</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #4</a></td>
-							<td>13 jan 2013</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #5</a></td>
-							<td>13 jan 2013</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #6</a></td>
-							<td>13 jan 2013</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #7</a></td>
-							<td>13 jan 2013</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #8</a></td>
-							<td>13 jan 2013</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #9</a></td>
-							<td>13 jan 2013</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #10</a></td>
-							<td>13 jan 2013</td>
-						</tr>
+						@endforeach
 					</tbody>
 				</table>
+				@else
+				<p>Er zijn geen aanbevelingen te maken op dit moment.</p>
+				@endif
 
 			</div><!--/span6-->
 
 			<div class="span6">
+
 				<h3>Recent toegevoegd</h3>
+
+				@if($events_recent)
 				<table class="table table-striped eventList">
 					<tbody>
+						@foreach($events_recent as $event)
 						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #1</a></td>
-							<td>13m geleden</td>
+							<td><i class="icon-angle-right"></i><a href="{{ URL::to_route('event_show', $event -> id) }}">{{ $event -> title }}</a></td>
+							<td>{{ Helpers::get_timeago( strtotime($event -> created_at) ) }}</td>
 						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #2</a></td>
-							<td>13m geleden</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #3</a></td>
-							<td>13m geleden</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #4</a></td>
-							<td>13m geleden</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #5</a></td>
-							<td>13m geleden</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #6</a></td>
-							<td>13m geleden</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #7</a></td>
-							<td>13m geleden</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #8</a></td>
-							<td>13m geleden</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #9</a></td>
-							<td>13m geleden</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #10</a></td>
-							<td>13m geleden</td>
-						</tr>
+						@endforeach
 					</tbody>
 				</table>
+				@else
+				<p>Er zijn geen evenementen om te tonen.</p>
+				@endif
 
 			</div><!--/span6-->
 
@@ -128,99 +71,44 @@
 		<div class="row-fluid">
 
 			<div class="span6">
+
 				<h3>Spoedig ten einde</h3>
+
+				@if($events_ending)
 				<table class="table table-striped eventList">
 					<tbody>
+						@foreach($events_ending as $event)
 						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #1</a></td>
-							<td>2:59</td>
+							<td><i class="icon-angle-right"></i><a href="{{ URL::to_route('event_show', $event -> id) }}">{{ $event -> title }}</a></td>
+							<td>{{ Helpers::get_timetogo(strtotime($event -> participation_end_stamp)) }}</td>
 						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #2</a></td>
-							<td>2:59</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #3</a></td>
-							<td>2:59</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #4</a></td>
-							<td>2:59</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #5</a></td>
-							<td>2:59</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #6</a></td>
-							<td>2:59</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #7</a></td>
-							<td>2:59</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #8</a></td>
-							<td>2:59</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #9</a></td>
-							<td>2:59</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #10</a></td>
-							<td>2:59</td>
-						</tr>
+						@endforeach
 					</tbody>
 				</table>
+				@else
+				<p>Er zijn geen evenementen die bijna ten einde zijn.</p>
+				@endif
+
 			</div><!--/span6-->
 
 			<div class="span6">
+
 				<h3>Bijna vol</h3>
+
+				@if($events_nearfull)
 				<table class="table table-striped eventList">
 					<tbody>
+						@foreach($events_nearfull as $event)
 						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #1</a></td>
-							<td>12 van 14 bezet</td>
+							<td><i class="icon-angle-right"></i><a href="{{ URL::to_route('event_show', $event -> id) }}">{{ $event -> title }}</a></td>
+							<td>{{ $event -> participants_percentage }}% vol</td>
 						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #2</a></td>
-							<td>12 van 14 bezet</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #3</a></td>
-							<td>12 van 14 bezet</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #4</a></td>
-							<td>12 van 14 bezet</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #5</a></td>
-							<td>12 van 14 bezet</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #6</a></td>
-							<td>12 van 14 bezet</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #7</a></td>
-							<td>12 van 14 bezet</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #8</a></td>
-							<td>12 van 14 bezet</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #9</a></td>
-							<td>12 van 14 bezet</td>
-						</tr>
-						<tr>
-							<td><i class="icon-angle-right"></i><a href="#">Evenement #10</a></td>
-							<td>12 van 14 bezet</td>
-						</tr>
+						@endforeach
 					</tbody>
 				</table>
+				@else
+				<p>Er zijn geen evenementen die bijna vol zitten.</p>
+				@endif
 
 			</div><!--/span6-->
 
