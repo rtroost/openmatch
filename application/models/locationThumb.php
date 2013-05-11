@@ -1,6 +1,6 @@
 <?php
 
-class locationThumb extends Basemodel {
+class LocationThumb extends Basemodel {
 
 	public static $timestamps = false;
 
@@ -14,6 +14,13 @@ class locationThumb extends Basemodel {
 
 	public function user() {
 		return $this -> belongs_to('User');
+	}
+
+	public static function get_popular($limit = NULL)
+	{
+		// SELECT locations.*, count(locationthumbs.positive) AS positive_thumbs FROM `locations`,`locationthumbs` WHERE `locations`.id = `locationthumbs`.location_id GROUP BY locationthumbs.id ORDER BY positive_thumbs
+		return DB::query('SELECT locations.*, count(locationthumbs.positive) AS positive_thumbs FROM `locations`,`locationthumbs` WHERE `locations`.id = `locationthumbs`.location_id GROUP BY locationthumbs.id ORDER BY positive_thumbs LIMIT 0,5');
+
 	}
 
 }
