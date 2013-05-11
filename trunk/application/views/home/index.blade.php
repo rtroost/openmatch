@@ -144,46 +144,29 @@
 				<h3>Populair</h3>
 				<table class="styledTable" id="fpPopular">
 					<tbody>
+						@for($i = 0; $i < count($popular_articles); $i++)
+						@if($i == 0)
 						<tr class="styledTable-position-highlight">
-							<td class="styledTable-position styledTable-position-first">1</td>
-							<td>
-								Pathé Schouwburgplein
-								<span class="styledTable-tags">Type: Restaurant - Tags: Groepsevenement</span>
-							</td>
-							<td class="styledTable-rating"><span href="" class="styledTable-rating-stars" style="width: 150px"></span></td>
-						</tr>
+						@else
 						<tr>
-							<td class="styledTable-position styledTable-position-second">2</td>
+						@endif
+							@if($i == 0)
+							<td class="styledTable-position styledTable-position-first">{{ $i + 1 }}</td>
+							@elseif($i == 1)
+							<td class="styledTable-position styledTable-position-second">{{ $i + 1 }}</td>
+							@elseif($i == 2)
+							<td class="styledTable-position styledTable-position-third">{{ $i + 1 }}</td>
+							@else
+							<td>{{ $i + 1 }}</td>
+							@endif
 							<td>
-								Pathé Schouwburgplein
-								<span class="styledTable-tags">Type: Restaurant - Tags: Groepsevenement</span>
+								{{ $popular_articles[$i] -> name }}
+								<span class="styledTable-tags">{{ $popular_articles[$i] -> formatted_address }}</span>
 							</td>
-							<td class="styledTable-rating"><span href="" class="styledTable-rating-stars" style="width: 135px"></span></td>
+							<td><a href="{{ URL::to_route('location', $popular_articles[$i] -> id)}}">Meer info</a>
+							<!-- <td class="styledTable-rating"><span href="" class="styledTable-rating-stars" style="width: 150px"></span></td> -->
 						</tr>
-						<tr>
-							<td class="styledTable-position styledTable-position-third">3</td>
-							<td>
-								Pathé Schouwburgplein
-								<span class="styledTable-tags">Type: Restaurant - Tags: Groepsevenement</span>
-							</td>
-							<td class="styledTable-rating"><span href="" class="styledTable-rating-stars" style="width: 120px"></span></td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>
-								Pathé Schouwburgplein
-								<span class="styledTable-tags">Type: Restaurant - Tags: Groepsevenement</span>
-							</td>
-							<td class="styledTable-rating"><span href="" class="styledTable-rating-stars" style="width: 75px"></span></td>
-						</tr>
-						<tr>
-							<td>5</td>
-							<td>
-								Pathé Schouwburgplein
-								<span class="styledTable-tags">Type: Restaurant - Tags: Groepsevenement</span>
-							</td>
-							<td class="styledTable-rating"><span href="" class="styledTable-rating-stars" style="width: 30px"></span></td>
-						</tr>
+						@endfor
 					</tbody>
 				</table>
 			</div><!--/.span6-->

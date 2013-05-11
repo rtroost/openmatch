@@ -14,8 +14,11 @@ class Home_Controller extends Base_Controller {
 
 		$articles = Article::get_amount_published(5);
 
+		$popular_articles = LocationThumb::get_popular(5);
+
 		return View::make('home.index')
-			-> with('articles', $articles);
+			-> with('articles', $articles)
+			-> with('popular_articles', $popular_articles);
 	}
 
 	public function get_contact(){
