@@ -291,7 +291,7 @@
 
 						<h3>Beoordeling</h3>
 
-						<p>Dit is een eenmalige beoordeling die je kunt geven, dus wees eerlijk!
+						<p>Dit is een eenmalige beoordeling die je kunt geven en helpt de website nauwkeuriger advies te geven, dus wees eerlijk!
 
 						<div class="row-fluid">
 
