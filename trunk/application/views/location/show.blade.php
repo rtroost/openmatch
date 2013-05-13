@@ -247,41 +247,175 @@
 
 				</div><!--/comment-container-->
 
-				<div id="comment_post">
+				<div id="comment_post" class="wrapper clearfix">
 
-					<h3>Geef je oordeel of discusseer mee!</h3>
+					<div class="span8">
 
-					@if( ! Auth::check())
+						<h3>Geef je oordeel of discusseer mee!</h3>
 
-					<div class="comment_post-notLoggedIn">
-						Je moet eerst {{ HTML::link_to_route('login', 'aanmelden') }} of {{ HTML::link_to_route('register', 'registreren') }} om hier gebruik van te maken.
-					</div>
+						@if( ! Auth::check())
 
-					@else
-
-					{{ Form::open(URL::to_route('location_post_comment', $location -> id), 'POST', array('class' => 'form-verticle')) }}
-
-					{{ Form::token() }}
-
-					{{ Form::hidden('location_id', $location -> id) }}
-
-					<div class="control-group {{ ($errors->first('message_body') ? 'error' : '') }}">
-						{{ Form::label('message_body', 'Uw bericht', array('class' => 'control-label')) }}
-						<div class="controls">
-							{{ Form::textarea('message_body', Input::old('message_body'), array('class' => 'input-xxlarge')) }}
-							{{ $errors->first('message_body', '<span class="help-inline">:message</span>') }}
+						<div class="comment_post-notLoggedIn">
+							Je moet eerst {{ HTML::link_to_route('login', 'aanmelden') }} of {{ HTML::link_to_route('register', 'registreren') }} om hier gebruik van te maken.
 						</div>
-					</div>
 
-					<div class="control-group">
-						<div class="controls">
-							{{ Form::submit('Verstuur', array('class' => 'btn btn-large')) }}
+						@else
+
+						{{ Form::open(URL::to_route('location_post_comment', $location -> id), 'POST', array('class' => 'form-verticle')) }}
+
+						{{ Form::token() }}
+
+						{{ Form::hidden('location_id', $location -> id) }}
+
+						<div class="control-group {{ ($errors->first('message_body') ? 'error' : '') }}">
+							{{ Form::label('message_body', 'Uw bericht', array('class' => 'control-label')) }}
+							<div class="controls">
+								{{ Form::textarea('message_body', Input::old('message_body'), array('class' => 'span12')) }}
+								{{ $errors->first('message_body', '<span class="help-inline">:message</span>') }}
+							</div>
 						</div>
-					</div>
 
-					{{ Form::close() }}
+						<div class="control-group">
+							<div class="controls">
+								{{ Form::submit('Verstuur', array('class' => 'btn btn-large')) }}
+							</div>
+						</div>
 
-					@endif
+						{{ Form::close() }}
+
+						@endif
+
+					</div><!--/span8-->
+
+					<div class="span4">
+
+						<h3>Beoordeling</h3>
+
+						<div class="row-fluid">
+
+							<div class="span6">
+
+								<div class="rating">
+
+									<span class="label">Assistentie</span>
+
+									<div class="ratings-input">
+
+										<input type="radio" name="example" class="rating" value="1" />
+										<input type="radio" name="example" class="rating" value="2" />
+										<input type="radio" name="example" class="rating" value="3" />
+										<input type="radio" name="example" class="rating" value="4" />
+										<input type="radio" name="example" class="rating" value="5" />
+
+									</div>
+
+								</div><!--/rating-->
+
+								<div class="rating">
+
+									<span class="label">Sanitair</span>
+
+									<div class="ratings-input">
+
+										<input type="radio" name="example" class="rating" value="1" />
+										<input type="radio" name="example" class="rating" value="2" />
+										<input type="radio" name="example" class="rating" value="3" />
+										<input type="radio" name="example" class="rating" value="4" />
+										<input type="radio" name="example" class="rating" value="5" />
+
+									</div>
+
+								</div><!--/rating-->
+
+								<div class="rating">
+
+									<span class="label">Liften</span>
+
+									<div class="ratings-input">
+
+										<input type="radio" name="example" class="rating" value="1" />
+										<input type="radio" name="example" class="rating" value="2" />
+										<input type="radio" name="example" class="rating" value="3" />
+										<input type="radio" name="example" class="rating" value="4" />
+										<input type="radio" name="example" class="rating" value="5" />
+
+									</div>
+
+								</div><!--/rating-->
+
+								<div class="rating">
+
+									<span class="label">Entree</span>
+
+									<div class="ratings-input">
+
+										<input type="radio" name="example" class="rating" value="1" />
+										<input type="radio" name="example" class="rating" value="2" />
+										<input type="radio" name="example" class="rating" value="3" />
+										<input type="radio" name="example" class="rating" value="4" />
+										<input type="radio" name="example" class="rating" value="5" />
+
+									</div>
+
+								</div><!--/rating-->
+
+							</div><!--/span6-->
+
+							<div class="span6">
+
+								<div class="rating">
+
+									<span class="label">Aanlooproute</span>
+
+									<div class="ratings-input">
+
+										<input type="radio" name="example" class="rating" value="1" />
+										<input type="radio" name="example" class="rating" value="2" />
+										<input type="radio" name="example" class="rating" value="3" />
+										<input type="radio" name="example" class="rating" value="4" />
+										<input type="radio" name="example" class="rating" value="5" />
+
+									</div>
+
+								</div><!--/rating-->
+
+								<div class="rating">
+
+									<span class="label">Parkeren</span>
+
+									<div class="ratings-input">
+
+										<input type="radio" name="example" class="rating" value="1" />
+										<input type="radio" name="example" class="rating" value="2" />
+										<input type="radio" name="example" class="rating" value="3" />
+										<input type="radio" name="example" class="rating" value="4" />
+										<input type="radio" name="example" class="rating" value="5" />
+
+									</div>
+
+								</div><!--/rating-->
+
+								<div class="rating">
+
+									<span class="label">Berijkbaarheid</span>
+
+									<div class="ratings-input">
+
+										<input type="radio" name="example" class="rating" value="1" />
+										<input type="radio" name="example" class="rating" value="2" />
+										<input type="radio" name="example" class="rating" value="3" />
+										<input type="radio" name="example" class="rating" value="4" />
+										<input type="radio" name="example" class="rating" value="5" />
+
+									</div>
+
+								</div><!--/rating-->
+
+							</div><!--/span6-->
+
+						</div><!--/row-fluid-->
+
+					</div><!--/span4-->
 
 				</div>
 
@@ -298,6 +432,9 @@
 @section('extra_scripts')
 <script>
 $(document).ready(function() {
+
+	$('.ratings-input').rating();
+
 	$('#btn_getDirections').on('click', function(e) {
 
 		e.preventDefault(); // Prevent form from submitting
