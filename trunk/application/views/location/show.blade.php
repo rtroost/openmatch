@@ -291,6 +291,8 @@
 
 						<h3>Beoordeling</h3>
 
+						<p>Dit is een eenmalige beoordeling die je kunt geven, dus wees eerlijk!
+
 						<div class="row-fluid">
 
 							<div class="span6">
