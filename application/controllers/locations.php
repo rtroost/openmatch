@@ -86,6 +86,9 @@ class Locations_Controller extends Base_Controller {
 
 	public function get_show($index){
 
+		Asset::container('footer')->add('rating_js', 'js/vendor/rating.js');
+		Asset::add('rating_css', 'css/rating.css');
+
 		$location = Location::with('types') -> with('comments') -> where('id', '=' , $index) -> first();
 
 		if(Auth::check())
