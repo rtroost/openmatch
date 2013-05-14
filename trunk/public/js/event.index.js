@@ -16,7 +16,7 @@ $(document).ready(function() {
 				locations,						// geef alle locations mee
 				hideRow,						// geef een weghaal functie mee
 				showRow,						// geef een weergeef functie mee
-				$("#filter_location-range")// geef het range filter mee
+				$("#filter_location-range")		// geef het range filter mee
 			);
 
 		}
