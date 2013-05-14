@@ -85,15 +85,15 @@ var location_filter = {
 
 	filterRange : function() {
 		var self = location_filter,
-			$this = $(this);
+			$this = $(this);		
+
+		if(window.curPlaceLat == undefined && window.curPlaceLng == undefined){ return; }
 
 		// console.log(window.curPlaceLat);
 		// console.log(window.curPlaceLng);
 
-		if(window.curPlaceLat == undefined && window.curPlaceLng == undefined){ return; }
-
 		var filterKm = $this.val();
-		//console.log(filterKm);
+		// console.log(filterKm);
 
 		for (var i in self.locations) {
 			var location = self.locations[i];

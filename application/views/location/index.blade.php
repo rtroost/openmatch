@@ -178,10 +178,11 @@ $(document).ready(function() {
 
 				var geocoder = new google.maps.Geocoder();
 				var latLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-				curPlaceLat = latLng['jb'];
-				curPlaceLng = latLng['kb'];
-				console.log("Lat = " + latLng['jb']);
-				console.log("Lng = " + latLng['kb']);
+				//console.log(latLng);
+				curPlaceLat = latLng.lat();
+				curPlaceLng = latLng.lng();
+				console.log("Lat = " + latLng.lat());
+				console.log("Lng = " + latLng.lng());
 
 				if (geocoder) {
 					geocoder.geocode({'latLng': latLng}, function (results, status) {
