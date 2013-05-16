@@ -257,46 +257,75 @@ h1,h2,h3,h4,h5,h6 {
 	margin-bottom: 41px;
 }
 
-#map_overlay_inner_header {
-	height: 42px;
-	background: rgba(0,0,0,0.8);
-	border: 2px solid #000;
-	color: #eee;
-	pointer-events: auto;
-}
-
-#map_overlay_inner_header:hover {
-	background: rgba(0,0,0,0.9);
-}
-
-#map_overlay_inner_header h3 {
-	margin: 0px auto 2px;
-	text-align: center;
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
+#map_overlay_container {}
 
 #map_overlay_inner {
+	/*position: absolute;*/
 	background-color: rgba(0,0,0,0.8);
-	height: 404px;
+	height: 450px;
+	float: right;
+	width: 200px;
 	color: #eee;
-	-webkit-box-shadow: inset 0px 0px 2px 2px rgba(0, 0, 0, 1);
-    box-shadow: inset 0px 0px 2px 2px rgba(0, 0, 0, 1);
+	/*-webkit-box-shadow: inset 0px 0px 2px 2px rgba(0, 0, 0, 1);
+    box-shadow: inset 0px 0px 2px 2px rgba(0, 0, 0, 1);*/
     pointer-events: auto;
     overflow-y: auto;
-    padding: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
+#map_overlay_inner ul {
+	padding: 15px;
+}
+
 #map_overlay_inner h5{
 	margin-top: 0;
 }
+
+#map_overlay_inner_button {
+	-moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    padding: 2px;
+	position: relative;
+	top: 410px;
+	right: -206px;
+	height: 40px;
+	/*background: rgba(0,0,0,0.4);*/
+	/*border: 2px solid #000;*/
+	color: #000000;
+	pointer-events: auto;
+	width: 40px;
+	cursor: pointer;
+	font-size: 32px;
+	text-align: center;
+	line-height: 1;
+
+	transition: all 0.5s linear;
+	-webkit-transition: all 0.5s ease-in-out;
+
+}
+
+#map_overlay_inner_button:hover {
+	/*background: rgba(0,0,0,0.5);*/
+	color: #222;
+	/*transform: rotate(180deg);*/
+	/*-webkit-transform: rotate(180deg);*/
+	/*transition: all 0.5s ease-in-out;*/
+	/*-webkit-transition: all 0.5s ease-in-out;*/
+}
+
+#map_overlay_inner_button:active {
+	/*transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+	transition: transform 0.5s ease-in-out;
+	-webkit-transition: transform 0.5s ease-in-out;*/
+}
+
+
+
 
 
 /**********************/

@@ -7,12 +7,8 @@
 	<div id="map_overlay">
 		<div class="container">
 			<div class="row-fluid">
-				<div class="span3 offset9">
-					<div id="map_overlay_inner_header">
-						<h3>Zoeken</h3>
-					</div>
+				<div id="map_overlay_container" class="span3 offset9">
 					<div id="map_overlay_inner">
-						<h5>Type uitgaansgelegenheden</h5>
 						<ul id="filter" class="unstyled" >
 							<li>
 								<label class="checkbox">
@@ -86,6 +82,9 @@
 							</li>
 						</ul>
 					</div><!--/map_overlay_inner-->
+					<div id="map_overlay_inner_button">
+						<i class="icon-arrow-down"></i>
+					</div>
 				</div>
 			</div><!--/row-fluid-->
 		</div><!--/container-->
