@@ -25,14 +25,33 @@ $(document).ready(function() {
 
 	// zoeken slider functionalitijd
 	var zoekenInner = $('div#map_overlay_inner');
-	var zoekenHeader = $('div#map_overlay_inner_header');
-	var slide = false;
-	zoekenHeader.on('click', function(){
-		if(!slide){
-			slide = true;
-			zoekenInner.slideToggle('normal', function() {
-				slide = false;
-			});
+	var zoekenButton = $('div#map_overlay_inner_button');
+	var slideLock = false;
+	var slideVis = true;
+	var degree = 180;
+	zoekenButton.on('click', function(){
+		// console.log("hi");
+		if(!slideLock){
+			slideLock = true;
+			if(slideVis) { 
+				zoekenButton.css({
+					'transform': 'rotate(180deg)',
+					'-webkit-transform': 'rotate(180deg)',
+				});
+				zoekenInner.hide("slide", { direction:"down" }, 500, function(){
+					slideVis = false;
+					slideLock = false;
+				}); 
+			} else {
+				zoekenButton.css({
+					'transform': 'rotate(0deg)',
+					'-webkit-transform': 'rotate(0deg)',
+				});
+				zoekenInner.show("slide", { direction:"down" }, 500, function() {
+					slideVis = true;
+					slideLock = false;
+				});
+			}
 		}
 	});
 
