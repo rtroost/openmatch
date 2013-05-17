@@ -6,8 +6,7 @@ class Locations_Controller extends Base_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		Asset::container('footer')->add('maps_api', 'http://maps.google.com/maps/api/js?sensor=false');
-		Asset::container('footer')->add('locations', 'js/locations.js');
+		
 	}
 
 	public function get_index(){
@@ -51,13 +50,12 @@ class Locations_Controller extends Base_Controller {
 				return json_encode($jsonLocs);
 
 			} else {
-
 				foreach ($locations as $key => $value) {
 					$temp['location_id'] = $value->id;
 
 					$temp['title'] = $value->name;
 					$temp['website'] = $value->website;
-					$temp['link'] = URL::to_route('location', $value->id);
+					//$temp['link'] = URL::to_route('location', $value->id);
 
 					$temp2 = null;
 					foreach ($value->types as $key2 => $value2) {
@@ -77,9 +75,11 @@ class Locations_Controller extends Base_Controller {
 		}
 
 		// hier moet eventueel nog een view komen
-		Asset::container('footer')->add('handlebars', 'js/vendor/handlebars.js');
-		Asset::container('footer')->add('location_filter', 'js/location_filter.js', 'jquery');
-		Asset::container('footer')->add('event_index', 'js/event.index.js', array('jquery', 'location_filter', 'handlebars'));
+		Asset::container('footer')->add('angular', 'js/vendor/angular.min.js');
+		Asset::container('footer')->add('angularResource', 'js/vendor/angular-resource.js');
+		Asset::container('footer')->add('locationApp', 'js/location.app.js', array('angular', 'angularResource'));
+		// Asset::container('footer')->add('location_filter', 'js/location_filter.js', 'jquery');
+		// Asset::container('footer')->add('event_index', 'js/event.index.js', array('jquery', 'location_filter', 'handlebars'));
 
 		return View::make('location.index');
 	}
@@ -87,6 +87,8 @@ class Locations_Controller extends Base_Controller {
 	public function get_show($index){
 
 		Asset::container('footer')->add('rating_js', 'js/vendor/rating.js');
+		Asset::container('footer')->add('locations', 'js/locations.js');
+		Asset::container('footer')->add('maps_api', 'http://maps.google.com/maps/api/js?sensor=false');
 		Asset::add('rating_css', 'css/rating.css');
 
 		$location = Location::with('types') -> with('comments') -> where('id', '=' , $index) -> first();
@@ -95,7 +97,7 @@ class Locations_Controller extends Base_Controller {
 			$thumbState = LocationThumb::where('user_id', '=', Auth::user() -> id) -> where('location_id', '=', $location -> id) -> first();
 		else
 			$thumbState = null;
-
+		
 		// dd($thumbState);
 		return View::make('location.show')
 		-> with('location', $location)

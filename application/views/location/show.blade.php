@@ -427,8 +427,6 @@
 	</div><!--/container-->
 </div><!--/content-->
 
-@include('handlebar-templates/locationrow')
-
 @endsection
 
 @section('extra_scripts')
