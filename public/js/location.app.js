@@ -6,7 +6,18 @@ $("#filter_location-range").change( function() {
 
 var locationApp = angular.module('locationApp', ['ngResource']);
 
-var locationCtrl = function LocationCtrl($scope, $resource, $rootScope) {
+var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter) {
+
+	$scope.sortingOrder = "name";
+    $scope.reverse = false;
+    $scope.filteredItems = [];
+    $scope.groupedItems = [];
+    $scope.itemsPerPage = 25;
+    $scope.pagedItems = [];
+    $scope.currentPage = 0;
+
+
+    // ---------------
 
 	$rootScope.BASE = window.BASE;
 	$scope.searchTypes = [];
@@ -16,20 +27,153 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope) {
 		{callback: 'JSON_CALLBACK'},
 		{get: {method:'GET', isArray: true}}
 	);
-	$scope.locations = $scope.locationsGet.get();
+	$scope.locations = $scope.locationsGet.get(function(results){
+		 // functions have been describe process the data for display
+		$scope.filterSearch();
+		//console.log($scope.filteredItems);
+	});
 
-	$scope.toggleType = function(typesArray, type){
+
+	var searchMatch = function (haystack, needle) {
+        if (!needle) {
+            return true;
+        }
+        return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+    };
+
+    // init the filtered items
+    $scope.filterSearch = function (onFilteredItems) {
+    	var innerFilterSearch = function ( item ) {
+    		if($scope.query == ""){ return true; }
+
+    		if (searchMatch(item.title, $scope.query)){
+                return true;
+            }
+            return false;
+    	}
+
+    	if(!onFilteredItems){
+    		$scope.filteredItems = $filter('filter')($scope.locations, innerFilterSearch);
+    	} else {
+	        $scope.filteredItems = $filter('filter')($scope.filteredItems, innerFilterSearch);
+	    }
+
+	    if(!onFilteredItems){
+	    	$scope.filterType(true);
+	    	$scope.filterRange(true);
+      		$scope.updatePagination();
+      	}
+    };
+
+    $scope.updatePagination = function() {
+		// take care of the sorting order
+        if ($scope.sortingOrder !== '') {
+            $scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
+        }
+        $scope.currentPage = 0;
+        // now group by pages
+        $scope.groupToPages();
+    };
+    
+    // calculate page in place
+    $scope.groupToPages = function () {
+        $scope.pagedItems = [];
+        
+        for (var i = 0; i < $scope.filteredItems.length; i++) {
+            if (i % $scope.itemsPerPage === 0) {
+                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [ $scope.filteredItems[i] ];
+            } else {
+                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
+            }
+        }
+    };
+    
+    $scope.range = function (start, end) {
+        var ret = [];
+        if (!end) {
+            end = start;
+            start = 0;
+        }
+        for (var i = start; i < end; i++) {
+            ret.push(i);
+        }
+        return ret;
+    };
+    
+    $scope.prevPage = function () {
+        if ($scope.currentPage > 0) {
+            $scope.currentPage--;
+        }
+    };
+    
+    $scope.nextPage = function () {
+        if ($scope.currentPage < $scope.pagedItems.length - 1) {
+            $scope.currentPage++;
+        }
+    };
+    
+    $scope.setPage = function () {
+        $scope.currentPage = this.n;
+    };
+
+
+    // change sorting order
+    $scope.sort_by = function(newSortingOrder) {
+        if ($scope.sortingOrder == newSortingOrder)
+            $scope.reverse = !$scope.reverse;
+
+        $scope.sortingOrder = newSortingOrder;
+
+        // icon setup
+        $('th i').each(function(){
+            // icon reset
+            $(this).removeClass().addClass('icon-sort');
+        });
+        if ($scope.reverse)
+            $('th.'+new_sorting_order+' i').removeClass().addClass('icon-chevron-up');
+        else
+            $('th.'+new_sorting_order+' i').removeClass().addClass('icon-chevron-down');
+    };
+
+
+	// init the filtered items
+    $scope.filterType = function (onFilteredItems) {
+    	var innerFilterType = function( item ){
+        	if($scope.searchTypes.length == 0){ return true; }
+
+			for(var i in $scope.searchTypes){
+				if (item.types.indexOf($scope.searchTypes[i]) != -1) {
+					return true;
+				}
+			}
+			return false;
+    	}
+
+    	if(!onFilteredItems){
+	        $scope.filteredItems = $filter('filter')($scope.locations, innerFilterType);
+    	} else {
+    		$scope.filteredItems = $filter('filter')($scope.filteredItems, innerFilterType);
+    	}
+
+    	if(!onFilteredItems){
+    		$scope.filterRange(true);
+    		$scope.filterSearch(true);
+      		$scope.updatePagination();
+      	}
+    };
+
+
+
+    $scope.toggleType = function(typesArray, type){
 		if(typesArray.indexOf(type) != -1) {
 			typesArray.splice(typesArray.indexOf(type), 1);
 		} else {
 			typesArray.push(type);
 		}
+		$scope.filterType();
 	}
 
-	$scope.testtest = function(){
-		console.log("testtest");
-		console.log($scope.error);
-	}
+
 
 	$scope.getGeoLocation = function(scope) {
 
@@ -73,7 +217,6 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope) {
 					$('div#controlGroupTarget').addClass("error");
 					//ENDWORKAROUND
 					scope.error = "error";
-					scope.testtest();
 				});	
 			}
 		}
@@ -83,7 +226,33 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope) {
 
 	$scope.rangeChange = function(scope){
 		scope.rangenotset = (scope.curPlaceLat == undefined || scope.curPlaceLng == undefined) ? true : false;
+		$scope.filterRange();
 	}
+
+	// init the filtered items
+    $scope.filterRange = function (onFilteredItems) {
+    	var innerFilterRange = function( item ){
+        	if($scope.searchRange == 0 || $scope.curPlaceLat == undefined || $scope.curPlaceLng == undefined){ return true; }
+
+			var distance = Math.round(calcDistance($scope.curPlaceLat, $scope.curPlaceLng, item.lat, item.lng));
+			if(distance <= $scope.searchRange){
+				return true;
+			}
+			return false;
+    	}
+
+    	if(!onFilteredItems){
+	        $scope.filteredItems = $filter('filter')($scope.locations, innerFilterRange);
+    	} else {
+    		$scope.filteredItems = $filter('filter')($scope.filteredItems, innerFilterRange);
+    	}
+
+    	if(!onFilteredItems){
+    		$scope.filterType(true);
+    		$scope.filterSearch(true);
+      		$scope.updatePagination();
+      	}
+    };
 
 	$scope.submit = function(scope){
 		scope.getGeoLocation( scope );
@@ -92,6 +261,58 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope) {
 };
 
 
+locationApp.filter("createLink", function() {
+	return function(id) {
+		return window.BASE + "locations/" + id;
+	}
+});
+
+locationApp.filter("typesToString", function() {
+	return function(types) {
+		//$scope.change++;
+		var string = "";
+		for(i in types){
+			string += types[i] + ", ";
+		}
+		return string.substr(0, string.length - 2);
+	}
+});
+
+// locationApp.filter("filterTypes", function() {
+// 	return function(items, searchTypes, scope) {
+
+// 		if(searchTypes.length == 0){ return items; }
+// 		scope.change++;
+// 		var arrayToReturn = [];
+// 		for (var i=0; i < items.length; i++){
+// 			for(var j in searchTypes){
+// 				if (items[i].types.indexOf(searchTypes[j]) != -1) {
+// 					arrayToReturn.push(items[i]);
+// 				}
+// 			}
+			
+// 		}
+// 		//scope.updatePaginate();
+// 		return arrayToReturn;
+// 	}
+// });
+
+// locationApp.filter("filterRange", function() {
+// 	return function(items, obj) {
+// 		//$scope.change++;
+// 		if(obj.searchRange == 0 || obj.lat == undefined || obj.lng == undefined){ return items; }
+
+// 		var arrayToReturn = [];  
+// 		for (var i=0; i < items.length; i++){
+// 			var distance = Math.round(calcDistance(obj.lat, obj.lng, items[i].lat, items[i].lng));
+// 			if(distance <= obj.searchRange){
+// 				arrayToReturn.push(items[i]);
+// 			}
+// 		}
+		
+// 		return arrayToReturn;
+// 	}
+// });
 
 var locationDirective = locationApp.directive("locations", function() {
 	return {
@@ -101,69 +322,11 @@ var locationDirective = locationApp.directive("locations", function() {
 	}
 });
 
-// var controlGroupDirective = locationApp.directive("controlgroup", function() {
-// 	return {
-// 		restrict: "E",
-// 		transclude: true,
-// 		replace: true,
-// 		scope: {
-// 			test: "&"
-// 		},
-// 		template: '<div ng-transclude class="{{test}}"></div>',
-// 		link: function(){
-// 			console.log("hi");
-// 		}
-// 	}
-// });
-
-locationApp.filter("createLink", function() {
-	return function(id) {
-		return window.BASE + "location/" + id;
-	}
-});
-
-locationApp.filter("typesToString", function() {
-	return function(types) {
-		var string = "";
-		for(i in types){
-			string += types[i] + ", ";
-		}
-		return string.substr(0, string.length - 2);
-	}
-});
-
-locationApp.filter("filterTypes", function() {
-	return function(items, searchTypes) {
-
-		if(searchTypes.length == 0){ return items; }
-
-		var arrayToReturn = [];
-		for (var i=0; i < items.length; i++){
-			for(var j in searchTypes){
-				if (items[i].types.indexOf(searchTypes[j]) != -1) {
-					arrayToReturn.push(items[i]);
-				}
-			}
-			
-		}
-
-		return arrayToReturn;
-	}
-});
-
-locationApp.filter("filterRange", function() {
-	return function(items, obj) {
-		if(obj.searchRange == 0 || obj.lat == undefined || obj.lng == undefined){ return items; }
-
-		var arrayToReturn = [];  
-		for (var i=0; i < items.length; i++){
-			var distance = Math.round(calcDistance(obj.lat, obj.lng, items[i].lat, items[i].lng));
-			if(distance <= obj.searchRange){
-				arrayToReturn.push(items[i]);
-			}
-		}
-
-		return arrayToReturn;
+var paginationDirective = locationApp.directive("pagination", function() {
+	return {
+		restrict: "E",
+		replace: true,
+		templateUrl: window.BASE + "js/jstemplates/pagination.html",
 	}
 });
 

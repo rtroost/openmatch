@@ -6,12 +6,8 @@
 	<div id="map_overlay">
 		<div class="container">
 			<div class="row-fluid">
-				<div class="span3 offset9">
-					<div id="map_overlay_inner_header">
-						<h3>Zoeken</h3>
-					</div>
+				<div id="map_overlay_container" class="span3 offset9">
 					<div id="map_overlay_inner">
-						<h5>Type uitgaansgelegenheden</h5>
 						<ul id="filter" class="unstyled" >
 							<li>
 								<label class="checkbox">
@@ -85,6 +81,9 @@
 							</li>
 						</ul>
 					</div><!--/map_overlay_inner-->
+					<div id="map_overlay_inner_button">
+						<i class="icon-arrow-down"></i>
+					</div>
 				</div>
 			</div><!--/row-fluid-->
 		</div><!--/container-->
@@ -123,7 +122,7 @@
 							Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
 						</p>
 						<p>
-							<a href="#" class="btn btn-primary btn-large">Match mij!</a>
+							<a href="#" class="btn btn-large">Match mij!</a>
 						</p>
 					</div><!--/.span6-->
 
@@ -143,46 +142,29 @@
 				<h3>Populair</h3>
 				<table class="styledTable" id="fpPopular">
 					<tbody>
+						<?php for($i = 0; $i < count($popular_articles); $i++): ?>
+						<?php if($i == 0): ?>
 						<tr class="styledTable-position-highlight">
-							<td class="styledTable-position styledTable-position-first">1</td>
-							<td>
-								Pathé Schouwburgplein
-								<span class="styledTable-tags">Type: Restaurant - Tags: Groepsevenement</span>
-							</td>
-							<td class="styledTable-rating"><span href="" class="styledTable-rating-stars" style="width: 150px"></span></td>
-						</tr>
+						<?php else: ?>
 						<tr>
-							<td class="styledTable-position styledTable-position-second">2</td>
+						<?php endif; ?>
+							<?php if($i == 0): ?>
+							<td class="styledTable-position styledTable-position-first"><?php echo  $i + 1 ; ?></td>
+							<?php elseif($i == 1): ?>
+							<td class="styledTable-position styledTable-position-second"><?php echo  $i + 1 ; ?></td>
+							<?php elseif($i == 2): ?>
+							<td class="styledTable-position styledTable-position-third"><?php echo  $i + 1 ; ?></td>
+							<?php else: ?>
+							<td><?php echo  $i + 1 ; ?></td>
+							<?php endif; ?>
 							<td>
-								Pathé Schouwburgplein
-								<span class="styledTable-tags">Type: Restaurant - Tags: Groepsevenement</span>
+								<?php echo  $popular_articles[$i] -> name ; ?>
+								<span class="styledTable-tags"><?php echo  $popular_articles[$i] -> formatted_address ; ?></span>
 							</td>
-							<td class="styledTable-rating"><span href="" class="styledTable-rating-stars" style="width: 135px"></span></td>
+							<td><a href="<?php echo  URL::to_route('location', $popular_articles[$i] -> id); ?>">Meer info</a>
+							<!-- <td class="styledTable-rating"><span href="" class="styledTable-rating-stars" style="width: 150px"></span></td> -->
 						</tr>
-						<tr>
-							<td class="styledTable-position styledTable-position-third">3</td>
-							<td>
-								Pathé Schouwburgplein
-								<span class="styledTable-tags">Type: Restaurant - Tags: Groepsevenement</span>
-							</td>
-							<td class="styledTable-rating"><span href="" class="styledTable-rating-stars" style="width: 120px"></span></td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>
-								Pathé Schouwburgplein
-								<span class="styledTable-tags">Type: Restaurant - Tags: Groepsevenement</span>
-							</td>
-							<td class="styledTable-rating"><span href="" class="styledTable-rating-stars" style="width: 75px"></span></td>
-						</tr>
-						<tr>
-							<td>5</td>
-							<td>
-								Pathé Schouwburgplein
-								<span class="styledTable-tags">Type: Restaurant - Tags: Groepsevenement</span>
-							</td>
-							<td class="styledTable-rating"><span href="" class="styledTable-rating-stars" style="width: 30px"></span></td>
-						</tr>
+						<?php endfor; ?>
 					</tbody>
 				</table>
 			</div><!--/.span6-->
@@ -234,6 +216,37 @@
 			</div><!--/.span6-->
 
 		</div><!--/.row-fluid-->
+
+		<div class="row-fluid">
+
+			<div class="span6">
+
+				<div id="fpArticles-container">
+
+					<h3>OpenMatch ontwikkelingen</h3>
+
+					<?php foreach($articles as $article): ?>
+
+					<div class="fpArticle clearfix">
+
+						<div class="fpArticle-publishedDate"><?php echo  date('j M', intval($article -> published_at)) ; ?></div>
+						<div class="fpArticle-title"><a href="<?php echo  URL::to_route('news_show', $article -> id) ; ?>"><?php echo  $article -> title ; ?></a></div>
+
+					</div><!--/fpArticle-->
+
+					<?php endforeach; ?>
+
+				</div>
+
+				<a href="<?php echo  URL::to_route('news') ; ?>">Lees de rest van ons nieuws!</a>
+
+			</div><!--/span6-->
+
+			<div class="span6">
+
+			</div><!--/span6-->
+
+		</div>
 
 	</div><!-- /container -->
 

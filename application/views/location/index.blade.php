@@ -16,8 +16,12 @@
 		<div class="row-fluid">
 
 			<div class="span8">
+				<pagination>
+				</pagination>
 				<locations>
 				</locations>
+				<pagination>
+				</pagination>
 			</div><!--/span9-->
 
 			<div class="span4">
@@ -29,7 +33,7 @@
 
 					<div class="sidebar_block">
 						<h4>Filter op naam</h4>
-						<input class="span12" type="text" ng-model="search.title" placeholder="Welke locatie zoekt u?" />
+						<input class="span12" type="text" ng-model="query" ng-change="filterSearch()" placeholder="Welke locatie zoekt u?" />
 					</div>
 
 					<div class="sidebar_block">
