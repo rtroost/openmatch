@@ -25,13 +25,13 @@ Route::get('profile/(:num)/events',		array('as' => 'show_profile_events', 			'us
 Route::get('profile/(:num)/messages',	array('as' => 'show_profile_messages', 			'uses' => 'users@showMessages'));
 
 Route::get('locations', 					array('as' => 'locations', 'uses' => 'locations@index'));
-Route::get('location/(:num)', 				array('as' => 'location', 'uses' => 'locations@show'));
-Route::get('location/(:num)/thumb/(:any)', 	array('as' => 'location_thumbAction', 'uses' => 'locations@thumbsAction'));
-Route::post('location/(:num)/comment', 		array('as' => 'location_post_comment', 'uses' => 'locations@comment', 'before' => 'csrf|auth'));
-Route::post('location/(:num)/feedback', 	array('as' => 'location_feedback', 'uses' => 'locations@feedback', 'before' => 'csrf|auth'));
-Route::post('location/feedback/comment', 	array('as' => 'location_comment_feedback', 'uses' => 'locations@feedback_comment', 'before' => 'csrf|auth'));
-Route::get('location/advice', 				array('as' => 'location_advice', 'uses' => 'locations@takeAdvice'));
-Route::post('location/advice', 				array('as' => 'location_advice_post', 'uses' => 'locations@takeAdvice', 'before' => 'csrf|auth'));
+Route::get('locations/(:num)', 				array('as' => 'location', 'uses' => 'locations@show'));
+Route::get('locations/(:num)/thumb/(:any)', 	array('as' => 'location_thumbAction', 'uses' => 'locations@thumbsAction'));
+Route::post('locations/(:num)/comment', 		array('as' => 'location_post_comment', 'uses' => 'locations@comment', 'before' => 'csrf|auth'));
+Route::post('locations/(:num)/feedback', 	array('as' => 'location_feedback', 'uses' => 'locations@feedback', 'before' => 'csrf|auth'));
+Route::post('locations/feedback/comment', 	array('as' => 'location_comment_feedback', 'uses' => 'locations@feedback_comment', 'before' => 'csrf|auth'));
+Route::get('locations/advice', 				array('as' => 'location_advice', 'uses' => 'locations@takeAdvice'));
+Route::post('locations/advice', 				array('as' => 'location_advice_post', 'uses' => 'locations@takeAdvice', 'before' => 'csrf|auth'));
 
 Route::get('news', 						array('as' => 'news', 				'uses' => 'news@index'));
 Route::get('news/(:num)/edit'		, 	array('as' => 'news_edit', 			'uses' => 'news@edit'));
