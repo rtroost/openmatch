@@ -5,7 +5,7 @@ class Base_Controller extends Controller {
 	public function __construct(){
 
 		// styles
-		Asset::style('google-font', 'http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,700');
+		Asset::style('google-font', 'http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Monda:300,400,700');
 		Asset::add('bootstrap-min', 'css/bootstrap.min.css');
 		Asset::add('bootstrap-responsive-min', 'css/bootstrap-responsive.min.css', 'bootstrap-min');
 		Asset::add('jquery-ui', 'css/cupertino/jquery-ui-1.10.3.custom.min.css');

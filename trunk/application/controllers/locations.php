@@ -6,7 +6,7 @@ class Locations_Controller extends Base_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		
+
 	}
 
 	public function get_index(){
@@ -22,20 +22,20 @@ class Locations_Controller extends Base_Controller {
 					$temp['title'] = $value->name;
 					$temp['website'] = $value->website;
 					switch ($value->types[0]->naam) {
-						case 'bibliotheken':		$temp['img'] = 'education'; break;
-						case 'bioscopen':			$temp['img'] = 'automotive'; break;
-						case 'campings':			$temp['img'] = 'sports'; break;
-						case 'sportgelegenheden':	$temp['img'] = 'sports'; break;
-						case 'kinderboerderijen':	$temp['img'] = 'sports'; break;
-						case 'kindervermaak':		$temp['img'] = 'sports'; break;
-						case 'theaters':			$temp['img'] = 'company'; break;
-						case 'recreatieterreinen':	$temp['img'] = 'automotive'; break;
-						case 'zwembaden':			$temp['img'] = 'sports'; break;
-						case 'musea':				$temp['img'] = 'company'; break;
-						case 'restaurants':			$temp['img'] = 'food'; break;
-						case 'dierentuin':			$temp['img'] = 'sports'; break;
-						case 'attracties':			$temp['img'] = 'company'; break;
-						case 'speeltuinen':			$temp['img'] = 'sports'; break;
+						case 'bibliotheken':		$temp['img'] = 'iconLibrary'; break;
+						case 'bioscopen':			$temp['img'] = 'iconCinema'; break;
+						case 'campings':			$temp['img'] = 'iconCamping'; break;
+						case 'sportgelegenheden':	$temp['img'] = 'iconSports'; break;
+						case 'kinderboerderijen':	$temp['img'] = 'iconKidsFarm'; break;
+						case 'kindervermaak':		$temp['img'] = 'iconKidsEntertainment'; break;
+						case 'theaters':			$temp['img'] = 'iconTheater'; break;
+						case 'recreatieterreinen':	$temp['img'] = 'iconRecreation'; break;
+						case 'zwembaden':			$temp['img'] = 'iconSwimming'; break;
+						case 'musea':				$temp['img'] = 'iconMuseum'; break;
+						case 'restaurants':			$temp['img'] = 'iconRestaurant'; break;
+						case 'dierentuin':			$temp['img'] = 'iconZoo'; break;
+						case 'attracties':			$temp['img'] = 'iconThemePark'; break;
+						case 'speeltuinen':			$temp['img'] = 'iconPlayground'; break;
 						default:					$temp['img'] = 'automotive'; break;
 					}
 					$temp2 = null;
@@ -97,7 +97,7 @@ class Locations_Controller extends Base_Controller {
 			$thumbState = LocationThumb::where('user_id', '=', Auth::user() -> id) -> where('location_id', '=', $location -> id) -> first();
 		else
 			$thumbState = null;
-		
+
 		// dd($thumbState);
 		return View::make('location.show')
 		-> with('location', $location)

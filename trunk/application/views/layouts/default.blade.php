@@ -25,6 +25,13 @@
 
 	<!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
 
+	@if(Session::has('message'))
+	<div class="alert alert-info" id="session-message">
+		<button class="close" data-dismiss="alert">&times;</button>
+		{{ Session::get('message') }}
+	</div>
+	@endif
+
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -33,21 +40,20 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				{{ HTML::link('/', 'OpenMatch', array('class' => 'brand')) }}
+				{{ HTML::link('/', 'Naam n.t.b.', array('class' => 'brand')) }}
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li><a href="{{ URL::to_route('home') }}">Home</a></li>
-						<li><a href="{{ URL::to_route('news') }}">Nieuws</a></li>
-						<li><a href="{{ URL::to_route('locations') }}">Locatie's</a></li>
-						<li><a href="{{ URL::to_route('events') }}">Evenementen</a></li>
-						<li><a href="{{ URL::to_route('contact') }}">Contact</a></li>
+						<li class="{{ (URI::is('/') ? 'active' : '') }}"><a href="{{ URL::to_route('home') }}">Home</a></li>
+						<li class="{{ (URI::is('news*') ? 'active' : '') }}"><a href="{{ URL::to_route('news') }}">Nieuws</a></li>
+						<li class="{{ (URI::is('locations*') ? 'active' : '') }}"><a href="{{ URL::to_route('locations') }}">Zoek een locatie</a></li>
+						<li class="{{ (URI::is('contact*') ? 'active' : '') }}"><a href="{{ URL::to_route('contact') }}">Contact</a></li>
 					</ul>
 					<ul class="nav pull-right">
 						@if( ! Auth::check())
-							<li>{{ HTML::link_to_route('register', 'Registreren') }}</li>
-							<li>{{ HTML::link_to_route('login', 'Inloggen') }}</li>
+							<li class="{{ (URI::is('register*') ? 'active' : '') }}">{{ HTML::link_to_route('register', 'Registreren') }}</li>
+							<li class="{{ (URI::is('login*') ? 'active' : '') }}">{{ HTML::link_to_route('login', 'Inloggen') }}</li>
 						@else
-							<li>{{ HTML::link_to_route('user_profile', 'Mijn profiel', Auth::user() -> id) }}</li>
+							<li class="{{ (URI::is('profile*') ? 'active' : '') }}">{{ HTML::link_to_route('user_profile', 'Mijn profiel', Auth::user() -> id) }}</li>
 							<li>{{ HTML::link_to_route('logout', 'Uitloggen') }}</li>
 						@endif
 					</ul>
@@ -58,14 +64,8 @@
 
 	<div id="content">
 
-		@if(Session::has('message'))
-			<div class="container alert alert-info" id="session-message">
-				<button type="button" class="close" data-dismiss="alert">×</button>
-				{{ Session::get('message') }}
-			</div>
-		@endif
-
 		@yield('content')
+
 	</div>
 
 	<div class="container">
