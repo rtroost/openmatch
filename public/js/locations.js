@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-	$('.hasTooltip').tooltip();
-
 	$('#get-geolocation').on('click', function() {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
