@@ -57,34 +57,11 @@
 									<td>Types:</td>
 									<td>
 										@foreach($location->types as $type)
-											{{ $type->naam }}
+											{{ ucfirst($type->naam) }}
 										@endforeach
 									</td>
 								</tr>
 							</table>
-
-							<hr />
-
-							<h5>Bent je al op deze locatie geweest? Geef je beoordeling!</h5>
-
-							@if( ! Auth::check())
-								<p>
-									Je moet je eerst {{ HTML::link_to_route('login', 'aanmelden') }} of {{ HTML::link_to_route('register', 'registreren') }} om een beoordeling te kunnen geven.
-								</p>
-							@else
-								@if($thumbState !== null)
-									@if($thumbState -> positive)
-										<a href="{{ URL::to_route('location_thumbAction', array($location -> id, 'up')) }}" class="btn thumbRating activePos"><i class="icon-thumbs-up"></i> Positief</a>
-										<a href="{{ URL::to_route('location_thumbAction', array($location -> id, 'down')) }}" class="btn thumbRating small"><i class="icon-thumbs-down"></i> Negatief</a>
-									@else
-										<a href="{{ URL::to_route('location_thumbAction', array($location -> id, 'up')) }}" class="btn thumbRating small"><i class="icon-thumbs-up"></i> Positief</a>
-										<a href="{{ URL::to_route('location_thumbAction', array($location -> id, 'down')) }}" class="btn thumbRating activeNeg"><i class="icon-thumbs-down"></i> Negatief</a>
-									@endif
-								@else
-									<a href="{{ URL::to_route('location_thumbAction', array($location -> id, 'up')) }}" class="btn thumbRating"><i class="icon-thumbs-up"></i> Positief</a>
-									<a href="{{ URL::to_route('location_thumbAction', array($location -> id, 'down')) }}" class="btn thumbRating"><i class="icon-thumbs-down"></i> Negatief</a>
-								@endif
-							@endif
 					  </div>
 					  <div class="tab-pane" id="route">
 					  	<div id="directions-container">
@@ -230,7 +207,7 @@
 							</div><!--/comment-inner-options-->
 
 							<div class="comment-inner-author">
-								<a href="{{ URL::to_route('show_profile', $comment -> user -> id) }}">{{ ucwords($comment -> user -> name) . ' ' . ucwords($comment -> user -> surname) }}</a> <small>zei op {{ date('j F Y \o\m G:i', strtotime($comment -> created_at)) }}:</small>
+								<a href="{{ URL::to_route('show_profile', $comment -> user -> id) }}">{{ ucwords($comment -> user -> name) . ' ' . $comment -> user -> prefix . ' '. ucwords($comment -> user -> surname) }}</a> <small>zei op {{ date('j F Y \o\m G:i', strtotime($comment -> created_at)) }}:</small>
 							</div><!--/comment-inner-author-->
 
 							<div class="comment-inner-body">
