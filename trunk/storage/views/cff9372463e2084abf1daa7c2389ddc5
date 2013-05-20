@@ -36,23 +36,25 @@
 				<?php echo  HTML::link('/', 'OpenMatch', array('class' => 'brand')) ; ?>
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li><?php echo  HTML::link_to_route('home', 'Home') ; ?></li>
-						<li><?php echo  HTML::link_to_route('locations', 'Match') ; ?></li>
-						<li><?php echo  HTML::link_to_route('contact', 'Contact') ; ?></li>
+						<li><a href="<?php echo  URL::to_route('home') ; ?>">Home</a></li>
+						<li><a href="<?php echo  URL::to_route('news') ; ?>">Nieuws</a></li>
+						<li><a href="<?php echo  URL::to_route('locations') ; ?>">Locatie's</a></li>
+						<li><a href="<?php echo  URL::to_route('events') ; ?>">Evenementen</a></li>
+						<li><a href="<?php echo  URL::to_route('contact') ; ?>">Contact</a></li>
 					</ul>
 					<ul class="nav pull-right">
 						<?php if( ! Auth::check()): ?>
 							<li><?php echo  HTML::link_to_route('register', 'Registreren') ; ?></li>
 							<li><?php echo  HTML::link_to_route('login', 'Inloggen') ; ?></li>
 						<?php else: ?>
-							<li><?php echo  HTML::link_to_route('edit_user', 'Mijn profiel', Auth::user() -> id) ; ?></li>
+							<li><?php echo  HTML::link_to_route('user_profile', 'Mijn profiel', Auth::user() -> id) ; ?></li>
 							<li><?php echo  HTML::link_to_route('logout', 'Uitloggen') ; ?></li>
 						<?php endif; ?>
 					</ul>
 				</div><!--/.nav-collapse -->
-			</div>
-		</div>
-	</div>
+			</div><!--/container-->
+		</div><!--/navbar-inner-->
+	</div><!--/navbar navbar-fixed-top-->
 
 	<div id="content">
 
@@ -77,6 +79,8 @@
 	</div> <!-- /container -->
 
 	<?php echo  Asset::container('footer')->scripts() ; ?>
+
+	<?php echo \Laravel\Section::yield('extra_scripts'); ?>
 
 </body>
 </html>

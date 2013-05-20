@@ -1,6 +1,6 @@
 <div id="location_list" class="clearfix">
 	<ul id="locationWrapper">
-		<li id="{{location.location_id}}" ng-repeat="location in locations | filter:search | filterTypes:searchTypes | filterRange:{searchRange: searchRange, lat:this.curPlaceLat, lng:this.curPlaceLng}">
+		<li id="{{location.location_id}}" ng-repeat="location in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
 			<a href="{{location.location_id | createLink}}">
 				<div class="location-list-body">
 					<span class="location-list-body-title">

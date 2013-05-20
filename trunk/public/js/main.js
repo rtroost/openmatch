@@ -9,6 +9,5 @@ $(document).ready(function() {
 	} else {
 		window.BASE = "http://"+ location.hostname + "/";
 	}
-	window.BASE = "http://"+ location.hostname + "/";
 	window.IMGLOC = BASE + "img/";
 });
