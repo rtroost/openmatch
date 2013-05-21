@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <div class="pageTitle">
 	<div class="container">
 		<h1>Hier kan een titel <small>om te pagina te verduidelijken</small></h1>
@@ -53,7 +52,7 @@
 						<div class="control-group">
 							<label for="filter_location-range" class="control-label">Maximale afstand</label>
 							<div class="controls">
-								<input id="filter_location-range" name="filter_location-range" class="span9" type="range" min="0" max="99" value="0" ng-model="searchRange" ng-change="rangeChange(this)" /><span id="filter_location-range-value">0 km</span><!-- hier hoord { {searchRange} } te staan -->
+								<input id="filter_location-range" name="filter_location-range" class="span9" type="range" min="0" max="99" value="0" ng-model="searchRange" ng-change="rangeChange(this)" /><span id="filter_location-range-value">{{"&#123;&#123;searchRange&#125;&#125;"}}</span><!-- hier hoord { {searchRange} } te staan -->
 								<span class="help-block" style="display:none;" ng-show="rangenotset" >Nog geen adres opgegeven</span>
 							</div>
 						</div>

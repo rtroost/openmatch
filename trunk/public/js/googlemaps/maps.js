@@ -53,7 +53,7 @@ var maps_class = {
 			shadow: IMGLOC + "maps/" + 'icon-shadow.png'
 		});
 
-		var contentInfowindow = '<h4>' + pos['title'] + '</h4><a href="' + BASE + 'location/' + pos['location_id'] + '">Lees meer</a>';
+		var contentInfowindow = '<h4>' + pos['title'] + '</h4><a href="' + BASE + 'locations/' + pos['location_id'] + '">Lees meer</a>';
 		if(pos['website'] !== null){
 			contentInfowindow += '<a href="' + pos['website'] + '">Website</a>';
 		}

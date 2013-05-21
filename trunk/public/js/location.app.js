@@ -1,8 +1,8 @@
-//WORKAROUND TOTDAT LARAVEL 4 ER IS
-$("#filter_location-range").change( function() {
-	$("#filter_location-range-value").html($(this).val() + ' km');
-});
-//ENDWORKAROUND
+// //WORKAROUND TOTDAT LARAVEL 4 ER IS
+// $("#filter_location-range").change( function() {
+// 	$("#filter_location-range-value").html($(this).val() + ' km');
+// });
+// //ENDWORKAROUND
 
 var locationApp = angular.module('locationApp', ['ngResource']);
 
