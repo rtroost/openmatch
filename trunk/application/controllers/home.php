@@ -16,6 +16,10 @@ class Home_Controller extends Base_Controller {
 
 		$popular_articles = LocationThumb::get_popular(5);
 
+		Asset::container('footer')->add('angular', 'js/vendor/angular.min.js');
+		Asset::container('footer')->add('angularResource', 'js/vendor/angular-resource.js');
+		Asset::container('footer')->add('indexApp', 'js/index.app.js', array('angular', 'angularResource'));
+
 		return View::make('home.index')
 			-> with('articles', $articles)
 			-> with('popular_articles', $popular_articles);

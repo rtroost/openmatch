@@ -90,119 +90,27 @@
 		</div><!--/container-->
 	</div><!--/map_overlay-->
 
-	<div class="container">
+	<div class="container" ng-app="indexApp">
 
 		<div class="" style="background: none repeat scroll 0 0 rgba(0, 0, 0, 0.01);
 		border-left: 1px solid rgba(0, 0, 0, 0.07);
 		border-right: 1px solid rgba(0, 0, 0, 0.07);
 		border-bottom: 1px solid rgba(0, 0, 0, 0.07);height: 30px;"></div>
 
-		<div id="fpLocations-container">
+		<div id="fpLocations-container" ng-controller="tableCtrl">
 
 			<div class="fpLocations-sortbar">
 				<ul>
-					<li><i class="icon-reorder hasTooltip" data-toggle="tooltip" title="Toon"></i></li>
-					<li><i class="icon-screenshot hasTooltip" data-toggle="tooltip" title="Locatie's dichtbij"></i></li>
-					<li><i class="icon-trophy hasTooltip" data-toggle="tooltip" title="Hoogst beoordeeld"></i></li>
-					<li><i class="icon-star hasTooltip" data-toggle="tooltip" title="Aanbevolen"></i></li>
+					<li><i class="icon-reorder hasTooltip" data-toggle="tooltip" title="Toon" ng-click="changeRoute('')"></i></li>
+					<li><i class="icon-screenshot hasTooltip" data-toggle="tooltip" title="Locatie's dichtbij" ng-click="changeRoute('locatie_dichtbij')"></i></li>
+					<li><i class="icon-trophy hasTooltip" data-toggle="tooltip" title="Hoogst beoordeeld" ng-click="changeRoute('hoogst_beoordeeld')"></i></li>
+					<li><i class="icon-star hasTooltip" data-toggle="tooltip" title="Aanbevolen" ng-click="changeRoute('aanbevolen')"></i></li>
 				</ul>
 			</div><!--/span1-->
 
-			<div class="fpLocations-right">
+			<div class="fpLocations-right" ng-view>
 
-				<table class="fpLocation-table">
-
-					<tr>
-						<td class="fpLocation-category">
-							<a href="#" class=""><img src="{{ URL::to_asset('img/maps/iconRecreation.png') }}" /></a>
-						</td>
-
-						<td class="fpLocation-title">
-							<a href="#">Spido Havenrondvaarten</a>
-							<span class="fpLocation-address">Willemsplein 85, 3016 DR Rotterdam, The Netherlands</span>
-						</td>
-
-						<td class="fpLocation-icon"><i class="icon-globe"></i></td>
-						<td class="fpLocation-icon"><i class="icon-phone"></i></td>
-						<td class="fpLocation-icon"><i class="icon-envelope"></i></td>
-
-						<td class="fpLocation-rating">4.9<small>van de 5.0</small></td>
-
-					</tr>
-
-					<tr>
-						<td class="fpLocation-category">
-							<a href="#" class=""><img src="{{ URL::to_asset('img/maps/iconLibrary.png') }}" /></a>
-						</td>
-
-						<td class="fpLocation-title">
-							<a href="#">Centrale Bibliotheek Rotterdam</a>
-							<span class="fpLocation-address">Hoogstraat 112, 3011 PV Rotterdam, The Netherlands</span>
-						</td>
-
-						<td class="fpLocation-icon"><i class="icon-globe"></i></td>
-						<td class="fpLocation-icon"><i class="icon-phone"></i></td>
-						<td class="fpLocation-icon"><i class="icon-envelope"></i></td>
-
-						<td class="fpLocation-rating">4.2<small>van de 5.0</small></td>
-
-					</tr>
-
-					<tr>
-						<td class="fpLocation-category">
-							<a href="#" class=""><img src="{{ URL::to_asset('img/maps/iconSwimming.png') }}" /></a>
-						</td>
-
-						<td class="fpLocation-title">
-							<a href="#">Tropicana B.V.</a>
-							<span class="fpLocation-address">Maasboulevard 100, 3063 NS Rotterdam, The Netherlands</span>
-						</td>
-
-						<td class="fpLocation-icon"><i class="icon-globe"></i></td>
-						<td class="fpLocation-icon"><i class="icon-phone"></i></td>
-						<td class="fpLocation-icon"><i class="icon-envelope"></i></td>
-
-						<td class="fpLocation-rating">3.9<small>van de 5.0</small></td>
-
-					</tr>
-
-					<tr>
-						<td class="fpLocation-category">
-							<a href="#" class=""><img src="{{ URL::to_asset('img/maps/iconRecreation.png') }}" /></a>
-						</td>
-
-						<td class="fpLocation-title">
-							<a href="#">Snerttram</a>
-							<span class="fpLocation-address">Boezemstraat 188, 3034 EM Rotterdam, The Netherlands</span>
-						</td>
-
-						<td class="fpLocation-icon"><i class="icon-globe"></i></td>
-						<td class="fpLocation-icon"><i class="icon-phone"></i></td>
-						<td class="fpLocation-icon"><i class="icon-envelope"></i></td>
-
-						<td class="fpLocation-rating">3.4<small>van de 5.0</small></td>
-
-					</tr>
-
-					<tr>
-						<td class="fpLocation-category">
-							<a href="#" class=""><img src="{{ URL::to_asset('img/maps/iconZoo.png') }}" /></a>
-						</td>
-
-						<td class="fpLocation-title">
-							<a href="#">Diergaarde Blijdorp</a>
-							<span class="fpLocation-address">Blijdorplaan 8, 3041 JG Rotterdam, The Netherlands</span>
-						</td>
-
-						<td class="fpLocation-icon"><i class="icon-globe"></i></td>
-						<td class="fpLocation-icon"><i class="icon-phone"></i></td>
-						<td class="fpLocation-icon"><i class="icon-envelope"></i></td>
-
-						<td class="fpLocation-rating">2.3<small>van de 5.0</small></td>
-
-					</tr>
-
-				</table>
+				
 
 			</div><!--/span11-->
 
