@@ -8,6 +8,7 @@
 	</div>
 </div>
 
+<div class="content">
 	<div class="container">
 
 		<div class="row-fluid">
@@ -42,10 +43,12 @@
 					</div>
 
 				{{ Form::close() }}
-			</div>
+			</div><!--/span9-->
 
-		</div>
+		</div><!--/row-fluid-->
 
-	</div>
+	</div><!--/container-->
+    
+</div><!--/content-->
 
 @endsection
