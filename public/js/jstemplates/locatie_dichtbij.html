@@ -9,94 +9,31 @@
 </div>
 
 <table class="fpLocation-table" ng-hide="loading">
-
-	<tr>
+	
+	<tr ng-repeat="location in result">
 		<td class="fpLocation-category">
-			<a href="#" class=""><img src="img/maps/iconRecreation.png" /></a>
+			<a href="#" class=""><img ng-src="img/maps/{{location.img}}.png" /></a>
 		</td>
 
 		<td class="fpLocation-title">
-			<a href="#">location dichtbij</a>
-			<span class="fpLocation-address">Willemsplein 85, 3016 DR Rotterdam, The Netherlands</span>
+			<a href="#">{{location.name}}</a>
+			<span class="fpLocation-address">{{location.formatted_address}}</span>
 		</td>
 
-		<td class="fpLocation-icon"><i class="icon-globe"></i></td>
-		<td class="fpLocation-icon"><i class="icon-phone"></i></td>
-		<td class="fpLocation-icon"><i class="icon-envelope"></i></td>
+		<td class="fpLocation-icon" ng-switch on="!!location.website">
+			<a href="{{location.website}}" ng-switch-when="true" target="_blank"><i class="icon-globe"></i></a>
+			<i class="icon-globe" ng-switch-default></i>
+		</td>
+		<td class="fpLocation-icon" ng-switch on="!!location.tel">
+			<i class="icon-phone" data-toggle="tooltip" ng-switch-when="true" title="{{location.tel}}" style="color: #0088CC;"></i>
+			<i class="icon-phone" ng-switch-default></i>
+		</td>
+		<td class="fpLocation-icon" ng-switch on="!!location.email">
+			<a href="mailto:{{location.email}}" ng-switch-when="true" data-toggle="tooltip" title="{{location.email}}"><i class="icon-envelope"></i></a>
+			<i class="icon-envelope" ng-switch-default></i>
+		</td>
 
 		<td class="fpLocation-rating">4.9<small>van de 5.0</small></td>
-
-	</tr>
-
-	<tr>
-		<td class="fpLocation-category">
-			<a href="#" class=""><img src="img/maps/iconLibrary.png" /></a>
-		</td>
-
-		<td class="fpLocation-title">
-			<a href="#">Centrale Bibliotheek Rotterdam</a>
-			<span class="fpLocation-address">Hoogstraat 112, 3011 PV Rotterdam, The Netherlands</span>
-		</td>
-
-		<td class="fpLocation-icon"><i class="icon-globe"></i></td>
-		<td class="fpLocation-icon"><i class="icon-phone"></i></td>
-		<td class="fpLocation-icon"><i class="icon-envelope"></i></td>
-
-		<td class="fpLocation-rating">4.2<small>van de 5.0</small></td>
-
-	</tr>
-
-	<tr>
-		<td class="fpLocation-category">
-			<a href="#" class=""><img src="img/maps/iconSwimming.png" /></a>
-		</td>
-
-		<td class="fpLocation-title">
-			<a href="#">Tropicana B.V.</a>
-			<span class="fpLocation-address">Maasboulevard 100, 3063 NS Rotterdam, The Netherlands</span>
-		</td>
-
-		<td class="fpLocation-icon"><i class="icon-globe"></i></td>
-		<td class="fpLocation-icon"><i class="icon-phone"></i></td>
-		<td class="fpLocation-icon"><i class="icon-envelope"></i></td>
-
-		<td class="fpLocation-rating">3.9<small>van de 5.0</small></td>
-
-	</tr>
-
-	<tr>
-		<td class="fpLocation-category">
-			<a href="#" class=""><img src="img/maps/iconRecreation.png" /></a>
-		</td>
-
-		<td class="fpLocation-title">
-			<a href="#">Snerttram</a>
-			<span class="fpLocation-address">Boezemstraat 188, 3034 EM Rotterdam, The Netherlands</span>
-		</td>
-
-		<td class="fpLocation-icon"><i class="icon-globe"></i></td>
-		<td class="fpLocation-icon"><i class="icon-phone"></i></td>
-		<td class="fpLocation-icon"><i class="icon-envelope"></i></td>
-
-		<td class="fpLocation-rating">3.4<small>van de 5.0</small></td>
-
-	</tr>
-
-	<tr>
-		<td class="fpLocation-category">
-			<a href="#" class=""><img src="img/maps/iconZoo.png" /></a>
-		</td>
-
-		<td class="fpLocation-title">
-			<a href="#">Diergaarde Blijdorp</a>
-			<span class="fpLocation-address">Blijdorplaan 8, 3041 JG Rotterdam, The Netherlands</span>
-		</td>
-
-		<td class="fpLocation-icon"><i class="icon-globe"></i></td>
-		<td class="fpLocation-icon"><i class="icon-phone"></i></td>
-		<td class="fpLocation-icon"><i class="icon-envelope"></i></td>
-
-		<td class="fpLocation-rating">2.3<small>van de 5.0</small></td>
 
 	</tr>
 
