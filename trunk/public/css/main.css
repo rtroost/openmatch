@@ -2,13 +2,6 @@ html, body {
     height: 100%;    
 }
 
-.wrapper {
-	min-height: 100%;
-	height: auto !important;
-	height: 100%;
-	margin: 0 auto -280px; /* the bottom margin is the negative value of the footer's height */
-}
-
 body {
 	font-size: 100%;
 	font-family: 'PT Sans', sans-serif;
@@ -36,6 +29,17 @@ h3{font-size:1.25em;}
 
 .container {
 	width: 1070px !important;
+}
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -280px; /* the bottom margin is the negative value of the footer's height */
+}
+
+.push {
+    height: 280px;
 }
 
 #content {
