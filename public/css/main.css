@@ -58,6 +58,7 @@ h3{font-size:1.25em;}
 }
 
 #footer {
+	clear: both;
 	height: 200px; /* .push must be the same height as .footer */
     background: #333;
     padding: 40px 0 40px;
