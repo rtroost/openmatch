@@ -58,21 +58,33 @@ var tableCtrl = indexApp.controller("tableCtrl", function($scope, $rootScope, $r
 
 });
 
-tableCtrl.loadData = function($q, $timeout, $rootScope, $location) {
+tableCtrl.loadData = function($q, $timeout, $rootScope, $location, $resource) {
 	$rootScope.loading = true;
 	var path = ($location.path().substr(1) != '') ? $location.path().substr(1) : "toon" ;
 	console.log(getResult(path));
 	if(!getResult(path)){
-		console.log("hier1");
-		$timeout (function() {
-			console.log("callback klaar");
-			loadedData.push({type: path, result: "thedata"});
-			$rootScope.result = path;
+
+		$rootScope.getData = $resource(window.BASE + '',
+			{callback: 'JSON_CALLBACK', action: path.toUpperCase()},
+			{get: {method:'GET', isArray: true}}
+		);
+		$rootScope.getData.get(function(results){
+			console.log(results);
+			loadedData.push({type: path, result: results});
+			$rootScope.result = results;
 			$rootScope.loading = false;
-		}, 1000);
+		}, function() {
+			console.log("error");
+		});
+
+		// console.log("hier1");
+		// $timeout (function() {
+		// 	console.log("callback klaar");
+			
+		// }, 1000);
 	} else {
 		console.log("hier2");
-		$rootScope.result = path;
+		$rootScope.result = getResult(path).result;
 		$rootScope.loading = false;
 	}
 	return;
