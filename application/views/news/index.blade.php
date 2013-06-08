@@ -18,9 +18,9 @@
 
 					<div class="article-small">
 
-						<div class="article-small-title">
+						<h2 class="article-small-title">
 							{{ $article -> title }}
-						</div>
+						</h2>
 						<div class="article-small-meta">
 							Gepubliceerd op {{ $article -> published_at }}
 						</div>

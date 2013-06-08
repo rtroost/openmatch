@@ -13,9 +13,23 @@
 	<div class="container">
 
 		<div class="location">
+            
+            <div class="row-fluid location-header">
+                
+                <img src="{{ URL::to('img/maps/iconRecreation.png') }}" class="location-marker" />
+                
+                <h2 class="location-title">{{ $location->name }}</h2>
+                <div class="location-quick_info">
+                    <span class="address">{{ $location->formatted_address }}</span>
+                    <span class="phone">+31 (0)10-1234567</span> <!--PLACEHOLDER-->
+                    <span class="website"><a href="#">http://google.nl/</a></span> <!--PLACEHOLDER-->
+                    <span class="email"><a href="#">info@rotterdamonbeperkt.nl</a></span> <!--PLACEHOLDER-->
+                </div>
+
+            </div>
 
 			<div class="row-fluid">
-
+                
 				<div class="span4">
 					<div class="location-map">
 						<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="width:100%; height:100%;" src="https://maps.google.nl/maps?q={{$location->latitude}}+,{{$location->longitude}}&amp;output=embed"></iframe>
@@ -25,45 +39,13 @@
 				<div class="span8">
 
 					<ul class="nav nav-tabs">
-					  <li class="active"><a href="#general" data-toggle="tab">Informatie</a></li>
-					  <li><a href="#route" data-toggle="tab">Routebeschrijving</a></li>
+					  <li class="active"><a href="#route" data-toggle="tab">Routebeschrijving</a></li>
 					  <li><a href="#taxi" data-toggle="tab">Taxi bestellen</a></li>
 					  <li><a href="#feedback" data-toggle="tab">Feedback geven</a></li>
 					</ul>
 
 					<div class="tab-content">
-					  <div class="tab-pane active" id="general">
-					  	<h3>{{ $location->name }}</h3>
-							<table>
-								@if( $location->website )
-								<tr>
-									<td>Website:</td>
-									<td><a href="{{ $location->website }}">{{ $location->website }}</a></td>
-								</tr>
-								@endif
-								<tr>
-									<td>Adres:</td>
-									<td>{{ $location->formatted_address }}</td>
-								</tr>
-								<tr>
-									<td>Postcode:</td>
-									<td>{{ $location->postalcode }}</td>
-								</tr>
-								<tr>
-									<td>Plaats:</td>
-									<td>{{ $location->city }}</td>
-								</tr>
-								<tr>
-									<td>Types:</td>
-									<td>
-										@foreach($location->types as $type)
-											{{ ucfirst($type->naam) }}
-										@endforeach
-									</td>
-								</tr>
-							</table>
-					  </div>
-					  <div class="tab-pane" id="route">
+					  <div class="tab-pane active" id="route">
 					  	<div id="directions-container">
 
 								{{ Form::open('tba', 'POST', array('class' => 'form-vertical')) }}
