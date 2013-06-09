@@ -22,6 +22,17 @@ h1{font-size:4em;}
 h2{font-size:2.25em;}
 h3{font-size:1.25em;}
 
+a {
+	color: #70b700;
+	/*color: rgb(64, 198, 82);*/
+	/*color: #39B54A;*/
+	/*color: #95C93D;*/
+}
+
+a:hover {
+	color: #39B54A;
+}
+
 
 /*********************/
 /* Basic Page Markup */
@@ -441,9 +452,32 @@ h3{font-size:1.25em;}
 	-webkit-transition: transform 0.5s ease-in-out;*/
 }
 
+.marker_title {
+	font-size: 18px;
+	margin-bottom: 6px;
+}
 
+.marker_address {
+	font-size:13px;
+	color: gray;
+	margin-bottom: 0px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width:100%;
+	overflow: hidden;
+}
 
+.marker_link {
+	margin-right: 10px;
+}
 
+.marker_contacts {
+	display: inline-block;
+}
+
+.marker_contacts a {
+	margin-right: 4px;
+}
 
 /**********************/
 /* Location List Styling */
@@ -474,7 +508,8 @@ h3{font-size:1.25em;}
 }
 
 #location_list li:hover {
-	background: #18a3d3;
+	/*background: #18a3d3;  OLD*/
+	background: #95C93D;
 	border-top-color: transparent;
 }
 
@@ -961,6 +996,10 @@ table {
 	display: block;
 	font-size: 0.5em;
 	color: #aaa;
+}
+
+i.activeLink{
+	color: #70b700;
 }
 
 
