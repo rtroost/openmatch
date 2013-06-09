@@ -15,64 +15,38 @@ class Locations_Controller extends Base_Controller {
 			$locations = Location::with('types')->get();
 
 			if(Input::get('action') == 'geo'){
-				foreach ($locations as $key => $value) {
-					$temp['location_id'] = $value->id;
-					$temp['lat'] = $value->latitude;
-					$temp['lng'] = $value->longitude;
-					$temp['title'] = $value->name;
-					$temp['website'] = $value->website;
-					switch ($value->types[0]->naam) {
-						case 'bibliotheken':		$temp['img'] = 'iconLibrary'; break;
-						case 'bioscopen':			$temp['img'] = 'iconCinema'; break;
-						case 'campings':			$temp['img'] = 'iconCamping'; break;
-						case 'sportgelegenheden':	$temp['img'] = 'iconSports'; break;
-						case 'kinderboerderijen':	$temp['img'] = 'iconKidsFarm'; break;
-						case 'kindervermaak':		$temp['img'] = 'iconKidsEntertainment'; break;
-						case 'theaters':			$temp['img'] = 'iconTheater'; break;
-						case 'recreatieterreinen':	$temp['img'] = 'iconRecreation'; break;
-						case 'zwembaden':			$temp['img'] = 'iconSwimming'; break;
-						case 'musea':				$temp['img'] = 'iconMuseum'; break;
-						case 'restaurants':			$temp['img'] = 'iconRestaurant'; break;
-						case 'dierentuin':			$temp['img'] = 'iconZoo'; break;
-						case 'attracties':			$temp['img'] = 'iconThemePark'; break;
-						case 'speeltuinen':			$temp['img'] = 'iconPlayground'; break;
-						default:					$temp['img'] = 'automotive'; break;
-					}
-					$temp2 = null;
-					foreach ($value->types as $key2 => $value2) {
-						$temp2[] = $value2->naam;
-					}
-					$temp['types'] = $temp2;
-					$temp['visible'] = true;
-					$jsonLocs[] = $temp;
-				}
+				
+				$locations = locationLib::imageToLocations($locations);
 
-				return json_encode($jsonLocs);
+				return Response::eloquent($locations);
 
 			} else {
 				foreach ($locations as $key => $value) {
-					$temp['location_id'] = $value->id;
-
-					$temp['title'] = $value->name;
-					$temp['website'] = $value->website;
-					//$temp['link'] = URL::to_route('location', $value->id);
-
-					$temp2 = null;
+					$newtypes = [];
 					foreach ($value->types as $key2 => $value2) {
-						$temp2[] = $value2->naam;
+						$newtypes[] = $value2->naam;
 					}
-					$temp['types'] = $temp2;
-
-					$temp['lat'] = $value->latitude;
-					$temp['lng'] = $value->longitude;
-
-					$temp['visible'] = true;
-
-					$jsonLocs[] = $temp;
+					$value->types_array = $newtypes;
 				}
-				return json_encode($jsonLocs);
+				return Response::eloquent($locations);
 			}
 		}
+
+		//$locations = Location::with('types')->get();
+
+
+		// foreach ($locations as $key => $value) {
+		// 	foreach ($value->types as $key2 => $value2) {
+		// 		//dd($value2->naam);
+		// 		$newtypes[] = $value2->naam;
+		// 	}
+		// 	$value->types = $newtypes;
+		// 	$value->relationships = null;
+		// 	//dd($value->relationships);
+		// }
+		// dd($locations);
+				//return Response::eloquent($locations);
+			
 
 		// hier moet eventueel nog een view komen
 		Asset::container('footer')->add('angular', 'js/vendor/angular.min.js');

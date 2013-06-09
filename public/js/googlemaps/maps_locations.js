@@ -25,6 +25,9 @@ var maps_locations = {
 
 	placeAllLocations: function(){
 		for(var pos in maps_locations.Locations){
+			// console.log(maps_locations.Locations[pos]);
+
+			// kan er ook handmatig een object van maken
 			maps_class.createMarker(maps_locations.Locations[pos]);
 		}
 		return;

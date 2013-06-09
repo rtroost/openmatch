@@ -10,98 +10,26 @@ class Home_Controller extends Base_Controller {
 			if(Input::get('action') == 'TOON'){
 				$locations = Location::with('types')->order_by('id', 'desc')->take(5)->get();
 
-				foreach ($locations as $key => $value) {
-					switch ($value->types[0]->naam) {
-						case 'bibliotheken':		$value->img = 'iconLibrary'; break;
-						case 'bioscopen':			$value->img  = 'iconCinema'; break;
-						case 'campings':			$value->img  = 'iconCamping'; break;
-						case 'sportgelegenheden':	$value->img  = 'iconSports'; break;
-						case 'kinderboerderijen':	$value->img  = 'iconKidsFarm'; break;
-						case 'kindervermaak':		$value->img  = 'iconKidsEntertainment'; break;
-						case 'theaters':			$value->img  = 'iconTheater'; break;
-						case 'recreatieterreinen':	$value->img  = 'iconRecreation'; break;
-						case 'zwembaden':			$value->img  = 'iconSwimming'; break;
-						case 'musea':				$value->img  = 'iconMuseum'; break;
-						case 'restaurants':			$value->img  = 'iconRestaurant'; break;
-						case 'dierentuin':			$value->img  = 'iconZoo'; break;
-						case 'attracties':			$value->img  = 'iconThemePark'; break;
-						case 'speeltuinen':			$value->img  = 'iconPlayground'; break;
-						default:					$value->img  = 'automotive'; break;
-					}
-				}
+				$locations = locationLib::imageToLocations($locations);
 
 				return Response::eloquent($locations);
 
 			} elseif(Input::get('action') == 'LOCATIE_DICHTBIJ') {
 				$locations = Location::with('types')->order_by('id', 'desc')->take(5)->get();
 
-				foreach ($locations as $key => $value) {
-					switch ($value->types[0]->naam) {
-						case 'bibliotheken':		$value->img = 'iconLibrary'; break;
-						case 'bioscopen':			$value->img  = 'iconCinema'; break;
-						case 'campings':			$value->img  = 'iconCamping'; break;
-						case 'sportgelegenheden':	$value->img  = 'iconSports'; break;
-						case 'kinderboerderijen':	$value->img  = 'iconKidsFarm'; break;
-						case 'kindervermaak':		$value->img  = 'iconKidsEntertainment'; break;
-						case 'theaters':			$value->img  = 'iconTheater'; break;
-						case 'recreatieterreinen':	$value->img  = 'iconRecreation'; break;
-						case 'zwembaden':			$value->img  = 'iconSwimming'; break;
-						case 'musea':				$value->img  = 'iconMuseum'; break;
-						case 'restaurants':			$value->img  = 'iconRestaurant'; break;
-						case 'dierentuin':			$value->img  = 'iconZoo'; break;
-						case 'attracties':			$value->img  = 'iconThemePark'; break;
-						case 'speeltuinen':			$value->img  = 'iconPlayground'; break;
-						default:					$value->img  = 'automotive'; break;
-					}
-				}
+				$locations = locationLib::imageToLocations($locations);
 
 				return Response::eloquent($locations);
 			} elseif(Input::get('action') == 'HOOGST_BEOORDEELD') {
 				$locations = Location::with('types')->order_by('id', 'desc')->take(5)->get();
 
-				foreach ($locations as $key => $value) {
-					switch ($value->types[0]->naam) {
-						case 'bibliotheken':		$value->img = 'iconLibrary'; break;
-						case 'bioscopen':			$value->img  = 'iconCinema'; break;
-						case 'campings':			$value->img  = 'iconCamping'; break;
-						case 'sportgelegenheden':	$value->img  = 'iconSports'; break;
-						case 'kinderboerderijen':	$value->img  = 'iconKidsFarm'; break;
-						case 'kindervermaak':		$value->img  = 'iconKidsEntertainment'; break;
-						case 'theaters':			$value->img  = 'iconTheater'; break;
-						case 'recreatieterreinen':	$value->img  = 'iconRecreation'; break;
-						case 'zwembaden':			$value->img  = 'iconSwimming'; break;
-						case 'musea':				$value->img  = 'iconMuseum'; break;
-						case 'restaurants':			$value->img  = 'iconRestaurant'; break;
-						case 'dierentuin':			$value->img  = 'iconZoo'; break;
-						case 'attracties':			$value->img  = 'iconThemePark'; break;
-						case 'speeltuinen':			$value->img  = 'iconPlayground'; break;
-						default:					$value->img  = 'automotive'; break;
-					}
-				}
+				$locations = locationLib::imageToLocations($locations);
 
 				return Response::eloquent($locations);
 			} elseif(Input::get('action') == 'AANBEVOLEN') {
 				$locations = Location::with('types')->order_by('id', 'desc')->take(5)->get();
 
-				foreach ($locations as $key => $value) {
-					switch ($value->types[0]->naam) {
-						case 'bibliotheken':		$value->img = 'iconLibrary'; break;
-						case 'bioscopen':			$value->img  = 'iconCinema'; break;
-						case 'campings':			$value->img  = 'iconCamping'; break;
-						case 'sportgelegenheden':	$value->img  = 'iconSports'; break;
-						case 'kinderboerderijen':	$value->img  = 'iconKidsFarm'; break;
-						case 'kindervermaak':		$value->img  = 'iconKidsEntertainment'; break;
-						case 'theaters':			$value->img  = 'iconTheater'; break;
-						case 'recreatieterreinen':	$value->img  = 'iconRecreation'; break;
-						case 'zwembaden':			$value->img  = 'iconSwimming'; break;
-						case 'musea':				$value->img  = 'iconMuseum'; break;
-						case 'restaurants':			$value->img  = 'iconRestaurant'; break;
-						case 'dierentuin':			$value->img  = 'iconZoo'; break;
-						case 'attracties':			$value->img  = 'iconThemePark'; break;
-						case 'speeltuinen':			$value->img  = 'iconPlayground'; break;
-						default:					$value->img  = 'automotive'; break;
-					}
-				}
+				$locations = locationLib::imageToLocations($locations);
 
 				return Response::eloquent($locations);
 			}

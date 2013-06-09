@@ -28,7 +28,8 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
 		{get: {method:'GET', isArray: true}}
 	);
 	$scope.locations = $scope.locationsGet.get(function(results){
-		 // functions have been describe process the data for display
+		console.log(results);
+		// functions have been describe process the data for display
 		$scope.filterSearch();
 		//console.log($scope.filteredItems);
 	});
@@ -46,7 +47,7 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
     	var innerFilterSearch = function ( item ) {
     		if($scope.query == ""){ return true; }
 
-    		if (searchMatch(item.title, $scope.query)){
+    		if (searchMatch(item.name, $scope.query)){
                 return true;
             }
             return false;
@@ -139,10 +140,11 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
 	// init the filtered items
     $scope.filterType = function (onFilteredItems) {
     	var innerFilterType = function( item ){
+    		// console.log( item );
         	if($scope.searchTypes.length == 0){ return true; }
 
 			for(var i in $scope.searchTypes){
-				if (item.types.indexOf($scope.searchTypes[i]) != -1) {
+				if (item.types_array.indexOf($scope.searchTypes[i]) != -1) {
 					return true;
 				}
 			}
@@ -234,7 +236,7 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
     	var innerFilterRange = function( item ){
         	if($scope.searchRange == 0 || $scope.curPlaceLat == undefined || $scope.curPlaceLng == undefined){ return true; }
 
-			var distance = Math.round(calcDistance($scope.curPlaceLat, $scope.curPlaceLng, item.lat, item.lng));
+			var distance = Math.round(calcDistance($scope.curPlaceLat, $scope.curPlaceLng, item.latitude, item.longitude));
 			if(distance <= $scope.searchRange){
 				return true;
 			}

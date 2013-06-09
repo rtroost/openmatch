@@ -1,13 +1,13 @@
 <div id="location_list" class="clearfix">
 	<ul id="locationWrapper">
-		<li id="{{location.location_id}}" ng-repeat="location in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
-			<a href="{{location.location_id | createLink}}">
+		<li id="{{location.id}}" ng-repeat="location in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
+			<a href="{{location.id | createLink}}">
 				<div class="location-list-body">
 					<span class="location-list-body-title">
-						{{location.title}}
+						{{location.name}}
 					</span>
 					<span class="location-list-body-metadata">
-						Type: {{location.types | typesToString}}
+						Type: {{location.types_array | typesToString}}
 					</span>
 					<span>
 					</span>

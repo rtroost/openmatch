@@ -7,6 +7,10 @@ var maps_class = {
 		this.container = config;
 		this.markers = {};
 
+		$.get(BASE + 'js/jstemplates/maps_marker.html', function(data){
+		    maps_class.templatehtml = $(data);
+		});
+
 		google.maps.event.addDomListener(window, 'load', this.initialize);
 
 		return this.deferred.promise();
@@ -44,19 +48,41 @@ var maps_class = {
 	},
 
 	createMarker: function(pos){
+		//console.log(pos);
 		var self = maps_class;
 		var marker = new google.maps.Marker({
-			position: new google.maps.LatLng(pos['lat'], pos['lng']),
+			position: new google.maps.LatLng(pos.latitude, pos.longitude),
 			map: self.map,
-			title: pos['text'],
-			icon: IMGLOC + "maps/" + pos['img'] + '.png',
+			title: pos.name,
+			icon: IMGLOC + "maps/" + pos.img + '.png',
 			shadow: IMGLOC + "maps/" + 'icon-shadow.png'
 		});
 
-		var contentInfowindow = '<h4>' + pos['title'] + '</h4><a href="' + BASE + 'locations/' + pos['location_id'] + '">Lees meer</a>';
-		if(pos['website'] !== null){
-			contentInfowindow += '<a href="' + pos['website'] + '">Website</a>';
+		var newTemplate = self.templatehtml.clone();
+
+		newTemplate.find('h4.marker_title').text(pos.name);
+		newTemplate.find('p.marker_address').text(pos.formatted_address);
+		newTemplate.find('a.marker_link').attr("href", BASE + "locations/" + pos.id);
+
+		var marker_contacts = newTemplate.find('div.marker_contacts');
+
+		if(pos.website != null) {
+			marker_contacts.append('<a href="' + pos.website + '" target="_blank"><i class="icon-globe activeLink"></i></a>');
+		} else {
+			marker_contacts.append('<a href="#" target="_blank" data-toggle="tooltip" title="Website"><i class="icon-question"></i></a>');
 		}
+		if(pos.tel != null) {
+			marker_contacts.append('<a href="tel:' + pos.tel + '" data-toggle="tooltip" title="' + pos.tel + '" target="_blank"><i class="icon-phone activeLink"></i></a>');
+		} else {
+			marker_contacts.append('<a href="#" target="_blank" data-toggle="tooltip" title="Telefoonnummer"><i class="icon-question"></i></a>');
+		}
+		if(pos.email != null) {
+			marker_contacts.append('<a href="emailto:' + pos.email + '" data-toggle="tooltip" title="' + pos.email + '"><i class="icon-envelope activeLink"></i></a>');
+		} else {
+			marker_contacts.append('<a href="#" target="_blank" data-toggle="tooltip" title="Email"><i class="icon-question"></i></a>');
+		}
+
+		var contentInfowindow = newTemplate.html();
 
 		self.makeInfoWindowEvent(self.map, self.infowindow, contentInfowindow, marker);
 
