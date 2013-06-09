@@ -140,7 +140,7 @@
 							Het ontwikkelteam Djoezzy van de Hogeschool Rotterdam, bestaande uit Remco van der Kleijn, Stefan Bayarri, Nick van Leeuwen en Rob Troost, heeft ervoor gezorgt dat ook als je in een roelstoel zit je nogsteeds precies weet wat Rotterdam je te bieden heeft. De ontwikkeling van OpenMatch is gebaseerd op een 'Community Driven' principe waar de nauwkeurigheid van de website door de gebruiker verbeterd wordt. Zo helpt iedereen elkaar. Het enige dat jij hoeft te doen, is er gebruik van te maken.
 						</p>
 						<p>
-							Wij danken OpenData Rotterdam voor hun uitzonderlijke hoeveelheid gegevens die de basis hebben gevormd voor dit project.
+							Wij danken Rotterdam Open Data voor hun uitzonderlijke hoeveelheid gegevens die de basis hebben gevormd voor dit project.
 						</p>
 					</div><!--/.span6-->
 

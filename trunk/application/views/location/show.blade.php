@@ -20,10 +20,22 @@
                 
                 <h2 class="location-title">{{ $location->name }}</h2>
                 <div class="location-quick_info">
+                    @if($location->formatted_address)
                     <span class="address">{{ $location->formatted_address }}</span>
-                    <span class="phone">+31 (0)10-1234567</span> <!--PLACEHOLDER-->
-                    <span class="website"><a href="#">http://google.nl/</a></span> <!--PLACEHOLDER-->
-                    <span class="email"><a href="#">info@rotterdamonbeperkt.nl</a></span> <!--PLACEHOLDER-->
+                    @else
+                    <span class="address">{{ $location->postalcode . ' ' . $location -> city }}</span>
+                    @endif
+                    @if($location -> tel)
+                    <span class="phone">{{ $location->tel }}</span>
+                    @endif
+                    @if($location -> website)
+                    <span class="website"><a href="{{ $location->website }}">{{ $location->website }}</a></span>
+                    @else
+                    @endif
+                    @if($location -> email)
+                    <span class="email"><a href="mailto:{{ $location->email }}">{{ $location->email }}</a></span>
+                    @else
+                    @endif
                 </div>
 
             </div>
@@ -146,8 +158,6 @@
 
 				<hr />
 
-				<h3>Opmerkingen en beoordelingen</h3>
-
 				<div id="comment-feedback" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -173,38 +183,44 @@
 						<button class="btn btn-primary" onClick="javascript:comment_postFeedback()">Versturen</button>
 					</div>
 				</div>
+                
+                @if($location -> comments)
 
 				<div id="comment-container">
+                    
+                    <h3>Opmerkingen en beoordelingen</h3>
+                    
+                    @foreach($location -> comments as $comment)
 
-					@forelse($location -> comments as $comment)
+                    <div class="comment" id="comment-{{$comment -> id}}">
 
-					<div class="comment" id="comment-{{$comment -> id}}">
+                        <div class="comment-inner">
 
-						<div class="comment-inner">
+                            <div class="comment-inner-options">
+                                <a href="#" data-toggle="tooltip" title="Reageer op dit bericht" class="hasTooltip"><i class="icon-reply"></i></a>
+                                <a href="#" data-toggle="tooltip" title="Foutieve informatie in dit bericht?" class="hasTooltip" onClick="javascript:comment_openFeedback({{$comment -> id}})"><i class="icon-warning-sign"></i></a>
+                                <a href="#" data-toggle="tooltip" title="Rapporteer dit bericht als offensief" class="hasTooltip"><i class="icon-flag"></i></a>
+                            </div><!--/comment-inner-options-->
 
-							<div class="comment-inner-options">
-								<a href="#" data-toggle="tooltip" title="Reageer op dit bericht" class="hasTooltip"><i class="icon-reply"></i></a>
-								<a href="#" data-toggle="tooltip" title="Foutieve informatie in dit bericht?" class="hasTooltip" onClick="javascript:comment_openFeedback({{$comment -> id}})"><i class="icon-warning-sign"></i></a>
-								<a href="#" data-toggle="tooltip" title="Rapporteer dit bericht als offensief" class="hasTooltip"><i class="icon-flag"></i></a>
-							</div><!--/comment-inner-options-->
+                            <div class="comment-inner-author">
+                                <a href="{{ URL::to_route('show_profile', $comment -> user -> id) }}">{{ ucwords($comment -> user -> name) . ' ' . $comment -> user -> prefix . ' '. ucwords($comment -> user -> surname) }}</a> <small>zei op {{ date('j F Y \o\m G:i', strtotime($comment -> created_at)) }}:</small>
+                            </div><!--/comment-inner-author-->
 
-							<div class="comment-inner-author">
-								<a href="{{ URL::to_route('show_profile', $comment -> user -> id) }}">{{ ucwords($comment -> user -> name) . ' ' . $comment -> user -> prefix . ' '. ucwords($comment -> user -> surname) }}</a> <small>zei op {{ date('j F Y \o\m G:i', strtotime($comment -> created_at)) }}:</small>
-							</div><!--/comment-inner-author-->
+                            <div class="comment-inner-body">
+                                {{ $comment -> body }}
+                            </div><!--/comment-inner-body-->
 
-							<div class="comment-inner-body">
-								{{ $comment -> body }}
-							</div><!--/comment-inner-body-->
+                        </div><!--/comment-inner-->
 
-						</div><!--/comment-inner-->
-
-					</div><!--/comment-->
-
-					@empty
-						<p>Er zijn geen beoordelingen te tonen.</p>
-					@endforelse
-
+                    </div><!--/comment-->
+                    @endforeach
+                    
 				</div><!--/comment-container-->
+                
+                @else
+                    <p>Er bestaan nog geen reacties voor deze locatie. Je kan de eerste zijn!</p> 
+                    
+                @endif
 
 				<div id="comment_post" class="wrapper clearfix">
 
@@ -214,9 +230,9 @@
 
 						@if( ! Auth::check())
 
-						<div class="comment_post-notLoggedIn">
+						<p>
 							Je moet eerst {{ HTML::link_to_route('login', 'aanmelden') }} of {{ HTML::link_to_route('register', 'registreren') }} om hier gebruik van te maken.
-						</div>
+						</p>
 
 						@else
 
