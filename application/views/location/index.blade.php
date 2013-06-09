@@ -27,7 +27,7 @@
 				<div class="sidebar">
 					<div class="sidebar_block">
 						<p>Ken je een locatie die je graag in deze lijst terug zou willen zien? Laat het ons weten!</p>
-						<a href="{{ URL::to_route('location_advice') }}" class="btn btn-small">Geef advies</a>
+						<a href="{{ URL::to_route('location_advice') }}" class="btn btn-primary">Geef advies</a>
 					</div>
 
 					<div class="sidebar_block">
