@@ -942,6 +942,39 @@ table {
 
 .fpLocation-table { }
 
+.fpLocation-table-heading th{
+	text-align: left;
+}
+
+.fpLocation-table-heading th:nth-child(1){
+	width: 200px;
+}
+.fpLocation-table-heading th:nth-child(1) p{
+	margin-left: 74px;
+}
+
+.fpLocation-table-heading th:nth-child(2){
+	width: 200px;
+}
+.fpLocation-table-heading th:nth-child(2) p{
+	margin-left: 50px;
+}
+
+.fpLocation-table-heading th:nth-child(3){
+	width: 200px;
+}
+.fpLocation-table-heading th:nth-child(3) p{
+	margin-left: 74px;
+}
+
+.fpLocation-table-heading th p{
+	cursor: pointer;
+}
+
+.fpLocation-table-heading th p:hover {
+	text-decoration: underline;
+}
+
 .fpLocation-table tr {
 	padding: 12px 20px;
 	border-bottom: 1px solid #F0F0F0;

@@ -15,7 +15,10 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
     $scope.itemsPerPage = 25;
     $scope.pagedItems = [];
     $scope.currentPage = 0;
-
+    //$scope.sort = '';
+    //$scope.order = true; // true = asc, false = desc
+    $scope.sortArr = {};
+    $scope.distance = false;
 
     // ---------------
 
@@ -28,9 +31,10 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
 		{get: {method:'GET', isArray: true}}
 	);
 	$scope.locations = $scope.locationsGet.get(function(results){
+        $scope.filteredItems = $scope.locations;
 		// console.log(results);
 		// functions have been describe process the data for display
-		$scope.filterSearch();
+		$scope.updatePagination();
 		//console.log($scope.filteredItems);
 	});
 
@@ -79,7 +83,6 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
     // calculate page in place
     $scope.groupToPages = function () {
         $scope.pagedItems = [];
-        
         for (var i = 0; i < $scope.filteredItems.length; i++) {
             if (i % $scope.itemsPerPage === 0) {
                 $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [ $scope.filteredItems[i] ];
@@ -116,26 +119,6 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
     $scope.setPage = function () {
         $scope.currentPage = this.n;
     };
-
-
-    // change sorting order
-    $scope.sort_by = function(newSortingOrder) {
-        if ($scope.sortingOrder == newSortingOrder)
-            $scope.reverse = !$scope.reverse;
-
-        $scope.sortingOrder = newSortingOrder;
-
-        // icon setup
-        $('th i').each(function(){
-            // icon reset
-            $(this).removeClass().addClass('icon-sort');
-        });
-        if ($scope.reverse)
-            $('th.'+new_sorting_order+' i').removeClass().addClass('icon-chevron-up');
-        else
-            $('th.'+new_sorting_order+' i').removeClass().addClass('icon-chevron-down');
-    };
-
 
 	// init the filtered items
     $scope.filterType = function (onFilteredItems) {
@@ -221,6 +204,7 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
 
 			var distance = Math.round(calcDistance($scope.curPlaceLat, $scope.curPlaceLng, item.latitude, item.longitude));
             item.distance = distance + 'km';
+            $scope.distance = true;
 			if(distance <= $scope.searchRange){
 				return true;
 			}
@@ -244,6 +228,26 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
 		scope.getGeoLocation( scope );
 	}
 
+    $scope.changeSortOrder = function(sort){
+
+        console.log(sort);
+
+        $scope.reverse = ($scope.sortingOrder == sort) ? !$scope.reverse : true;
+        $scope.sortingOrder = sort;
+
+        for(var i in $scope.sortArr){
+            $scope.sortArr[i] = false;
+        }
+
+        var name = ($scope.reverse) ? 'Asc' : 'Desc';
+
+        $scope.sortArr[sort+name] = true;
+
+        $scope.updatePagination();
+
+
+    }
+ 
 };
 
 

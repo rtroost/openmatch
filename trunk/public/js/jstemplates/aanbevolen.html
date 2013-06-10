@@ -18,7 +18,7 @@
 
 		<td class="fpLocation-title">
 			<a href="{{BASE + 'locations/' + location.id}}">{{location.name}}</a>
-			<span class="fpLocation-address">{{location.formatted_address}}</span>
+			<span class="fpLocation-address">{{location.formatted_address | formatAddress:location.postalcode:location.number:location.city}}</span>
 		</td>
 
 		<td class="fpLocation-icon" ng-switch on="!!location.website">
