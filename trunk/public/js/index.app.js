@@ -69,7 +69,7 @@ tableCtrl.loadData = function($q, $timeout, $rootScope, $location, $resource) {
 			{get: {method:'GET', isArray: true}}
 		);
 		$rootScope.getData.get(function(results){
-			// console.log(results);
+			console.log(results);
 			loadedData.push({type: path, result: results});
 			$rootScope.result = results;
 			$rootScope.loading = false;
@@ -91,3 +91,13 @@ function getResult(t){
 	}
 	return false;
 }
+
+indexApp.filter('formatAddress', function(){
+	return function(formatted_address, postalcode, number, city){
+		if(formatted_address != '') {
+			return formatted_address;
+		} else {
+			return postalcode + ' ' + number + ' ' + city;
+		}
+	};
+});

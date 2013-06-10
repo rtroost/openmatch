@@ -16,7 +16,7 @@
             
             <div class="row-fluid location-header">
                 
-                <img src="{{ URL::to('img/maps/iconRecreation.png') }}" class="location-marker" />
+                <img src="{{ URL::to('img/maps/' . $location->img . '.png') }}" class="location-marker" />
                 
                 <h2 class="location-title">{{ $location->name }}</h2>
                 <div class="location-quick_info">

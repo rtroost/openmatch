@@ -888,7 +888,7 @@ table {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    height: 350px;
+    height: 354px;
 }
 
 .fpLocations-sortbar {
@@ -940,6 +940,10 @@ table {
 
 .fpLocation-table tr {
 	padding: 12px 20px;
+	border-bottom: 1px solid #F0F0F0;
+}
+.fpLocation-table tr:last-of-type{
+	border-bottom: none;
 }
 .fpLocation-table tr td {
 	padding-top: 8px;
