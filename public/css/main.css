@@ -33,6 +33,10 @@ a:hover {
 	color: #39B54A;
 }
 
+.inlineBlock {
+	display: inline-block !important; 
+}
+
 
 /*********************/
 /* Basic Page Markup */
