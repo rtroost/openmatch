@@ -61,7 +61,11 @@ var maps_class = {
 		var newTemplate = self.templatehtml.clone();
 
 		newTemplate.find('h4.marker_title').text(pos.name);
-		newTemplate.find('p.marker_address').text(pos.formatted_address);
+		if(pos.formatted_address == "") {
+			newTemplate.find('p.marker_address').text(pos.postalcode + ' ' + pos.number + ' ' + pos.city);
+		} else {
+			newTemplate.find('p.marker_address').text(pos.formatted_address);
+		}
 		newTemplate.find('a.marker_link').attr("href", BASE + "locations/" + pos.id);
 
 		var marker_contacts = newTemplate.find('div.marker_contacts');
@@ -86,7 +90,7 @@ var maps_class = {
 
 		self.makeInfoWindowEvent(self.map, self.infowindow, contentInfowindow, marker);
 
-		self.markers[pos['location_id']] = marker;
+		self.markers[pos.id] = marker;
 	},
 
 	makeInfoWindowEvent: function(map, infowindow, contentString, marker) {

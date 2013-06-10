@@ -64,13 +64,19 @@
 
 								{{ Form::token() }}
 
-								<div class="control-group">
+								<span class="location_formatted_address" style="display:none;">{{$location -> formatted_address}}</span>
+								<span class="location_postalcode" style="display:none;">{{$location -> postalcode}}</span>
+								<span class="location_number" style="display:none;">{{$location -> number}}</span>
+								<span class="location_city" style="display:none;">{{$location -> city}}</span>
+
+								<div id="controlGroupTarget" class="control-group">
 									{{ Form::label('origin', 'Bepaal waar vandaan je wilt vertrekken', array('class' => 'control-label')) }}
 									<div class="controls">
 										<div class="input-append" style="width:80%">
 											<input class="span12" id="origin-input" type="text" name="origin">
 											<span class="add-on" id="get-geolocation"><i class="icon-screenshot"></i></span>
 										</div>
+										<span class="help-block" id="locationError" style="">Het opgegeven adres wordt niet herkend</span>
 									</div>
 								</div>
 
@@ -402,66 +408,4 @@
 	</div><!--/container-->
 </div><!--/content-->
 
-@endsection
-
-@section('extra_scripts')
-<script>
-$(document).ready(function() {
-
-	$('.ratings-input').rating();
-
-	$('#btn_getDirections').on('click', function(e) {
-
-		e.preventDefault(); // Prevent form from submitting
-
-		var location_origin = $('#origin-input').val();
-		@if($location -> formatted_address == "")
-			var location_destination = '{{ $location -> postalcode . ' ' . $location -> number . ' ' . $location -> city }}';
-		@else
-		    var location_destination = '{{ $location -> formatted_address }}';
-		@endif
-		var transport_mode = $('#transport-input').val();
-
-		var url = 'http://maps.googleapis.com/maps/api/directions/json?origin=' + encodeURIComponent(location_origin) + '&destination=' + encodeURIComponent(location_destination) + '&sensor=false' + '&mode=' + transport_mode;
-
-		if(transport_mode == "transit") {
-			url =  url + "&departure_time=" + (Math.round(new Date().getTime() / 1000));
-		}
-
-		console.log('location_origin: ' + location_origin);
-		console.log('location_destination: ' + location_destination);
-		console.log('transport_mode: ' + transport_mode);
-		console.log('url: ' + url);
-
-		$.ajax({
-			url: url,
-			// data: {'action': 'geo'},
-			dataType: 'json'
-		}).promise().then(
-			function( results ){ //success
-
-				console.log(results);
-
-				var steps = results['routes'][0]['legs'][0]['steps'];
-				var directionsHTML = [];
-
-				for (var i = 0; i < steps.length; i++) {
-					step = steps[i];
-					directionsHTML.push('<li><i class="icon-caret-right"></i> ' + step['html_instructions'] + '</li>');
-				}
-
-				$("#directions-result ul").html(directionsHTML);
-				$("#directions-result").slideDown(600);
-
-				$("#directions-gotoGMaps").attr('href', 'https://maps.google.com/maps?saddr=' + location_origin + '&daddr=' + location_destination + '&mode=' + transport_mode);
-			},
-			function(){ //failed
-				console.log("Something went wrong during the ajax request.");
-				maps_locations.deferred.reject();
-			}
-		);
-
-	});
-});
-</script>
 @endsection
