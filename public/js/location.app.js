@@ -179,26 +179,6 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
 
 	$scope.getGeoLocation = function(scope) {
 
-		if(scope.geoLocation !== "" && scope.geoLocation !== undefined){
-			$.ajax({
-				type: "GET",
-				url: 'http://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(scope.geoLocation) + '&sensor=false',
-				dataType: 'json'
-			}).promise().then( function (results){ successCallback(results); }, failedCallback );
-		} else {
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(function(position) {
-					$.ajax({
-						type: "GET",
-						url: 'http://maps.googleapis.com/maps/api/geocode/json?address=' + position.coords.latitude + "," + position.coords.longitude + '&sensor=false',
-						dataType: 'json'
-					}).promise().then( successCallback,	failedCallback );
-				});
-			} else {
-				alert('Geolocation is not supported by this browser.');
-			}
-		}
-
 		var successCallback = function( results ) {
 			if(results.status === 'OK'){
 				scope.$apply(function () {
@@ -224,6 +204,8 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
 		}
 
 		var failedCallback = function () { console.log("Something went wrong during the ajax request."); }
+
+		getLocationGoogleMaps(scope.geoLocation, successCallback, failedCallback);
 	}
 
 	$scope.rangeChange = function(scope){
@@ -279,42 +261,6 @@ locationApp.filter("typesToString", function() {
 		return string.substr(0, string.length - 2);
 	}
 });
-
-// locationApp.filter("filterTypes", function() {
-// 	return function(items, searchTypes, scope) {
-
-// 		if(searchTypes.length == 0){ return items; }
-// 		scope.change++;
-// 		var arrayToReturn = [];
-// 		for (var i=0; i < items.length; i++){
-// 			for(var j in searchTypes){
-// 				if (items[i].types.indexOf(searchTypes[j]) != -1) {
-// 					arrayToReturn.push(items[i]);
-// 				}
-// 			}
-			
-// 		}
-// 		//scope.updatePaginate();
-// 		return arrayToReturn;
-// 	}
-// });
-
-// locationApp.filter("filterRange", function() {
-// 	return function(items, obj) {
-// 		//$scope.change++;
-// 		if(obj.searchRange == 0 || obj.lat == undefined || obj.lng == undefined){ return items; }
-
-// 		var arrayToReturn = [];  
-// 		for (var i=0; i < items.length; i++){
-// 			var distance = Math.round(calcDistance(obj.lat, obj.lng, items[i].lat, items[i].lng));
-// 			if(distance <= obj.searchRange){
-// 				arrayToReturn.push(items[i]);
-// 			}
-// 		}
-		
-// 		return arrayToReturn;
-// 	}
-// });
 
 var locationDirective = locationApp.directive("locations", function() {
 	return {

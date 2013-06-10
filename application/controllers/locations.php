@@ -12,15 +12,48 @@ class Locations_Controller extends Base_Controller {
 	public function get_index(){
 
 		if(Request::ajax()){
-			$locations = Location::with('types')->get();
+			
 
-			if(Input::get('action') == 'geo'){
-				
+			if(Input::get('action') == 'GEO') {
+				$locations = Location::with('types')->get();
+				$locations = locationLib::imageToLocations($locations);
+				foreach ($locations as $key => $value) {
+					$newtypes = [];
+					foreach ($value->types as $key2 => $value2) {
+						$newtypes[] = $value2->naam;
+					}
+					$value->types_array = $newtypes;
+				}
+
+				return Response::eloquent($locations);
+
+			} elseif(Input::get('action') == 'TOON') {
+				$locations = Location::with('types')->order_by('id', 'desc')->take(5)->get();
+
 				$locations = locationLib::imageToLocations($locations);
 
 				return Response::eloquent($locations);
 
+			} elseif(Input::get('action') == 'LOCATIE_DICHTBIJ') {
+				$locations = Location::with('types')->order_by('id', 'desc')->take(5)->get();
+
+				$locations = locationLib::imageToLocations($locations);
+
+				return Response::eloquent($locations);
+			} elseif(Input::get('action') == 'HOOGST_BEOORDEELD') {
+				$locations = Location::with('types')->order_by('id', 'desc')->take(5)->get();
+
+				$locations = locationLib::imageToLocations($locations);
+
+				return Response::eloquent($locations);
+			} elseif(Input::get('action') == 'AANBEVOLEN') {
+				$locations = Location::with('types')->order_by('id', 'desc')->take(5)->get();
+
+				$locations = locationLib::imageToLocations($locations);
+
+				return Response::eloquent($locations);
 			} else {
+				$locations = Location::with('types')->get();
 				foreach ($locations as $key => $value) {
 					$newtypes = [];
 					foreach ($value->types as $key2 => $value2) {
@@ -52,6 +85,7 @@ class Locations_Controller extends Base_Controller {
 		Asset::container('footer')->add('angular', 'js/vendor/angular.min.js');
 		Asset::container('footer')->add('angularResource', 'js/vendor/angular-resource.js');
 		Asset::container('footer')->add('locationApp', 'js/location.app.js', array('angular', 'angularResource'));
+		Asset::container('footer')->add('getLocationGoogleMaps', 'js/googlemaps/getLocationGoogleMaps.js');
 		// Asset::container('footer')->add('location_filter', 'js/location_filter.js', 'jquery');
 		// Asset::container('footer')->add('event_index', 'js/event.index.js', array('jquery', 'location_filter', 'handlebars'));
 
@@ -63,6 +97,7 @@ class Locations_Controller extends Base_Controller {
 		Asset::container('footer')->add('rating_js', 'js/vendor/rating.js');
 		Asset::container('footer')->add('locations', 'js/locations.js');
 		Asset::container('footer')->add('maps_api', 'http://maps.google.com/maps/api/js?sensor=false');
+		Asset::container('footer')->add('getLocationGoogleMaps', 'js/googlemaps/getLocationGoogleMaps.js');
 		Asset::add('rating_css', 'css/rating.css');
 
 		$location = Location::with('types') -> with('comments') -> where('id', '=' , $index) -> first();
