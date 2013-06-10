@@ -12,8 +12,6 @@ class Locations_Controller extends Base_Controller {
 	public function get_index(){
 
 		if(Request::ajax()){
-			
-
 			if(Input::get('action') == 'GEO') {
 				$locations = Location::with('types')->get();
 				$locations = locationLib::imageToLocations($locations);
@@ -54,6 +52,7 @@ class Locations_Controller extends Base_Controller {
 				return Response::eloquent($locations);
 			} else {
 				$locations = Location::with('types')->get();
+				$locations = locationLib::imageToLocations($locations);
 				foreach ($locations as $key => $value) {
 					$newtypes = [];
 					foreach ($value->types as $key2 => $value2) {
@@ -64,22 +63,7 @@ class Locations_Controller extends Base_Controller {
 				return Response::eloquent($locations);
 			}
 		}
-
-		//$locations = Location::with('types')->get();
-
-
-		// foreach ($locations as $key => $value) {
-		// 	foreach ($value->types as $key2 => $value2) {
-		// 		//dd($value2->naam);
-		// 		$newtypes[] = $value2->naam;
-		// 	}
-		// 	$value->types = $newtypes;
-		// 	$value->relationships = null;
-		// 	//dd($value->relationships);
-		// }
-		// dd($locations);
-				//return Response::eloquent($locations);
-			
+	
 
 		// hier moet eventueel nog een view komen
 		Asset::container('footer')->add('angular', 'js/vendor/angular.min.js');
@@ -101,6 +85,7 @@ class Locations_Controller extends Base_Controller {
 		Asset::add('rating_css', 'css/rating.css');
 
 		$location = Location::with('types') -> with('comments') -> where('id', '=' , $index) -> first();
+		$location = locationLib::imageToLocation($location);
 
 		if(Auth::check())
 			$thumbState = LocationThumb::where('user_id', '=', Auth::user() -> id) -> where('location_id', '=', $location -> id) -> first();

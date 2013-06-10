@@ -28,7 +28,7 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
 		{get: {method:'GET', isArray: true}}
 	);
 	$scope.locations = $scope.locationsGet.get(function(results){
-		console.log(results);
+		// console.log(results);
 		// functions have been describe process the data for display
 		$scope.filterSearch();
 		//console.log($scope.filteredItems);
@@ -251,16 +251,26 @@ locationApp.filter("createLink", function() {
 	}
 });
 
-locationApp.filter("typesToString", function() {
-	return function(types) {
-		//$scope.change++;
-		var string = "";
-		for(i in types){
-			string += types[i] + ", ";
-		}
-		return string.substr(0, string.length - 2);
-	}
+locationApp.filter('formatAddress', function(){
+    return function(formatted_address, postalcode, number, city){
+        if(formatted_address != '') {
+            return formatted_address;
+        } else {
+            return postalcode + ' ' + number + ' ' + city;
+        }
+    };
 });
+
+// locationApp.filter("typesToString", function() {
+// 	return function(types) {
+// 		//$scope.change++;
+// 		var string = "";
+// 		for(i in types){
+// 			string += types[i] + ", ";
+// 		}
+// 		return string.substr(0, string.length - 2);
+// 	}
+// });
 
 var locationDirective = locationApp.directive("locations", function() {
 	return {
