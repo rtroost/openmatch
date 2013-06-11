@@ -200,10 +200,12 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
     $scope.filterRange = function (onFilteredItems) {
     	var innerFilterRange = function( item ){
         	if($scope.searchRange == 0 || $scope.curPlaceLat == undefined || $scope.curPlaceLng == undefined){ return true; }
-            console.log(item);
+            // console.log(item);
 
 			var distance = Math.round(calcDistance($scope.curPlaceLat, $scope.curPlaceLng, item.latitude, item.longitude));
-            item.distance = distance + 'km';
+            item.distance = distance;
+            item.distanceString = distance + 'km';
+
             $scope.distance = true;
 			if(distance <= $scope.searchRange){
 				return true;
