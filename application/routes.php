@@ -26,7 +26,6 @@ Route::get('profile/(:num)/messages',	array('as' => 'show_profile_messages', 			
 
 Route::get('locations', 					array('as' => 'locations', 'uses' => 'locations@index'));
 Route::get('locations/(:num)', 				array('as' => 'location', 'uses' => 'locations@show'));
-Route::get('locations/(:num)/thumb/(:any)', 	array('as' => 'location_thumbAction', 'uses' => 'locations@thumbsAction'));
 Route::post('locations/(:num)/comment', 		array('as' => 'location_post_comment', 'uses' => 'locations@comment', 'before' => 'csrf|auth'));
 Route::post('locations/(:num)/feedback', 	array('as' => 'location_feedback', 'uses' => 'locations@feedback', 'before' => 'csrf|auth'));
 Route::post('locations/feedback/comment', 	array('as' => 'location_comment_feedback', 'uses' => 'locations@feedback_comment', 'before' => 'csrf|auth'));
