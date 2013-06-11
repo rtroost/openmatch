@@ -172,11 +172,12 @@ a:hover {
 #main_logo {
     text-indent: -9999em;
     height: 70px;
-    width: 210px;
+    width: 230px;
     background: url(../img/main_logo.png) no-repeat 0 0;
     float: left;
     margin-right: 1.125em;
-    margin-top: 4px
+    margin-top: 4px;
+	font-size: 2em;
 }
 
 #nav ul {
