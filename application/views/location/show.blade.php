@@ -230,7 +230,7 @@
 
 				<div id="comment_post" class="wrapper clearfix">
 
-					<div class="span8">
+					<div class="span12">
 
 						<h3>Geef je oordeel of discusseer mee!</h3>
 
@@ -267,138 +267,6 @@
 						@endif
 
 					</div><!--/span8-->
-
-					<div class="span4">
-
-						<h3>Beoordeling</h3>
-
-						<p>Dit is een eenmalige beoordeling die je kunt geven en helpt de website nauwkeuriger advies te geven, dus wees eerlijk!
-
-						<div class="row-fluid">
-
-							<div class="span6">
-
-								<div class="rating">
-
-									<span class="label">Assistentie</span>
-
-									<div class="ratings-input">
-
-										<input type="radio" name="example" class="rating" value="1" />
-										<input type="radio" name="example" class="rating" value="2" />
-										<input type="radio" name="example" class="rating" value="3" />
-										<input type="radio" name="example" class="rating" value="4" />
-										<input type="radio" name="example" class="rating" value="5" />
-
-									</div>
-
-								</div><!--/rating-->
-
-								<div class="rating">
-
-									<span class="label">Sanitair</span>
-
-									<div class="ratings-input">
-
-										<input type="radio" name="example" class="rating" value="1" />
-										<input type="radio" name="example" class="rating" value="2" />
-										<input type="radio" name="example" class="rating" value="3" />
-										<input type="radio" name="example" class="rating" value="4" />
-										<input type="radio" name="example" class="rating" value="5" />
-
-									</div>
-
-								</div><!--/rating-->
-
-								<div class="rating">
-
-									<span class="label">Liften</span>
-
-									<div class="ratings-input">
-
-										<input type="radio" name="example" class="rating" value="1" />
-										<input type="radio" name="example" class="rating" value="2" />
-										<input type="radio" name="example" class="rating" value="3" />
-										<input type="radio" name="example" class="rating" value="4" />
-										<input type="radio" name="example" class="rating" value="5" />
-
-									</div>
-
-								</div><!--/rating-->
-
-								<div class="rating">
-
-									<span class="label">Entree</span>
-
-									<div class="ratings-input">
-
-										<input type="radio" name="example" class="rating" value="1" />
-										<input type="radio" name="example" class="rating" value="2" />
-										<input type="radio" name="example" class="rating" value="3" />
-										<input type="radio" name="example" class="rating" value="4" />
-										<input type="radio" name="example" class="rating" value="5" />
-
-									</div>
-
-								</div><!--/rating-->
-
-							</div><!--/span6-->
-
-							<div class="span6">
-
-								<div class="rating">
-
-									<span class="label">Aanlooproute</span>
-
-									<div class="ratings-input">
-
-										<input type="radio" name="example" class="rating" value="1" />
-										<input type="radio" name="example" class="rating" value="2" />
-										<input type="radio" name="example" class="rating" value="3" />
-										<input type="radio" name="example" class="rating" value="4" />
-										<input type="radio" name="example" class="rating" value="5" />
-
-									</div>
-
-								</div><!--/rating-->
-
-								<div class="rating">
-
-									<span class="label">Parkeren</span>
-
-									<div class="ratings-input">
-
-										<input type="radio" name="example" class="rating" value="1" />
-										<input type="radio" name="example" class="rating" value="2" />
-										<input type="radio" name="example" class="rating" value="3" />
-										<input type="radio" name="example" class="rating" value="4" />
-										<input type="radio" name="example" class="rating" value="5" />
-
-									</div>
-
-								</div><!--/rating-->
-
-								<div class="rating">
-
-									<span class="label">Berijkbaarheid</span>
-
-									<div class="ratings-input">
-
-										<input type="radio" name="example" class="rating" value="1" />
-										<input type="radio" name="example" class="rating" value="2" />
-										<input type="radio" name="example" class="rating" value="3" />
-										<input type="radio" name="example" class="rating" value="4" />
-										<input type="radio" name="example" class="rating" value="5" />
-
-									</div>
-
-								</div><!--/rating-->
-
-							</div><!--/span6-->
-
-						</div><!--/row-fluid-->
-
-					</div><!--/span4-->
 
 				</div>
 
