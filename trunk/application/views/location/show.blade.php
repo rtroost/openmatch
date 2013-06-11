@@ -230,7 +230,7 @@
 
 				<div id="comment_post" class="wrapper clearfix">
 
-					<div class="span12">
+					<div class="span8">
 
 						<h3>Geef je oordeel of discusseer mee!</h3>
 
@@ -267,6 +267,20 @@
 						@endif
 
 					</div><!--/span8-->
+
+					<div class="span4">
+
+						<h3>Beoordeling</h3>
+
+						<p>Dit is een eenmalige beoordeling die je kunt geven en helpt de website nauwkeuriger advies te geven, dus wees eerlijk!
+
+						<div class="row-fluid">
+
+							
+
+						</div><!--/row-fluid-->
+
+					</div><!--/span4-->
 
 				</div>
 

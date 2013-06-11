@@ -15,5 +15,9 @@ class Location extends Basemodel {
 	public function locationFeedback() {
 		return $this -> has_many('LocationFeedback');
 	}
+	
+	public function LocationRatings() {
+		return $this -> has_many('LocationRating');
+	}
 
 }
