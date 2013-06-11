@@ -87,15 +87,8 @@ class Locations_Controller extends Base_Controller {
 		$location = Location::with('types') -> with('comments') -> where('id', '=' , $index) -> first();
 		$location = locationLib::imageToLocation($location);
 
-		if(Auth::check())
-			$thumbState = LocationThumb::where('user_id', '=', Auth::user() -> id) -> where('location_id', '=', $location -> id) -> first();
-		else
-			$thumbState = null;
-
-		// dd($thumbState);
 		return View::make('location.show')
-		-> with('location', $location)
-		-> with('thumbState', $thumbState);
+		-> with('location', $location);
 	}
 
 	public function get_new(){
@@ -143,30 +136,6 @@ class Locations_Controller extends Base_Controller {
 				-> with('new_comment', $comment);
 		}
 
-	}
-
-	public function get_thumbsAction($location_id, $direction) {
-
-		$location = Location::find($location_id);
-
-		if($direction == 'up')
-			$action = true;
-		elseif($direction == 'down')
-			$action = false;
-		else
-			return Redirect::to_route('location', $location -> id);
-
-		$user = Auth::user();
-
-		$user -> locationThumbs() -> where('location_id', '=', $location -> id) -> delete();
-
-		LocationThumb::create(array(
-			'location_id' => $location_id,
-			'user_id' => $user -> id,
-			'positive' => $action
-		));
-
-		return Redirect::to_route('location', $location_id);
 	}
 
 	public function post_feedback() {
