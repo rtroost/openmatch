@@ -92,14 +92,10 @@ class Locations_Controller extends Base_Controller {
 		$personal_rating_data = array();
 		if($locationRating !== null) $personal_rating_data = json_decode($locationRating -> rating_dump);
 		
-		
-		Bundle::start('laravel-disqus');
-    	$disqus = new Disqus('rotterdamonbeperkt');
-		
+	
 		return View::make('location.show')
 			-> with('location', $location)
-			-> with('personal_rating_data', $personal_rating_data)
-			-> with('disqus', $disqus);
+			-> with('personal_rating_data', $personal_rating_data);
 	}
 
 	public function get_new(){
