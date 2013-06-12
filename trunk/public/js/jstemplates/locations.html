@@ -23,8 +23,9 @@
 				</td>
 
 				<td class="fpLocation-title">
-					<a href="{{BASE + 'locations/' + location.id}}" style="display: block;">{{location.name}}</a>
-					<span class="fpLocation-address" style="display: inline-block;">{{location.formatted_address | formatAddress:location.postalcode:location.number:location.city}}</span> <span class="fpLocation-address" style="display: inline-block; margin-left: 10px;">{{location.distanceString}}</span>
+					<a href="{{BASE + 'locations/' + location.id}}">{{location.name}}</a>
+					<span class="fpLocation-address">{{location.formatted_address | formatAddress:location.postalcode:location.number:location.city}}</span>
+					<span class="fpLocation-address">{{location.distanceString}}</span>
 				</td>
 
 				<td class="fpLocation-icon" ng-switch on="!!location.website">
