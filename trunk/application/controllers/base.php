@@ -8,7 +8,7 @@ class Base_Controller extends Controller {
 		Asset::style('google-font', 'http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Monda:300,400,700|Oswald:400:700');
 		Asset::add('bootstrap-min', 'css/bootstrap.min.css');
 		Asset::add('bootstrap-responsive-min', 'css/bootstrap-responsive.min.css', 'bootstrap-min');
-		Asset::add('jquery-ui', 'css/cupertino/jquery-ui-1.10.3.custom.min.css');
+//		Asset::add('jquery-ui', 'css/cupertino/jquery-ui-1.10.3.custom.min.css');
 		Asset::add('main', 'css/main.css');
 		Asset::add('fontAwesome', 'css/font-awesome.min.css');
 
@@ -18,7 +18,7 @@ class Base_Controller extends Controller {
 		// scripts on the bottom of the page
 		Asset::container('footer')->script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
 		Asset::container('footer')->add('bootstrap-min-js', 'js/vendor/bootstrap.min.js');
-		Asset::container('footer')->add('jquery-ui-1.10.3-custom-min', 'js/vendor/jquery-ui-1.10.3.custom.min.js');
+//		Asset::container('footer')->add('jquery-ui-1.10.3-custom-min', 'js/vendor/jquery-ui-1.10.3.custom.min.js');
 		Asset::container('footer')->add('main', 'js/main.js');
 	}
 

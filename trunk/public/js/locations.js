@@ -104,6 +104,10 @@ $(document).ready(function() {
 	});
 });
 
+function comment_reply(comment_id) {
+	$('#reply_id').val(comment_id);
+}
+
 function comment_openFeedback(comment_id) {
 
 	$('#comment-feedback-comment_id').val(comment_id);
