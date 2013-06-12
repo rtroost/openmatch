@@ -15,11 +15,11 @@ class LocationComment extends Basemodel {
 	}
 
 	public function comments() {
-		return $this -> has_many('LocationComment');
+		return $this -> has_many('LocationComment', 'reply_id');
 	}
 
 	public function comment() {
-		return $this -> belongs_to('LocationComment');
+		return $this -> belongs_to('LocationComment', 'reply_id');
 	}
 
 }

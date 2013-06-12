@@ -84,8 +84,10 @@ class Locations_Controller extends Base_Controller {
 		$location = Location::with('types') -> with('comments') -> where('id', '=' , $index) -> first();
 		$location = locationLib::imageToLocation($location);
 		
-		
-		$locationRating = LocationRating::where('location_id', '=', $location -> id) -> where('user_id', '=', Auth::user() -> id) -> first();
+		if(Auth::check())
+			$locationRating = LocationRating::where('location_id', '=', $location -> id) -> where('user_id', '=', Auth::user() -> id) -> first();
+		else
+			$locationRating = null;
 		
 		$personal_rating_data = array();
 		if($locationRating !== null) $personal_rating_data = json_decode($locationRating -> rating_dump);
@@ -128,15 +130,18 @@ class Locations_Controller extends Base_Controller {
 				-> with_errors($validation)
 				-> with('message', 'Uw bericht is niet geplaatst.');
 		} else {
+			
+			$reply_id = (Input::get('reply_id')) ? Input::get('reply_id') : null;
 
 			$comment = LocationComment::create(array(
 				'user_id' => Auth::user() -> id,
 				'location_id' => $location_id,
-				'body' => Input::get('message_body')
+				'reply_id' => $reply_id,
+				'body' => Input::get('message_body'),				
 			));
 
 			return Redirect::to_route('location', $location_id)
-				-> with('message', 'Uw bericht is niet geplaatst.')
+				-> with('message', 'Uw bericht is geplaatst.')
 				-> with('new_comment', $comment);
 		}
 

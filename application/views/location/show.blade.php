@@ -198,12 +198,12 @@
                     
                     @foreach($location -> comments as $comment)
 
-                    <div class="comment" id="comment-{{$comment -> id}}">
+                    <div class="comment" id="comment-{{ $comment -> id }}">
 
                         <div class="comment-inner">
 
                             <div class="comment-inner-options">
-                                <a href="#" data-toggle="tooltip" title="Reageer op dit bericht" class="hasTooltip"><i class="icon-reply"></i></a>
+                                <a href="#" data-toggle="tooltip" title="Reageer op dit bericht" class="hasTooltip" onClick="javascript:comment_reply({{$comment -> id}})"><i class="icon-reply"></i></a>
                                 <a href="#" data-toggle="tooltip" title="Foutieve informatie in dit bericht?" class="hasTooltip" onClick="javascript:comment_openFeedback({{$comment -> id}})"><i class="icon-warning-sign"></i></a>
                                 <a href="#" data-toggle="tooltip" title="Rapporteer dit bericht als offensief" class="hasTooltip"><i class="icon-flag"></i></a>
                             </div><!--/comment-inner-options-->
@@ -247,6 +247,8 @@
 						{{ Form::token() }}
 
 						{{ Form::hidden('location_id', $location -> id) }}
+						
+						<input type="hidden" name="reply_id" id="reply_id" />
 
 						<div class="control-group {{ ($errors->first('message_body') ? 'error' : '') }}">
 							{{ Form::label('message_body', 'Uw bericht', array('class' => 'control-label')) }}
@@ -255,6 +257,8 @@
 								{{ $errors->first('message_body', '<span class="help-inline">:message</span>') }}
 							</div>
 						</div>
+						
+						
 
 						<div class="control-group">
 							<div class="controls">
