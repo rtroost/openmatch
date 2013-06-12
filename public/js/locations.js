@@ -1,6 +1,14 @@
 $(document).ready(function() {
 
-	$('.ratings-input').rating();
+	$('.rating-div').raty({
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		scoreName: function() {
+			return 'scores[' + $(this).attr('data-category') + ']';
+		},
+		path: BASE + 'img'
+	});
 
 	var span_formatted_address = $('span.location_formatted_address');
 	var span_postalcode = $('span.location_postalcode');
