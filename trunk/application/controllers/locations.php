@@ -81,7 +81,7 @@ class Locations_Controller extends Base_Controller {
 		Asset::container('footer')->add('maps_api', 'http://maps.google.com/maps/api/js?sensor=false');
 		Asset::container('footer')->add('getLocationGoogleMaps', 'js/googlemaps/getLocationGoogleMaps.js');
 
-		$location = Location::with('types') -> with('comments') -> where('id', '=' , $index) -> first();
+		$location = Location::with('types') -> where('id', '=' , $index) -> first();
 		$location = locationLib::imageToLocation($location);
 		
 		if(Auth::check())
@@ -92,9 +92,14 @@ class Locations_Controller extends Base_Controller {
 		$personal_rating_data = array();
 		if($locationRating !== null) $personal_rating_data = json_decode($locationRating -> rating_dump);
 		
+		
+		Bundle::start('laravel-disqus');
+    	$disqus = new Disqus('rotterdamonbeperkt');
+		
 		return View::make('location.show')
 			-> with('location', $location)
-			-> with('personal_rating_data', $personal_rating_data);
+			-> with('personal_rating_data', $personal_rating_data)
+			-> with('disqus', $disqus);
 	}
 
 	public function get_new(){
@@ -117,35 +122,35 @@ class Locations_Controller extends Base_Controller {
 
 	}
 
-	public function post_comment() {
-
-		$location_id = Input::get('location_id');
-
-		$validation = LocationComment::Validate(Input::all());
-
-		if($validation -> fails()) {
-
-			return Redirect::to_route('location', $location_id)
-				-> with_input()
-				-> with_errors($validation)
-				-> with('message', 'Uw bericht is niet geplaatst.');
-		} else {
-			
-			$reply_id = (Input::get('reply_id')) ? Input::get('reply_id') : null;
-
-			$comment = LocationComment::create(array(
-				'user_id' => Auth::user() -> id,
-				'location_id' => $location_id,
-				'reply_id' => $reply_id,
-				'body' => Input::get('message_body'),				
-			));
-
-			return Redirect::to_route('location', $location_id)
-				-> with('message', 'Uw bericht is geplaatst.')
-				-> with('new_comment', $comment);
-		}
-
-	}
+//	public function post_comment() {
+//
+//		$location_id = Input::get('location_id');
+//
+//		$validation = LocationComment::Validate(Input::all());
+//
+//		if($validation -> fails()) {
+//
+//			return Redirect::to_route('location', $location_id)
+//				-> with_input()
+//				-> with_errors($validation)
+//				-> with('message', 'Uw bericht is niet geplaatst.');
+//		} else {
+//			
+//			$reply_id = (Input::get('reply_id')) ? Input::get('reply_id') : null;
+//
+//			$comment = LocationComment::create(array(
+//				'user_id' => Auth::user() -> id,
+//				'location_id' => $location_id,
+//				'reply_id' => $reply_id,
+//				'body' => Input::get('message_body'),				
+//			));
+//
+//			return Redirect::to_route('location', $location_id)
+//				-> with('message', 'Uw bericht is geplaatst.')
+//				-> with('new_comment', $comment);
+//		}
+//
+//	}
 
 	public function post_feedback() {
 
@@ -173,28 +178,28 @@ class Locations_Controller extends Base_Controller {
 
 	}
 
-	public function post_feedback_comment() {
-
-		$validation = LocationCommentFeedback::validate(Input::all());
-
-		// $location = Location::find(Input::get('location_id'));
-		$comment = LocationComment::find(Input::get('comment_id'));
-
-		if($validation -> fails()) {
-			if(Request::ajax())
-				return json_encode("false");
-
-			return Redirect::to_route('location', $location -> id);
-		} else {
-			LocationCommentFeedback::create(array(
-				'locationcomment_id' => Input::get('comment_id'),
-				'user_id' => Auth::user() -> id,
-				'message' => Input::get('message')
-			));
-
-			return json_encode("true");
-		}
-	}
+//	public function post_feedback_comment() {
+//
+//		$validation = LocationCommentFeedback::validate(Input::all());
+//
+//		// $location = Location::find(Input::get('location_id'));
+//		$comment = LocationComment::find(Input::get('comment_id'));
+//
+//		if($validation -> fails()) {
+//			if(Request::ajax())
+//				return json_encode("false");
+//
+//			return Redirect::to_route('location', $location -> id);
+//		} else {
+//			LocationCommentFeedback::create(array(
+//				'locationcomment_id' => Input::get('comment_id'),
+//				'user_id' => Auth::user() -> id,
+//				'message' => Input::get('message')
+//			));
+//
+//			return json_encode("true");
+//		}
+//	}
 
 	public function get_takeAdvice() {
 		return View::make('location.advice');

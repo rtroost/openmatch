@@ -37,5 +37,6 @@ return array(
 
 	'docs' => array('handles' => 'docs'),
 	'messages' => array('auto' => true),
+	'laravel-disqus' => array('auto' => 'true'),
 
 );
