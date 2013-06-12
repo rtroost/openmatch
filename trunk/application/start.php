@@ -174,6 +174,3 @@ if ( ! Request::cli() and Config::get('session.driver') !== '')
 
 // Zet de timestamps voor intersectie tabelen standaard uit
 Laravel\Database\Eloquent\Pivot::$timestamps = false;
-
-
-Autoloader::map(array('Disqus' => path('bundle') . 'laravel-disqus/Disqus.php'));
