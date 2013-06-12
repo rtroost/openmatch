@@ -70,25 +70,29 @@ class Locations_Controller extends Base_Controller {
 		Asset::container('footer')->add('angularResource', 'js/vendor/angular-resource.js');
 		Asset::container('footer')->add('locationApp', 'js/location.app.js', array('angular', 'angularResource'));
 		Asset::container('footer')->add('getLocationGoogleMaps', 'js/googlemaps/getLocationGoogleMaps.js');
-		// Asset::container('footer')->add('location_filter', 'js/location_filter.js', 'jquery');
-		// Asset::container('footer')->add('event_index', 'js/event.index.js', array('jquery', 'location_filter', 'handlebars'));
 
 		return View::make('location.index');
 	}
 
 	public function get_show($index){
 
-		Asset::container('footer')->add('rating_js', 'js/vendor/rating.js');
+		Asset::container('footer')->add('rating_js', 'js/vendor/jquery.raty.min.js');
 		Asset::container('footer')->add('locations', 'js/locations.js');
 		Asset::container('footer')->add('maps_api', 'http://maps.google.com/maps/api/js?sensor=false');
 		Asset::container('footer')->add('getLocationGoogleMaps', 'js/googlemaps/getLocationGoogleMaps.js');
-		Asset::add('rating_css', 'css/rating.css');
 
 		$location = Location::with('types') -> with('comments') -> where('id', '=' , $index) -> first();
 		$location = locationLib::imageToLocation($location);
-
+		
+		
+		$locationRating = LocationRating::where('location_id', '=', $location -> id) -> where('user_id', '=', Auth::user() -> id) -> first();
+		
+		$personal_rating_data = array();
+		if($locationRating !== null) $personal_rating_data = json_decode($locationRating -> rating_dump);
+		
 		return View::make('location.show')
-		-> with('location', $location);
+			-> with('location', $location)
+			-> with('personal_rating_data', $personal_rating_data);
 	}
 
 	public function get_new(){
@@ -215,5 +219,39 @@ class Locations_Controller extends Base_Controller {
 				-> with('message', 'Je inzending is voltooid en zal zo snel mogelijk door een bevoegde bekeken worden.');
 
 		}
+	}
+	
+	public function post_setRating() {
+		
+		$user = Auth::user();
+		$location = Location::find(Input::get('location_id'));
+		
+		// Couldn't find the location
+		if($location == null) return Redirect::to_route('home');
+		
+		// Get the scores from input
+		$scores = Input::get('scores');
+		
+		// Clear old scores first
+		LocationRating::where('user_id', '=', $user -> id) -> where('location_id', '=', $location -> id) -> delete();
+		
+		// Calculate avarage score
+		$score_avg = 0;
+		foreach($scores as $score) $score_avg += $score;
+		$score_avg /= sizeof($scores);
+				
+		$obj = LocationRating::create(array(
+			'location_id' => $location -> id,
+			'user_id' => $user -> id,
+			'rating_dump' => json_encode($scores),
+			'rating_avg' => $score_avg,
+		));	
+		
+		// Calculate the average
+		$location -> recalculateScore();
+		
+		
+		return Redirect::to_route('location', $location -> id)
+			-> with('message', 'Bedankt voor uw beoordeling!');
 	}
 }

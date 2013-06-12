@@ -271,14 +271,40 @@
 					<div class="span4">
 
 						<h3>Beoordeling</h3>
+						
+						@if(Auth::check())
 
 						<p>Dit is een eenmalige beoordeling die je kunt geven en helpt de website nauwkeuriger advies te geven, dus wees eerlijk!
 
 						<div class="row-fluid">
-
+							{{ Form::open(URL::to_route('location_rating'), 'POST') }}
+							{{ Form::token() }}
+							<p>Berijkbaarheid</p>
+							<div class="rating-div" data-score="{{ @$personal_rating_data -> berijkbaarheid }}" data-category="berijkbaarheid"></div>
+							<p>Parkeren</p>
+							<div class="rating-div" data-score="{{ @$personal_rating_data -> parkeren }}" data-category="parkeren"></div>
+							<p>Entree</p>
+							<div class="rating-div" data-score="{{ @$personal_rating_data -> entree }}" data-category="entree"></div>
+							<p>Aanlooproute</p>
+							<div class="rating-div" data-score="{{ @$personal_rating_data -> aanlooproute }}" data-category="aanlooproute"></div>
+							<p>Sanitair</p>
+							<div class="rating-div" data-score="{{ @$personal_rating_data -> sanitair }}" data-category="sanitair"></div>
+							<p>Liften</p>
+							<div class="rating-div" data-score="{{ @$personal_rating_data -> liften }}" data-category="liften"></div>
+							<p>Assistentie</p>
+							<div class="rating-div" data-score="{{ @$personal_rating_data -> assistentie }}" data-category="assistentie"></div>
 							
-
+							{{ Form::hidden('location_id', $location -> id) }}
+							<input type="submit" class="btn btn-primary" value="Doorvoeren!" />
+							
+							{{ Form::close() }}
 						</div><!--/row-fluid-->
+						
+						@else
+						
+						<p>Eerst inloggen.</p>
+						
+						@endif
 
 					</div><!--/span4-->
 

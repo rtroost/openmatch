@@ -26,11 +26,12 @@ Route::get('profile/(:num)/messages',	array('as' => 'show_profile_messages', 			
 
 Route::get('locations', 					array('as' => 'locations', 'uses' => 'locations@index'));
 Route::get('locations/(:num)', 				array('as' => 'location', 'uses' => 'locations@show'));
-Route::post('locations/(:num)/comment', 		array('as' => 'location_post_comment', 'uses' => 'locations@comment', 'before' => 'csrf|auth'));
+Route::post('locations/(:num)/comment', 	array('as' => 'location_post_comment', 'uses' => 'locations@comment', 'before' => 'csrf|auth'));
 Route::post('locations/(:num)/feedback', 	array('as' => 'location_feedback', 'uses' => 'locations@feedback', 'before' => 'csrf|auth'));
 Route::post('locations/feedback/comment', 	array('as' => 'location_comment_feedback', 'uses' => 'locations@feedback_comment', 'before' => 'csrf|auth'));
 Route::get('locations/advice', 				array('as' => 'location_advice', 'uses' => 'locations@takeAdvice'));
-Route::post('locations/advice', 				array('as' => 'location_advice_post', 'uses' => 'locations@takeAdvice', 'before' => 'csrf|auth'));
+Route::post('locations/advice', 			array('as' => 'location_advice_post', 'uses' => 'locations@takeAdvice', 'before' => 'csrf|auth'));
+Route::post('location/give_rating', 		array('as' => 'location_rating', 'uses' => 'locations@setRating', 'before' => 'csrf|auth'));
 
 Route::get('news', 						array('as' => 'news', 				'uses' => 'news@index'));
 Route::get('news/(:num)/edit'		, 	array('as' => 'news_edit', 			'uses' => 'news@edit'));

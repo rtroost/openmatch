@@ -16,8 +16,24 @@ class Location extends Basemodel {
 		return $this -> has_many('LocationFeedback');
 	}
 	
-	public function LocationRatings() {
+	public function locationRatings() {
 		return $this -> has_many('LocationRating');
+	}
+	
+	public function recalculateScore() {
+	
+		$scores = LocationRating::where('location_id', '=', $this -> id) -> get();
+		
+		$total_avg = 0;
+		
+		foreach($scores as $score) {
+			$total_avg += $score -> rating_avg;
+		}
+		
+		$this -> score = $total_avg / sizeof($scores);
+		$this -> score_base = sizeof($scores);
+		
+		$this -> save();
 	}
 
 }
