@@ -163,157 +163,47 @@
 			<div class="row-fluid">
 
 				<hr />
+				
+				<div class="span8">{{ $disqus->get_html() }}</div><!--/span8-->
+				
+				<div class="span4">
 
-				<div id="comment-feedback" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h3 id="myModalLabel">Een fout in de reacties doorgeven</h3>
-					</div>
-					<div class="modal-body">
+					<h3>Beoordeling</h3>
+					
+					@if(Auth::check())
 
-						{{ Form::open(NULL, NULL, array('id' => 'form-comment_feedback')) }}
+					<p>Dit is een eenmalige beoordeling die je kunt geven en helpt de website nauwkeuriger advies te geven, dus wees eerlijk!
 
-						{{ Form::token() }}
+					{{ Form::open(URL::to_route('location_rating'), 'POST') }}
+					{{ Form::token() }}
+					<p>Berijkbaarheid</p>
+					<div class="rating-div" data-score="{{ @$personal_rating_data -> berijkbaarheid }}" data-category="berijkbaarheid"></div>
+					<p>Parkeren</p>
+					<div class="rating-div" data-score="{{ @$personal_rating_data -> parkeren }}" data-category="parkeren"></div>
+					<p>Entree</p>
+					<div class="rating-div" data-score="{{ @$personal_rating_data -> entree }}" data-category="entree"></div>
+					<p>Aanlooproute</p>
+					<div class="rating-div" data-score="{{ @$personal_rating_data -> aanlooproute }}" data-category="aanlooproute"></div>
+					<p>Sanitair</p>
+					<div class="rating-div" data-score="{{ @$personal_rating_data -> sanitair }}" data-category="sanitair"></div>
+					<p>Liften</p>
+					<div class="rating-div" data-score="{{ @$personal_rating_data -> liften }}" data-category="liften"></div>
+					<p>Assistentie</p>
+					<div class="rating-div" data-score="{{ @$personal_rating_data -> assistentie }}" data-category="assistentie"></div>
+					
+					{{ Form::hidden('location_id', $location -> id) }}
+					<input type="submit" class="btn btn-primary" value="Doorvoeren!" />
+					
+					{{ Form::close() }}
+					
+					@else
+					
+					<p>Eerst inloggen.</p>
+					
+					@endif
 
-						{{ Form::hidden('location_id', $location -> id, array('id' => 'comment-feedback-location_id')) }}
-						{{ Form::hidden('comment_id', NULL, array('id' => 'comment-feedback-comment_id')) }}
-
-						<label for="comment-feedback-message">Wat is er mis met dit bericht? Als je dit bericht als offensief ervaart, gebruik dan het vlag (<i class="icon-flag"></i>) icoontje.</label>
-						<textarea name="message" name="comment-feedback-message" id="comment-feedback-message" rows="5" class="span12"></textarea>
-
-						{{ Form::close() }}
-
-					</div>
-					<div class="modal-footer">
-						<button class="btn" data-dismiss="modal" aria-hidden="true">Sluiten</button>
-						<button class="btn btn-primary" onClick="javascript:comment_postFeedback()">Versturen</button>
-					</div>
-				</div>
-                
-                @if($location -> comments)
-
-				<div id="comment-container">
-                    
-                    <h3>Opmerkingen en beoordelingen</h3>
-                    
-                    @foreach($location -> comments as $comment)
-
-                    <div class="comment" id="comment-{{ $comment -> id }}">
-
-                        <div class="comment-inner">
-
-                            <div class="comment-inner-options">
-                                <a href="#" data-toggle="tooltip" title="Reageer op dit bericht" class="hasTooltip" onClick="javascript:comment_reply({{$comment -> id}})"><i class="icon-reply"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Foutieve informatie in dit bericht?" class="hasTooltip" onClick="javascript:comment_openFeedback({{$comment -> id}})"><i class="icon-warning-sign"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Rapporteer dit bericht als offensief" class="hasTooltip"><i class="icon-flag"></i></a>
-                            </div><!--/comment-inner-options-->
-
-                            <div class="comment-inner-author">
-                                <a href="{{ URL::to_route('show_profile', $comment -> user -> id) }}">{{ ucwords($comment -> user -> name) . ' ' . $comment -> user -> prefix . ' '. ucwords($comment -> user -> surname) }}</a> <small>zei op {{ date('j F Y \o\m G:i', strtotime($comment -> created_at)) }}:</small>
-                            </div><!--/comment-inner-author-->
-
-                            <div class="comment-inner-body">
-                                {{ $comment -> body }}
-                            </div><!--/comment-inner-body-->
-
-                        </div><!--/comment-inner-->
-
-                    </div><!--/comment-->
-                    @endforeach
-                    
-				</div><!--/comment-container-->
-                
-                @else
-                    <p>Er bestaan nog geen reacties voor deze locatie. Je kan de eerste zijn!</p> 
-                    
-                @endif
-
-				<div id="comment_post" class="wrapper clearfix">
-
-					<div class="span8">
-
-						<h3>Geef je oordeel of discusseer mee!</h3>
-
-						@if( ! Auth::check())
-
-						<p>
-							Je moet eerst {{ HTML::link_to_route('login', 'aanmelden') }} of {{ HTML::link_to_route('register', 'registreren') }} om hier gebruik van te maken.
-						</p>
-
-						@else
-
-						{{ Form::open(URL::to_route('location_post_comment', $location -> id), 'POST', array('class' => 'form-verticle')) }}
-
-						{{ Form::token() }}
-
-						{{ Form::hidden('location_id', $location -> id) }}
-						
-						<input type="hidden" name="reply_id" id="reply_id" />
-
-						<div class="control-group {{ ($errors->first('message_body') ? 'error' : '') }}">
-							{{ Form::label('message_body', 'Uw bericht', array('class' => 'control-label')) }}
-							<div class="controls">
-								{{ Form::textarea('message_body', Input::old('message_body'), array('class' => 'span12')) }}
-								{{ $errors->first('message_body', '<span class="help-inline">:message</span>') }}
-							</div>
-						</div>
-						
-						
-
-						<div class="control-group">
-							<div class="controls">
-								{{ Form::submit('Verstuur', array('class' => 'btn btn-large')) }}
-							</div>
-						</div>
-
-						{{ Form::close() }}
-
-						@endif
-
-					</div><!--/span8-->
-
-					<div class="span4">
-
-						<h3>Beoordeling</h3>
-						
-						@if(Auth::check())
-
-						<p>Dit is een eenmalige beoordeling die je kunt geven en helpt de website nauwkeuriger advies te geven, dus wees eerlijk!
-
-						<div class="row-fluid">
-							{{ Form::open(URL::to_route('location_rating'), 'POST') }}
-							{{ Form::token() }}
-							<p>Berijkbaarheid</p>
-							<div class="rating-div" data-score="{{ @$personal_rating_data -> berijkbaarheid }}" data-category="berijkbaarheid"></div>
-							<p>Parkeren</p>
-							<div class="rating-div" data-score="{{ @$personal_rating_data -> parkeren }}" data-category="parkeren"></div>
-							<p>Entree</p>
-							<div class="rating-div" data-score="{{ @$personal_rating_data -> entree }}" data-category="entree"></div>
-							<p>Aanlooproute</p>
-							<div class="rating-div" data-score="{{ @$personal_rating_data -> aanlooproute }}" data-category="aanlooproute"></div>
-							<p>Sanitair</p>
-							<div class="rating-div" data-score="{{ @$personal_rating_data -> sanitair }}" data-category="sanitair"></div>
-							<p>Liften</p>
-							<div class="rating-div" data-score="{{ @$personal_rating_data -> liften }}" data-category="liften"></div>
-							<p>Assistentie</p>
-							<div class="rating-div" data-score="{{ @$personal_rating_data -> assistentie }}" data-category="assistentie"></div>
-							
-							{{ Form::hidden('location_id', $location -> id) }}
-							<input type="submit" class="btn btn-primary" value="Doorvoeren!" />
-							
-							{{ Form::close() }}
-						</div><!--/row-fluid-->
-						
-						@else
-						
-						<p>Eerst inloggen.</p>
-						
-						@endif
-
-					</div><!--/span4-->
-
-				</div>
-
+				</div><!--/span4-->
+				
 			</div><!--/row-fluid-->
 
 		</div><!--/location-->

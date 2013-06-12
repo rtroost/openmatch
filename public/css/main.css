@@ -623,50 +623,6 @@ a:hover {
 
 #get-geolocation { cursor: pointer; }
 
-#comment-container {margin-bottom: 20px;}
-.comment {
-	display: block;
-	margin-bottom: 10px;
-}
-
-.comment-inner {
-	background: #fafafa;
-	color: #555;
-	padding:8px 16px;
-	border: 1px solid #e2e2e2;
-}
-
-.comment-inner-options {
-	float: right;
-	font-size: 15px;
-}
-
-.comment-inner-options a {
-	color: #3bf;
-}
-
-.comment-inner-options a:hover {
-	color: #08c;
-	text-decoration: none;
-}
-
-.comment-inner-author {
-	font-size: 14px;
-	font-weight: 700;
-}
-
-.comment-inner-body {
-	font-size: 13px;
-	padding-left: 10px;
-}
-
-.comment .comment {
-	padding-left: 20px;
-	padding-top: 6px;
-}
-
-#comment_post {}
-
 .rating {
 	margin: 0 0 8px;
 }
