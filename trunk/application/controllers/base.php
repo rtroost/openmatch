@@ -20,6 +20,11 @@ class Base_Controller extends Controller {
 		Asset::container('footer')->add('bootstrap-min-js', 'js/vendor/bootstrap.min.js');
 //		Asset::container('footer')->add('jquery-ui-1.10.3-custom-min', 'js/vendor/jquery-ui-1.10.3.custom.min.js');
 		Asset::container('footer')->add('main', 'js/main.js');
+		
+		
+		$articles = Article::get_amount_published(3);
+		
+		View::share('footer_articles', $articles);
 	}
 
 	/**

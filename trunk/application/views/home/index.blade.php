@@ -150,42 +150,7 @@
 
 		</div><!--/.container-->
 
-	</div>
-
-    <div class="container">
-
-		<div class="row-fluid">
-
-			<div class="span6">
-
-				<div id="fpArticles-container">
-
-					<h3>OpenMatch ontwikkelingen</h3>
-
-					@foreach($articles as $article)
-
-					<div class="fpArticle clearfix">
-
-						<div class="fpArticle-publishedDate">{{ date('j M', intval($article -> published_at)) }}</div>
-						<div class="fpArticle-title"><a href="{{ URL::to_route('news_show', $article -> id) }}">{{ $article -> title }}</a></div>
-
-					</div><!--/fpArticle-->
-
-					@endforeach
-
-				</div>
-
-				<a href="{{ URL::to_route('news') }}">Lees de rest van ons nieuws!</a>
-
-			</div><!--/span6-->
-
-			<div class="span6">
-
-			</div><!--/span6-->
-
-		</div>
-
-	</div><!-- /container -->
+	</div><!--/alternate_color block-->
 
 @endsection
 

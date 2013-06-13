@@ -43,7 +43,7 @@ class News_Controller extends Base_Controller
 			$article = Article::create(array(
 				'user_id' => Auth::user() -> id,
 				'title' => Input::get('title'),
-				'message' => Input::get('message'),
+				'body' => Input::get('message'),
 				'published' => Input::get('publish'),
 			));
 
@@ -80,7 +80,7 @@ class News_Controller extends Base_Controller
 			$article = Article::update($article -> id, array(
 				'user_id' => Auth::user() -> id,
 				'title' => Input::get('title'),
-				'message' => Input::get('message'),
+				'body' => Input::get('message'),
 				'published' => Input::get('publish'),
 			));
 

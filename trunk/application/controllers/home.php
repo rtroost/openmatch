@@ -12,14 +12,11 @@ class Home_Controller extends Base_Controller {
 		Asset::container('footer')->add('location_filter', 'js/location_filter.js', 'jquery');
 		Asset::container('footer')->add('home_index', 'js/home.index.js', array('googlemaps', 'jquery', 'maps', 'maps_locations'));
 
-		$articles = Article::get_amount_published(5);
-
 		Asset::container('footer')->add('angular', 'js/vendor/angular.min.js');
 		Asset::container('footer')->add('angularResource', 'js/vendor/angular-resource.js');
 		Asset::container('footer')->add('indexApp', 'js/index.app.js', array('angular', 'angularResource'));
 
-		return View::make('home.index')
-			-> with('articles', $articles);
+		return View::make('home.index');
 	}
 
 	public function get_contact(){

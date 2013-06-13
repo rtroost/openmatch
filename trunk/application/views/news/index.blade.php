@@ -25,10 +25,10 @@
 							Gepubliceerd op {{ $article -> published_at }}
 						</div>
 						<div class="article-small-body">
-							@if((strlen($article -> message) > 300))
-								{{ substr ($article -> message, 0, 300) }}...<a href="{{ URL::to_route('news_show', $article -> id) }}" class="article-small-readmore"><i class="icon-caret-right"></i> Lees verder</a>
+							@if((strlen($article -> body) > 300))
+								{{ substr ($article -> body, 0, 300) }}...<a href="{{ URL::to_route('news_show', $article -> id) }}" class="article-small-readmore"><i class="icon-caret-right"></i> Lees verder</a>
 							@else
-								{{ $article -> message }}
+								{{ $article -> body }}
 							@endif
 						</div>
 
