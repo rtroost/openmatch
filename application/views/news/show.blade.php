@@ -17,7 +17,7 @@
 					Gepubliceerd op {{ $article -> published_at }}
 				</div>
 				<div class="article-body">
-						{{ $article -> message }}
+						{{ $article -> body }}
 				</div>
 
 			</div>

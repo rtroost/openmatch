@@ -82,6 +82,8 @@ a:hover {
     background: #333;
     padding: 40px 0 40px;
     overflow: hidden;
+	font-size: 0.825em;
+    color: #888;
 }
 
 #footer h2 {
@@ -89,11 +91,6 @@ a:hover {
     color: #fff;
     font-weight: 400;
     font-family: 'Oswald', sans-serif;
-}
-
-#footer p {
-    font-size: 0.825em;
-    color: #888;
 }
 
 .hr-small {
@@ -805,17 +802,14 @@ table {
 /* Frontpage Article Styling */
 /*****************************/
 
-.fpArticles-container {
-	margin-bottom: 14px;
+.ftArticle {
+	margin-bottom: 12px;
+	overflow:hidden;
 }
-.fpArticle {
-	display: block;
-	padding: 8px 0;
+.ftArticle-body {
+	
 }
-.fpArticle-title {
-	float: left;
-}
-.fpArticle-publishedDate {
+.ftArticle-publishDate {
 	float: left;
 	margin-right: 10px;
 	font-weight: 700;
@@ -973,13 +967,14 @@ table {
 	text-align: center;
 }
 
-.fpLocation-icon a {
-    color: inherit;
+.fpLocation-icon a,
+.fpLocation-icon a > * {
+    color: inherit !important;
     text-decoration: none;
 }
 
 .fpLocation-icon a:hover {
-    color: #95C93D;
+    color: #95C93D !important;
 }
 
 .fpLocation-rating {

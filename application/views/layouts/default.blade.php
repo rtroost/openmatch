@@ -79,6 +79,15 @@
                 </div>
                 <div class="span4">
                     <h2>Nieuws</h2>
+					@forelse($footer_articles as $article)
+					<article class="ftArticle">
+						<div class="ftArticle-publishDate">{{ date('d M \'y G:i', strtotime($article -> published_at)) }}</div>
+						<div class="ftArticle-body"><a href="{{ URL::to_route('news_show', $article -> id) }}">{{ $article -> title }}</a></div>
+					</article>
+					@empty
+					
+					@endforelse
+					<a href="{{ URL::to_route('news') }}">Lees de rest van ons nieuws!</a>
                 </div>  
                 <div class="span4">
                     <h2>Twitter Feed</h2>
