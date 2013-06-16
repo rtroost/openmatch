@@ -557,6 +557,33 @@ a:hover {
 
 .location-header {
     margin: 0 0 30px;
+	position:relative;
+}
+
+#location-improveInfo {
+	font-size: 16px;
+	color: #aaa;
+	overflow: hidden;
+	font-family: 'PT Sans', sans-serif;
+	cursor: pointer;
+}
+
+#location-improveInfo-text {
+	opacity: 0;
+	transition: all .2s linear;
+}
+
+#location-improveInfo:hover {
+	color: #70b700;
+}
+
+#location-improveInfo:hover #location-improveInfo-text {
+	opacity: 1;
+}
+
+#location-improveInfo [class^="icon-"],
+#location-improveInfo [class*=" icon-"] {
+	margin-right: 6px;
 }
 
 .location-marker {
@@ -573,6 +600,7 @@ a:hover {
     color: #999;
     font-size: 0.8725em;
     letter-spacing: 1px;
+	margin-left: 63px;
 }
 
 .location-quick_info span {
@@ -582,6 +610,14 @@ a:hover {
 
 .location-quick_info span:first-of-type {padding-left: 0;}
 .location-quick_info span:last-of-type {padding-right: 0; border:0;}
+
+.location-quick_info span [class^="icon-"],
+.location-quick_info span [class*=" icon-"] {
+	margin-right: 4px;
+}
+
+
+
 
 #filter_location-get-geolocation {
 	cursor: pointer;

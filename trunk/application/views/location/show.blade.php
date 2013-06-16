@@ -18,26 +18,38 @@
                 
                 <img src="{{ URL::to('img/maps/' . $location->img . '.png') }}" class="location-marker" />
                 
-                <h2 class="location-title">{{ $location->name }}</h2>
+                <h2 class="location-title">
+					{{ $location->name }}
+					<span id="location-improveInfo"><i class="icon-edit"></i><span id="location-improveInfo-text">Steentje bijdragen?</span></span>
+				</h2>
                 <div class="location-quick_info">
                     @if($location->formatted_address)
                     <span class="address">{{ $location->formatted_address }}</span>
                     @else
                     <span class="address">{{ $location->postalcode . ' ' . $location -> city }}</span>
-                    @endif
-                    @if($location -> tel)
-                    <span class="phone">{{ $location->tel }}</span>
-                    @endif
-                    @if($location -> website)
-                    <span class="website"><a href="{{ $location->website }}">{{ $location->website }}</a></span>
-                    @else
-                    @endif
-                    @if($location -> email)
-                    <span class="email"><a href="mailto:{{ $location->email }}">{{ $location->email }}</a></span>
-                    @else
-                    @endif
+                    @endif                    
+                    <span class="phone"><i class="icon-phone"></i>
+						@if($location -> tel)
+						<a href="tel:{{ $location->tel }}">{{ $location->tel }}</a>
+						@else
+						Onbekend
+						@endif
+					</span>
+                    <span class="website"><i class="icon-globe"></i>
+						@if($location -> website)
+						<a href="{{ $location->website }}">{{ $location->website }}</a>
+						@else
+						Onbekend
+						@endif
+					</span>
+                    <span class="email"><i class="icon-envelope"></i>
+						@if($location -> email)
+						<a href="mailto:{{ $location->email }}">{{ $location->email }}</a>
+						@else
+						Onbekend
+						@endif
+					</span>
                 </div>
-
             </div>
 
 			<div class="row-fluid">
@@ -53,7 +65,6 @@
 					<ul class="nav nav-tabs">
 					  <li class="active"><a href="#route" data-toggle="tab">Routebeschrijving</a></li>
 					  <li><a href="#taxi" data-toggle="tab">Taxi bestellen</a></li>
-					  <li><a href="#feedback" data-toggle="tab">Feedback geven</a></li>
 					</ul>
 
 					<div class="tab-content">
@@ -87,7 +98,7 @@
 											<option value="driving">Auto</option>
 											<option value="transit">Openbaar vervoer</option>
 											<option value="walking">Lopend</option>
-											<option value="bicycling">Fietsend</option>
+<!--											<option value="bicycling">Fietsend</option>-->
 										</select>
 									</div>
 								</div>
@@ -118,41 +129,6 @@
 					  	<p><b>Telefoonnummer: </b> 0174 624441</p>
 
 					  </div>
-
-					  <div class="tab-pane" id="feedback">
-
-					  	@if(Auth::check())
-
-					  	{{ Form::open(URL::to_route('location_feedback', $location -> id), 'POST', array('class' => 'form-vertical')) }}
-
-							{{ Form::token() }}
-
-							{{ Form::hidden('location_id', $location -> id) }}
-
-							<div class="control-group">
-								{{ Form::label('feedback-input', 'Welke fout in onze informatie wilt u doorgeven?', array('class' => 'control-label')) }}
-								<div class="controls">
-									<textarea class="input-xxlarge" type="text" name="feedback-input" id="feedback-input" rows="5" placeholder="Beschrijf alsjeblieft zo duidelijk mogelijk welk onderdeel aan informatie op deze pagina niet correct is"></textarea>
-								</div>
-							</div>
-
-							<div class="control-group">
-								<div class="controls">
-									{{ Form::submit('Feedback doorgeven', array('class' => 'btn btn-primary')) }}
-								</div>
-							</div>
-
-							@else
-
-							<p>Wij stellen het erg op prijs wanneer onze gebruikers mee willen helpen de informatie op de website in orde te houden maar hiervoor vragen wij wel van u om een account aan te maken of door in te loggen met een bestaande account.</p>
-							<a href="{{URL::to_route('login')}}" class="btn">Aanmelden</a>
-							<a href="{{URL::to_route('register')}}" class="btn">Registreren</a>
-
-							@endif
-
-							{{ Form::close() }}
-
-					  </div><!--#feedback-->
 
 					</div>
 
