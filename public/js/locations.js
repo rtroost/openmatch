@@ -7,7 +7,8 @@ $(document).ready(function() {
 		scoreName: function() {
 			return 'scores[' + $(this).attr('data-category') + ']';
 		},
-		path: BASE + 'img'
+		path: BASE + 'img',
+		hints: ['Zeer slecht', 'Slecht', 'Acceptabel', 'Goed', 'Zeer goed']
 	});
 	
 	$('.rating-read-only').raty({
@@ -16,10 +17,9 @@ $(document).ready(function() {
 		},
 		readOnly: true,
 		half: true,
-		path: BASE + 'img'
+		path: BASE + 'img',
+		hints: ['Zeer slecht', 'Slecht', 'Acceptabel', 'Goed', 'Zeer goed']
 	});
-	
-	false
 
 	var span_formatted_address = $('span.location_formatted_address');
 	var span_postalcode = $('span.location_postalcode');
