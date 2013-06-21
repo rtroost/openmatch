@@ -130,6 +130,11 @@ var maps_class = {
 		var self = maps_class;
 		//console.log(marker.getPosition());
 		self.map.setCenter(new google.maps.LatLng(lat, lng));
+	},
+
+	changeZoom: function(level){
+		var self = maps_class;
+ 		self.map.setZoom(level);
 	}
 
 };
