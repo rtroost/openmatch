@@ -9,6 +9,17 @@ $(document).ready(function() {
 		},
 		path: BASE + 'img'
 	});
+	
+	$('.rating-read-only').raty({
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		readOnly: true,
+		half: true,
+		path: BASE + 'img'
+	});
+	
+	false
 
 	var span_formatted_address = $('span.location_formatted_address');
 	var span_postalcode = $('span.location_postalcode');

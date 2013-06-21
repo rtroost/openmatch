@@ -92,10 +92,14 @@ class Locations_Controller extends Base_Controller {
 		$personal_rating_data = array();
 		if($locationRating !== null) $personal_rating_data = json_decode($locationRating -> rating_dump);
 		
+		
+		$averageRatings = json_decode($location -> score_indivavg);
+		
 	
 		return View::make('location.show')
 			-> with('location', $location)
-			-> with('personal_rating_data', $personal_rating_data);
+			-> with('personal_rating_data', $personal_rating_data)
+			-> with('averageRatings', $averageRatings);
 	}
 
 	public function get_new(){
