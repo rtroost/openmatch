@@ -107,6 +107,7 @@ var tableCtrl = indexApp.controller("tableCtrl", function($scope, $rootScope, $r
 					}, false);
 
 					maps_class.centerTo(results.results[0].geometry.location.lat, results.results[0].geometry.location.lng);
+					maps_class.changeZoom(14);
 
 					$rootScope.loading = true;
 					$rootScope.getLocationsByDinstance();
