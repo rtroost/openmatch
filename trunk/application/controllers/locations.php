@@ -247,7 +247,10 @@ class Locations_Controller extends Base_Controller {
 		
 		// Calculate avarage score
 		$score_avg = 0;
-		foreach($scores as $score) $score_avg += $score;
+		foreach($scores as $score) {
+			if($score > 5 || $score < 1) Redirect::to_route('home');
+			$score_avg += round($score);
+		}
 		$score_avg /= sizeof($scores);
 				
 		$obj = LocationRating::create(array(
