@@ -28,7 +28,7 @@ var maps_locations = {
 			// console.log(maps_locations.Locations[pos]);
 
 			// kan er ook handmatig een object van maken
-			maps_class.createMarker(maps_locations.Locations[pos]);
+			maps_class.createMarker(maps_locations.Locations[pos], "true");
 		}
 		return;
 	}

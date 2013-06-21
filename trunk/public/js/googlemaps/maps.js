@@ -47,8 +47,8 @@ var maps_class = {
 		}
 	},
 
-	createMarker: function(pos){
-		//console.log(pos);
+	createMarker: function(pos, withContacts){
+		// console.log(pos);
 		var self = maps_class;
 		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(pos.latitude, pos.longitude),
@@ -70,20 +70,25 @@ var maps_class = {
 
 		var marker_contacts = newTemplate.find('div.marker_contacts');
 
-		if(pos.website != null) {
-			marker_contacts.append('<a href="' + pos.website + '" target="_blank"><i class="icon-globe activeLink"></i></a>');
+		if(withContacts){
+			if(pos.website != null) {
+				marker_contacts.append('<a href="' + pos.website + '" target="_blank"><i class="icon-globe activeLink"></i></a>');
+			} else {
+				marker_contacts.append('<a href="#" target="_blank" data-toggle="tooltip" title="Website"><i class="icon-question"></i></a>');
+			}
+			if(pos.tel != null) {
+				marker_contacts.append('<a href="tel:' + pos.tel + '" data-toggle="tooltip" title="' + pos.tel + '" target="_blank"><i class="icon-phone activeLink"></i></a>');
+			} else {
+				marker_contacts.append('<a href="#" target="_blank" data-toggle="tooltip" title="Telefoonnummer"><i class="icon-question"></i></a>');
+			}
+			if(pos.email != null) {
+				marker_contacts.append('<a href="emailto:' + pos.email + '" data-toggle="tooltip" title="' + pos.email + '"><i class="icon-envelope activeLink"></i></a>');
+			} else {
+				marker_contacts.append('<a href="#" target="_blank" data-toggle="tooltip" title="Email"><i class="icon-question"></i></a>');
+			}
 		} else {
-			marker_contacts.append('<a href="#" target="_blank" data-toggle="tooltip" title="Website"><i class="icon-question"></i></a>');
-		}
-		if(pos.tel != null) {
-			marker_contacts.append('<a href="tel:' + pos.tel + '" data-toggle="tooltip" title="' + pos.tel + '" target="_blank"><i class="icon-phone activeLink"></i></a>');
-		} else {
-			marker_contacts.append('<a href="#" target="_blank" data-toggle="tooltip" title="Telefoonnummer"><i class="icon-question"></i></a>');
-		}
-		if(pos.email != null) {
-			marker_contacts.append('<a href="emailto:' + pos.email + '" data-toggle="tooltip" title="' + pos.email + '"><i class="icon-envelope activeLink"></i></a>');
-		} else {
-			marker_contacts.append('<a href="#" target="_blank" data-toggle="tooltip" title="Email"><i class="icon-question"></i></a>');
+			newTemplate.find('div.marker_contacts').remove();
+			newTemplate.find('a.marker_link').remove();
 		}
 
 		var contentInfowindow = newTemplate.html();
@@ -112,6 +117,14 @@ var maps_class = {
 	displayMarker: function(id){
 		var self = maps_class;
 		self.markers[id].setVisible(true);
+	},
+
+	removeMarker: function(id){
+		var self = maps_class;
+		console.log(self.markers[id]);
+		if(self.markers[id] !== undefined){
+			self.markers[id].setMap(null);
+		}
 	}
 
 };

@@ -40,5 +40,45 @@ class LocationLib {
 		return $img;
 	}
 
+	public static function calcDistance($lat1, $lng1, $lat2, $lng2){
+		$R = 6371; // Radius of the earth in km
+		$dLat = LocationLib::deg2rad($lat2-$lat1);  // deg2rad below
+		$dLon = LocationLib::deg2rad($lng2-$lng1);
+		$a = sin($dLat/2) * sin($dLat/2) + 
+			cos(LocationLib::deg2rad($lat1)) * cos(LocationLib::deg2rad($lat2)) * 
+			sin($dLon/2) * sin($dLon/2)
+		; 
+		$c = 2 * atan2(sqrt($a), sqrt(1-$a)); 
+		$d = $R * $c; // Distance in km
+
+		return $d;
+	}
+
+	private static function deg2rad($deg){
+		return $deg * (pi()/180);
+	}
+
+	public static function cmp($a, $b){
+		if ($a == $b) {
+       		return 0;
+	    }
+	    return ($a->distance < $b->distance) ? -1 : 1;
+	}
+
+	public static function aasort (&$array, $key) {
+		$sorter=array();
+		$ret=array();
+		reset($array);
+		foreach ($array as $ii => $va) {
+			$sorter[$ii]=$va->$key;
+		}
+		asort($sorter);
+		foreach ($sorter as $ii => $va) {
+			$ret[$ii]=$array[$ii];
+		}
+		$array=$ret;
+	}
+
+
 
 }
