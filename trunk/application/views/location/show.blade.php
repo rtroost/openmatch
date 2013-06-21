@@ -58,6 +58,10 @@
 					<div class="location-map">
 						<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="width:100%; height:100%;" src="https://maps.google.nl/maps?q={{$location->latitude}}+,{{$location->longitude}}&amp;output=embed"></iframe>
 					</div>
+					<p>Gemiddelde score: <div class="rating-read-only" data-score="{{ $location -> score }}"></div> gebaseerd op {{ $location -> score_base }} gebruikers.</p>
+					@foreach($averageRatings as $key => $value)
+					{{ $key }}: <div class="rating-read-only" data-score="{{ $value }}"></div>
+					@endforeach
 				</div><!--/span5-->
 
 				<div class="span8">
