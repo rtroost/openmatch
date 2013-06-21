@@ -87,7 +87,7 @@ var tableCtrl = indexApp.controller("tableCtrl", function($scope, $rootScope, $r
 					//WORKAROUND TOTDAT LARAVEL 4 ER IS
 					$('div#controlGroupTarget').removeClass("error");
 					//ENDWORKAROUND
-					$rootScope.error = "";
+					scope.error = "";
 					scope.geoLocation = results.results[0].formatted_address;
 
 					$rootScope.curPlaceLat = results.results[0].geometry.location.lat;
