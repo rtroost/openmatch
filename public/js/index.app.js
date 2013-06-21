@@ -95,9 +95,6 @@ var tableCtrl = indexApp.controller("tableCtrl", function($scope, $rootScope, $r
 					console.log("Lat = " + results.results[0].geometry.location.lat);
 					console.log("Lng = " + results.results[0].geometry.location.lng);
 
-					// zet een marker op de map
-					// centreer de maps daar naar toe
-
 					maps_class.removeMarker(-1);
 
 					maps_class.createMarker({
@@ -108,6 +105,8 @@ var tableCtrl = indexApp.controller("tableCtrl", function($scope, $rootScope, $r
 						latitude: results.results[0].geometry.location.lat,
 						longitude: results.results[0].geometry.location.lng
 					}, false);
+
+					maps_class.centerTo(results.results[0].geometry.location.lat, results.results[0].geometry.location.lng);
 
 					$rootScope.loading = true;
 					$rootScope.getLocationsByDinstance();
