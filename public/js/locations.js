@@ -6,13 +6,16 @@ $(document).ready(function() {
 		},
 		scoreName: function() {
 			return 'scores[' + $(this).attr('data-category') + ']';
-		},
+		},		
 		path: BASE + 'img',
 		hints: ['Zeer slecht', 'Slecht', 'Acceptabel', 'Goed', 'Zeer goed']
 	});
 	
 	$('.rating-read-only').raty({
 		score: function() {
+			return $(this).attr('data-score');
+		},
+		number: function() {
 			return $(this).attr('data-score');
 		},
 		readOnly: true,
