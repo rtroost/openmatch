@@ -121,10 +121,15 @@ var maps_class = {
 
 	removeMarker: function(id){
 		var self = maps_class;
-		console.log(self.markers[id]);
 		if(self.markers[id] !== undefined){
 			self.markers[id].setMap(null);
 		}
+	},
+
+	centerTo: function(lat, lng){
+		var self = maps_class;
+		//console.log(marker.getPosition());
+		self.map.setCenter(new google.maps.LatLng(lat, lng));
 	}
 
 };
