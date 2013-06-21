@@ -15,6 +15,7 @@ class Home_Controller extends Base_Controller {
 		Asset::container('footer')->add('angular', 'js/vendor/angular.min.js');
 		Asset::container('footer')->add('angularResource', 'js/vendor/angular-resource.js');
 		Asset::container('footer')->add('indexApp', 'js/index.app.js', array('angular', 'angularResource'));
+		Asset::container('footer')->add('getLocationGoogleMaps', 'js/googlemaps/getLocationGoogleMaps.js');
 
 		return View::make('home.index');
 	}

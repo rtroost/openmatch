@@ -33,13 +33,22 @@ class Locations_Controller extends Base_Controller {
 				return Response::eloquent($locations);
 
 			} elseif(Input::get('action') == 'LOCATIE_DICHTBIJ') {
-				$locations = Location::with('types')->order_by('id', 'desc')->take(5)->get();
+
+				$lat = Input::get('lat');
+				$lng = Input::get('lng');
+				$locations = Location::with('types')->order_by('id', 'desc')->get();
+
+				foreach ($locations as $key => $value) {
+					$value->distance = locationLib::calcDistance($lat, $lng, $value->latitude, $value->longitude);
+				}
+
+				locationLib::aasort($locations, "distance");
 
 				$locations = locationLib::imageToLocations($locations);
 
-				return Response::eloquent($locations);
+				return Response::eloquent(array_slice($locations, 0, 5, true));
 			} elseif(Input::get('action') == 'HOOGST_BEOORDEELD') {
-				$locations = Location::with('types')->order_by('id', 'desc')->take(5)->get();
+				$locations = Location::with('types')->order_by('score', 'desc')->take(5)->get();
 
 				$locations = locationLib::imageToLocations($locations);
 
@@ -63,7 +72,6 @@ class Locations_Controller extends Base_Controller {
 				return Response::eloquent($locations);
 			}
 		}
-	
 
 		// hier moet eventueel nog een view komen
 		Asset::container('footer')->add('angular', 'js/vendor/angular.min.js');

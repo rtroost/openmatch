@@ -90,14 +90,32 @@
 		</div><!--/container-->
 	</div><!--/map_overlay-->
 
-	<div class="container" ng-app="indexApp">
+	<div class="container" ng-app="indexApp" ng-controller="tableCtrl">
 
-		<div class="" style="background: none repeat scroll 0 0 rgba(0, 0, 0, 0.01);
+		<div class="" style="4
+		background: none repeat scroll 0 0 rgba(0, 0, 0, 0.01);
 		border-left: 1px solid rgba(0, 0, 0, 0.07);
 		border-right: 1px solid rgba(0, 0, 0, 0.07);
-		border-bottom: 1px solid rgba(0, 0, 0, 0.07);height: 30px;"></div>
+		border-bottom: 1px solid rgba(0, 0, 0, 0.07);">
 
-		<div id="fpLocations-container" ng-controller="tableCtrl">
+			<div class="row-fluid">
+				<div class="span12">
+					<div id="controlGroupTarget" class="control-group" style="text-align: center; margin-top: 10px;">
+						<div class="controls">
+							<div class="input-append" style="width:90%; margin-bottom: 0px;" ng-show="location">
+								<form ng-submit="submit(this)" style="margin-bottom: 0px">
+									<input class="span8" type="text" name="filter_location-input" ng-model="geoLocation" placeholder="Wat is uw adres?">
+									<span class="add-on" style="cursor:pointer;" ng-click="getGeoLocation(this)"><i class="icon-screenshot"></i></span>
+								</form>
+							</div>
+							<span class="help-block" style="display:none;" ng-show="error">Het opgegeven adres wordt niet herkend</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="fpLocations-container" >
 
 			<div class="fpLocations-sortbar">
 				<ul>

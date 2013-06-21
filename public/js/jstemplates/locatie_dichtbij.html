@@ -1,17 +1,18 @@
 <div ng-show="loading" class="loading">
-	<span>Loading</span>
-	<span class="l-1"></span>
-	<span class="l-2"></span>
-	<span class="l-3"></span>
-	<span class="l-4"></span>
-	<span class="l-5"></span>
-	<span class="l-6"></span>
+	<span ng-show="geoloading">Vul hierboven een adres in</span>
+	<span ng-hide="geoloading">Loading</span>
+	<span ng-hide="geoloading" class="l-1"></span>
+	<span ng-hide="geoloading" class="l-2"></span>
+	<span ng-hide="geoloading" class="l-3"></span>
+	<span ng-hide="geoloading" class="l-4"></span>
+	<span ng-hide="geoloading" class="l-5"></span>
+	<span ng-hide="geoloading" class="l-6"></span>
 </div>
 
 
 <table class="fpLocation-table" ng-hide="loading">
 
-	<tr ng-repeat="location in result">
+	<tr ng-repeat="location in result | orderBy:sortingOrder:distance"> <!-- sort hier -->
 		<td class="fpLocation-category">
 			<a href="{{BASE + 'locations/' + location.id}}" class=""><img ng-src="img/maps/{{location.img}}.png" /></a>
 		</td>
@@ -19,6 +20,7 @@
 		<td class="fpLocation-title">
 			<a href="{{BASE + 'locations/' + location.id}}">{{location.name}}</a>
 			<span class="fpLocation-address">{{location.formatted_address | formatAddress:location.postalcode:location.number:location.city}}</span>
+			<span class="fpLocation-address">{{Math.round( location.distance * 10 ) / 10}} km</span>
 		</td>
 
 		<td class="fpLocation-icon" ng-switch on="!!location.website">
@@ -34,7 +36,7 @@
 			<i class="icon-envelope" ng-switch-default></i>
 		</td>
 
-		<td class="fpLocation-rating">4.9<small>van de 5.0</small></td>
+		<td class="fpLocation-rating">{{Math.round( location.score * 10 ) / 10}}<small>van de 5.0</small></td>
 
 	</tr>
 

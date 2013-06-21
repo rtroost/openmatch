@@ -7,7 +7,7 @@
 				<p ng-click="changeSortOrder('name')">Naam<i class="icon-sort-up" ng-show="sortArr.nameAsc"></i><i class="icon-sort-down" ng-show="sortArr.nameDesc"></i></p>
 			</th>
 			<th class="fpLocation-header">
-				<p ng-click="changeSortOrder('beoordeling')">Beoordeling <i class="icon-sort-up" ng-show="sortArr.beoordelingAsc"></i><i class="icon-sort-down" ng-show="sortArr.beoordelingDesc"></i></p>
+				<p ng-click="changeSortOrder('score')">Beoordeling <i class="icon-sort-up" ng-show="sortArr.scoreAsc"></i><i class="icon-sort-down" ng-show="sortArr.scoreDesc"></i></p>
 			</th>
 			<th class="fpLocation-header">
 				<p ng-click="changeSortOrder('distance')" ng-show="distance">Distance <i class="icon-sort-up" ng-show="sortArr.distanceAsc"></i><i class="icon-sort-down" ng-show="sortArr.distanceDesc"></i></p>
@@ -41,7 +41,7 @@
 					<i class="icon-envelope" ng-switch-default></i>
 				</td>
 
-				<td class="fpLocation-rating">4.9<small>van de 5.0</small></td>
+				<td class="fpLocation-rating">{{Math.round( location.score * 10 ) / 10}}<small>van de 5.0</small></td>
 
 			</tr>
 		</tbody>

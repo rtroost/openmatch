@@ -8,6 +8,8 @@ var locationApp = angular.module('locationApp', ['ngResource']);
 
 var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter) {
 
+    $scope.Math = window.Math;
+
 	$scope.sortingOrder = "name";
     $scope.reverse = false;
     $scope.filteredItems = [];
@@ -204,7 +206,7 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
 
 			var distance = Math.round(calcDistance($scope.curPlaceLat, $scope.curPlaceLng, item.latitude, item.longitude));
             item.distance = distance;
-            item.distanceString = distance + 'km';
+            item.distanceString = distance + ' km';
 
             $scope.distance = true;
 			if(distance <= $scope.searchRange){
