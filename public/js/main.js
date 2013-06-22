@@ -46,7 +46,7 @@ $(document).ready(function() {
 			type = 'min';
 		}
 
-		url = "http://"+ location.hostname + "/" + path[1] + "/" + path[2] + "/" + path[3] + "/thumb_reaction/"; /*;http://localhost/openmatch/public/location/give_rating*/
+		url = window.BASE + "/" + path[3] + "/thumb_reaction/"; /*;http://localhost/openmatch/public/location/give_rating*/
 
 		var request = $.ajax({
 			url: url,
@@ -111,7 +111,7 @@ $(document).ready(function() {
 			id = path[4];
 			reaction = $('#reactionText').val();
 
-			url = "http://"+ location.hostname + "/" + path[1] + "/" + path[2] + "/" + path[3] + "/give_reaction/"; /*;http://localhost/openmatch/public/location/give_rating*/
+			url = window.BASE + path[3] + "/give_reaction/"; /*;http://localhost/openmatch/public/location/give_rating*/
 		
 
 			var request = $.ajax({
@@ -152,7 +152,7 @@ $(document).ready(function() {
 		click: function(){
 			deleteLi = $(this).parent().parent();
 			reactionId = $(this).parent().parent().attr('id').substr(8);
-			url = "http://"+ location.hostname + "/" + path[1] + "/" + path[2] + "/" + path[3] + "/delete_reaction/";
+			url = window.BASE + "/" + path[3] + "/delete_reaction/";
 			reactionOn = path[3];
 
 			
@@ -183,7 +183,7 @@ $(document).ready(function() {
 				reactionOn = path[3];
 				id = path[4];
 				reactionId = $(this).parent().attr('id').substr(8);
-				url = "http://"+ location.hostname + "/" + path[1] + "/" + path[2] + "/" + path[3] + "/update_reaction/"; 
+				url = window.BASE + "/" + path[3] + "/update_reaction/"; 
 
 				var request = $.ajax({
 					url: url,
