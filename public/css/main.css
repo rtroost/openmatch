@@ -598,26 +598,28 @@ a:hover {
 
 .location-quick_info {
     color: #999;
-    font-size: 0.8725em;
+    font-size: 1.0em;
     letter-spacing: 1px;
-	margin-left: 63px;
 }
 
-.location-quick_info span {
+.location-quick_info > ul > li{
+	margin-bottom:26px;
+	list-style-type: none;
+	margin-left:-20px; /*Deze margin fixxen*/
+}
+
+/*.location-quick_info span {
     padding: 0 8px;
     border-right: 1px solid #eee;
-}
+}*/
 
-.location-quick_info span:first-of-type {padding-left: 0;}
+/*.location-quick_info span:first-of-type {padding-left: 0;}
 .location-quick_info span:last-of-type {padding-right: 0; border:0;}
 
 .location-quick_info span [class^="icon-"],
 .location-quick_info span [class*=" icon-"] {
 	margin-right: 4px;
-}
-
-
-
+}*/
 
 #filter_location-get-geolocation {
 	cursor: pointer;
@@ -633,15 +635,27 @@ a:hover {
 	width: 60px;
 }
 
-.location {}
-.location-map {
-    height: 300px;
-    width: 100%;
-    background: #ddd;
+.map{
+	background: #ddd;
     margin-bottom: 20px;
     box-shadow: 1px 1px 5px #888;
     overflow:hidden;
     border-radius: 2px;
+}
+
+#mapBig {
+    height: 300px;
+    width: 100%;
+    display:none;
+}
+
+#mapSmall{
+	top:260px;
+	height: 300px;
+    width: 300px;
+    position:absolute;
+    float:left;
+    display:none;
 }
 
 #directions-container {}
@@ -668,6 +682,25 @@ a:hover {
 /************************/
 /* Thumb Rating Styling */
 /************************/
+
+.getReview{
+	margin-right:84px;
+	float:left;
+}
+
+.setReview{
+	margin-left:50px;
+	float:left;
+}
+
+#reviewButton{
+	margin-top:15px;
+	margin-left:150px;
+}
+
+.ratingTable tr td:nth-child(1){
+	width:150px;
+}
 
 .thumbRating {
 	height: 20px;
@@ -759,8 +792,6 @@ table {
     display: inline-block;
     background-position: 0 60px;
 }
-
-
 
 #fpPopular tr td:nth-child(1) {
 	text-align: center;
@@ -1107,8 +1138,6 @@ div.loading {
 	100% {opacity: 0;}
 }
 
-
-
 .nav-tabs {
     border-bottom-color: #95C93D;
 }
@@ -1127,4 +1156,178 @@ div.loading {
 }
 .nav-tabs>li>a {
     color: #666;
+}
+
+/*****************************/
+/* Comments */
+/*****************************/
+
+#setComment{
+	float:left;
+}
+
+.commentsInfo{
+	font-size:13px;
+	margin-left:10px;
+	font-style:italic;
+	font-weight:bold;
+}
+
+.comments{
+	font-size:13px;
+	margin-bottom:20px;
+	width:700px;
+	list-style-type:none;
+	margin:-5px 0px 20px 0px;
+}
+
+.comments > li:nth-child(even){
+	background-color:#fafafa;
+}
+
+.comments > li{
+	border-bottom:1px solid #eee;
+	padding:10px;
+}
+
+.comments.top > li{
+	border-bottom:0px solid #eee;
+	margin-bottom:60px;
+}
+
+.comments > li > span.commenter{
+	color:#39b54a;
+}
+
+.comments > li > span.editOn{
+	font-style:italic;
+	font-size:11px;
+	padding-left:5px;
+	color:#999;
+}
+
+.comments > li > span.date{
+	font-size:11px;
+	padding-left:20px;
+	color:#999;
+}
+
+.comments > li > p {
+	margin:5px 0px;
+	padding:0px;
+}
+
+/***RATINGS!!! ****/
+.comments > li > div.ratings{
+	float:right;
+}
+
+.comments > li > div.ratings > i.redIcon{
+	color:#ff3333 !important;
+}
+
+.comments > li > div.ratings > i.greenIcon{
+	color:#39b54a !important;
+	margin-right:10px;
+}
+
+.comments > li > div.ratings > i > span{
+	font-size:11px;
+}
+
+.comments > li > div.ratingHolder{
+	display:inline-block;
+}
+
+.comments > li > div.ratingHolder > i{
+	font-size:14px;
+	cursor:pointer;
+	-webkit-transition:color 0.4s ease-in-out;
+	color:#aaa;
+}
+
+.comments > li > div.ratingHolder > span.reactionButton{
+	font-size:11px;
+	cursor:pointer;
+	-webkit-transition:color 0.4s ease-in-out;
+	color:#aaa;
+}
+
+
+
+.comments > li > div.ratingHolder > i.clicked.icon-thumbs-up{
+	color:#39b54a;
+}
+.comments > li > div.ratingHolder > i.clicked.icon-thumbs-down{
+	color:#ff3333;
+}
+.comments > li > div.ratingHolder > i.clicked.icon-flag-alt{
+	color:#ff6666;
+}
+
+.comments > li > div.ratingHolder > span.bull{
+	font-size:8px;
+	padding:0px 5px;
+	position:relative;
+	top:-2px;
+}
+
+.comments > li:hover > div.ratingHolder > i:not(.clicked), .comments > li:hover > div > span.reactionButton{
+	color:#000;
+}
+
+.comments > li > div.ratingHolder > i.icon-thumbs-up:not(.clicked):hover, .comments > li > div > span.reactionButton:hover{
+	color:#39b54a;
+}
+
+.comments > li > div.ratingHolder > i.icon-thumbs-down:not(.clicked):hover{
+	color:#ff3333;
+}
+
+.comments > li > div.ratingHolder > i.icon-flag-alt:not(.clicked):hover{
+	color:#ff6666;
+}
+
+.comments > li > textarea{
+	margin:10px 0px 10px -10px;
+	padding:8px;
+	width:680px;
+	height:70px;
+	border-radius:0px;
+	resize:none;
+	background:transparent;
+	-webkit-box-shadow:none;
+	box-shadow:none;
+	-webkit-resize:none;
+	-moz-resize:none;
+
+}
+
+.comments > li.last{
+	height:150px;
+	border-bottom:0px;
+}
+
+.comments > li > input.btn#place,.comments > li > input.btn.editReaction{
+	float:right;
+	background-color:#ddd;
+	-webkit-transition:background-color 0.3s ease-in-out;
+	cursor:default;
+}
+
+.comments > li > input.btn#place.clickable, .comments > li > input.btn.editReaction.clickable{
+	background-color:#95C93D;
+	cursor:pointer;
+}
+
+.comments > li > input.btn#place.clickable:hover, .comments > li > input.btn.editReaction.clickable:hover{
+	background-color:#abd465;
+}
+
+
+
+
+
+.taxi{
+	font-size: 0.9em;
 }

@@ -91,6 +91,12 @@ class Locations_Controller extends Base_Controller {
 
 		$location = Location::with('types') -> where('id', '=' , $index) -> first();
 		$location = locationLib::imageToLocation($location);
+
+		if(Auth::check()){
+			$reactions = reactionLib::reactions($index, Auth::user()->id);
+		}else{
+			$reactions = reactionLib::reactions($index);
+		}
 		
 		if(Auth::check())
 			$locationRating = LocationRating::where('location_id', '=', $location -> id) -> where('user_id', '=', Auth::user() -> id) -> first();
@@ -107,6 +113,7 @@ class Locations_Controller extends Base_Controller {
 		return View::make('location.show')
 			-> with('location', $location)
 			-> with('personal_rating_data', $personal_rating_data)
+			-> with('reactions', $reactions)
 			-> with('averageRatings', $averageRatings);
 	}
 
@@ -274,5 +281,80 @@ class Locations_Controller extends Base_Controller {
 		
 		return Redirect::to_route('location', $location -> id)
 			-> with('message', 'Bedankt voor uw beoordeling!');
+	}
+
+	public function post_setReaction() {
+		$reactionOn = Input::get('reactionOn');
+		$id = Input::get('id');
+		$reaction = Input::get('reaction');
+		$user = Auth::user();
+
+		$theReaction = ReactionLib::postReaction($reactionOn, $id, $reaction, $user->id);
+
+		if(is_int($theReaction)){
+			return 0;
+		}else{
+
+			$firstname = $user->name;
+			$insert = $user->prefix;
+			$lastname = $user->surname;
+			
+
+			$insertion = $insert ? $insert.' ' : '';
+			$fullname = $firstname.' '.$insertion.$lastname;
+
+			return View::make('location/reaction')
+			-> with('reaction', $theReaction)
+			-> with('fullname', $fullname);
+		}
+	}
+
+	public function post_updateReaction(){
+		$reactionOn = Input::get('reactionOn');
+		$id = Input::get('id');
+		$reaction = Input::get('reaction');
+		$user = Auth::user();
+		$reactionId = Input::get('reactionId');
+
+		$theReaction = ReactionLib::updateReaction($reactionOn, $id, $reaction, $user->id, $reactionId);
+
+		if(is_int($theReaction)){
+			return 0;
+		}else{
+
+			$firstname = $user->name;
+			$insert = $user->prefix;
+			$lastname = $user->surname;
+			
+
+			$insertion = $insert ? $insert.' ' : '';
+			$fullname = $firstname.' '.$insertion.$lastname;
+
+			return View::make('location/reaction')
+			-> with('reaction', $theReaction)
+			-> with('fullname', $fullname);
+		}
+	}
+
+	public function post_deleteReaction(){
+		$reactionOn = Input::get('reactionOn');
+		$reactionId = Input::get('reactionId');
+
+		$theReaction = ReactionLib::deleteReaction($reactionOn, $reactionId);
+
+		if(is_int($theReaction)){
+			return 0;
+		}else{
+			return 1;
+		}
+	}
+
+	public function post_thumbReaction(){
+		$reactionOn = Input::get('reactionOn');
+		$reactionId = Input::get('reactionId');
+		$type = Input::get('type');
+		$user = Auth::user()->id;
+
+		ReactionLib::thumbReaction($reactionOn, $reactionId, $type, $user);
 	}
 }
