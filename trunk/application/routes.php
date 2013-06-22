@@ -32,6 +32,10 @@ Route::post('locations/feedback/comment', 	array('as' => 'location_comment_feedb
 Route::get('locations/advice', 				array('as' => 'location_advice', 'uses' => 'locations@takeAdvice'));
 Route::post('locations/advice', 			array('as' => 'location_advice_post', 'uses' => 'locations@takeAdvice', 'before' => 'csrf|auth'));
 Route::post('location/give_rating', 		array('as' => 'location_rating', 'uses' => 'locations@setRating', 'before' => 'csrf|auth'));
+Route::post('locations/give_reaction', 		array('as' => 'location_reaction', 'uses' => 'locations@setReaction', 'before' => 'auth'));
+Route::post('locations/update_reaction', 	array('as' => 'location_update_reaction', 'uses' => 'locations@updateReaction', 'before' => 'auth'));
+Route::post('locations/delete_reaction', 	array('as' => 'location_delete_reaction', 'uses' => 'locations@deleteReaction', 'before' => 'auth'));
+Route::post('locations/thumb_reaction', 	array('as' => 'location_thumb_reaction', 'uses' => 'locations@thumbReaction', 'before' => 'auth'));
 
 Route::get('news', 						array('as' => 'news', 				'uses' => 'news@index'));
 Route::get('news/(:num)/edit'		, 	array('as' => 'news_edit', 			'uses' => 'news@edit'));

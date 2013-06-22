@@ -15,6 +15,10 @@ class Location extends Basemodel {
 	public function locationRatings() {
 		return $this -> has_many('LocationRating');
 	}
+
+	public function reactions(){
+		return $this->has_many('ReactionsOnLocation');
+	}
 	
 	public function recalculateScore() {
 	
