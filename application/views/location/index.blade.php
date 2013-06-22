@@ -12,29 +12,6 @@
 
 	<div class="container" ng-controller="locationCtrl">
 
-		<!-- <div class="row-fluid">
-			<div class="span12">
-				<table class="testtable">
-					<tr>
-						<td><img src="{{ URL::to('img/maps/iconRecreation.png') }}"/></td>
-						<td><img src="{{ URL::to('img/maps/iconRecreation.png') }}"/></td>
-						<td><img src="{{ URL::to('img/maps/iconRecreation.png') }}"/></td>
-						<td><img src="{{ URL::to('img/maps/iconRecreation.png') }}"/></td>
-						<td><img src="{{ URL::to('img/maps/iconRecreation.png') }}"/></td>
-						<td><img src="{{ URL::to('img/maps/iconRecreation.png') }}"/></td>
-						<td><img src="{{ URL::to('img/maps/iconRecreation.png') }}"/></td>
-						<td><img src="{{ URL::to('img/maps/iconRecreation.png') }}"/></td>
-						<td><img src="{{ URL::to('img/maps/iconRecreation.png') }}"/></td>
-						<td><img src="{{ URL::to('img/maps/iconRecreation.png') }}"/></td>
-						<td><img src="{{ URL::to('img/maps/iconRecreation.png') }}"/></td>
-						<td><img src="{{ URL::to('img/maps/iconRecreation.png') }}"/></td>
-						<td><img src="{{ URL::to('img/maps/iconRecreation.png') }}"/></td>
-						<td><img src="{{ URL::to('img/maps/iconRecreation.png') }}"/></td>
-					</tr>
-				</table>
-			</div>
-		</div> -->
-
 		<div class="row-fluid">
 
 			<div class="span8">
@@ -44,7 +21,7 @@
 				</locations>
 				<pagination>
 				</pagination>
-			</div><!--/span9-->
+			</div><!--/span8-->
 
 			<div class="span4">
 				<div class="sidebar">

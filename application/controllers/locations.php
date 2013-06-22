@@ -77,6 +77,8 @@ class Locations_Controller extends Base_Controller {
 		Asset::container('footer')->add('angular', 'js/vendor/angular.min.js');
 		Asset::container('footer')->add('angularResource', 'js/vendor/angular-resource.js');
 		Asset::container('footer')->add('locationApp', 'js/location.app.js', array('angular', 'angularResource'));
+		Asset::container('footer')->add('rating_js', 'js/vendor/jquery.raty.min.js');
+		Asset::container('footer')->add('locations', 'js/locations.js');
 		Asset::container('footer')->add('getLocationGoogleMaps', 'js/googlemaps/getLocationGoogleMaps.js');
 
 		return View::make('location.index');

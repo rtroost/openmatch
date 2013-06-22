@@ -41,7 +41,7 @@
 					<i class="icon-envelope" ng-switch-default></i>
 				</td>
 
-				<td class="fpLocation-rating">{{Math.round( location.score * 10 ) / 10}}<small>van de 5.0</small></td>
+				<td class="fpLocation-rating"><div class="rating-read-only-list" data-score="{{ location.score }}"></div></td>
 
 			</tr>
 		</tbody>
