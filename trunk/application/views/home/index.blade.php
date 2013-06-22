@@ -150,7 +150,7 @@
 				<div id="frontpage-about_us_block">
 
 					<div class="span12">
-						<h3>Wat is dit precies?</h3>
+						<h3>Wat is Rotterdam Onbeperkt?</h3>
 						<p>
 							Rotterdam is een stad vol leven dat gedeeld moet worden met zijn inwoners. Hieronder vallen ook onze minder valide inwoners. Deze website is opgezet om jullie tegemoet te komen in jullie ervaring met alles dat Rotterdam te bieden heeft.
 						</p>

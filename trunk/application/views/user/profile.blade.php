@@ -46,7 +46,7 @@
 					</div>
 
 					<div class="control-group {{ ($errors->first('prefix') ? 'error' : '') }}">
-						{{ Form::label('prefix', 'Prefix', array('class' => 'control-label')) }}
+						{{ Form::label('prefix', 'Tussenvoegsel', array('class' => 'control-label')) }}
 						<div class="controls">
 							{{ Form::text('prefix', Input::old('prefix', $userdata->prefix)) }}
 							{{ $errors->first('prefix', '<span class="help-inline">:message</span>') }}
@@ -77,14 +77,6 @@
 						</div>
 					</div>
 
-					<div class="control-group {{ ($errors->first('country') ? 'error' : '') }}">
-						{{ Form::label('country', 'Land', array('class' => 'control-label')) }}
-						<div class="controls">
-							{{ Form::text('country', Input::old('country', $userdata->country)) }}
-							{{ $errors->first('country', '<span class="help-inline">:message</span>') }}
-						</div>
-					</div>
-
 					<div class="control-group">
 						<div class="controls">
 							{{ Form::submit('Gegevens opslaan', array('class' => 'btn btn-primary')) }}
@@ -96,7 +88,7 @@
 				{{ Form::close() }}
 			</div>
 			<div class="span6">
-				<h3>Wachtwoord aanpassen</h3>
+				<h3>Wachtwoord wijzigen</h3>
 
 				{{ Form::open(URL::to_route('user_profile_updatePassword'), 'PUT', array('class' => 'form-horizontal')) }}
 
@@ -117,7 +109,7 @@
 					</div>
 
 					<div class="control-group">
-						{{ Form::label('password_confirmation', 'Nieuw wachtwoord (Opnieuw)', array('class' => 'control-label')) }}
+						{{ Form::label('password_confirmation', 'Herhaal nieuw wachtwoord', array('class' => 'control-label')) }}
 						<div class="controls">
 							{{ Form::password('password_confirmation') }}
 						</div>

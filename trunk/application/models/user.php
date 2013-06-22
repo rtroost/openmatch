@@ -16,7 +16,6 @@ class User extends Basemodel {
 		'address' => 'required|between:2,200',
 		'zipcode' => 'required',
 		'city' => 'required|between:2,200',
-		'country' => 'required|between:2,200'
 	);
 
 	public static $update_rules = array(
@@ -26,7 +25,6 @@ class User extends Basemodel {
 		'address' => 'required|between:2,200',
 		'zipcode' => 'required',
 		'city' => 'required|between:2,200',
-		'country' => 'required|between:2,200'
 	);
 
 	public static $password_rules = array(
