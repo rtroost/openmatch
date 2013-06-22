@@ -49,17 +49,17 @@
 			<div class="span4">
 				<div class="sidebar">
 					<div class="sidebar_block">
-						<p>Ken je een locatie die je graag in deze lijst terug zou willen zien? Laat het ons weten!</p>
-						<a href="{{ URL::to_route('location_advice') }}" class="btn btn-primary">Geef advies</a>
+						<p>Ken je een locatie die nog niet in Rotterdam Onbeperkt staat? Laat het ons weten!</p>
+						<a href="{{ URL::to_route('location_advice') }}" class="btn btn-primary">Nieuwe locatie</a>
 					</div>
 
 					<div class="sidebar_block">
-						<h4>Filter op naam</h4>
+						<h4>Zoek op naam</h4>
 						<input class="span12" type="text" ng-model="query" ng-change="filterSearch()" placeholder="Welke locatie zoekt u?" />
 					</div>
 
 					<div class="sidebar_block">
-						<h4>Filter op locatie</h4>
+						<h4>Zoek op locatie</h4>
 						<div id="controlGroupTarget" class="control-group">
 							<div class="controls">
 								<div class="input-append" style="width:90%">
@@ -73,18 +73,18 @@
 						</div>
 
 						<div class="control-group">
-							<label for="filter_location-range" class="control-label">Maximale afstand</label>
+							<label for="filter_location-range" class="control-label">Maximale afstand in KM</label>
 							<div class="controls">
 								<input id="filter_location-range" name="filter_location-range" class="span9" type="range" min="0" max="99" value="0" ng-model="searchRange" ng-change="rangeChange(this)" /><span id="filter_location-range-value">{{"&#123;&#123;searchRange&#125;&#125;"}}</span><!-- hier hoord { {searchRange} } te staan -->
-								<span class="help-block" style="display:none;" ng-show="rangenotset" >Nog geen adres opgegeven</span>
+								<span id="adresHelp" class="help-block" style="display:none;" ng-show="rangenotset" >Geef eerst uw adres op!</span>
 							</div>
 						</div>
 					</div>
 
 					<div class="sidebar_block">
-						<h4>Filters</h4>
+						<h4>Filter</h4>
 						<hr class="hr-small" />
-						<h5>Type uitgaansgelegenheden</h5>
+						<h5>Uitgaansgelegenheden</h5>
 						<ul class="unstyled" id="locationfilter" >
 							<li>
 								<label class="checkbox">

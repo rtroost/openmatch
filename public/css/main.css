@@ -635,6 +635,10 @@ a:hover {
 	width: 60px;
 }
 
+#adresHelp{
+	margin-top:15px;
+}
+
 .map{
 	background: #ddd;
     margin-bottom: 20px;

@@ -21,7 +21,7 @@
 					{{ Form::token() }}
 
 					<div class="control-group {{ ($errors->first('name') ? 'error' : '') }}">
-						{{ Form::label('email', 'E-Mail', array('class' => 'control-label')) }}
+						{{ Form::label('email', 'E-mailadres', array('class' => 'control-label')) }}
 						<div class="controls">
 							{{ Form::text('email', Input::old('email')) }}
 							{{ $errors->first('email', '<span class="help-inline">:message</span>') }}

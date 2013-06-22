@@ -47,7 +47,6 @@ class Users_Controller extends Base_Controller {
 				'address' => Input::get('address'),
 				'zipcode' => Input::get('zipcode'),
 				'city' => Input::get('city'),
-				'country' => Input::get('country')
 			));
 
 			$user = User::where_email(Input::get('email')) -> first();
@@ -92,8 +91,7 @@ class Users_Controller extends Base_Controller {
 				'address' => Input::get('address'),
 				'zipcode' => Input::get('zipcode'),
 				'city' => Input::get('city'),
-				'country' => Input::get('country')
-				));
+			));
 
 			return Redirect::to_route('user_profile')
 				-> with('message', 'Je gegevens zijn succesvol aangepast!');
@@ -132,5 +130,4 @@ class Users_Controller extends Base_Controller {
 		Auth::logout();
 		return Redirect::to_route('home')->with('message', 'You are now logged out!');
 	}
-
 }
