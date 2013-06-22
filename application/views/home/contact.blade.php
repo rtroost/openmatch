@@ -50,7 +50,7 @@
 
 					<div class="control-group">
 						<div class="controls">
-							{{ Form::submit('Verstuur', array('class' => 'btn btn-large')) }}
+							{{ Form::submit('Verstuur', array('class' => 'btn btn-large btn-primary')) }}
 						</div>
 					</div>
 
