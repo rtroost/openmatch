@@ -13,18 +13,19 @@ var location_filter = {
 
 	bindEvents: function(){
 		var self = location_filter;
-		self.ul.on('change', 'li', self.filter);
+		self.ul.on('click', 'li', self.filter);
 	},
 
 	filter: function(){
 		var self = location_filter,
-			$this = $(this),
-			checkbox = $this.find('input');
+			$this = $(this);
 
-		if(checkbox.is(':checked')){
-			self.checked.push(checkbox.attr('value'));
+		if(!$this.hasClass('active_marker_sort')){
+			self.checked.push($this.data('type'));
+			$this.addClass('active_marker_sort');
 		} else {
-			self.checked.splice( $.inArray(checkbox.attr('value'), self.checked) ,1 );
+			self.checked.splice( $.inArray($this.data('type'), self.checked) ,1 );
+			$this.removeClass('active_marker_sort');
 		}
 
 		for (var i in self.locations) {
