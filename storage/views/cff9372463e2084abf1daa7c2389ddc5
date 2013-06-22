@@ -8,7 +8,7 @@
 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>OpenMatch - Home</title>
+	<title>Rotterdam Onbeperkt</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
 
@@ -39,10 +39,10 @@
                     <a href="<?php echo  URL::to('/') ; ?>"><h1 id="main_logo">Rotterdam Onbeperkt</h1></a>
                     <nav id="nav">
                         <ul>
-                            <li class="<?php echo  (URI::is('/') ? 'active' : '') ; ?>"><a href="<?php echo  URL::to_route('home') ; ?>" data-description="is het begin">Home</a></li>                            
+                            <li class="<?php echo  (URI::is('/') ? 'active' : '') ; ?>"><a href="<?php echo  URL::to_route('home') ; ?>" data-description="start hier">Home</a></li>                            
                             <li class="<?php echo  (URI::is('locations*') ? 'active' : '') ; ?>"><a href="<?php echo  URL::to_route('locations') ; ?>" data-description="naar locaties">Zoeken</a></li>
                             <li class="<?php echo  (URI::is('news*') ? 'active' : '') ; ?>"><a href="<?php echo  URL::to_route('news') ; ?>" data-description="over ons">Nieuws</a></li>
-                            <li class="<?php echo  (URI::is('contact*') ? 'active' : '') ; ?>"><a href="<?php echo  URL::to_route('contact') ; ?>" data-description="met ons leggen">Contact</a></li>
+                            <li class="<?php echo  (URI::is('contact*') ? 'active' : '') ; ?>"><a href="<?php echo  URL::to_route('contact') ; ?>" data-description="opnemen">Contact</a></li>
                         </ul>
                         <ul class="pull-right">
                             <?php if( ! Auth::check()): ?>
@@ -74,7 +74,7 @@
                 <div class="span4">
                     <h2>Over ons</h2>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel porta nulla. Morbi ullamcorper leo pretium massa viverra fermentum. Integer ultricies ante id velit commodo condimentum. Nunc elementum, sem vel iaculis egestas, elit ipsum pharetra orci, ac ultrices justo risus non nunc. Ut a elit pellentesque, venenatis dolor ut, auctor nisi. Pellentesque a massa venenatis, molestie felis ac, condimentum metus.
+                        Rotterdam Onbeperkt is ontwikkeld door vier informatica studenten van de Hogeschool Rotterdam: Remco van der Kleijn, Rob Troost, Nick van Leeuwen en Stefan Bayarri. Rotterdam Onbeperkt is ontstaan uit het Rotterdam Open Data project van de gemeente Rotterdam.
                     </p>
                 </div>
                 <div class="span4">
@@ -87,10 +87,13 @@
 					<?php endforeach; ?><?php else: ?>
 					
 					<?php endif; ?>
-					<a href="<?php echo  URL::to_route('news') ; ?>">Lees de rest van ons nieuws!</a>
+					<a href="<?php echo  URL::to_route('news') ; ?>">Meer nieuws...</a>
                 </div>  
                 <div class="span4">
                     <h2>Twitter Feed</h2>
+                    <p>
+                        Er zijn nog geen Twitter berichten.
+                    </p>
                 </div>
             </div>
     

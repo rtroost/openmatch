@@ -26,7 +26,7 @@ class LocationLib {
 			case 'campings':			$img = 'iconCamping'; break;
 			case 'sportgelegenheden':	$img = (isset($types[1]) && $types[1]->naam == "zwembaden" ? 'iconSwimming' : 'iconSports'); break;
 			case 'kinderboerderijen':	$img = 'iconKidsFarm'; break;
-			case 'kindervermaak':		$img = 'iconKidsEntertainment'; break;
+			case 'kindervermaak':		$img = LocationLib::checkKindervermaak($types); break;
 			case 'theaters':			$img = 'iconTheater'; break;
 			case 'recreatieterreinen':	$img = 'iconRecreation'; break;
 			case 'zwembaden':			$img = 'iconSwimming'; break;
@@ -38,6 +38,19 @@ class LocationLib {
 			default:					$img = 'automotive'; break;
 		}
 		return $img;
+	}
+// $img = (isset($types[1]) ? ($types[1]->naam == "dierentuin") ? 'iconZoo' : 'iconPlayground') : 'iconKidsEntertainment'); break;
+	private static function checkKindervermaak ($types){
+		if(isset($types[1])){
+			switch ($types[1]->naam) {
+				case "dierentuin": 	return 'iconZoo';
+				case "speeltuinen": return 'iconPlayground';
+				case "zwembaden": 	return 'iconSwimming';
+				default: 			return 'iconKidsEntertainment';
+			}
+		} else {
+			return 'iconKidsEntertainment';
+		}
 	}
 
 	public static function calcDistance($lat1, $lng1, $lat2, $lng2){
@@ -56,13 +69,6 @@ class LocationLib {
 
 	private static function deg2rad($deg){
 		return $deg * (pi()/180);
-	}
-
-	public static function cmp($a, $b){
-		if ($a == $b) {
-       		return 0;
-	    }
-	    return ($a->distance < $b->distance) ? -1 : 1;
 	}
 
 	public static function aasort (&$array, $key) {

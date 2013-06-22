@@ -4,97 +4,78 @@
 	<div id="map_canvas"></div>
 
 	<div id="map_overlay">
-		<div class="container">
-			<div class="row-fluid">
-				<div id="map_overlay_container" class="span3 offset9">
-					<div id="map_overlay_inner">
-						<ul id="filter" class="unstyled" >
-							<li>
-								<label class="checkbox">
-										<?php echo  Form::checkbox('bibliotheken', 'bibliotheken') ; ?> Bibliotheken
-								</label>
-							</li>
-							<li>
-								<label class="checkbox">
-										<?php echo  Form::checkbox('bioscopen', 'bioscopen') ; ?> Bioscopen
-								</label>
-							</li>
-							<li>
-								<label class="checkbox">
-										<?php echo  Form::checkbox('campings', 'campings') ; ?> Campings
-								</label>
-							</li>
-							<li>
-								<label class="checkbox">
-										<?php echo  Form::checkbox('sportgelegenheden', 'sportgelegenheden') ; ?> Sportgelegenheden
-								</label>
-							</li>
-							<li>
-								<label class="checkbox">
-										<?php echo  Form::checkbox('kinderboerderijen', 'kinderboerderijen') ; ?> Kinderboerderijen
-								</label>
-							</li>
-							<li>
-								<label class="checkbox">
-										<?php echo  Form::checkbox('kindervermaak', 'kindervermaak') ; ?> Kindervermaak
-								</label>
-							</li>
-							<li>
-								<label class="checkbox">
-										<?php echo  Form::checkbox('theaters', 'theaters') ; ?> Theaters
-								</label>
-							</li>
-							<li>
-								<label class="checkbox">
-										<?php echo  Form::checkbox('recreatieterreinen', 'recreatieterreinen') ; ?> Recreatieterreinen
-								</label>
-							</li>
-							<li>
-								<label class="checkbox">
-										<?php echo  Form::checkbox('zwembaden', 'zwembaden') ; ?> Zwembaden
-								</label>
-							</li>
-							<li>
-								<label class="checkbox">
-										<?php echo  Form::checkbox('musea', 'musea') ; ?> Musea
-								</label>
-							</li>
-							<li>
-								<label class="checkbox">
-										<?php echo  Form::checkbox('restaurants', 'restaurants') ; ?> Restaurants
-								</label>
-							</li>
-							<li>
-								<label class="checkbox">
-										<?php echo  Form::checkbox('dierentuin', 'dierentuin') ; ?> Dierentuin
-								</label>
-							</li>
-							<li>
-								<label class="checkbox">
-										<?php echo  Form::checkbox('attracties', 'attracties') ; ?> Attracties
-								</label>
-							</li>
-							<li>
-								<label class="checkbox">
-										<?php echo  Form::checkbox('speeltuinen', 'speeltuinen') ; ?> Speeltuinen
-								</label>
-							</li>
-						</ul>
-					</div><!--/map_overlay_inner-->
-					<div id="map_overlay_inner_button">
-						<i class="icon-chevron-down" style="text-shadow: 0 0 1px #fff"></i>
-					</div>
-				</div>
-			</div><!--/row-fluid-->
-		</div><!--/container-->
+		<div id="map_overlay_inner">
+			<div id="hide_map">
+				<p>Verberg kaart</p><i class="icon-caret-up"></i>
+			</div>
+		</div>
 	</div><!--/map_overlay-->
+
+	<div id="map_underlay">
+		<ul id="filter" class="inline">
+			<li data-type="musea">
+				<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconMuseumB.png'); ?>');"></div>
+				<div class="sort_tooltip" style="margin-left: -32px;">Museum</div>
+			</li>
+			<li data-type="speeltuinen">
+				<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconPlaygroundB.png'); ?>');"></div>
+				<div class="sort_tooltip" style="margin-left: -39px;">Speeltuinen</div>
+			</li>
+			<li data-type="bibliotheken">
+				<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconLibraryB.png'); ?>');"></div>
+				<div class="sort_tooltip" style="margin-left: -41px;">Bibliotheken</div>
+			</li>
+			<li data-type="recreatieterreinen">
+				<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconRecreationB.png'); ?>');"></div>
+				<div class="sort_tooltip" style="margin-left: -56px;">Recreatieterreinen</div>
+			</li>
+			<li data-type="kindervermaak">
+				<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconKidsEntertainmentB.png'); ?>');"></div>
+				<div class="sort_tooltip" style="margin-left: -48px;">Kindervermaak</div>
+			</li>
+			<li data-type="bioscopen">
+				<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconCinemaB.png'); ?>');"></div>
+				<div class="sort_tooltip" style="margin-left: -36px;">Bioscopen</div>
+			</li>
+			<li data-type="campings">
+				<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconCampingB.png'); ?>');"></div>
+				<div class="sort_tooltip" style="margin-left: -35px;">Campings</div>
+			</li>
+			<li data-type="kinderboerderijen">
+				<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconKidsFarmB.png'); ?>');"></div>
+				<div class="sort_tooltip" style="margin-left: -55px;">Kinderboerderijen</div>
+			</li>
+			<li data-type="dierentuin">
+				<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconZooB.png'); ?>');"></div>
+				<div class="sort_tooltip" style="margin-left: -37px;">Dierentuin</div>
+			</li>
+			<li data-type="attracties">
+				<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconThemeParkB.png'); ?>');"></div>
+				<div class="sort_tooltip" style="margin-left: -35px;">Attracties</div>
+			</li>
+			<li data-type="theaters">
+				<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconTheaterB.png'); ?>');"></div>
+				<div class="sort_tooltip" style="margin-left: -33px;">Theaters</div>
+			</li>
+			<li data-type="zwembaden">
+				<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconSwimmingB.png'); ?>');"></div>
+				<div class="sort_tooltip" style="margin-left: -40px;">Zwembaden</div>
+			</li>
+			<li data-type="sportgelegenheden">
+				<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconSportsB.png'); ?>');"></div>
+				<div class="sort_tooltip" style="margin-left: -60px;">Sportgelegenheden</div>
+			</li>
+			<li data-type="restaurants">
+				<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconRestaurantB.png'); ?>');"></div>
+				<div class="sort_tooltip" style="margin-left: -39px;">Restaurants</div>
+			</li>
+		</ul>
+	</div>
 
 	<div class="container" ng-app="indexApp" ng-controller="tableCtrl">
 
 		<div class="" style="4
 		background: none repeat scroll 0 0 rgba(0, 0, 0, 0.01);
-		border-left: 1px solid rgba(0, 0, 0, 0.07);
-		border-right: 1px solid rgba(0, 0, 0, 0.07);
 		border-bottom: 1px solid rgba(0, 0, 0, 0.07);">
 
 			<div class="row-fluid">
@@ -114,7 +95,9 @@
 			</div>
 		</div>
 
-		<div id="fpLocations-container" >
+		<div id="fpLocations-container" style="
+			border-left: 1px solid rgba(0, 0, 0, 0.07);
+			border-right: 1px solid rgba(0, 0, 0, 0.07);">
 
 			<div class="fpLocations-sortbar">
 				<ul>
@@ -149,7 +132,7 @@
 				<div id="frontpage-about_us_block">
 
 					<div class="span12">
-						<h3>Wat is dit precies?</h3>
+						<h3>Wat is Rotterdam Onbeperkt?</h3>
 						<p>
 							Rotterdam is een stad vol leven dat gedeeld moet worden met zijn inwoners. Hieronder vallen ook onze minder valide inwoners. Deze website is opgezet om jullie tegemoet te komen in jullie ervaring met alles dat Rotterdam te bieden heeft.
 						</p>
@@ -170,6 +153,4 @@
 	</div><!--/alternate_color block-->
 
 <?php \Laravel\Section::stop(); ?>
-
-
 <?php echo view('layouts.default')->with(get_defined_vars())->render(); ?>

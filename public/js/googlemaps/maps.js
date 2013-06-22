@@ -49,6 +49,9 @@ var maps_class = {
 
 	createMarker: function(pos, withContacts){
 		// console.log(pos);
+		if(pos.img == null){
+			console.log(pos);
+		}
 		var self = maps_class;
 		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(pos.latitude, pos.longitude),
