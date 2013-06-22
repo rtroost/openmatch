@@ -124,11 +124,7 @@ a:hover {
 }
 
 .alert {
-	max-width: 16em;
-	padding: 14px 35px 14px 14px;
-}
-.alert-info {
-	border: 1px solid ;
+	max-width: 300px;
 }
 
 #session-message {
@@ -136,6 +132,8 @@ a:hover {
 	right: 5px;
 	top: 56px;
 	z-index: 9999;
+	background: #eef6ff;
+	border-color: #bdf;
 }
 
 .alternate_color_block {
