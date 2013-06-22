@@ -23,6 +23,16 @@ $(document).ready(function() {
 		path: BASE + 'img',
 		hints: ['Zeer slecht', 'Slecht', 'Acceptabel', 'Goed', 'Zeer goed']
 	});
+	
+	$('.rating-read-only-list').raty({
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		readOnly: true,
+		half: true,
+		path: BASE + 'img',
+		hints: ['Zeer slecht', 'Slecht', 'Acceptabel', 'Goed', 'Zeer goed']
+	});
 
 	var span_formatted_address = $('span.location_formatted_address');
 	var span_postalcode = $('span.location_postalcode');
