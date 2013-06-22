@@ -130,10 +130,11 @@ a:hover {
 #session-message {
 	position: fixed;
 	right: 5px;
-	top: 56px;
+	bottom: 5px;
 	z-index: 9999;
 	background: #eef6ff;
 	border-color: #bdf;
+	border-radius: 0;
 }
 
 .alternate_color_block {
