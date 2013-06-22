@@ -91,9 +91,31 @@
                 </div>  
                 <div class="span4">
                     <h2>Twitter Feed</h2>
-                    <p>
+                    
+					@if( ! empty($footer_tweets))
+					
+						<ul class="twtr-feed">
+							
+						@foreach ($footer_tweets as $tweet)
+						
+						<li>
+							<div class="sidebar_stream-body">{{ $tweet -> text }}</div>
+							<small>
+								<em>
+									<a target="_blank" class="twtr-timestamp" href="http://twitter.com/{{ $tweet -> user -> screen_name }}/statuses/{{ $tweet -> id_str }}">{{ Helpers::relative_time(strtotime($tweet -> created_at)) }} ago</a> / <a target="_blank" class="twtr-reply" href="https://twitter.com/intent/tweet?in_reply_to={{ $tweet -> id_str }}">reply</a> / <a target="_blank" class="twtr-rt" href="https://twitter.com/intent/retweet?tweet_id={{ $tweet -> id_str }}">retweet</a> / <a target="_blank" class="twtr-fav" href="https://twitter.com/intent/favorite?tweet_id={{ $tweet -> id_str }}">favorite</a>
+								</em>
+							</small>
+						</li>	
+							
+						@endforeach
+							
+						</ul>
+					
+					@else
+					<p>
                         Er zijn nog geen Twitter berichten.
                     </p>
+					@endif					
                 </div>
             </div>
     
