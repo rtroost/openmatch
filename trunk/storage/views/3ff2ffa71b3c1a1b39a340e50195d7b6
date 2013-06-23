@@ -10,59 +10,59 @@
 			<div id="zoeken_locations" class="sidebar_block span12" style="margin-bottom: 30px;">
 				<!-- <h4>Filter op uitgaansgelegenheid</h4> -->
 				<ul id="filter" class="inline">
-					<li data-type="musea">
-						<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconMuseumB.png'); ?>');"></div>
+					<li data-type="musea" ng-class="{active_marker_sort: musea}" ng-click="toggleType(searchTypes, 'musea'); musea = !musea;">
+						<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconMuseumB.png'); ?>');" ></div>
 						<div class="sort_tooltip" style="margin-left: -32px;">Museum</div>
 					</li>
-					<li data-type="speeltuinen">
+					<li data-type="speeltuinen" ng-class="{active_marker_sort: speeltuinen}" ng-click="toggleType(searchTypes, 'speeltuinen'); speeltuinen = !speeltuinen;">
 						<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconPlaygroundB.png'); ?>');"></div>
 						<div class="sort_tooltip" style="margin-left: -39px;">Speeltuinen</div>
 					</li>
-					<li data-type="bibliotheken">
+					<li data-type="bibliotheken" ng-class="{active_marker_sort: bibliotheken}" ng-click="toggleType(searchTypes, 'bibliotheken'); bibliotheken = !bibliotheken;">
 						<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconLibraryB.png'); ?>');"></div>
 						<div class="sort_tooltip" style="margin-left: -41px;">Bibliotheken</div>
 					</li>
-					<li data-type="recreatieterreinen">
+					<li data-type="recreatieterreinen" ng-class="{active_marker_sort: recreatieterreinen}" ng-click="toggleType(searchTypes, 'recreatieterreinen'); recreatieterreinen = !recreatieterreinen;">
 						<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconRecreationB.png'); ?>');"></div>
 						<div class="sort_tooltip" style="margin-left: -56px;">Recreatieterreinen</div>
 					</li>
-					<li data-type="kindervermaak">
+					<li data-type="kindervermaak" ng-class="{active_marker_sort: kindervermaak}" ng-click="toggleType(searchTypes, 'kindervermaak'); kindervermaak = !kindervermaak;">
 						<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconKidsEntertainmentB.png'); ?>');"></div>
 						<div class="sort_tooltip" style="margin-left: -48px;">Kindervermaak</div>
 					</li>
-					<li data-type="bioscopen">
+					<li data-type="bioscopen" ng-class="{active_marker_sort: bioscopen}" ng-click="toggleType(searchTypes, 'bioscopen'); bioscopen = !bioscopen;">
 						<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconCinemaB.png'); ?>');"></div>
 						<div class="sort_tooltip" style="margin-left: -36px;">Bioscopen</div>
 					</li>
-					<li data-type="campings">
+					<li data-type="campings" ng-class="{active_marker_sort: campings}" ng-click="toggleType(searchTypes, 'campings'); campings = !campings;">
 						<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconCampingB.png'); ?>');"></div>
 						<div class="sort_tooltip" style="margin-left: -35px;">Campings</div>
 					</li>
-					<li data-type="kinderboerderijen">
+					<li data-type="kinderboerderijen" ng-class="{active_marker_sort: kinderboerderijen}" ng-click="toggleType(searchTypes, 'kinderboerderijen'); kinderboerderijen = !kinderboerderijen;">
 						<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconKidsFarmB.png'); ?>');"></div>
 						<div class="sort_tooltip" style="margin-left: -55px;">Kinderboerderijen</div>
 					</li>
-					<li data-type="dierentuin">
+					<li data-type="dierentuin" ng-class="{active_marker_sort: dierentuin}" ng-click="toggleType(searchTypes, 'dierentuin'); dierentuin = !dierentuin;">
 						<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconZooB.png'); ?>');"></div>
 						<div class="sort_tooltip" style="margin-left: -37px;">Dierentuin</div>
 					</li>
-					<li data-type="attracties">
+					<li data-type="attracties" ng-class="{active_marker_sort: attracties}" ng-click="toggleType(searchTypes, 'attracties'); attracties = !attracties;">
 						<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconThemeParkB.png'); ?>');"></div>
 						<div class="sort_tooltip" style="margin-left: -35px;">Attracties</div>
 					</li>
-					<li data-type="theaters">
+					<li data-type="theaters" ng-class="{active_marker_sort: theaters}" ng-click="toggleType(searchTypes, 'theaters'); theaters = !theaters;">
 						<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconTheaterB.png'); ?>');"></div>
 						<div class="sort_tooltip" style="margin-left: -33px;">Theaters</div>
 					</li>
-					<li data-type="zwembaden">
+					<li data-type="zwembaden" ng-class="{active_marker_sort: zwembaden}" ng-click="toggleType(searchTypes, 'zwembaden'); zwembaden = !zwembaden;">
 						<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconSwimmingB.png'); ?>');"></div>
 						<div class="sort_tooltip" style="margin-left: -40px;">Zwembaden</div>
 					</li>
-					<li data-type="sportgelegenheden">
+					<li data-type="sportgelegenheden" ng-class="{active_marker_sort: sportgelegenheden}" ng-click="toggleType(searchTypes, 'sportgelegenheden'); sportgelegenheden = !sportgelegenheden;">
 						<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconSportsB.png'); ?>');"></div>
 						<div class="sort_tooltip" style="margin-left: -60px;">Sportgelegenheden</div>
 					</li>
-					<li data-type="restaurants">
+					<li data-type="restaurants" ng-class="{active_marker_sort: restaurants}" ng-click="toggleType(searchTypes, 'restaurants'); restaurants = !restaurants;">
 						<div style="background-image: url('<?php echo URL::to_asset('img/maps/iconRestaurantB.png'); ?>');"></div>
 						<div class="sort_tooltip" style="margin-left: -39px;">Restaurants</div>
 					</li>
@@ -124,72 +124,72 @@
 						<ul class="unstyled" id="locationfilter" >
 							<li>
 								<label class="checkbox">
-									<input type="checkbox" name="bibliotheken" value="bibliotheken" ng-click="toggleType(searchTypes, 'bibliotheken')"> Bibliotheken
+									<input type="checkbox" name="bibliotheken" value="bibliotheken"> Bibliotheken
 								</label>
 							</li>
 							<li>
 								<label class="checkbox">
-									<input type="checkbox" name="bioscopen" value="bioscopen" ng-click="toggleType(searchTypes, 'bioscopen')"> Bioscopen
+									<input type="checkbox" name="bioscopen" value="bioscopen"> Bioscopen
 								</label>
 							</li>
 							<li>
 								<label class="checkbox">
-									<input type="checkbox" name="campings" value="campings" ng-click="toggleType(searchTypes, 'campings')"> Campings
+									<input type="checkbox" name="campings" value="campings"> Campings
 								</label>
 							</li>
 							<li>
 								<label class="checkbox">
-									<input type="checkbox" name="sportgelegenheden" value="sportgelegenheden" ng-click="toggleType(searchTypes, 'sportgelegenheden')"> Sportgelegenheden
+									<input type="checkbox" name="sportgelegenheden" value="sportgelegenheden"> Sportgelegenheden
 								</label>
 							</li>
 							<li>
 								<label class="checkbox">
-									<input type="checkbox" name="kinderboerderijen" value="kinderboerderijen" ng-click="toggleType(searchTypes, 'kinderboerderijen')"> Kinderboerderijen
+									<input type="checkbox" name="kinderboerderijen" value="kinderboerderijen"> Kinderboerderijen
 								</label>
 							</li>
 							<li>
 								<label class="checkbox">
-									<input type="checkbox" name="kindervermaak" value="kindervermaak" ng-click="toggleType(searchTypes, 'kindervermaak')"> Kindervermaak
+									<input type="checkbox" name="kindervermaak" value="kindervermaak"> Kindervermaak
 								</label>
 							</li>
 							<li>
 								<label class="checkbox">
-									<input type="checkbox" name="theaters" value="theaters" ng-click="toggleType(searchTypes, 'theaters')"> Theaters
+									<input type="checkbox" name="theaters" value="theaters"> Theaters
 								</label>
 							</li>
 							<li>
 								<label class="checkbox">
-									<input type="checkbox" name="recreatieterreinen" value="recreatieterreinen" ng-click="toggleType(searchTypes, 'recreatieterreinen')"> Recreatieterreinen
+									<input type="checkbox" name="recreatieterreinen" value="recreatieterreinen"> Recreatieterreinen
 								</label>
 							</li>
 							<li>
 								<label class="checkbox">
-									<input type="checkbox" name="zwembaden" value="zwembaden" ng-click="toggleType(searchTypes, 'zwembaden')"> Zwembaden
+									<input type="checkbox" name="zwembaden" value="zwembaden"> Zwembaden
 								</label>
 							</li>
 							<li>
 								<label class="checkbox">
-									<input type="checkbox" name="musea" value="musea" ng-click="toggleType(searchTypes, 'musea')"> Musea
+									<input type="checkbox" name="musea" value="musea"> Musea
 								</label>
 							</li>
 							<li>
 								<label class="checkbox">
-									<input type="checkbox" name="restaurants" value="restaurants" ng-click="toggleType(searchTypes, 'restaurants')"> Restaurants
+									<input type="checkbox" name="restaurants" value="restaurants"> Restaurants
 								</label>
 							</li>
 							<li>
 								<label class="checkbox">
-									<input type="checkbox" name="dierentuin" value="dierentuin" ng-click="toggleType(searchTypes, 'dierentuin')"> Dierentuin
+									<input type="checkbox" name="dierentuin" value="dierentuin"> Dierentuin
 								</label>
 							</li>
 							<li>
 								<label class="checkbox">
-									<input type="checkbox" name="attracties" value="attracties" ng-click="toggleType(searchTypes, 'attracties')"> Attracties
+									<input type="checkbox" name="attracties" value="attracties"> Attracties
 								</label>
 							</li>
 							<li>
 								<label class="checkbox">
-									<input type="checkbox" name="speeltuinen" value="speeltuinen" ng-click="toggleType(searchTypes, 'speeltuinen')"> Speeltuinen
+									<input type="checkbox" name="speeltuinen" value="speeltuinen"> Speeltuinen
 								</label>
 							</li>
 						</ul>
