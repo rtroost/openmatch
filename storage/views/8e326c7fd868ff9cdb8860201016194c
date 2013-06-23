@@ -7,6 +7,18 @@
 	</div>
 </div> -->
 
+<div id="mapWrapper">
+	<div id="map_canvas"></div>
+
+	<div id="map_overlay" class="folded">
+		<div id="map_overlay_inner">
+			<div id="hide_map">
+				<p>Verberg kaart</p><i class="icon-caret-down"></i>
+			</div>
+		</div>
+	</div><!--/map_overlay-->
+</div>
+
 <div class="content">
 
 	<div class="container">
@@ -14,12 +26,15 @@
 		<div class="location">
             
             <div class="row-fluid location-header">
-                
-                <img src="<?php echo  URL::to('img/maps/' . $location->img . '.png') ; ?>" class="location-marker" />
+				<span class="location_formatted_address" style="display:none;"><?php echo $location -> formatted_address; ?></span>
+				<span class="location_postalcode" style="display:none;"><?php echo $location -> postalcode; ?></span>
+				<span class="location_number" style="display:none;"><?php echo $location -> number; ?></span>
+				<span class="location_city" style="display:none;"><?php echo $location -> city; ?></span>
+                <img style="cursor: pointer;" id="location-marker-img" data-id="<?php echo $location->id; ?>" data-name="<?php echo $location->name; ?>" data-markerimg="<?php echo $location->img; ?>" data-lat="<?php echo $location->latitude; ?>" data-lng="<?php echo $location->longitude; ?>" src="<?php echo  URL::to('img/maps/' . $location->img . '.png') ; ?>" class="location-marker" />
                 
                 <h2 class="location-title">
 					<?php echo  $location->name ; ?>
-					<span id="location-improveInfo"><i class="icon-edit"></i><span id="location-improveInfo-text">Steentje bijdragen?</span></span>
+					<a href="<?php echo  URL::to_route('location_feedback', $location->id) ; ?>"><span id="location-improveInfo"><i class="icon-edit"></i><span id="location-improveInfo-text">Klopt er iets niet? Klik hier!</span></span></a>
 				</h2>
             </div>
 
@@ -63,10 +78,10 @@
 				</div>
 
 				<div class="span8">
-					<ul class="nav nav-tabs">
-						<li class="active"><a href="#general" data-toggle="tab">Algemeen</a></li>
-					 	<li><a href="#route" id="toggleMap" data-toggle="tab">Routebeschrijving</a></li>
-					 	<li><a href="#taxi" data-toggle="tab">Taxi bestellen</a></li>
+					<ul class="nav nav-tabs" id="tab">
+						<li class="active" data-type="algemeen"><a href="#general" data-toggle="tab">Algemeen</a></li>
+					 	<li data-type="routebeschrijving"><a href="#route" data-toggle="tab">Routebeschrijving</a></li>
+					 	<li data-type="taxibestellen"><a href="#taxi" data-toggle="tab">Taxi bestellen</a></li>
 					</ul>
 
 					<div class="tab-content">
@@ -76,7 +91,7 @@
 				                    <?php if($location->formatted_address): ?>
 				                    <li class="address"><?php echo  $location->formatted_address ; ?></li>
 				                    <?php else: ?>
-				                    <li class="address"><?php echo  $location->postalcode . ' ' . $location -> city ; ?></li>
+				                    <li class="address"><?php echo  $location->postalcode . ' ' . $location -> number . ' ' . $location -> city ; ?></li>
 				                    <?php endif; ?>                    
 				                    <li class="phone"><i class="icon-phone"></i>
 										<?php if($location -> tel): ?>
@@ -107,10 +122,7 @@
 							<div id="directions-container">
 								<?php echo  Form::open('tba', 'POST', array('class' => 'form-vertical')) ; ?>
 									<?php echo  Form::token() ; ?>
-									<span class="location_formatted_address" style="display:none;"><?php echo $location -> formatted_address; ?></span>
-									<span class="location_postalcode" style="display:none;"><?php echo $location -> postalcode; ?></span>
-									<span class="location_number" style="display:none;"><?php echo $location -> number; ?></span>
-									<span class="location_city" style="display:none;"><?php echo $location -> city; ?></span>
+
 
 									<div id="controlGroupTarget" class="control-group">
 										<?php echo  Form::label('origin', 'Bepaal waar vandaan je wilt vertrekken', array('class' => 'control-label')) ; ?>
@@ -127,9 +139,9 @@
 										<?php echo  Form::label('transport', 'Op welke manier wil je er komen?', array('class' => 'control-label')) ; ?>
 										<div class="controls">
 											<select name="transport" id="transport-input">
-												<option value="driving">Auto</option>
-												<option value="transit">Openbaar vervoer</option>
-												<option value="walking">Lopend</option>
+												<option value="DRIVING">Auto</option>
+												<option value="TRANSIT">Openbaar vervoer</option>
+												<option value="WALKING">Lopend</option>
 											</select>
 										</div>
 									</div>
@@ -171,13 +183,10 @@
 					</div>
 					
 				</div><!--/span8-->
-				<div id="mapBig" class="map">
-					<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="width:100%; height:100%;" src="https://maps.google.nl/maps?q=<?php echo $location->latitude; ?>+,<?php echo $location->longitude; ?>&amp;output=embed"></iframe>
-				</div>
-				<div id="mapSmall" class="map">
-					<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="width:100%; height:100%;" src="https://maps.google.nl/maps?q=<?php echo $location->latitude; ?>+,<?php echo $location->longitude; ?>&amp;output=embed"></iframe>
-				</div>
+				
 			</div><!--/row-fluid-->
+
+			
 
 			<div class="row-fluid">
 				<hr />

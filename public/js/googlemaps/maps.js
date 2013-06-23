@@ -2,14 +2,12 @@ var maps_class = {
 
 	init: function(config) {
 
+		this.templatehtml = $('<div class="marker_wrapper"><h4 class="marker_title"></h4><p class="marker_address"></p><a class="marker_link" href="">Lees meer</a><div class="marker_contacts"></div></div>');
+
 		this.deferred = new $.Deferred();
 
 		this.container = config;
 		this.markers = {};
-
-		$.get(BASE + 'js/jstemplates/maps_marker.html', function(data){
-		    maps_class.templatehtml = $(data);
-		});
 
 		google.maps.event.addDomListener(window, 'load', this.initialize);
 
@@ -38,6 +36,12 @@ var maps_class = {
 			zoom: 14,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
+
+		self.directionsService = new google.maps.DirectionsService();
+
+		self.directionsDisplay = new google.maps.DirectionsRenderer({
+			draggable: true
+		});
 
 		self.map = new google.maps.Map(self.container, mapOptions);
 		if(self.map){
@@ -138,6 +142,49 @@ var maps_class = {
 	changeZoom: function(level){
 		var self = maps_class;
  		self.map.setZoom(level);
+	},
+
+	resizeMap: function(){
+		var self = maps_class;
+		google.maps.event.trigger(self.map, 'resize');
+	},
+
+	renderDirections: function(lat1, lng1, lat2, lng2, mode){
+		var self = maps_class;
+		var start = new google.maps.LatLng(lat1, lng1);
+		var end = new google.maps.LatLng(lat2, lng2);
+
+		self.directionsDisplay.setMap(self.map); // map should be already initialized.
+
+		console.log(mode);
+
+		if(mode == "DRIVING"){
+			var request = {
+				origin : start,
+				destination : end,
+				travelMode : google.maps.TravelMode.DRIVING
+			};
+		} else if(mode == "TRANSIT"){
+			var request = {
+				origin : start,
+				destination : end,
+				travelMode : google.maps.TravelMode.TRANSIT
+			};
+		} else if(mode == "WALKING"){
+			var request = {
+				origin : start,
+				destination : end,
+				travelMode : google.maps.TravelMode.WALKING
+			};
+		}
+		
+		self.directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+			    self.directionsDisplay.setDirections(response);
+			}
+		});
+
 	}
+
 
 };
