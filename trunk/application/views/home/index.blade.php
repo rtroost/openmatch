@@ -83,7 +83,7 @@
 				<div class="span12">
 					<div id="controlGroupTarget" class="control-group" style="text-align: center; margin-top: 10px;">
 						<div class="controls">
-							<div class="input-append" style="width:90%; margin-bottom: 0px;" ng-show="location">
+							<div class="input-append" style="width:90%; margin-bottom: 0px;">
 								<form ng-submit="submit(this)" style="margin-bottom: 0px">
 									<input class="span8" type="text" name="filter_location-input" ng-model="geoLocation" placeholder="Wat is uw adres?">
 									<span class="add-on" style="cursor:pointer;" ng-click="getGeoLocation(this)"><i class="icon-screenshot"></i></span>
@@ -102,10 +102,10 @@
 
 			<div class="fpLocations-sortbar">
 				<ul>
-					<li><i class="icon-reorder hasTooltip" data-toggle="tooltip" title="Toon" ng-click="changeRoute('')"></i></li>
-					<li><i class="icon-screenshot hasTooltip" data-toggle="tooltip" title="Locatie's dichtbij" ng-click="changeRoute('locatie_dichtbij')"></i></li>
-					<li><i class="icon-trophy hasTooltip" data-toggle="tooltip" title="Hoogst beoordeeld" ng-click="changeRoute('hoogst_beoordeeld')"></i></li>
-					<li><i class="icon-star hasTooltip" data-toggle="tooltip" title="Aanbevolen" ng-click="changeRoute('aanbevolen')"></i></li>
+					<li ng-click="changeRoute('')"><i class="icon-reorder hasTooltip" data-toggle="tooltip" title="Willekeurig"></i></li>
+					<li ng-click="changeRoute('locatie_dichtbij')"><i class="icon-screenshot hasTooltip" data-toggle="tooltip" title="Locatie's dichtbij"></i></li>
+					<li ng-click="changeRoute('hoogst_beoordeeld')"><i class="icon-trophy hasTooltip" data-toggle="tooltip" title="Hoogst beoordeeld"></i></li>
+					<li ng-click="changeRoute('aanbevolen')"><i class="icon-star hasTooltip" data-toggle="tooltip" title="Aanbevolen"></i></li>
 				</ul>
 			</div><!--/span1-->
 

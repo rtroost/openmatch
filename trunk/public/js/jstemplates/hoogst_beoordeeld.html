@@ -11,14 +11,15 @@
 
 <table class="fpLocation-table" ng-hide="loading">
 
-	<tr ng-repeat="location in result">
+	<tr ng-repeat="location in result | orderBy:sortingOrder:distance">
 		<td class="fpLocation-category">
-			<a href="{{BASE + 'locations/' + location.id}}" class=""><img ng-src="img/maps/{{location.img}}.png" /></a>
+			<img ng-src="img/maps/{{location.img}}.png" ng-click="centerTo(location.latitude, location.longitude)" />
 		</td>
 
 		<td class="fpLocation-title">
 			<a href="{{BASE + 'locations/' + location.id}}">{{location.name}}</a>
 			<span class="fpLocation-address">{{location.formatted_address | formatAddress:location.postalcode:location.number:location.city}}</span>
+			<span class="fpLocation-address" ng-show="curPlaceLat">{{Math.round( location.distance * 10 ) / 10}} km</span>
 		</td>
 
 		<td class="fpLocation-icon" ng-switch on="!!location.website">

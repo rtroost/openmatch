@@ -405,7 +405,7 @@ a:hover {
 
 #hide_map {
 	position: absolute;
-	bottom: 0px;
+	bottom: -1px;
 	width: 135px;
 	height: 25px;
 	background: #ffffff;
@@ -1135,6 +1135,10 @@ table {
 	width: 50px;
 	padding: 8px 6px !important;
 	text-align: center;
+}
+
+.fpLocation-category > img {
+	cursor: pointer;
 }
 
 .fpLocation-category img {

@@ -1,0 +1,59 @@
+
+<?php \Laravel\Section::start('content'); ?>
+
+<div class="content">
+
+	<div class="container">
+
+		<div class="row-fluid">
+
+			<div class="span8">
+
+				<?php if($articles): ?>
+
+				<div id="article-small-container">
+
+					<?php foreach($articles as $article): ?>
+
+					<div class="article-small">
+
+						<h2 class="article-small-title">
+							<?php echo  $article -> title ; ?>
+						</h2>
+						<div class="article-small-meta">
+							Gepubliceerd op <?php echo  $article -> published_at ; ?>
+						</div>
+						<div class="article-small-body">
+							<?php if((strlen($article -> body) > 300)): ?>
+								<?php echo  substr ($article -> body, 0, 300) ; ?>...<a href="<?php echo  URL::to_route('news_show', $article -> id) ; ?>" class="article-small-readmore"><i class="icon-caret-right"></i> Lees verder</a>
+							<?php else: ?>
+								<?php echo  $article -> body ; ?>
+							<?php endif; ?>
+						</div>
+
+					</div>
+
+					<?php endforeach; ?>
+
+				</div>
+
+				<?php else: ?>
+
+				<p>Er zijn geen berichten om te laten zien.</p>
+
+				<?php endif; ?>
+
+			</div><!--/span8-->
+
+			<div class="span4">
+
+			</div>
+
+		</div><!--/row-fluid-->
+
+	</div><!--/container-->
+
+</div><!--/content-->
+
+<?php \Laravel\Section::stop(); ?>
+<?php echo view('layouts.default')->with(get_defined_vars())->render(); ?>
