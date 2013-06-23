@@ -1237,9 +1237,9 @@ table {
 }
 
 .fpLocation-rating {
-	font-size: 1.5em;
+	/*font-size: 1.5em;*/
 	text-align: center;
-	width: 70px;
+	width: 120px;
 	/*font-weight: 700;*/
 }
 
