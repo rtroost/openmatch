@@ -28,6 +28,7 @@
 	@if(Session::has('message'))
 	<div class="alert alert-info" id="session-message">
 		<button class="close" data-dismiss="alert">&times;</button>
+		<i class="icon-info"></i>
 		{{ Session::get('message') }}
 	</div>
 	@endif
