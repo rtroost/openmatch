@@ -10,14 +10,10 @@
 
 <div id="mapWrapper">
 	<div id="map_canvas"></div>
-
-	<div id="map_overlay" class="folded">
-		<div id="map_overlay_inner">
-			<div id="hide_map">
-				<p>Verberg kaart</p><i class="icon-caret-down"></i>
-			</div>
-		</div>
-	</div><!--/map_overlay-->
+	<div id="map_overlay" class="folded"></div><!--/map_overlay-->
+	<div id="hide_map">
+		<p>Verberg kaart</p><i class="icon-caret-down"></i>
+	</div>
 </div>
 
 <div class="content">

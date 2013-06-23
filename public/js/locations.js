@@ -212,11 +212,7 @@ $(document).ready(function() {
 				hide_map_i.removeClass('icon-caret-up');
 				hide_map_i.addClass('icon-caret-down');
 			});
-			map_overlay.animate({
-				height: '50px',
-			}, 1000, function() {
-				map_overlay.css('background', 'rgba(0,0,0,0.5)');
-			});
+			map_overlay.fadeIn();
 		} else {
 			mapWrapper.animate({
 				height: '450px'
@@ -224,11 +220,7 @@ $(document).ready(function() {
 				hide_map_i.removeClass('icon-caret-down');
 				hide_map_i.addClass('icon-caret-up');
 			});
-			map_overlay.animate({
-				height: '450px',
-			}, 1000, function() {
-				map_overlay.css('background', 'rgba(0,0,0,0)');
-			});
+			map_overlay.fadeOut();
 			maps_class.resizeMap();
 		}
 		slideIn = !slideIn;

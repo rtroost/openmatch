@@ -390,33 +390,24 @@ a:hover {
 	overflow: hidden;
 }
 
-#map_overlay.folded {
-	height: 50px;
-	background: rgba(0,0,0,0.5);
-}
-
 #map_canvas img { max-width: none; }
+
 #map_overlay {
-	margin: 0px auto;
-	position: relative;
-	top: 0px;
+	position:absolute;
+	top: 0;
+	bottom: 0;
 	width: 100%;
 	pointer-events:none;
-	height: 450px;
 	-webkit-box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.2) inset;
 	box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.2) inset;
-}
-
-#map_overlay_inner {
-	margin-left:auto;
-	margin-right:auto;
-	width: 135px;
-	height: 100%;
+	background: rgba(0,0,0,0.5);
 }
 
 #hide_map {
 	position: absolute;
 	bottom: -1px;
+	left: 50%;
+	margin-left: -76px;
 	width: 135px;
 	height: 25px;
 	background: #ffffff;
