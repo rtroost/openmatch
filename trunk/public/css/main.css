@@ -864,7 +864,7 @@ div#zoeken_locations li:hover div + div.sort_tooltip {
 
 .articleNavigation-btn:hover,
 .articleNavigation-btn:hover .articleNavigation-btn-body {
-	color: #888 !important;
+	color: #777 !important;
 }
 
 .articleNavigation-btn-link {
@@ -902,6 +902,8 @@ div#zoeken_locations li:hover div + div.sort_tooltip {
 
 .articleNavigation-btn-body-title {	
 	display: block;
+	font-weight: 700;
+	font-size: 0.9em;
 }
 
 .articleNavigation-btn-body-address {	
