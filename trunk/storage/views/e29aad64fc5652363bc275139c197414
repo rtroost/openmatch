@@ -1,0 +1,64 @@
+
+<?php \Laravel\Section::start('content'); ?>
+
+<div class="content">
+
+	<div class="container">
+
+		<div class="row-fluid">
+
+			<div class="span6">
+				<h2>Wie zijn wij?</h2>
+				<p>
+					Rotterdam Onbeperkt is ontwikkeld door vier informatica studenten van de Hogeschool Rotterdam: Remco van der Kleijn, Rob Troost, Nick van Leeuwen en Stefan Bayarri. Rotterdam Onbeperkt is ontstaan uit het Rotterdam Open Data project van de gemeente Rotterdam.
+				</p>
+
+			</div><!--/span9-->
+
+			<div class="span6">
+
+				<h2>Vertel het ons!</h2>
+
+				<?php echo  Form::open('contact', 'POST', array('class' => 'form-vertical')) ; ?>
+
+					<?php echo  Form::token() ; ?>
+
+					<div class="control-group <?php echo  ($errors->first('fullname') ? 'error' : '') ; ?>">
+						<?php echo  Form::label('fullname', 'Uw naam', array('class' => 'control-label')) ; ?>
+						<div class="controls">
+							<?php echo  Form::text('fullname', Input::old('fullname'), array('class' => 'span6')) ; ?>
+							<?php echo  $errors->first('fullname', '<span class="help-inline">:message</span>') ; ?>
+						</div>
+					</div>
+
+					<div class="control-group <?php echo  ($errors->first('email') ? 'error' : '') ; ?>">
+						<?php echo  Form::label('email', 'Uw E-mailadres', array('class' => 'control-label')) ; ?>
+						<div class="controls">
+							<?php echo  Form::text('email', Input::old('email'), array('class' => 'span6')) ; ?>
+							<?php echo  $errors->first('email', '<span class="help-inline">:message</span>') ; ?>
+						</div>
+					</div>
+
+					<div class="control-group <?php echo  ($errors->first('message') ? 'error' : '') ; ?>">
+						<?php echo  Form::label('message', 'Uw bericht', array('class' => 'control-label')) ; ?>
+						<div class="controls">
+							<?php echo  Form::textarea('message', Input::old('message'), array('class' => 'span12')) ; ?>
+							<?php echo  $errors->first('message', '<span class="help-inline">:message</span>') ; ?>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<div class="controls">
+							<?php echo  Form::submit('Verstuur', array('class' => 'btn btn-large btn-primary')) ; ?>
+						</div>
+					</div>
+
+				<?php echo  Form::close() ; ?>
+			</div><!--/span3-->
+
+		</div><!--/row-fluid-->
+	</div><!--/container-->
+</div><!--/content-->
+
+<?php \Laravel\Section::stop(); ?>
+<?php echo view('layouts.default')->with(get_defined_vars())->render(); ?>
