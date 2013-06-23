@@ -8,6 +8,72 @@
 
 		<div class="row-fluid">
 
+			<div id="zoeken_locations" class="sidebar_block span12" style="margin-bottom: 30px;">
+				<!-- <h4>Filter op uitgaansgelegenheid</h4> -->
+				<ul id="filter" class="inline">
+					<li data-type="musea">
+						<div style="background-image: url('{{URL::to_asset('img/maps/iconMuseumB.png')}}');"></div>
+						<div class="sort_tooltip" style="margin-left: -32px;">Museum</div>
+					</li>
+					<li data-type="speeltuinen">
+						<div style="background-image: url('{{URL::to_asset('img/maps/iconPlaygroundB.png')}}');"></div>
+						<div class="sort_tooltip" style="margin-left: -39px;">Speeltuinen</div>
+					</li>
+					<li data-type="bibliotheken">
+						<div style="background-image: url('{{URL::to_asset('img/maps/iconLibraryB.png')}}');"></div>
+						<div class="sort_tooltip" style="margin-left: -41px;">Bibliotheken</div>
+					</li>
+					<li data-type="recreatieterreinen">
+						<div style="background-image: url('{{URL::to_asset('img/maps/iconRecreationB.png')}}');"></div>
+						<div class="sort_tooltip" style="margin-left: -56px;">Recreatieterreinen</div>
+					</li>
+					<li data-type="kindervermaak">
+						<div style="background-image: url('{{URL::to_asset('img/maps/iconKidsEntertainmentB.png')}}');"></div>
+						<div class="sort_tooltip" style="margin-left: -48px;">Kindervermaak</div>
+					</li>
+					<li data-type="bioscopen">
+						<div style="background-image: url('{{URL::to_asset('img/maps/iconCinemaB.png')}}');"></div>
+						<div class="sort_tooltip" style="margin-left: -36px;">Bioscopen</div>
+					</li>
+					<li data-type="campings">
+						<div style="background-image: url('{{URL::to_asset('img/maps/iconCampingB.png')}}');"></div>
+						<div class="sort_tooltip" style="margin-left: -35px;">Campings</div>
+					</li>
+					<li data-type="kinderboerderijen">
+						<div style="background-image: url('{{URL::to_asset('img/maps/iconKidsFarmB.png')}}');"></div>
+						<div class="sort_tooltip" style="margin-left: -55px;">Kinderboerderijen</div>
+					</li>
+					<li data-type="dierentuin">
+						<div style="background-image: url('{{URL::to_asset('img/maps/iconZooB.png')}}');"></div>
+						<div class="sort_tooltip" style="margin-left: -37px;">Dierentuin</div>
+					</li>
+					<li data-type="attracties">
+						<div style="background-image: url('{{URL::to_asset('img/maps/iconThemeParkB.png')}}');"></div>
+						<div class="sort_tooltip" style="margin-left: -35px;">Attracties</div>
+					</li>
+					<li data-type="theaters">
+						<div style="background-image: url('{{URL::to_asset('img/maps/iconTheaterB.png')}}');"></div>
+						<div class="sort_tooltip" style="margin-left: -33px;">Theaters</div>
+					</li>
+					<li data-type="zwembaden">
+						<div style="background-image: url('{{URL::to_asset('img/maps/iconSwimmingB.png')}}');"></div>
+						<div class="sort_tooltip" style="margin-left: -40px;">Zwembaden</div>
+					</li>
+					<li data-type="sportgelegenheden">
+						<div style="background-image: url('{{URL::to_asset('img/maps/iconSportsB.png')}}');"></div>
+						<div class="sort_tooltip" style="margin-left: -60px;">Sportgelegenheden</div>
+					</li>
+					<li data-type="restaurants">
+						<div style="background-image: url('{{URL::to_asset('img/maps/iconRestaurantB.png')}}');"></div>
+						<div class="sort_tooltip" style="margin-left: -39px;">Restaurants</div>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+
+		<div class="row-fluid">
+
 			<div class="span8">
 				<pagination>
 				</pagination>

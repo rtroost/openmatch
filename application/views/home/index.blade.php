@@ -7,7 +7,7 @@
 		<div class="map-shadow"></div>
 		<div id="map_overlay" style="display: none;"></div><!--/map_overlay-->
 		<div id="hide_map">
-			<p>Verberg kaart</p><i class="icon-caret-down"></i>
+			<p>Verberg kaart</p><i class="icon-caret-up"></i>
 		</div>
 	</div>
 
