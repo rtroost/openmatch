@@ -27,11 +27,6 @@ $(document).ready(function() {
 
 	maps_class.init(document.getElementById("map_canvas")).done( 
 		function(){ // als google maps klaar is
-			// console.log("klaar");
-
-			// console.log( locationMarker.data('lat'));
-			// console.log( locationMarker.data('lng'));
-
 			maps_class.createMarker({
 				id: locationMarker.data('id'),
 				name: locationMarker.data('name'),
@@ -41,12 +36,8 @@ $(document).ready(function() {
 				longitude: locationMarker.data('lng'),
 			});
 
-			// console.log( locationMarker.data('lat'));
-			// console.log( locationMarker.data('lng'));
-
 			maps_class.centerTo(locationMarker.data('lat'), locationMarker.data('lng'));
 			maps_class.changeZoom(14);
-			// console.log("hi");
 		}
 	);
 

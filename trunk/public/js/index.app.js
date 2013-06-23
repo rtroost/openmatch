@@ -1,3 +1,4 @@
+var htmlbody = $('html, body');
 var loadedData = [];
 
 var indexApp = angular.module('indexApp', ['ngResource']);
@@ -50,6 +51,7 @@ indexApp.run(function($rootScope, $resource) {
 			$rootScope.result = results;
 			$rootScope.loading = false;
 			$rootScope.oldCurPlaceLat = $rootScope.curPlaceLat;
+			addRatyJQuery($rootScope.result);
 		}, function() {
 			console.log("error");
 		});
@@ -111,6 +113,8 @@ var tableCtrl = indexApp.controller("tableCtrl", function($scope, $rootScope, $r
 
 					maps_class.centerTo(results.results[0].geometry.location.lat, results.results[0].geometry.location.lng);
 					maps_class.changeZoom(14);
+
+					htmlbody.animate({scrollTop:0}, 'slow');
 
 					//$rootScope.loading = true;
 					if($rootScope.path == "locatie_dichtbij"){
@@ -179,6 +183,7 @@ tableCtrl.loadData = function($q, $timeout, $rootScope, $location, $resource) {
 				calcDistanceLocations($rootScope.result, $rootScope.curPlaceLat, $rootScope.curPlaceLng);
 			}
 			$rootScope.loading = false;
+			addRatyJQuery($rootScope.result);
 		}, function() {
 			console.log("error");
 		});
@@ -188,6 +193,7 @@ tableCtrl.loadData = function($q, $timeout, $rootScope, $location, $resource) {
 			calcDistanceLocations($rootScope.result, $rootScope.curPlaceLat, $rootScope.curPlaceLng);
 		}
 		$rootScope.loading = false;
+		addRatyJQuery($rootScope.result);
 	}
 	return;
 };
@@ -244,4 +250,22 @@ calcDistance = function(lat1, lng1, lat2, lng2){
 	var d = R * c; // Distance in km
 	return d;
 
+}
+
+addRatyJQuery = function(locations){
+    setTimeout(function(){
+        for(var i in locations){
+        	var tableWrapper = $('table#locationWrapper');
+            var div = tableWrapper.find('div.location'+locations[i].id);
+            div.raty({
+                score: function() {
+                    return locations[i].score;
+                },
+                readOnly: true,
+                half: true,
+                path: BASE + 'img',
+                hints: ['Zeer slecht', 'Slecht', 'Acceptabel', 'Goed', 'Zeer goed']
+            });
+        }
+    }, 10);
 }

@@ -11,6 +11,7 @@ class Home_Controller extends Base_Controller {
 		Asset::container('footer')->add('maps_locations', 'js/googlemaps/maps_locations.js', array('googlemaps', 'jquery'));
 		Asset::container('footer')->add('location_filter', 'js/location_filter.js', 'jquery');
 		Asset::container('footer')->add('home_index', 'js/home.index.js', array('googlemaps', 'jquery', 'maps', 'maps_locations'));
+		Asset::container('footer')->add('rating_js', 'js/vendor/jquery.raty.min.js');
 
 		Asset::container('footer')->add('angular', 'js/vendor/angular.min.js');
 		Asset::container('footer')->add('angularResource', 'js/vendor/angular-resource.js');

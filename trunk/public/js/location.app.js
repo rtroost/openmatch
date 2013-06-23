@@ -37,6 +37,7 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
 		// console.log(results);
 		// functions have been describe process the data for display
 		$scope.updatePagination();
+        
 		//console.log($scope.filteredItems);
 	});
 
@@ -80,6 +81,7 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
         $scope.currentPage = 0;
         // now group by pages
         $scope.groupToPages();
+        $scope.addRaty();
     };
     
     // calculate page in place
@@ -110,16 +112,19 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
         if ($scope.currentPage > 0) {
             $scope.currentPage--;
         }
+        $scope.addRaty();
     };
     
     $scope.nextPage = function () {
         if ($scope.currentPage < $scope.pagedItems.length - 1) {
             $scope.currentPage++;
         }
+        $scope.addRaty();
     };
     
     $scope.setPage = function () {
         $scope.currentPage = this.n;
+        $scope.addRaty();
     };
 
 	// init the filtered items
@@ -249,7 +254,10 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
 
         $scope.updatePagination();
 
+    }
 
+    $scope.addRaty = function(){
+        addRatyJQuery($scope.filteredItems);
     }
  
 };
@@ -318,4 +326,21 @@ calcDistance = function(lat1, lng1, lat2, lng2){
 
 }
 
-	
+addRatyJQuery = function(locations){
+    var tableWrapper = $('table#locationWrapper');
+    setTimeout(function(){
+        for(var i in locations){
+            var div = tableWrapper.find('div.location'+locations[i].id);
+            div.raty({
+                score: function() {
+                    return locations[i].score;
+                },
+                readOnly: true,
+                half: true,
+                path: BASE + 'img',
+                hints: ['Zeer slecht', 'Slecht', 'Acceptabel', 'Goed', 'Zeer goed']
+            });
+        }
+    }, 10);
+}
+
