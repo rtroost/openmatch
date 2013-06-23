@@ -803,11 +803,6 @@ div#map_underlay li:hover div + div.sort_tooltip {
 	margin: 0 0 6px;
 }
 
-
-/************************/
-/* Thumb Rating Styling */
-/************************/
-
 .getReview{
 	margin-right:84px;
 	float:left;
@@ -841,6 +836,14 @@ div#map_underlay li:hover div + div.sort_tooltip {
 
 .thumbRating.small {
 	width: 14px;
+}
+
+/************************/
+/* Location feedback */
+/************************/
+
+#location-message{
+	height:250px;
 }
 
 

@@ -84,7 +84,4 @@ class LocationLib {
 		}
 		$array=$ret;
 	}
-
-
-
 }

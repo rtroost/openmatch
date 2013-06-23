@@ -173,54 +173,26 @@ class Locations_Controller extends Base_Controller {
 //
 //	}
 
-	public function post_feedback() {
+	public function get_takeFeedback($id) {
+		$location = Location::find($id);
 
-		$validation = LocationFeedback::validate(Input::all());
-
-		$location = Location::find(Input::get('location_id'));
-
-		if($validation -> fails()) {
-
-			return Redirect::to_route('location', $location -> id)
-				-> with_input()
-				-> with_errors($validation);
-		} else {
-
-			LocationFeedback::create(array(
-				'location_id' => $location -> id,
-				'user_id' => Auth::user() -> id,
-				'message' => Input::get('feedback-input')
-			));
-
-			return Redirect::to_route('location', $location -> id)
-				-> with('message', 'Bedankt voor het geven van je feedback!');
-
-		}
-
+		return View::make('location.feedback')
+			-> with('location', $location);
 	}
 
-//	public function post_feedback_comment() {
-//
-//		$validation = LocationCommentFeedback::validate(Input::all());
-//
-//		// $location = Location::find(Input::get('location_id'));
-//		$comment = LocationComment::find(Input::get('comment_id'));
-//
-//		if($validation -> fails()) {
-//			if(Request::ajax())
-//				return json_encode("false");
-//
-//			return Redirect::to_route('location', $location -> id);
-//		} else {
-//			LocationCommentFeedback::create(array(
-//				'locationcomment_id' => Input::get('comment_id'),
-//				'user_id' => Auth::user() -> id,
-//				'message' => Input::get('message')
-//			));
-//
-//			return json_encode("true");
-//		}
-//	}
+	public function post_takeFeedback() {
+
+		$location = Location::find(Input::get('location-id'));
+
+		LocationFeedback::create(array(
+			'location_id' => $location->id,
+			'user_id' => Auth::user()->id,
+			'message' => Input::get('location-message')
+		));
+
+		return Redirect::to_route('location', $location->id)
+			-> with('message', 'Bedankt voor de feedback!');
+	}
 
 	public function get_takeAdvice() {
 		return View::make('location.advice');
@@ -243,11 +215,12 @@ class Locations_Controller extends Base_Controller {
 				'title' => Input::get('location-title'),
 				'website' => Input::get('location-website'),
 				'address' => Input::get('location-address'),
+				'telephone' => Input::get('location-telephone'),
 				'category' => Input::get('location-category'),
 			));
 
 			return Redirect::to_route('locations')
-				-> with('message', 'Je inzending is voltooid en zal zo snel mogelijk door een bevoegde bekeken worden.');
+				-> with('message', 'Je inzending is voltooid en zal zo snel mogelijk behandeld worden!');
 
 		}
 	}
