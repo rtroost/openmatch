@@ -26,41 +26,33 @@ $(document).ready(function() {
 	// toggle map functionalitijd
 	var hide_map = $('div#hide_map');
 	var hide_map_i = hide_map.children('i');
-	var map = $('div#map_canvas');
+	var mapWrapper = $('div#mapWrapper');
 	var map_overlay = $('div#map_overlay');
 	var slideIn = false;
 
 	hide_map.on('click', function(){
 		console.log(slideIn);
-		console.log(map);
+		console.log(mapWrapper);
 		console.log(map_overlay);
 		if(!slideIn){
-			map.animate({
+			mapWrapper.animate({
 				height: '50px'
 			}, 1000, function() {
 				hide_map_i.removeClass('icon-caret-up');
 				hide_map_i.addClass('icon-caret-down');
 			});
-			map_overlay.animate({
-				height: '50px',
-			}, 1000, function() {
-				map_overlay.css('background', 'rgba(0,0,0,0.5)');
-			});
+			map_overlay.fadeIn();
 		} else {
-			map.animate({
+			mapWrapper.animate({
 				height: '450px'
 			}, 1000, function() {
 				hide_map_i.removeClass('icon-caret-down');
 				hide_map_i.addClass('icon-caret-up');
 			});
-			map_overlay.animate({
-				height: '450px',
-			}, 1000, function() {
-				map_overlay.css('background', 'rgba(0,0,0,0)');
-			});
+			map_overlay.fadeOut();
+			maps_class.resizeMap();
 		}
 		slideIn = !slideIn;
-		console.log("hi");
 	});
 
 	// // zoeken slider functionalitijd

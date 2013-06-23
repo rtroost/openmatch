@@ -2,15 +2,14 @@
 
 @section('content')
 
-	<div id="map_canvas"></div>
-
-	<div id="map_overlay">
-		<div id="map_overlay_inner">
-			<div id="hide_map">
-				<p>Verberg kaart</p><i class="icon-caret-up"></i>
-			</div>
+	<div id="mapWrapper">
+		<div id="map_canvas"></div>
+		<div class="map-shadow"></div>
+		<div id="map_overlay" style="display: none;"></div><!--/map_overlay-->
+		<div id="hide_map">
+			<p>Verberg kaart</p><i class="icon-caret-down"></i>
 		</div>
-	</div><!--/map_overlay-->
+	</div>
 
 	<div id="map_underlay">
 		<ul id="filter" class="inline">
