@@ -421,8 +421,8 @@ a:hover {
 	position: absolute;
 	bottom: -1px;
 	left: 50%;
-	margin-left: -76px;
-	width: 135px;
+	margin-left: -78px;
+	width: 136px;
 	height: 25px;
 	background: #ffffff;
 	cursor: pointer;
@@ -432,7 +432,12 @@ a:hover {
 	border-right: 1px solid #CECDCA;
 	pointer-events: auto;
 	color: #C6C6C6;
-	font-size: 14px
+	font-size: 14px;
+	transition: color .2s linear;
+}
+
+#hide_map:hover {
+	color: #555;
 }
 
 #hide_map p {
@@ -444,69 +449,6 @@ a:hover {
 	margin-left: 10px;
 }
 
-/*#map_overlay_container {}
-
-#map_overlay_inner {
-	
-	background-color: rgba(0,0,0,0.5);
-	height: 450px;
-	float: right;
-	width: 200px;
-    pointer-events: auto;
-    overflow-y: auto;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-#map_overlay_inner ul {
-	padding: 16px;
-    margin: 0;
-}
-
-#map_overlay_inner li label {
-    color: #fff;
-}
-
-#map_overlay_inner h5{
-	margin-top: 0;
-}
-
-#map_overlay_inner_button {
-	-moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-
-    padding: 2px;
-	position: relative;
-	top: 410px;
-	right: -206px;
-	height: 40px;
-	color: #000000;
-	pointer-events: auto;
-	width: 40px;
-	cursor: pointer;
-	font-size: 32px;
-	text-align: center;
-	line-height: 1;
-
-	transition: all 0.5s linear;
-	-webkit-transition: all 0.5s ease-in-out;
-
-}
-
-#map_overlay_inner_button:hover {
-	
-	color: #222;
-	
-}
-
-#map_overlay_inner_button:active {
-	
-	-webkit-transform: rotate(180deg);
-	transition: transform 0.5s ease-in-out;
-	-webkit-transition: transform 0.5s ease-in-out;
-}*/
 
 div#map_underlay{
 	width: 100%;
@@ -789,10 +731,14 @@ div#zoeken_locations li:hover div + div.sort_tooltip {
     letter-spacing: 1px;
 }
 
+.location-quick_info > ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
 .location-quick_info > ul > li{
 	margin-bottom:26px;
-	list-style-type: none;
-	margin-left:-20px; /*Deze margin fixxen*/
 }
 
 /*.location-quick_info span {
@@ -889,6 +835,81 @@ div#zoeken_locations li:hover div + div.sort_tooltip {
 	width: 14px;
 }
 
+.location-body {
+	padding: 0 0 30px;
+	margin: 0 0 30px;
+	border-bottom: 1px solid #eee;
+}
+
+
+.articleNavigation-wrapper {
+	padding: 0 0 30px;
+	margin: 0 0 30px;
+	border-bottom: 1px solid #eee;
+}
+
+.articleNavigation-btn {
+	width: 50%;
+	background: #fefefe;
+	height: 50px;
+	box-sizing: border-box;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	overflow: hidden;
+	float: left;
+	transition: color .2s linear;
+	color: #ddd;
+	position: relative;
+}
+
+.articleNavigation-btn:hover,
+.articleNavigation-btn:hover .articleNavigation-btn-body {
+	color: #888 !important;
+}
+
+.articleNavigation-btn-link {
+	position:absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+.articleNavigation-btn.left {
+	border-left: 1px solid #eee;	
+	border-right: 1px solid #eee;	
+}
+
+.articleNavigation-btn.right {
+	border-right: 1px solid #eee;
+}
+
+.articleNavigation-btn-icon {	
+	font-size: 2.625em;
+	line-height: 46px;
+	padding: 0 14px;
+}
+
+.articleNavigation-btn.left .articleNavigation-btn-icon {float: left;}
+.articleNavigation-btn.right .articleNavigation-btn-icon {float: right;}
+
+.articleNavigation-btn-body {
+	float: left;
+	padding: 4px 16px;
+	font-size: 1em;
+	color: #aaa;
+	transition: color .2s linear;
+}
+
+.articleNavigation-btn-body-title {	
+	display: block;
+}
+
+.articleNavigation-btn-body-address {	
+	display: block;
+	font-size: 0.825em;
+	margin-top: -3px;
+}
+
 /************************/
 /* Location feedback */
 /************************/
@@ -896,17 +917,6 @@ div#zoeken_locations li:hover div + div.sort_tooltip {
 #location-message{
 	height:250px;
 }
-
-
-/***************/
-/* Form Styles */
-/***************/
-
-form h3 {
-	border-left: 5px solid #18a3d3;
-	padding-left: 16px;
-}
-
 
 /****************/
 /* Table Styles */
@@ -1539,4 +1549,18 @@ div.loading {
 }
 .twtr-feed li > small,.twtr-feed li > small > a {
 	font-size: 10px;
+}
+		
+.pagination ul {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}	
+		
+.pagination ul>li:first-child>a, .pagination ul>li:first-child>span,	
+.pagination ul>li:last-child>a, .pagination ul>li:last-child>span {
+	border-radius: 0;			
 }
