@@ -8,9 +8,10 @@
 	</div>
 </div> -->
 
-<div id="mapWrapper">
+<div id="mapWrapper" class="folded">
 	<div id="map_canvas"></div>
-	<div id="map_overlay" class="folded"></div><!--/map_overlay-->
+	<div class="map-shadow"></div>
+	<div id="map_overlay"></div><!--/map_overlay-->
 	<div id="hide_map">
 		<p>Verberg kaart</p><i class="icon-caret-down"></i>
 	</div>
