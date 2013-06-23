@@ -1,20 +1,20 @@
 <div ng-show="loading" class="loading">
-	<span ng-show="geoloading">Vul hierboven een adres in</span>
-	<span ng-hide="geoloading">Loading</span>
-	<span ng-hide="geoloading" class="l-1"></span>
-	<span ng-hide="geoloading" class="l-2"></span>
-	<span ng-hide="geoloading" class="l-3"></span>
-	<span ng-hide="geoloading" class="l-4"></span>
-	<span ng-hide="geoloading" class="l-5"></span>
-	<span ng-hide="geoloading" class="l-6"></span>
+	<span ng-hide="curPlaceLat">Vul hierboven een adres in</span>
+	<span ng-show="curPlaceLat">Loading</span>
+	<span ng-show="curPlaceLat" class="l-1"></span>
+	<span ng-show="curPlaceLat" class="l-2"></span>
+	<span ng-show="curPlaceLat" class="l-3"></span>
+	<span ng-show="curPlaceLat" class="l-4"></span>
+	<span ng-show="curPlaceLat" class="l-5"></span>
+	<span ng-show="curPlaceLat" class="l-6"></span>
 </div>
 
 
 <table class="fpLocation-table" ng-hide="loading">
 
-	<tr ng-repeat="location in result | orderBy:sortingOrder:distance"> <!-- sort hier -->
+	<tr ng-repeat="location in result | orderBy:sortingOrder:distance">
 		<td class="fpLocation-category">
-			<a href="{{BASE + 'locations/' + location.id}}" class=""><img ng-src="img/maps/{{location.img}}.png" /></a>
+			<img ng-src="img/maps/{{location.img}}.png" ng-click="centerTo(location.latitude, location.longitude)" />
 		</td>
 
 		<td class="fpLocation-title">

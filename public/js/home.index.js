@@ -40,12 +40,10 @@ $(document).ready(function() {
 			}, 1000, function() {
 				hide_map_i.removeClass('icon-caret-up');
 				hide_map_i.addClass('icon-caret-down');
-				console.log("klaar");
 			});
 			map_overlay.animate({
 				height: '50px',
 			}, 1000, function() {
-				console.log("klaar");
 				map_overlay.css('background', 'rgba(0,0,0,0.5)');
 			});
 		} else {
@@ -54,12 +52,10 @@ $(document).ready(function() {
 			}, 1000, function() {
 				hide_map_i.removeClass('icon-caret-down');
 				hide_map_i.addClass('icon-caret-up');
-				console.log("klaar");
 			});
 			map_overlay.animate({
 				height: '450px',
 			}, 1000, function() {
-				console.log("klaar");
 				map_overlay.css('background', 'rgba(0,0,0,0)');
 			});
 		}
