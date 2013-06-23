@@ -8,6 +8,18 @@
 	</div>
 </div> -->
 
+<div id="mapWrapper">
+	<div id="map_canvas"></div>
+
+	<div id="map_overlay" class="folded">
+		<div id="map_overlay_inner">
+			<div id="hide_map">
+				<p>Verberg kaart</p><i class="icon-caret-down"></i>
+			</div>
+		</div>
+	</div><!--/map_overlay-->
+</div>
+
 <div class="content">
 
 	<div class="container">
@@ -15,8 +27,11 @@
 		<div class="location">
             
             <div class="row-fluid location-header">
-                
-                <img src="{{ URL::to('img/maps/' . $location->img . '.png') }}" class="location-marker" />
+				<span class="location_formatted_address" style="display:none;">{{$location -> formatted_address}}</span>
+				<span class="location_postalcode" style="display:none;">{{$location -> postalcode}}</span>
+				<span class="location_number" style="display:none;">{{$location -> number}}</span>
+				<span class="location_city" style="display:none;">{{$location -> city}}</span>
+                <img style="cursor: pointer;" id="location-marker-img" data-id="{{$location->id}}" data-name="{{$location->name}}" data-markerimg="{{$location->img}}" data-lat="{{$location->latitude}}" data-lng="{{$location->longitude}}" src="{{ URL::to('img/maps/' . $location->img . '.png') }}" class="location-marker" />
                 
                 <h2 class="location-title">
 					{{ $location->name }}
@@ -64,10 +79,10 @@
 				</div>
 
 				<div class="span8">
-					<ul class="nav nav-tabs">
-						<li class="active"><a href="#general" data-toggle="tab">Algemeen</a></li>
-					 	<li><a href="#route" id="toggleMap" data-toggle="tab">Routebeschrijving</a></li>
-					 	<li><a href="#taxi" data-toggle="tab">Taxi bestellen</a></li>
+					<ul class="nav nav-tabs" id="tab">
+						<li class="active" data-type="algemeen"><a href="#general" data-toggle="tab">Algemeen</a></li>
+					 	<li data-type="routebeschrijving"><a href="#route" data-toggle="tab">Routebeschrijving</a></li>
+					 	<li data-type="taxibestellen"><a href="#taxi" data-toggle="tab">Taxi bestellen</a></li>
 					</ul>
 
 					<div class="tab-content">
@@ -77,7 +92,7 @@
 				                    @if($location->formatted_address)
 				                    <li class="address">{{ $location->formatted_address }}</li>
 				                    @else
-				                    <li class="address">{{ $location->postalcode . ' ' . $location -> city }}</li>
+				                    <li class="address">{{ $location->postalcode . ' ' . $location -> number . ' ' . $location -> city }}</li>
 				                    @endif                    
 				                    <li class="phone"><i class="icon-phone"></i>
 										@if($location -> tel)
@@ -108,10 +123,7 @@
 							<div id="directions-container">
 								{{ Form::open('tba', 'POST', array('class' => 'form-vertical')) }}
 									{{ Form::token() }}
-									<span class="location_formatted_address" style="display:none;">{{$location -> formatted_address}}</span>
-									<span class="location_postalcode" style="display:none;">{{$location -> postalcode}}</span>
-									<span class="location_number" style="display:none;">{{$location -> number}}</span>
-									<span class="location_city" style="display:none;">{{$location -> city}}</span>
+
 
 									<div id="controlGroupTarget" class="control-group">
 										{{ Form::label('origin', 'Bepaal waar vandaan je wilt vertrekken', array('class' => 'control-label')) }}
@@ -128,9 +140,9 @@
 										{{ Form::label('transport', 'Op welke manier wil je er komen?', array('class' => 'control-label')) }}
 										<div class="controls">
 											<select name="transport" id="transport-input">
-												<option value="driving">Auto</option>
-												<option value="transit">Openbaar vervoer</option>
-												<option value="walking">Lopend</option>
+												<option value="DRIVING">Auto</option>
+												<option value="TRANSIT">Openbaar vervoer</option>
+												<option value="WALKING">Lopend</option>
 											</select>
 										</div>
 									</div>
@@ -172,13 +184,10 @@
 					</div>
 					
 				</div><!--/span8-->
-				<div id="mapBig" class="map">
-					<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="width:100%; height:100%;" src="https://maps.google.nl/maps?q={{$location->latitude}}+,{{$location->longitude}}&amp;output=embed"></iframe>
-				</div>
-				<div id="mapSmall" class="map">
-					<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="width:100%; height:100%;" src="https://maps.google.nl/maps?q={{$location->latitude}}+,{{$location->longitude}}&amp;output=embed"></iframe>
-				</div>
+				
 			</div><!--/row-fluid-->
+
+			
 
 			<div class="row-fluid">
 				<hr />

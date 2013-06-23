@@ -207,17 +207,4 @@ $(document).ready(function() {
 		}
 	}, '.editReaction');
 
-	$('.nav-tabs li a').click(function(){
-		if($(this).attr('id') == 'toggleMap'){
-			$('#mapBig').show();
-		}else{
-			$('#mapBig').hide();
-		}
-	});
-
-	$('#btn_getDirections').click(function(){
-			$('#mapBig').hide();
-			$('#mapSmall').show();
-			$('.tab-content').css('min-height', '525px');
-	});
 });

@@ -28,6 +28,7 @@
 	<?php if(Session::has('message')): ?>
 	<div class="alert alert-info" id="session-message">
 		<button class="close" data-dismiss="alert">&times;</button>
+		<i class="icon-info"></i>
 		<?php echo  Session::get('message') ; ?>
 	</div>
 	<?php endif; ?>
@@ -91,9 +92,31 @@
                 </div>  
                 <div class="span4">
                     <h2>Twitter Feed</h2>
-                    <p>
+                    
+					<?php if( ! empty($footer_tweets)): ?>
+					
+						<ul class="twtr-feed">
+							
+						<?php foreach ($footer_tweets as $tweet): ?>
+						
+						<li>
+							<div class="sidebar_stream-body"><?php echo  $tweet -> text ; ?></div>
+							<small>
+								<em>
+									<a target="_blank" class="twtr-timestamp" href="http://twitter.com/<?php echo  $tweet -> user -> screen_name ; ?>/statuses/<?php echo  $tweet -> id_str ; ?>"><?php echo  Helpers::relative_time(strtotime($tweet -> created_at)) ; ?> ago</a> / <a target="_blank" class="twtr-reply" href="https://twitter.com/intent/tweet?in_reply_to=<?php echo  $tweet -> id_str ; ?>">reply</a> / <a target="_blank" class="twtr-rt" href="https://twitter.com/intent/retweet?tweet_id=<?php echo  $tweet -> id_str ; ?>">retweet</a> / <a target="_blank" class="twtr-fav" href="https://twitter.com/intent/favorite?tweet_id=<?php echo  $tweet -> id_str ; ?>">favorite</a>
+								</em>
+							</small>
+						</li>	
+							
+						<?php endforeach; ?>
+							
+						</ul>
+					
+					<?php else: ?>
+					<p>
                         Er zijn nog geen Twitter berichten.
                     </p>
+					<?php endif; ?>					
                 </div>
             </div>
     

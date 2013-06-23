@@ -94,6 +94,7 @@ class Locations_Controller extends Base_Controller {
 		Asset::container('footer')->add('locations', 'js/locations.js');
 		Asset::container('footer')->add('maps_api', 'http://maps.google.com/maps/api/js?sensor=false');
 		Asset::container('footer')->add('getLocationGoogleMaps', 'js/googlemaps/getLocationGoogleMaps.js');
+		Asset::container('footer')->add('maps', 'js/googlemaps/maps.js', array('googlemaps', 'jquery'));
 
 		$location = Location::with('types') -> where('id', '=' , $index) -> first();
 		$location = locationLib::imageToLocation($location);
