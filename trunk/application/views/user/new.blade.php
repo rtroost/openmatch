@@ -105,7 +105,7 @@
 
 							<div class="control-group">
 								<div class="controls">
-									{{ Form::submit('Doorgaan &rarr;', array('class' => 'btn btn-primary')) }}
+									{{ Form::submit('Registreren', array('class' => 'btn btn-primary')) }}
 								</div>
 							</div>
 

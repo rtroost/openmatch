@@ -2,12 +2,6 @@
 
 @section('content')
 
-<div class="pageTitle">
-	<div class="container">
-		<h1>Hier kan een titel <small>om te pagina te verduidelijken</small></h1>
-	</div>
-</div>
-
 <div class="content" ng-app="locationApp">
 
 	<div class="container" ng-controller="locationCtrl">
@@ -26,7 +20,7 @@
 			<div class="span4">
 				<div class="sidebar">
 					<div class="sidebar_block">
-						<p>Ken je een locatie die nog niet in Rotterdam Onbeperkt staat? Laat het ons weten!</p>
+						<p>Zijn er nog locaties die niet in Rotterdam Onbeperkt staan? Laat het ons weten!</p>
 						<a href="{{ URL::to_route('location_advice') }}" class="btn btn-primary">Nieuwe locatie</a>
 					</div>
 

@@ -38,7 +38,7 @@
 
 					<div class="control-group">
 						<div class="controls">
-							{{ Form::submit('Secure Login', array('class' => 'btn btn-primary')) }}
+							{{ Form::submit('Inloggen', array('class' => 'btn btn-primary')) }}
 						</div>
 					</div>
 

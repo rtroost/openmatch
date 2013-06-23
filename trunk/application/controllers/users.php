@@ -17,10 +17,10 @@ class Users_Controller extends Base_Controller {
 
 		if(Auth::attempt($credentials)) {
 			return Redirect::to_route('home')
-			-> with('message', 'You are now logged in!');
+			-> with('message', 'U bent nu ingelogd!');
 		} else {
 			return Redirect::to_route('login')
-			-> with('message', 'Your username/password combination was incorrect')
+			-> with('message', 'Uw inlognaam en/of wachtwoord is incorrect!')
 			-> with_input();
 		}
 	}
@@ -53,7 +53,7 @@ class Users_Controller extends Base_Controller {
 			Auth::login($user);
 
 			return Redirect::to_route('home')
-				->with('message', 'Thanks for registering. You are now logged in.');
+				->with('message', 'Bedankt voor het registreren. U bent nu ingelogd!');
 		}
 	}
 
@@ -94,7 +94,7 @@ class Users_Controller extends Base_Controller {
 			));
 
 			return Redirect::to_route('user_profile')
-				-> with('message', 'Je gegevens zijn succesvol aangepast!');
+				-> with('message', 'Uw gegevens zijn succesvol aangepast!');
 		}
 	}
 
@@ -102,7 +102,7 @@ class Users_Controller extends Base_Controller {
 
 		if( ! Hash::check(Input::get('old_password'), Auth::user() -> password)) {
 			return Redirect::to_route('user_profile')
-				-> with('message', 'Je oude wachtwoord was niet correct.');
+				-> with('message', 'Uw huidige wachtwoord is niet correct!');
 		}
 
 		$validation = User::validate_password(Input::all());
@@ -118,7 +118,7 @@ class Users_Controller extends Base_Controller {
 			));
 
 			return Redirect::to_route('user_profile')
-				-> with('message', 'Je wachtwoord is succesvol aangepast!');
+				-> with('message', 'Uw wachtwoord is succesvol aangepast!');
 		}
 	}
 
@@ -128,6 +128,6 @@ class Users_Controller extends Base_Controller {
 
 	public function get_logout() {
 		Auth::logout();
-		return Redirect::to_route('home')->with('message', 'You are now logged out!');
+		return Redirect::to_route('home')->with('message', 'U bent nu uitgelogd!');
 	}
 }

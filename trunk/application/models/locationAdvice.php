@@ -6,6 +6,7 @@ class LocationAdvice extends Basemodel {
 		'location-title' => 'required|max:200',
 		'location-website' => 'url|max:200',
 		'location-address' => 'required|max:200',
+		'location-telephone' => 'max:16',
 		'location-category' => 'required|max:200',
 	);
 

@@ -29,7 +29,7 @@
 				<div class="control-group">
 					{{ Form::label('location-website', 'Wat is de website van de locatie?', array('class' => 'control-label')) }}
 					<div class="controls">
-						<input class="span12" id="location-website" type="text" name="location-website" placeholder="http://www.adres.nl/" value="{{ Input::old('location-website') }}">
+						<input class="span12" id="location-website" type="text" name="location-website" placeholder="http://www.delocatie.nl/" value="{{ Input::old('location-website') }}">
 					</div>
 					{{ $errors->first('location-website', '<span class="help-inline">:message</span>') }}
 				</div>
@@ -37,9 +37,17 @@
 				<div class="control-group">
 					{{ Form::label('location-address', 'Wat is het adres van de locatie?', array('class' => 'control-label')) }}
 					<div class="controls">
-						<input class="span12" id="location-address" type="text" name="location-address" placeholder="Adresstraat 999, 9999 AA Rotterdam" value="{{ Input::old('location-address') }}">
+						<input class="span12" id="location-address" type="text" name="location-address" placeholder="Straatnaam 999, 9999 AA Rotterdam" value="{{ Input::old('location-address') }}">
 					</div>
 					{{ $errors->first('location-address', '<span class="help-inline">:message</span>') }}
+				</div>
+
+				<div class="control-group">
+					{{ Form::label('location-telephone', 'Wat is het telefoonnummer van de locatie?', array('class' => 'control-label')) }}
+					<div class="controls">
+						<input class="span12" id="location-telephone" type="text" name="location-telephone" placeholder="Telefoonnummer" value="{{ Input::old('location-telephone') }}">
+					</div>
+					{{ $errors->first('location-telephone', '<span class="help-inline">:message</span>') }}
 				</div>
 
 				<div class="control-group">
@@ -52,7 +60,7 @@
 
 				<div class="control-group">
 					<div class="controls">
-						{{ Form::submit('Opgeven', array('class' => 'btn')) }}
+						{{ Form::submit('Opgeven', array('class' => 'btn btn-primary')) }}
 					</div>
 				</div>
 

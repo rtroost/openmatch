@@ -20,7 +20,7 @@
                 
                 <h2 class="location-title">
 					{{ $location->name }}
-					<span id="location-improveInfo"><i class="icon-edit"></i><span id="location-improveInfo-text">Steentje bijdragen?</span></span>
+					<a href="{{ URL::to_route('location_feedback', $location->id) }}"><span id="location-improveInfo"><i class="icon-edit"></i><span id="location-improveInfo-text">Klopt er iets niet? Klik hier!</span></span></a>
 				</h2>
             </div>
 
