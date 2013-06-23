@@ -11,8 +11,8 @@ $(document).ready(function() {
 	var span_number = $('span.location_number');
 	var span_city = $('span.location_city');
 
-	var curPlaceLat = '';
-	var curPlaceLng = '';
+	var curPlaceLat = undefined;
+	var curPlaceLng = undefined;
 
 	if(span_formatted_address.text() == "") {
 		var location_destination = span_postalcode.text() + ' ' +  span_number.text() + ' ' + span_city.text();
@@ -127,6 +127,14 @@ $(document).ready(function() {
 	$('#btn_getDirections').on('click', function(e) {
 
 		e.preventDefault(); // Prevent form from submitting
+
+		if(curPlaceLat == undefined){
+			controlGroupTarget.addClass("error");
+			locationError.show();
+		} else {
+			controlGroupTarget.removeClass("error");
+			locationError.hide();
+		}
 
 		var location_origin = $('#origin-input').val();
 

@@ -132,7 +132,7 @@
 												<input class="span12" id="origin-input" type="text" name="origin">
 												<span class="add-on" id="get-geolocation"><i class="icon-screenshot"></i></span>
 											</div>
-											<span class="help-block" id="locationError" style="">Het opgegeven adres wordt niet herkend</span>
+											<span class="help-block" id="locationError" style="display: none;">Het opgegeven adres wordt niet herkend</span>
 										</div>
 									</div>
 
