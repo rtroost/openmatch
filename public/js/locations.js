@@ -3,7 +3,7 @@ $(document).ready(function() {
 	var htmlbody = $('html, body');
 
 	var ulTabs = $('ul#tab');
-	var mapBig = $('div#mapBig');
+	var mapCanvas = $('div#map_canvas');
 	var locationMarker = $('img#location-marker-img');
 
 	var span_formatted_address = $('span.location_formatted_address');
@@ -186,6 +186,7 @@ $(document).ready(function() {
 			maps_class.renderDirections(curPlaceLat, curPlaceLng, locationMarker.data('lat'), locationMarker.data('lng'), transport_mode);
 		}
 		
+		animateMap();
 
 		if(slideIn) {
 			hide_map.trigger('click');
@@ -194,6 +195,15 @@ $(document).ready(function() {
 		htmlbody.animate({scrollTop:0}, 'slow');
 
 	});
+
+	function animateMap(){
+		mapCanvas.animate({
+			width: '70%'
+		}, 1000, function() {
+			// hide_map_i.removeClass('icon-caret-up');
+			// hide_map_i.addClass('icon-caret-down');
+		});
+	};
 
 	function nearestParkingPlace(){
 		var lowest = undefined;
@@ -208,7 +218,7 @@ $(document).ready(function() {
 			}
 		}
 		return lowest;
-	}
+	};
 
 
 	// toggle map functionalitijd
