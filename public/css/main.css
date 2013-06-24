@@ -500,6 +500,7 @@ a:hover {
 	color: #C6C6C6;
 	font-size: 14px;
 	transition: color .2s linear;
+	z-index: 102;
 }
 
 #hide_map:hover {
