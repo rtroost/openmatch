@@ -262,30 +262,57 @@ class Locations_Controller extends Base_Controller {
 		// Get the scores from input
 		$scores = Input::get('scores');
 		
-		// Clear old scores first
-		LocationRating::where('user_id', '=', $user -> id) -> where('location_id', '=', $location -> id) -> delete();
+//		$rules = array(
+//			'scores[bereikbaarheid]' => 'required|between:1,5',
+//			'scores[parkeren]' => 'required|between:1,5',
+//			'scores[entree]' => 'required|between:1,5',
+//			'scores[aanlooproute]' => 'required|between:1,5',
+//			'scores[sanitair]' => 'required|between:1,5',
+//			'scores[liften]' => 'required|between:1,5',
+//			'scores[assistentie]' => 'required|between:1,5',
+//		);
+
+//		$validation = Validator::make(Input::all(), $rules);
+//
+//		if($validation -> fails()) {
+//			dd($validation->errors);
+//			return Redirect::to_route('location', $location -> id)
+//				-> with('message', 'Beoordeling kon niet worden doorgevoerd.');			
+//		} else {		
 		
-		// Calculate avarage score
-		$score_avg = 0;
-		foreach($scores as $score) {
-			if($score > 5 || $score < 1) Redirect::to_route('home');
-			$score_avg += round($score);
-		}
-		$score_avg /= sizeof($scores);
+			// Clear old scores first
+			LocationRating::where('user_id', '=', $user -> id) -> where('location_id', '=', $location -> id) -> delete();
+			
+			// Calculate avarage score
+			$score_avg = 0;
+			$amount_of_ratings = 0;
+		
+			foreach($scores as $score) {
+				if($score > 5 || $score < 1) Redirect::to_route('home');
 				
-		$obj = LocationRating::create(array(
-			'location_id' => $location -> id,
-			'user_id' => $user -> id,
-			'rating_dump' => json_encode($scores),
-			'rating_avg' => $score_avg,
-		));	
+				if($score !== '') {
+					$score_avg += round($score);
+					$amount_of_ratings++;
+				}				
+			}
 		
-		// Calculate the average
-		$location -> recalculateScore();
-		
-		
-		return Redirect::to_route('location', $location -> id)
-			-> with('message', 'Bedankt voor uw beoordeling!');
+			$score_avg /= $amount_of_ratings;
+					
+			$obj = LocationRating::create(array(
+				'location_id' => $location -> id,
+				'user_id' => $user -> id,
+				'rating_dump' => json_encode($scores),
+				'rating_avg' => $score_avg,
+			));	
+			
+			// Calculate the average
+			$location -> recalculateScore();
+			
+			
+			return Redirect::to_route('location', $location -> id)
+				-> with('message', 'Bedankt voor uw beoordeling!');
+			
+//		}
 	}
 
 	public function post_setReaction() {
