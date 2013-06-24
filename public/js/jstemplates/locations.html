@@ -1,49 +1,44 @@
 <div id="location_list" class="clearfix">
 	<!-- Hier eventueel de Sortering plaatsen -->
 		<!-- Kunnen sorten op NAAM, BEORDELING, DISTANCE(alleen als dat bekend is) -->
-	<table class="fpLocation-table-heading">
-		<tr>
-			<th class="fpLocation-header">
-				<p ng-click="changeSortOrder('name')">Naam<i class="icon-sort-up" ng-show="sortArr.nameAsc"></i><i class="icon-sort-down" ng-show="sortArr.nameDesc"></i></p>
-			</th>
-			<th class="fpLocation-header">
-				<p ng-click="changeSortOrder('score')">Beoordeling <i class="icon-sort-up" ng-show="sortArr.scoreAsc"></i><i class="icon-sort-down" ng-show="sortArr.scoreDesc"></i></p>
-			</th>
-			<th class="fpLocation-header">
-				<p ng-click="changeSortOrder('distance')" ng-show="distance">Distance <i class="icon-sort-up" ng-show="sortArr.distanceAsc"></i><i class="icon-sort-down" ng-show="sortArr.distanceDesc"></i></p>
-			</th>
-		</tr>
-	</table>
-	<table id="locationWrapper" class="fpLocation-table">
-		<tbody>
-			<tr id="{{location.id}}" ng-repeat="location in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
-
-				<td class="fpLocation-category">
-					<a href="{{BASE + 'locations/' + location.id}}" class=""><img ng-src="img/maps/{{location.img}}.png" /></a>
-				</td>
-
-				<td class="fpLocation-title">
-					<a href="{{BASE + 'locations/' + location.id}}">{{location.name}}</a>
-					<span class="fpLocation-address">{{location.formatted_address | formatAddress:location.postalcode:location.number:location.city}}</span>
-					<span class="fpLocation-address">{{location.distanceString}}</span>
-				</td>
-
-				<td class="fpLocation-icon" ng-switch on="!!location.website">
-					<a href="{{location.website}}" ng-switch-when="true" target="_blank"><i class="icon-globe activeLink"></i></a>
-					<i class="icon-globe" ng-switch-default></i>
-				</td>
-				<td class="fpLocation-icon" ng-switch on="!!location.tel">
-					<a href="tel:{{location.tel}}" ng-switch-when="true" data-toggle="tooltip" title="{{location.tel}}" target="_blank"> <i class="icon-phone activeLink"></i></a>
-					<i class="icon-phone" ng-switch-default></i>
-				</td>
-				<td class="fpLocation-icon" ng-switch on="!!location.email">
-					<a href="mailto:{{location.email}}" ng-switch-when="true" data-toggle="tooltip" title="{{location.email}}"><i class="icon-envelope activeLink"></i></a>
-					<i class="icon-envelope" ng-switch-default></i>
-				</td>
-
-				<td class="fpLocation-rating"><div class="rating-read-only-list location{{location.id}}" data-score="{{ location.score }}" style="padding-left: 10px;"></div></td>
-
-			</tr>
-		</tbody>
-	</table>
+	
+	<div class="row-fluid locationList-sortBy-wrapper">	
+		<span ng-click="changeSortOrder('name')" class="locationList-sortBy">Naam <i class="icon-sort" ng-show="sortArr.nameUnsorted"></i><i class="icon-sort-up" ng-show="sortArr.nameAsc"></i><i class="icon-sort-down" ng-show="sortArr.nameDesc"></i></span>
+		<span ng-click="changeSortOrder('score')" class="locationList-sortBy">Beoordeling <i class="icon-sort" ng-show="sortArr.scoreUnsorted"></i><i class="icon-sort-up" ng-show="sortArr.scoreAsc"></i><i class="icon-sort-down" ng-show="sortArr.scoreDesc"></i></span>
+		<span ng-click="changeSortOrder('distance')" ng-show="distance" class="locationList-sortBy">Distance <i class="icon-sort" ng-show="sortArr.distanceUnsorted"></i><i class="icon-sort-up" ng-show="sortArr.distanceAsc"></i><i class="icon-sort-down" ng-show="sortArr.distanceDesc"></i></span>
+	</div><!--/row-fluid-->
+	<div class="row-fluid">	
+		<table id="locationWrapper" class="fpLocation-table">
+			<tbody>
+				<tr id="{{location.id}}" ng-repeat="location in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
+	
+					<td class="fpLocation-category">
+						<a href="{{BASE + 'locations/' + location.id}}" class=""><img ng-src="img/maps/{{location.img}}.png" /></a>
+					</td>
+	
+					<td class="fpLocation-title">
+						<a href="{{BASE + 'locations/' + location.id}}">{{location.name}}</a>
+						<span class="fpLocation-address">{{location.formatted_address | formatAddress:location.postalcode:location.number:location.city}}</span>
+						<span class="fpLocation-address">{{location.distanceString}}</span>
+					</td>
+	
+					<td class="fpLocation-icon" ng-switch on="!!location.website">
+						<a href="{{location.website}}" ng-switch-when="true" target="_blank"><i class="icon-globe activeLink"></i></a>
+						<i class="icon-globe" ng-switch-default></i>
+					</td>
+					<td class="fpLocation-icon" ng-switch on="!!location.tel">
+						<a href="tel:{{location.tel}}" ng-switch-when="true" data-toggle="tooltip" title="{{location.tel}}" target="_blank"> <i class="icon-phone activeLink"></i></a>
+						<i class="icon-phone" ng-switch-default></i>
+					</td>
+					<td class="fpLocation-icon" ng-switch on="!!location.email">
+						<a href="mailto:{{location.email}}" ng-switch-when="true" data-toggle="tooltip" title="{{location.email}}"><i class="icon-envelope activeLink"></i></a>
+						<i class="icon-envelope" ng-switch-default></i>
+					</td>
+	
+					<td class="fpLocation-rating"><div class="rating-read-only-list location{{location.id}}" data-score="{{ location.score }}" style="padding-left: 10px;"></div></td>
+	
+				</tr>
+			</tbody>
+		</table>
+	</div><!--/row-fluid-->
 </div>
