@@ -117,7 +117,7 @@
             <div id="wbFooter">
             	Mede mogelijk gemaakt door 
                 <a target="_blank" id="wb_footer" href="http://www.webbundels.nl"></a> & 
-                <a target="_blank" id="od_footer" href="http://http://www.rotterdamopendata.nl"></a> 
+                <a target="_blank" id="od_footer" href="http://www.rotterdamopendata.nl"></a> 
             </div>
     
         </div> <!-- /container -->
