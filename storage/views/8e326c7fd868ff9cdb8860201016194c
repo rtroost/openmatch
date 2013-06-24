@@ -8,7 +8,8 @@
 </div> -->
 
 <div id="mapWrapper" class="folded">
-	<div id="map_canvas"></div>
+	<div id="map_canvas" class="mapCanvas-left"></div>
+	<div id="directionsPanel" class="directionsPanel-right"></div>
 	<div class="map-shadow"></div>
 	<div id="map_overlay"></div><!--/map_overlay-->
 	<div id="hide_map">
@@ -30,9 +31,11 @@
 					<span class="location_city" style="display:none;"><?php echo $location -> city; ?></span>
 					<img style="cursor: pointer;" id="location-marker-img" data-id="<?php echo $location->id; ?>" data-name="<?php echo $location->name; ?>" data-markerimg="<?php echo $location->img; ?>" data-lat="<?php echo $location->latitude; ?>" data-lng="<?php echo $location->longitude; ?>" src="<?php echo  URL::to('img/maps/' . $location->img . '.png') ; ?>" class="location-marker" />
 					
+					<span class="parkingPlaces" style="display:none;"><?php echo $location->parkingPlaces; ?> </span>
+
 					<h2 class="location-title">
 						<?php echo  $location->name ; ?>
-						<a href="<?php echo  URL::to_route('location_feedback', $location->id) ; ?>"><span id="location-improveInfo"><i class="icon-edit"></i><span id="location-improveInfo-text">Klopt er iets niet? Klik hier!</span></span></a>
+						<a href="<?php echo  URL::to_route('location_feedback', $location->id) ; ?>"><span id="location-improveInfo"><i class="icon-edit"></i><span id="location-improveInfo-text">Gegevens aanvullen!</span></span></a>
 					</h2>
 				</div>
             </div>
@@ -85,7 +88,7 @@
 						</ul>
 	
 						<div class="tab-content">
-							<div class="tab-pane active" id="general">
+							<div class="tab-pane locationPane active" id="general">
 								<div class="location-quick_info">
 									<ul>
 										<?php if($location->formatted_address): ?>
@@ -97,28 +100,28 @@
 											<?php if($location -> tel): ?>
 											<a href="tel:<?php echo  $location->tel ; ?>"><?php echo  $location->tel ; ?></a>
 											<?php else: ?>
-											Onbekend
+											Onbekend <a href="<?php echo  URL::to_route('location_feedback', $location->id) ; ?>" id="telephone-feedback"><span id="location-improveInfo"><i class="icon-edit"></i><span id="location-improveInfo-text">Telefoonnummer doorgeven</span></span></a>
 											<?php endif; ?>
 										</li>
 										<li class="website"><i class="icon-globe"></i>
 											<?php if($location -> website): ?>
 											<a href="<?php echo  $location->website ; ?>"><?php echo  $location->website ; ?></a>
 											<?php else: ?>
-											Onbekend
+											Onbekend <a href="<?php echo  URL::to_route('location_feedback', $location->id) ; ?>" id="website-feedback"><span id="location-improveInfo"><i class="icon-edit"></i><span id="location-improveInfo-text">Website doorgeven</span></span></a>
 											<?php endif; ?>
 										</li>
 										<li class="email"><i class="icon-envelope"></i>
 											<?php if($location -> email): ?>
 											<a href="mailto:<?php echo  $location->email ; ?>"><?php echo  $location->email ; ?></a>
 											<?php else: ?>
-											Onbekend
+											Onbekend <a href="<?php echo  URL::to_route('location_feedback', $location->id) ; ?>" id="email-feedback"><span id="location-improveInfo"><i class="icon-edit"></i><span id="location-improveInfo-text">E-mailadres doorgeven</span></span></a>
 											<?php endif; ?>
 										</li>
 									</ul>
 								</div>
 							</div>
 	
-							<div class="tab-pane" id="route">
+							<div class="tab-pane locationPane" id="route">
 								<div id="directions-container">
 									<?php echo  Form::open('tba', 'POST', array('class' => 'form-vertical')) ; ?>
 										<?php echo  Form::token() ; ?>
@@ -143,6 +146,9 @@
 													<option value="TRANSIT">Openbaar vervoer</option>
 													<option value="WALKING">Lopend</option>
 												</select>
+												<label class="checkbox inline toparkingplace-label" style="margin-left: 10px; margin-bottom: 14px;">
+											    	<input type="checkbox" name="toparkingplace"> Naar dichtstbijzijnde parkeerplaats
+											    </label>
 											</div>
 										</div>
 	
@@ -153,15 +159,9 @@
 										</div>
 									<?php echo  Form::close() ; ?>
 								</div>
-	
-								<div id="directions-result">
-									<h3>Routebeschrijving</h3>
-									<ul class="unstyled"></ul>
-									<a href="#" target="_blank" id="directions-gotoGMaps">Klik hier om naar Google Maps te gaan voor een uitgebreidere versie</a>
-								</div>
 							</div>
 	
-							<div class="tab-pane" id="taxi">
+							<div class="tab-pane locationPane" id="taxi">
 								<table>
 									<tr>
 										<td><b>Rotterdamse Taxi Centrale</b></td>
@@ -186,34 +186,10 @@
 				</div><!--/location-body-->
 			</div><!--/row-fluid-->
 			
-			<div class="row-fluid">
-				<div class="articleNavigation-wrapper clearfix">
-					
-					<div class="articleNavigation-btn left">
-						<a href="#" class="articleNavigation-btn-link"></a>
-						<div class="articleNavigation-btn-icon"><i class="icon-angle-left"></i></div>
-						<div class="articleNavigation-btn-body">
-							<span class="articleNavigation-btn-body-title">Ahoy' Rotterdam</span>
-							<span class="articleNavigation-btn-body-address">Vaanweg 40, 3083 AW Rotterdam, The Netherlands</span>
-						</div>
-					</div>
-					<div class="articleNavigation-btn right">
-						<a href="#" class="articleNavigation-btn-link"></a>
-						<div class="articleNavigation-btn-icon"><i class="icon-angle-right"></i></div>
-						<div class="articleNavigation-btn-body">
-							<span class="articleNavigation-btn-body-title">Snerttram</span>
-							<span class="articleNavigation-btn-body-address">Vaanweg 40, 3083 AW Rotterdam, The Netherlands</span>
-						</div>
-					</div>
-				
-				</div>				
-			</div>
-
-			
 
 			<div class="row-fluid">
 				<div id="setComment">
-					<h3>Comments</h3>
+					<h3>Reacties</h3>
 					<?php if($reactions['top']): ?>
 						<span class="commentsInfo">Beste reactie</span>
 						<ul class="comments top">
@@ -284,7 +260,7 @@
 								</li>
 							<?php else: ?>
 								<li>
-									<p>Zelf ook een reactie plaatsen? Meld je dan eerst <a href="<?php echo  URL::to_route('login') ; ?>">hier</a> aan op de site of registreer je op deze site via <a href="<?php echo  URL::to_route('login') ; ?>">deze</a> pagina.
+									Om een reactie te kunnen plaatsen dient u zich eerst <a href="<?php echo URL::to_route('login'); ?>">aan te melden</a> of te <a href="<?php echo URL::to_route('register'); ?>">registreren</a>. Registreren bij Rotterdam Onbeperkt duurt slechts enkele seconden!
 								</li>
 							<?php endif; ?>
 						</ul>
@@ -299,7 +275,7 @@
 								</li>
 							<?php else: ?>
 								<li>
-									<p>Zelf ook een reactie plaatsen? Meld je dan eerst <a href="<?php echo  URL::to_route('login') ; ?>">hier</a> aan op de site of registreer je op deze site via <a href="<?php echo  URL::to_route('login') ; ?>">deze</a> pagina.
+									Om een reactie te kunnen plaatsen dient u zich eerst <a href="<?php echo URL::to_route('login'); ?>">aan te melden</a> of te <a href="<?php echo URL::to_route('register'); ?>">registreren</a>. Registreren bij Rotterdam Onbeperkt duurt slechts enkele seconden!
 								</li>
 							<?php endif; ?>
 						</ul>
@@ -350,7 +326,7 @@
 					
 					<?php else: ?>
 					
-					<p>Eerst inloggen.</p>
+					<p>Om een beoordeling te kunnen geven dient<br> u zich eerst <a href="<?php echo URL::to_route('login'); ?>">aan te melden</a> of te <a href="<?php echo URL::to_route('register'); ?>">registreren</a>.<br> Registreren bij Rotterdam Onbeperkt duurt<br> slechts enkele seconden!</p>
 					
 					<?php endif; ?>
 				</div>

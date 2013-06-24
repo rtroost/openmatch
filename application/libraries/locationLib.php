@@ -39,7 +39,7 @@ class LocationLib {
 		}
 		return $img;
 	}
-// $img = (isset($types[1]) ? ($types[1]->naam == "dierentuin") ? 'iconZoo' : 'iconPlayground') : 'iconKidsEntertainment'); break;
+	
 	private static function checkKindervermaak ($types){
 		if(isset($types[1])){
 			switch ($types[1]->naam) {

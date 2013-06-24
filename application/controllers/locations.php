@@ -60,6 +60,19 @@ class Locations_Controller extends Base_Controller {
 				$locations = locationLib::imageToLocations($locations);
 
 				return Response::eloquent($locations);
+			} elseif(Input::get('action') == 'PARKINGPLACES') {
+				$lat = Input::get('lat');
+				$lng = Input::get('lng');
+
+				$parkingplaces = Parkingplace::all();
+				$newParking = array();
+				foreach ($parkingplaces as $key => $value) {
+					$value->distance = locationLib::calcDistance($lat, $lng, $value->latitude, $value->longitude);
+					if($value->distance <= 0.5){
+						$newParking[] = $value;
+					}
+				}
+				return Response::eloquent($newParking);
 			} else {
 				$locations = Location::with('types')->get();
 				$locations = locationLib::imageToLocations($locations);
@@ -86,6 +99,10 @@ class Locations_Controller extends Base_Controller {
 
 	public function get_show($index){
 
+		if(Request::ajax()){
+
+		}
+
 		Asset::container('footer')->add('rating_js', 'js/vendor/jquery.raty.min.js');
 		Asset::container('footer')->add('locations', 'js/locations.js');
 		Asset::container('footer')->add('maps_api', 'http://maps.google.com/maps/api/js?sensor=false');
@@ -111,6 +128,18 @@ class Locations_Controller extends Base_Controller {
 		
 		
 		$averageRatings = json_decode($location -> score_indivavg);
+
+
+		//  Parkeerplaatsen
+		//  alle parkeerplaatsen pakken waar distance <= 1 km
+		//  deze parkeerplaatsen meegeven aan view.
+
+		
+		//dd(Response::eloquent($newParking));
+
+		// View:
+		// parkeerplaatsen weergeven in de map
+		// als route bescrhijving. pak parkeerplaats met kleinste distance en dan route daarheen.
 		
 	
 		return View::make('location.show')
