@@ -37,7 +37,7 @@ $(document).ready(function() {
 	});
 
 	$('.ratingHolder > .icon-thumbs-up, .ratingHolder > .icon-thumbs-down').click(function(){ 
-		reactionOn = path[3];
+		reactionOn = "locations";
 		reactionId = $(this).parent().parent().attr('id').substr(8);
 		dit = $(this);
 		if(dit.hasClass('icon-thumbs-up')){
@@ -46,7 +46,7 @@ $(document).ready(function() {
 			type = 'min';
 		}
 
-		url = window.BASE + "/" + path[3] + "/thumb_reaction/"; /*;http://localhost/openmatch/public/location/give_rating*/
+		url = window.BASE + "locations/thumb_reaction/"; /*;http://localhost/openmatch/public/location/give_rating*/
 
 		var request = $.ajax({
 			url: url,
@@ -107,11 +107,11 @@ $(document).ready(function() {
 
 	$('#place').click(function(){
 		if($('#reactionText').val()){
-			reactionOn = path[3];
+			reactionOn = "locations";
 			id = path[4];
 			reaction = $('#reactionText').val();
 
-			url = window.BASE + path[3] + "/give_reaction/"; /*;http://localhost/openmatch/public/location/give_rating*/
+			url = window.BASE + "locations/give_reaction/"; /*;http://localhost/openmatch/public/location/give_rating*/
 		
 
 			var request = $.ajax({
@@ -152,8 +152,8 @@ $(document).ready(function() {
 		click: function(){
 			deleteLi = $(this).parent().parent();
 			reactionId = $(this).parent().parent().attr('id').substr(8);
-			url = window.BASE + "/" + path[3] + "/delete_reaction/";
-			reactionOn = path[3];
+			url = window.BASE + "/locations/delete_reaction/";
+			reactionOn = "locations";
 
 			
 			var request = $.ajax({
@@ -180,10 +180,10 @@ $(document).ready(function() {
 
 			if(reaction){
 				replace = $(this).parent();
-				reactionOn = path[3];
+				reactionOn = "locations";
 				id = path[4];
 				reactionId = $(this).parent().attr('id').substr(8);
-				url = window.BASE + "/" + path[3] + "/update_reaction/"; 
+				url = window.BASE + "/update_reaction/"; 
 
 				var request = $.ajax({
 					url: url,
