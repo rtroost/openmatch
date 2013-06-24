@@ -97,7 +97,7 @@
 
 		<div id="fpLocations-container" style="
 			border-left: 1px solid rgba(0, 0, 0, 0.07);
-			border-right: 1px solid rgba(0, 0, 0, 0.07);">
+			border-right: 1px solid rgba(0, 0, 0, 0.07);" class="clearfix">
 
 			<div class="fpLocations-sortbar">
 				<ul>
