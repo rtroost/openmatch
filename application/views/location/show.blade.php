@@ -86,7 +86,7 @@
 						</ul>
 	
 						<div class="tab-content">
-							<div class="tab-pane active" id="general">
+							<div class="tab-pane locationPane active" id="general">
 								<div class="location-quick_info">
 									<ul>
 										@if($location->formatted_address)
@@ -119,7 +119,7 @@
 								</div>
 							</div>
 	
-							<div class="tab-pane" id="route">
+							<div class="tab-pane locationPane" id="route">
 								<div id="directions-container">
 									{{ Form::open('tba', 'POST', array('class' => 'form-vertical')) }}
 										{{ Form::token() }}
@@ -162,7 +162,7 @@
 								</div>
 							</div>
 	
-							<div class="tab-pane" id="taxi">
+							<div class="tab-pane locationPane" id="taxi">
 								<table>
 									<tr>
 										<td><b>Rotterdamse Taxi Centrale</b></td>
