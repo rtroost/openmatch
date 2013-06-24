@@ -187,30 +187,6 @@
 				</div><!--/location-body-->
 			</div><!--/row-fluid-->
 			
-			<div class="row-fluid">
-				<div class="articleNavigation-wrapper clearfix">
-					
-					<div class="articleNavigation-btn left">
-						<a href="#" class="articleNavigation-btn-link"></a>
-						<div class="articleNavigation-btn-icon"><i class="icon-angle-left"></i></div>
-						<div class="articleNavigation-btn-body">
-							<span class="articleNavigation-btn-body-title">Ahoy' Rotterdam</span>
-							<span class="articleNavigation-btn-body-address">Vaanweg 40, 3083 AW Rotterdam, The Netherlands</span>
-						</div>
-					</div>
-					<div class="articleNavigation-btn right">
-						<a href="#" class="articleNavigation-btn-link"></a>
-						<div class="articleNavigation-btn-icon"><i class="icon-angle-right"></i></div>
-						<div class="articleNavigation-btn-body">
-							<span class="articleNavigation-btn-body-title">Snerttram</span>
-							<span class="articleNavigation-btn-body-address">Vaanweg 40, 3083 AW Rotterdam, The Netherlands</span>
-						</div>
-					</div>
-				
-				</div>				
-			</div>
-
-			
 
 			<div class="row-fluid">
 				<div id="setComment">
