@@ -32,6 +32,8 @@
 					<span class="location_city" style="display:none;">{{$location -> city}}</span>
 					<img style="cursor: pointer;" id="location-marker-img" data-id="{{$location->id}}" data-name="{{$location->name}}" data-markerimg="{{$location->img}}" data-lat="{{$location->latitude}}" data-lng="{{$location->longitude}}" src="{{ URL::to('img/maps/' . $location->img . '.png') }}" class="location-marker" />
 					
+					<span class="parkingPlaces" style="display:none;">{{$location->parkingPlaces}} </span>
+
 					<h2 class="location-title">
 						{{ $location->name }}
 						<a href="{{ URL::to_route('location_feedback', $location->id) }}"><span id="location-improveInfo"><i class="icon-edit"></i><span id="location-improveInfo-text">Gegevens aanvullen!</span></span></a>
@@ -145,6 +147,9 @@
 													<option value="TRANSIT">Openbaar vervoer</option>
 													<option value="WALKING">Lopend</option>
 												</select>
+												<label class="checkbox inline toparkingplace-label" style="margin-left: 10px; margin-bottom: 14px;">
+											    	<input type="checkbox" name="toparkingplace"> Naar dichtstbijzijnde parkeerplaats
+											    </label>
 											</div>
 										</div>
 	

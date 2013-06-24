@@ -14,6 +14,12 @@ $(document).ready(function() {
 	var curPlaceLat = undefined;
 	var curPlaceLng = undefined;
 
+	var parkingPlaces = undefined;
+	var toparkingplaceLabel = $('label.toparkingplace-label');
+	var toparkingplaceInput = toparkingplaceLabel.find('input');
+	var toparkingplaceLabelVisible = true;
+	var selectTransportInput = $('select#transport-input');
+
 	if(span_formatted_address.text() == "") {
 		var location_destination = span_postalcode.text() + ' ' +  span_number.text() + ' ' + span_city.text();
 	} else {
@@ -24,6 +30,32 @@ $(document).ready(function() {
 		controlGroupTarget = $('div#controlGroupTarget'),
 		locationError = $('span#locationError');
 	console.log(locationMarker);
+
+	$.ajax({
+		type: "GET",
+		url: window.BASE + "locations",
+		dataType: 'json',
+		data: {action: "PARKINGPLACES", lat: locationMarker.data('lat'), lng: locationMarker.data('lng')}
+	}).promise().then( function (results){ 
+		console.log(results);
+		parkingPlaces = results;
+		console.log(parkingPlaces);
+
+		for(var i in results){
+			var result = results[i];
+			maps_class.createMarker({
+				id: -(result.id),
+				name: result.street,
+				formatted_address: result.postalcode + ' ' +  result.number + ' ' + result.city,
+				img: "iconParking",
+				latitude: result.latitude,
+				longitude: result.longitude,
+			});
+		}
+
+	}, function(){
+		console.log("error");
+	});
 
 	maps_class.init(document.getElementById("map_canvas")).done( 
 		function(){ // als google maps klaar is
@@ -115,6 +147,21 @@ $(document).ready(function() {
 		getLocationGoogleMaps(locationinput.val(), successCallback, failedCallback);
 	}
 
+	console.log(selectTransportInput);
+	selectTransportInput.on("change", function(){
+		$this = $(this);
+		console.log($this);
+		console.log($this.find(":selected").val());
+		if($this.find(":selected").val() == "DRIVING" && parkingPlaces.length != 0){
+			toparkingplaceLabel.show();
+			toparkingplaceLabelVisible = true;
+		}
+		if($this.find(":selected").val() !== "DRIVING"){
+			toparkingplaceLabel.hide();
+			toparkingplaceLabelVisible = false;
+		}
+	});
+
 	$('#btn_getDirections').on('click', function(e) {
 
 		e.preventDefault(); // Prevent form from submitting
@@ -122,23 +169,46 @@ $(document).ready(function() {
 		if(curPlaceLat == undefined){
 			controlGroupTarget.addClass("error");
 			locationError.show();
+			return;
 		} else {
 			controlGroupTarget.removeClass("error");
 			locationError.hide();
 		}
 
-		var transport_mode = $('#transport-input').val();
+		var transport_mode = selectTransportInput.val();
 
-		maps_class.renderDirections(curPlaceLat, curPlaceLng, locationMarker.data('lat'), locationMarker.data('lng'), transport_mode);
+		console.log(toparkingplaceInput.prop('checked'));
+		if(toparkingplaceLabelVisible && toparkingplaceInput.prop('checked') && transport_mode == "DRIVING" && parkingPlaces.length != 0){
+			var parkingplace = nearestParkingPlace();
+			console.log(parkingplace);
+			maps_class.renderDirections(curPlaceLat, curPlaceLng, parkingplace.latitude, parkingplace.longitude, transport_mode);
+		} else {
+			maps_class.renderDirections(curPlaceLat, curPlaceLng, locationMarker.data('lat'), locationMarker.data('lng'), transport_mode);
+		}
+		
 
-		if(slideIn)
-		{
+		if(slideIn) {
 			hide_map.trigger('click');
 		}
 		
 		htmlbody.animate({scrollTop:0}, 'slow');
 
 	});
+
+	function nearestParkingPlace(){
+		var lowest = undefined;
+		for(var i in parkingPlaces){
+			var row = parkingPlaces[1];
+			if(lowest == undefined){
+				lowest = row;
+			} else {
+				if(row.distance < lowest.distance ){
+					lowest = row;
+				}
+			}
+		}
+		return lowest;
+	}
 
 
 	// toggle map functionalitijd

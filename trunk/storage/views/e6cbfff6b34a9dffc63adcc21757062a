@@ -1,0 +1,71 @@
+
+<?php \Laravel\Section::start('content'); ?>
+
+<div class="content">
+
+	<div class="container">
+
+		<div class="row-fluid">
+
+			<div class="span6">
+
+				<?php if(Auth::check()): ?>
+
+				<h3>Meld hier uw feedback over de locatie!</h3>
+
+				<?php echo  Form::open(URL::to_route('location_feedback_post'), 'POST', array('class' => 'form-vertical')) ; ?>
+
+				<?php echo  Form::token() ; ?>
+
+				<div class="control-group">
+					<?php echo  Form::label('location-title', 'De naam van de locatie', array('class' => 'control-label')) ; ?>
+					<div class="controls">
+						<input class="span12" id="location-title" type="text" name="location-title" value="<?php echo $location->name; ?>" disabled>
+					</div>
+					<?php echo  $errors->first('location-title', '<span class="help-inline">:message</span>') ; ?>
+				</div>
+
+				<div class="control-group">
+					<?php echo  Form::label('location-message', 'Uw bericht', array('class' => 'control-label')) ; ?>
+					<div class="controls">
+						<textarea class="span12" id="location-message" name="location-message"></textarea>
+					</div>
+					<?php echo  $errors->first('location-message', '<span class="help-inline">:message</span>') ; ?>
+				</div>
+
+				<input id="location-id" name="location-id" value="<?php echo $location->id; ?>" hidden>
+				<div class="control-group">
+					<div class="controls">
+						<?php echo  Form::submit('Feedback melden', array('class' => 'btn btn-primary')) ; ?>
+					</div>
+				</div>
+
+				<?php echo  Form::close() ; ?>
+
+				<?php else: ?>
+
+				<h3>Aanmelden</h3>
+				<p>
+					Om deze functionaliteit te kunnen gebruiken dient u zich eerst <a href="<?php echo URL::to_route('login'); ?>">aan te melden</a> of te <a href="<?php echo URL::to_route('register'); ?>">registreren</a>. Registreren bij Rotterdam Onbeperkt duurt slechts enkele seconden!
+				</p>
+
+				<?php endif; ?>
+
+			</div><!--/span6-->
+
+			<div class="span6">
+
+				<h3>Informatie</h3>
+				<p>
+					Alle locaties op deze website zijn afkomstig van Rotterdam Open Data. Het kan voorkomen dat bepaalde gegevens van een locatie niet kloppen of niet meer actueel zijn. Via het formulier op deze pagina kunt aangeven of er iets niet klopt van de locatie. Bijvoorbeeld de website, het telefoonnummer, of het adres. De medewerkers van Rotterdam Onbeperkt zullen uw feedback controleren en zo snel mogelijk doorvoeren.
+				</p>
+			</div><!--/span6-->
+
+		</div><!--/row-fluid-->
+
+	</div><!--/container-->
+
+</div><!--/content-->
+
+<?php \Laravel\Section::stop(); ?>
+<?php echo view('layouts.default')->with(get_defined_vars())->render(); ?>
