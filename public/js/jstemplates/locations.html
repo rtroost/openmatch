@@ -3,9 +3,10 @@
 		<!-- Kunnen sorten op NAAM, BEORDELING, DISTANCE(alleen als dat bekend is) -->
 	
 	<div class="row-fluid locationList-sortBy-wrapper">	
-		<span ng-click="changeSortOrder('name')" class="locationList-sortBy">Naam <i class="icon-sort" ng-show="sortArr.nameUnsorted"></i><i class="icon-sort-up" ng-show="sortArr.nameAsc"></i><i class="icon-sort-down" ng-show="sortArr.nameDesc"></i></span>
-		<span ng-click="changeSortOrder('score')" class="locationList-sortBy">Beoordeling <i class="icon-sort" ng-show="sortArr.scoreUnsorted"></i><i class="icon-sort-up" ng-show="sortArr.scoreAsc"></i><i class="icon-sort-down" ng-show="sortArr.scoreDesc"></i></span>
-		<span ng-click="changeSortOrder('distance')" ng-show="distance" class="locationList-sortBy">Distance <i class="icon-sort" ng-show="sortArr.distanceUnsorted"></i><i class="icon-sort-up" ng-show="sortArr.distanceAsc"></i><i class="icon-sort-down" ng-show="sortArr.distanceDesc"></i></span>
+		<span>Sortering: </span>
+		<span ng-click="changeSortOrder('name')" class="locationList-sortBy">Naam <i class="icon-sort-up" ng-show="sortArr.nameAsc"></i><i class="icon-sort-down" ng-show="sortArr.nameDesc"></i></span>
+		<span ng-click="changeSortOrder('score')" class="locationList-sortBy">Beoordeling <i class="icon-sort-down" ng-show="sortArr.scoreAsc"></i><i class="icon-sort-up" ng-show="sortArr.scoreDesc"></i></span>
+		<span ng-click="changeSortOrder('distance')" ng-show="distance" class="locationList-sortBy">Afstand </i><i class="icon-sort-up" ng-show="sortArr.distanceAsc"></i><i class="icon-sort-down" ng-show="sortArr.distanceDesc"></i></span>
 	</div><!--/row-fluid-->
 	<div class="row-fluid">	
 		<table id="locationWrapper" class="fpLocation-table">

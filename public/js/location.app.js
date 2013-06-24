@@ -20,6 +20,7 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
     //$scope.sort = '';
     //$scope.order = true; // true = asc, false = desc
     $scope.sortArr = {};
+    $scope.sortArr["nameDesc"] = true;
     $scope.distance = false;
 
     // ---------------
