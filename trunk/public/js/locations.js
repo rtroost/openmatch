@@ -148,19 +148,24 @@ $(document).ready(function() {
 	}
 
 	console.log(selectTransportInput);
-	selectTransportInput.on("change", function(){
-		$this = $(this);
-		console.log($this);
-		console.log($this.find(":selected").val());
-		if($this.find(":selected").val() == "DRIVING" && parkingPlaces.length != 0){
-			toparkingplaceLabel.show();
-			toparkingplaceLabelVisible = true;
-		}
-		if($this.find(":selected").val() !== "DRIVING"){
-			toparkingplaceLabel.hide();
-			toparkingplaceLabelVisible = false;
-		}
-	});
+		selectTransportInput.on("change", function(){
+	 		$this = $(this);
+	  		console.log($this);
+	 		console.log($this.find(":selected").val());
+	  		console.log($this.find(":selected").val() == "DRIVING");
+	  		console.log(parkingPlaces.length != 0);
+	  		
+	  		if($this.find(":selected").val() == "DRIVING"){
+	  			console.log(toparkingplaceLabel);
+	   			toparkingplaceLabel.show();
+	   			toparkingplaceLabelVisible = true;
+	  		}
+
+	 		if($this.find(":selected").val() !== "DRIVING"){
+	   			toparkingplaceLabel.hide();
+	   			toparkingplaceLabelVisible = false;
+	  		}
+	 	});
 
 	$('#btn_getDirections').on('click', function(e) {
 

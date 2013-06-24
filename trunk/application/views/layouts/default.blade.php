@@ -11,7 +11,7 @@
 	<title>Rotterdam Onbeperkt</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
-
+    <link rel="icon" type="image/ico" href="http://rotterdamonbeperkt.nl/favicon.ico">
 	{{ Asset::styles() }}
 
 	{{ Asset::container('header')->scripts() }}
