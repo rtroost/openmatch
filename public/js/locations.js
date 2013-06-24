@@ -127,58 +127,16 @@ $(document).ready(function() {
 			locationError.hide();
 		}
 
-		var location_origin = $('#origin-input').val();
-
 		var transport_mode = $('#transport-input').val();
 
-		var url = 'http://maps.googleapis.com/maps/api/directions/json?origin=' + encodeURIComponent(location_origin) + '&destination=' + encodeURIComponent(location_destination) + '&sensor=false' + '&mode=' + transport_mode;
+		maps_class.renderDirections(curPlaceLat, curPlaceLng, locationMarker.data('lat'), locationMarker.data('lng'), transport_mode);
 
-		if(transport_mode == "transit") {
-			url =  url + "&departure_time=" + (Math.round(new Date().getTime() / 1000));
+		if(slideIn)
+		{
+			hide_map.trigger('click');
 		}
-
-		console.log('location_origin: ' + location_origin);
-		console.log('location_destination: ' + location_destination);
-		console.log('transport_mode: ' + transport_mode);
-		console.log('url: ' + url);
-
-		$.ajax({
-			url: url,
-			// data: {'action': 'geo'},
-			dataType: 'json'
-		}).promise().then(
-			function( results ){ //success
-
-				console.log(results);
-
-				var steps = results['routes'][0]['legs'][0]['steps'];
-				var directionsHTML = [];
-
-				for (var i = 0; i < steps.length; i++) {
-					step = steps[i];
-					directionsHTML.push('<li><i class="icon-caret-right"></i> ' + step['html_instructions'] + '</li>');
-				}
-
-				$("#directions-result ul").html(directionsHTML);
-				$("#directions-result").slideDown(600);
-
-				$("#directions-gotoGMaps").attr('href', 'https://maps.google.com/maps?saddr=' + location_origin + '&daddr=' + location_destination + '&mode=' + transport_mode);
-
-
-
-				maps_class.renderDirections(curPlaceLat, curPlaceLng, locationMarker.data('lat'), locationMarker.data('lng'), transport_mode);
-
-				if(slideIn){
-					hide_map.trigger('click');
-				}
-				htmlbody.animate({scrollTop:0}, 'slow');
-
-			},
-			function(){ //failed
-				console.log("Something went wrong during the ajax request.");
-				maps_locations.deferred.reject();
-			}
-		);
+		
+		htmlbody.animate({scrollTop:0}, 'slow');
 
 	});
 

@@ -31,24 +31,30 @@ var maps_class = {
 
 		self.infowindow = new google.maps.InfoWindow();
 
-		var mapOptions = {
-			center: new google.maps.LatLng(51.92422, 4.48178),
-			zoom: 14,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
-
 		self.directionsService = new google.maps.DirectionsService();
 
 		self.directionsDisplay = new google.maps.DirectionsRenderer({
 			draggable: true
 		});
-
+		
+		self.directionsPanel = document.getElementById("directionsPanel");
+		
+		var mapOptions = {
+			center: new google.maps.LatLng(51.92422, 4.48178),
+			zoom: 14,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		
 		self.map = new google.maps.Map(self.container, mapOptions);
+		
 		if(self.map){
 			self.deferred.resolve();
 		} else {
 			self.deferred.reject();
 		}
+		
+		self.directionsDisplay.setMap(self.map);
+  		self.directionsDisplay.setPanel(self.directionsPanel);
 	},
 
 	createMarker: function(pos, withContacts){
