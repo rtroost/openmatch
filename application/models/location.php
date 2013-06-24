@@ -39,12 +39,19 @@ class Location extends Basemodel {
 				if( ! isset($ratingsCombined[$key]))
 					$ratingsCombined[$key] = 0;
 				
-				$ratingsCombined[$key] += $value;
+				if( ! isset($counter[$key]))
+					$counter[$key] = 0;
+				
+				if($value !== 0) {
+					$ratingsCombined[$key] += $value;
+					$counter[$key]++;
+				}
+				
 			}
 		}
 		
 		foreach($ratingsCombined as $key => $value) {
-			$averages[$key] = $value / sizeof($scores);
+			$averages[$key] = $value / $counter[$key];
 		}
 		
 		$this -> score = $total_avg / sizeof($scores);
