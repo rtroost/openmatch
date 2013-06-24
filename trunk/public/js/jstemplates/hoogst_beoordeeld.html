@@ -11,7 +11,7 @@
 
 <table id="locationWrapper" class="fpLocation-table" ng-hide="loading">
 
-	<tr ng-repeat="location in result | orderBy:sortingOrder:distance">
+	<tr ng-repeat="location in result">
 		<td class="fpLocation-category">
 			<img ng-src="img/maps/{{location.img}}.png" ng-click="centerTo(location.latitude, location.longitude)" />
 		</td>

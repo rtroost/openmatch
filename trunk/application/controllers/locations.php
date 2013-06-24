@@ -68,7 +68,7 @@ class Locations_Controller extends Base_Controller {
 				$newParking = array();
 				foreach ($parkingplaces as $key => $value) {
 					$value->distance = locationLib::calcDistance($lat, $lng, $value->latitude, $value->longitude);
-					if($value->distance <= 0.5){
+					if($value->distance <= 1.0){
 						$newParking[] = $value;
 					}
 				}
