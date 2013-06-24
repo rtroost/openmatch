@@ -28,9 +28,9 @@ class Home_Controller extends Base_Controller {
 	public function post_contact() {
 
 		$rules = array(
-			'fullname' => 'required|alpha_num|between:4,60',
+			'fullname' => 'required|match:/^([a-z\x20])+$/i|between:4,60',
 			'email' => 'required|email',
-			'message' => 'required|between:50,1000'
+			'message' => 'required|between:10,1000'
 		);
 
 		$validation = Validator::make(Input::all(), $rules);
@@ -44,14 +44,21 @@ class Home_Controller extends Base_Controller {
 
 			Message::send(function($message)
 			{
-				$message -> to('someone@gmail.com');
-				$message -> from('no-reply@openmatch.nl', 'OpenMatch Contact Form');
+				$message -> to('info@rotterdamonbeperkt.nl');
+				$message -> from('no-reply@rotterdamonbeperkt.nl', 'Rotterdam Onbeperkt');
 
-				$message -> subject('OpenMatch Form: ' . date("Y-m-d H:i:s"));
+				$message -> subject('Rotterdam Onbeperkt: ' . date("Y-m-d H:i:s"));
 				$message -> body(
-					'Name: ' . Input::get('fullname') . '<br />' .
-					'E-Mail' . Input::get('email') . '<br />' .
-					'Message' . '<br />' . Input::get('message'));
+					"<b>Naam:</b> ".Input::get('fullname')."<br>
+					<b>E-mail:</b> ".Input::get('email')."
+					<p>
+						<b>Bericht</b><br>
+						".Input::get('message')."
+					</p>
+					<p>
+						<i>Dit bericht is verzonden vanaf de website van Rotterdam Onbeperkt.</i>
+					</p>"
+				);
 
 				$message -> html(true);
 			});
