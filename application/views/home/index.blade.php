@@ -101,10 +101,10 @@
 
 			<div class="fpLocations-sortbar">
 				<ul>
-					<li ng-click="changeRoute('')"><i class="icon-reorder hasTooltip" data-toggle="tooltip" title="Willekeurig"></i></li>
-					<li ng-click="changeRoute('locatie_dichtbij')"><i class="icon-screenshot hasTooltip" data-toggle="tooltip" title="Locatie's dichtbij"></i></li>
-					<li ng-click="changeRoute('hoogst_beoordeeld')"><i class="icon-trophy hasTooltip" data-toggle="tooltip" title="Hoogst beoordeeld"></i></li>
-					<li ng-click="changeRoute('aanbevolen')"><i class="icon-star hasTooltip" data-toggle="tooltip" title="Aanbevolen"></i></li>
+					<li ng-click="changeRoute('')" class="hasTooltip" title="Willekeurig"><i class="icon-reorder"></i></li>
+					<li ng-click="changeRoute('locatie_dichtbij')" class="hasTooltip" title="Locatie's dichtbij"><i class="icon-screenshot"></i></li>
+					<li ng-click="changeRoute('hoogst_beoordeeld')" class="hasTooltip" title="Hoogst beoordeeld"><i class="icon-trophy"></i></li>
+					<li ng-click="changeRoute('aanbevolen')" class="hasTooltip" title="Aanbevolen"><i class="icon-star"></i></li>
 				</ul>
 			</div><!--/span1-->
 
