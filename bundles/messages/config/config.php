@@ -38,10 +38,10 @@ return array(
 	'transports' => array(
 
 		'smtp' => array(
-			'host'       => 'smtp.example.com',
+			'host'       => 'mail.rotterdamonbeperkt.nl',
 			'port'       => 25,
-			'username'   => 'username',
-			'password'   => 'password',
+			'username'   => 'info@rotterdamonbeperkt.nl',
+			'password'   => 'gordijn',
 			'encryption' => null,
 		),
 
