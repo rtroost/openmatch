@@ -46,6 +46,11 @@ a:hover {
 	width: 1070px !important;
 }
 
+#footer .container{
+	height:200px;
+    position:relative;
+}
+
 .wrapper {
 	min-height: 100%;
 	height: auto !important;
@@ -91,6 +96,28 @@ a:hover {
     color: #fff;
     font-weight: 400;
     font-family: 'Oswald', sans-serif;
+}
+
+#wbFooter{
+	position:absolute;
+	right:0px;
+	bottom:0px;
+
+}
+
+#copyright{
+	background:url('../img/webbundels_footer.png');
+	width:117px;
+	height:32px;
+	cursor:pointer;
+	display:inline-block;
+	position:relative;
+	top:12px;
+	margin-left:10px
+}
+
+#copyright:hover{
+	background-position:center bottom;
 }
 
 .hr-small {

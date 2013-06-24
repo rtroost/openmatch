@@ -18,7 +18,6 @@
 
 </head>
 <body>
-
 	<!--[if lt IE 7]>
 	<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 	<![endif]-->
@@ -91,24 +90,19 @@
 					<a href="{{ URL::to_route('news') }}">Meer nieuws...</a>
                 </div>  
                 <div class="span4">
-                    <h2>Twitter Feed</h2>
+                    <h2>Laatste tweet</h2>
                     
 					@if( ! empty($footer_tweets))
-					
+						
 						<ul class="twtr-feed">
-							
-						@foreach ($footer_tweets as $tweet)
 						
 						<li>
-							<div class="sidebar_stream-body">{{ $tweet -> text }}</div>
+							<div class="sidebar_stream-body">{{ $footer_tweets[0]->text }}</div>
 							<small>
 								<em>
-									<a target="_blank" class="twtr-timestamp" href="http://twitter.com/{{ $tweet -> user -> screen_name }}/statuses/{{ $tweet -> id_str }}">{{ Helpers::relative_time(strtotime($tweet -> created_at)) }} ago</a> / <a target="_blank" class="twtr-reply" href="https://twitter.com/intent/tweet?in_reply_to={{ $tweet -> id_str }}">reply</a> / <a target="_blank" class="twtr-rt" href="https://twitter.com/intent/retweet?tweet_id={{ $tweet -> id_str }}">retweet</a> / <a target="_blank" class="twtr-fav" href="https://twitter.com/intent/favorite?tweet_id={{ $tweet -> id_str }}">favorite</a>
+									<a target="_blank" class="twtr-timestamp" href="http://twitter.com/{{ $footer_tweets[0] -> user -> screen_name }}/statuses/{{ $footer_tweets[0] -> id_str }}">{{ Helpers::relative_time(strtotime($footer_tweets[0]->created_at)) }} ago</a> / <a target="_blank" class="twtr-reply" href="https://twitter.com/intent/tweet?in_reply_to={{ $footer_tweets[0] -> id_str }}">reply</a> / <a target="_blank" class="twtr-rt" href="https://twitter.com/intent/retweet?tweet_id={{ $footer_tweets[0] -> id_str }}">retweet</a> / <a target="_blank" class="twtr-fav" href="https://twitter.com/intent/favorite?tweet_id={{ $footer_tweets[0] -> id_str }}">favorite</a>
 								</em>
-							</small>
 						</li>	
-							
-						@endforeach
 							
 						</ul>
 					
@@ -118,6 +112,10 @@
                     </p>
 					@endif					
                 </div>
+
+            </div>
+            <div id="wbFooter">
+            	Mede mogelijk gemaakt door <a target="_blank" id="copyright" href="http://www.webbundels.nl"></a>
             </div>
     
         </div> <!-- /container -->
