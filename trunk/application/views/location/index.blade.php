@@ -73,15 +73,17 @@
 		</div>
 
 		<div class="row-fluid">
-
+			
+			
+			
+		</div><!--/row-fluid-->
+		
+		<div class="row-fluid">
+			
 			<div class="span8">
-				<pagination>
-				</pagination>
-				<locations>
-				</locations>
-				<pagination>
-				</pagination>
-			</div><!--/span8-->
+				<locations></locations>
+				<pagination></pagination>
+			</div>
 
 			<div class="span4">
 				<div class="sidebar">
@@ -122,6 +124,7 @@
 			</div><!--/span3-->
 
 		</div><!--/row-fluid-->
+		
 	</div><!--/container-->
 </div><!--/content-->
 
