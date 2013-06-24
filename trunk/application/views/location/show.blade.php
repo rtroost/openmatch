@@ -33,7 +33,7 @@
 					
 					<h2 class="location-title">
 						{{ $location->name }}
-						<a href="{{ URL::to_route('location_feedback', $location->id) }}"><span id="location-improveInfo"><i class="icon-edit"></i><span id="location-improveInfo-text">Klopt er iets niet? Klik hier!</span></span></a>
+						<a href="{{ URL::to_route('location_feedback', $location->id) }}"><span id="location-improveInfo"><i class="icon-edit"></i><span id="location-improveInfo-text">Gegevens aanvullen!</span></span></a>
 					</h2>
 				</div>
             </div>
@@ -98,21 +98,21 @@
 											@if($location -> tel)
 											<a href="tel:{{ $location->tel }}">{{ $location->tel }}</a>
 											@else
-											Onbekend
+											Onbekend <a href="{{ URL::to_route('location_feedback', $location->id) }}" id="telephone-feedback"><span id="location-improveInfo"><i class="icon-edit"></i><span id="location-improveInfo-text">Telefoonnummer doorgeven</span></span></a>
 											@endif
 										</li>
 										<li class="website"><i class="icon-globe"></i>
 											@if($location -> website)
 											<a href="{{ $location->website }}">{{ $location->website }}</a>
 											@else
-											Onbekend
+											Onbekend <a href="{{ URL::to_route('location_feedback', $location->id) }}" id="website-feedback"><span id="location-improveInfo"><i class="icon-edit"></i><span id="location-improveInfo-text">Website doorgeven</span></span></a>
 											@endif
 										</li>
 										<li class="email"><i class="icon-envelope"></i>
 											@if($location -> email)
 											<a href="mailto:{{ $location->email }}">{{ $location->email }}</a>
 											@else
-											Onbekend
+											Onbekend <a href="{{ URL::to_route('location_feedback', $location->id) }}" id="email-feedback"><span id="location-improveInfo"><i class="icon-edit"></i><span id="location-improveInfo-text">E-mailadres doorgeven</span></span></a>
 											@endif
 										</li>
 									</ul>
@@ -214,7 +214,7 @@
 
 			<div class="row-fluid">
 				<div id="setComment">
-					<h3>Comments</h3>
+					<h3>Reacties</h3>
 					@if($reactions['top'])
 						<span class="commentsInfo">Beste reactie</span>
 						<ul class="comments top">
@@ -285,7 +285,7 @@
 								</li>
 							@else
 								<li>
-									<p>Zelf ook een reactie plaatsen? Meld je dan eerst <a href="{{ URL::to_route('login') }}">hier</a> aan op de site of registreer je op deze site via <a href="{{ URL::to_route('login') }}">deze</a> pagina.
+									Om een reactie te kunnen plaatsen dient u zich eerst <a href="{{URL::to_route('login')}}">aan te melden</a> of te <a href="{{URL::to_route('register')}}">registreren</a>. Registreren bij Rotterdam Onbeperkt duurt slechts enkele seconden!
 								</li>
 							@endif
 						</ul>
@@ -300,7 +300,7 @@
 								</li>
 							@else
 								<li>
-									<p>Zelf ook een reactie plaatsen? Meld je dan eerst <a href="{{ URL::to_route('login') }}">hier</a> aan op de site of registreer je op deze site via <a href="{{ URL::to_route('login') }}">deze</a> pagina.
+									Om een reactie te kunnen plaatsen dient u zich eerst <a href="{{URL::to_route('login')}}">aan te melden</a> of te <a href="{{URL::to_route('register')}}">registreren</a>. Registreren bij Rotterdam Onbeperkt duurt slechts enkele seconden!
 								</li>
 							@endif
 						</ul>
@@ -351,7 +351,7 @@
 					
 					@else
 					
-					<p>Eerst inloggen.</p>
+					<p>Om een beoordeling te kunnen geven dient<br> u zich eerst <a href="{{URL::to_route('login')}}">aan te melden</a> of te <a href="{{URL::to_route('register')}}">registreren</a>.<br> Registreren bij Rotterdam Onbeperkt duurt<br> slechts enkele seconden!</p>
 					
 					@endif
 				</div>
