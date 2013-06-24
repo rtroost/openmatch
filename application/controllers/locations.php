@@ -16,7 +16,7 @@ class Locations_Controller extends Base_Controller {
 				$locations = Location::with('types')->get();
 				$locations = locationLib::imageToLocations($locations);
 				foreach ($locations as $key => $value) {
-					$newtypes = [];
+					$newtypes = array();
 					foreach ($value->types as $key2 => $value2) {
 						$newtypes[] = $value2->naam;
 					}
@@ -77,7 +77,7 @@ class Locations_Controller extends Base_Controller {
 				$locations = Location::with('types')->get();
 				$locations = locationLib::imageToLocations($locations);
 				foreach ($locations as $key => $value) {
-					$newtypes = [];
+					$newtypes = array();
 					foreach ($value->types as $key2 => $value2) {
 						$newtypes[] = $value2->naam;
 					}

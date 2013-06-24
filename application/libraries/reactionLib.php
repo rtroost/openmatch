@@ -4,7 +4,7 @@ class ReactionLib {
 
 	public static function postReaction($reactionOn, $id, $reaction, $userId){
 		if($reactionOn == 'locations'){
-			$rOL = new reactionsOnLocation;
+			$rOL = new ReactionsOnLocation();
 
 	 		$rOL->location_id = $id;
 	 		$rOL->text = $reaction;
@@ -123,7 +123,7 @@ class ReactionLib {
 				$newThumb->save();
 			}else{
 
-				$newThumb = new ThumbsOnLocationReaction;
+				$newThumb = new ThumbsOnLocationReaction();
 				$newThumb->reactionsonlocation_id = $reactionId;
 				$newThumb->user_id = $userId;
 
