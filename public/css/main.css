@@ -920,6 +920,18 @@ div#zoeken_locations li:hover div + div.sort_tooltip {
 	height:250px;
 }
 
+#telephone-feedback{
+	margin-left:15px;
+}
+
+#website-feedback{
+	margin-left:14px;
+}
+
+#email-feedback{
+	margin-left:12px;
+}
+
 /****************/
 /* Table Styles */
 /****************/
