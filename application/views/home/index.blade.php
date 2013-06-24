@@ -141,7 +141,7 @@
 							Door middel van Rotterdam Onbeperkt kunt u direct kunt zien hoe begaanbaar en rolstoelvriendelijk de uitgaansgelegenheden van Rotterdam zijn. Via deze website kunt u eenvoudig een keuze maken als u bijvoorbeeld een dagje uit wilt of ergens wat wil gaan eten.
 						</p>
 						<p>
-							Hoe meer mensen reacties en beoordelingen achterlaten hoe beter onze kennis over de rolstoelvriendelijkheid van de Rotterdamse uitgaansgelegenheden wordt . Doe daarom ook mee en <a href="{{URL::to_route('register')}}">registreer</a> je in slechts enkele seconden!
+							Hoe meer mensen reacties en beoordelingen achterlaten hoe beter onze kennis over de rolstoelvriendelijkheid van de Rotterdamse uitgaansgelegenheden wordt. Doe daarom ook mee en <a href="{{URL::to_route('register')}}">registreer</a> je in slechts enkele seconden!
 						</p>
 					</div><!--/.span6-->
 
