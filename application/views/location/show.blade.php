@@ -148,10 +148,11 @@
 													<option value="TRANSIT">Openbaar vervoer</option>
 													<option value="WALKING">Lopend</option>
 												</select>
-												<label class="checkbox inline toparkingplace-label" style="margin-left: 10px; margin-bottom: 14px;">
-											    	<input type="checkbox" name="toparkingplace"> Naar dichtstbijzijnde parkeerplaats
-											    </label>
+												
 											</div>
+											<label class="checkbox inline toparkingplace-label" style="margin-bottom: 10px;">
+										    	<input type="checkbox" name="toparkingplace"> Naar dichtstbijzijnde parkeerplaats <i class="icon-question hasTooltip" title="U wordt alleen naar een parkeerplaats verwezen als deze binnen 1 kilometer aanwezig is."></i>
+										    </label>
 										</div>
 	
 										<div class="control-group">
