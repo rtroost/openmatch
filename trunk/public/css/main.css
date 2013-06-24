@@ -395,6 +395,26 @@ a:hover {
 
 #map_canvas img { max-width: none; }
 
+.mapCanvas-left {
+	margin-right: 30%;
+	width: 70% !important;
+	box-shadow: 1px 1px 5px #aaa;
+}
+.directionsPanel-right {
+	height: 100%;
+	float: right;
+	width: 30%;
+	overflow: auto;
+	font-size: 0.9em;
+	padding: 0 8px;
+	box-sizing: border-box;
+	z-index: 100;
+	background: #fff;
+}
+
+/* Mini fix voor width van bepaalde elementen in de routebeschrijving */
+.adp-text { width: auto; }
+
 .map-shadow {
 	position:absolute;
 	top: 0;
@@ -406,6 +426,8 @@ a:hover {
 	box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.2) inset;
 	
 	pointer-events:none;
+	
+	z-index: 99;
 }
 
 #map_overlay {

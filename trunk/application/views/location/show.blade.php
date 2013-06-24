@@ -9,7 +9,8 @@
 </div> -->
 
 <div id="mapWrapper" class="folded">
-	<div id="map_canvas"></div>
+	<div id="map_canvas" class="mapCanvas-left"></div>
+	<div id="directionsPanel" class="directionsPanel-right"></div>
 	<div class="map-shadow"></div>
 	<div id="map_overlay"></div><!--/map_overlay-->
 	<div id="hide_map">
@@ -153,12 +154,6 @@
 											</div>
 										</div>
 									{{ Form::close() }}
-								</div>
-	
-								<div id="directions-result">
-									<h3>Routebeschrijving</h3>
-									<ul class="unstyled"></ul>
-									<a href="#" target="_blank" id="directions-gotoGMaps">Klik hier om naar Google Maps te gaan voor een uitgebreidere versie</a>
 								</div>
 							</div>
 	
