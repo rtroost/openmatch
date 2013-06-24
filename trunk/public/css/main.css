@@ -233,6 +233,7 @@ a:hover {
 #nav li {
     float: left;
     position: relative;
+	z-index: 999;
 }
 
 #nav li a {
@@ -433,18 +434,16 @@ a:hover {
 	border-bottom: 1px solid rgba(0,0,0,0.07);
 	position: absolute;
 	overflow: hidden;
-	/*z-index: 99;*/
+	z-index: 99;
 }
 
 #map_canvas img { max-width: none; }
 
-.mapCanvas-left {
-	margin-right: 30%;
-	width: 70% !important;
+.mapCanvas-shadow {
 	box-shadow: 1px 1px 5px #aaa;
 }
 .directionsPanel-right {
-	z-index: -1;
+	z-index: 98;
 	height: 100%;
 	float: right;
 	width: 30%;
@@ -470,6 +469,8 @@ a:hover {
 	box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.2) inset;
 	
 	pointer-events:none;
+	
+	z-index: 101;
 }
 
 #map_overlay {
@@ -479,6 +480,7 @@ a:hover {
 	width: 100%;
 	pointer-events:none;	
 	background: rgba(0,0,0,0.5);
+	z-index: 100;
 }
 
 #hide_map {
