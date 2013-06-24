@@ -38,7 +38,7 @@ class Base_Controller extends Controller {
 
 		$url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
 		$requestMethod = 'GET';
-		$getfield = '?username=RdamOnbeperkt&count=3&include_rts=true';
+		$getfield = '?username=RdamOnbeperkt&count=1&include_rts=true';
 		$twitter = new TwitterAPIExchange($settings);
 		
 		$twitter -> setGetfield($getfield);
