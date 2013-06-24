@@ -264,7 +264,8 @@ addRatyJQuery = function(locations){
                 readOnly: true,
                 half: true,
                 path: BASE + 'img',
-                hints: ['Zeer slecht', 'Slecht', 'Acceptabel', 'Goed', 'Zeer goed']
+                hints: ['Matig', 'Acceptabel', 'Voldoende', 'Goed', 'Zeer goed'],
+                noRatedMsg: 'Nog geen beoordeling gegeven'
             });
         }
     }, 10);
