@@ -841,6 +841,10 @@ div#zoeken_locations li:hover div + div.sort_tooltip {
 	border-bottom: 1px solid #eee;
 }
 
+.locationPane {
+	 height: 200px;
+}
+
 
 
 
