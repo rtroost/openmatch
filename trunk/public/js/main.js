@@ -22,7 +22,8 @@ $(document).ready(function() {
 	} else {
 		window.BASE = "http://"+ location.hostname + "/";
 	}
-	window.IMGLOC = BASE + "img/";
+	//window.BASE = "http://rotterdamonbeperkt.nl/";
+	//window.IMGLOC = BASE + "img/";
 
 	$('#reactionText').keyup(function(){
 		if($(this).val()){
@@ -108,7 +109,7 @@ $(document).ready(function() {
 	$('#place').click(function(){
 		if($('#reactionText').val()){
 			reactionOn = "locations";
-			id = path[4];
+			id = $('img#location-marker-img').data('id');
 			reaction = $('#reactionText').val();
 
 			url = window.BASE + "locations/give_reaction/"; /*;http://localhost/openmatch/public/location/give_rating*/
@@ -181,7 +182,7 @@ $(document).ready(function() {
 			if(reaction){
 				replace = $(this).parent();
 				reactionOn = "locations";
-				id = path[4];
+				id = $('img#location-marker-img').data('id');
 				reactionId = $(this).parent().attr('id').substr(8);
 				url = window.BASE + "/update_reaction/"; 
 
