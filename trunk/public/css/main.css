@@ -58,7 +58,7 @@ a:hover {
 }
 
 #content {
-	padding-top: 93px;
+/*	padding-top: 93px;*/
 }
 
 .content {
@@ -158,23 +158,25 @@ a:hover {
 /**************/
 
 #header {
-    height: 86px;
-    position:fixed;
+/*
+	position:fixed;
     top:0;
+*/	
+    height: 86px;    
     width: 100%;    
     border-top: 6px solid #3a3a3a;
     z-index: 999;
     background: #fff;
+	border-bottom: 1px solid #eee;
 }
 
 #header-inner {
-    border-bottom: 1px solid #eee;
-    height: 86px;
+/*    height: 86px;*/
 }
 
 #main_logo {
     text-indent: -9999em;
-    height: 70px;
+    height: 69px;
     width: 230px;
     background: url(../img/main_logo.png) no-repeat 0 0;
     float: left;
@@ -377,6 +379,7 @@ a:hover {
 
 #mapWrapper {
 	height: 450px;
+	width: 100%;
 	overflow: hidden;
 	position: relative;
 }
