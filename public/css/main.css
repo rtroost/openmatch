@@ -1267,6 +1267,10 @@ table {
 	line-height: 1.2;
 }
 
+.fpLocation-title > * {
+	color: #444;
+}
+
 .fpLocation-address {
 	display: block;
 	font-size: 0.6em;
