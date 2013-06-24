@@ -10,7 +10,7 @@
 
 <div id="mapWrapper" class="folded">
 	<!-- <div id="map_canvas" class="mapCanvas-left"></div> -->
-	<div id="map_canvas"></div>
+	<div id="map_canvas" class="mapCanvas-shadow"></div>
 	<div id="directionsPanel" class="directionsPanel-right"></div>
 	<div class="map-shadow"></div>
 	<div id="map_overlay"></div><!--/map_overlay-->
