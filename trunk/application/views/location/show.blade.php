@@ -165,19 +165,24 @@
 							<div class="tab-pane locationPane" id="taxi">
 								<table id="taxis">
 									<tr>
-										<th style="text-align:left;width:230px"><b>Rotterdamse Taxi Centrale</b></th>
-										<th style="text-align:left;width:200px"><b>Stadstaxi Rotterdam</b></th>
-										<th style="text-align:left"><b>Taxi St Job</b></th>
+										<td>Rolstoeltaxi Rotterdam</td>
+										<td><i class="icon-globe"></i><a href="http://www.rolstoeltaxirotterdam.nl" target="_blank"> rolstoeltaxirotterdam.nl</a></td>
+										<td><i class="icon-phone"></i><a href="tel:010 - 81 82 823"> 010 - 81 82 823</a></td>
 									</tr>
 									<tr>
-										<td><div class="taxi"><a href="tel:010 - 46 26 060"> 010 - 46 26 060</a></div></td>
-										<td><div class="taxi"><a href="tel:010 - 81 82 823"> 010 - 81 82 823</a></div></td>
-										<td><div class="taxi"><a href="tel:010 - 42 57 000"> 010 - 42 57 000</a></div></td>
+										<td>Rotterdamse Taxi Centrale</td>
+										<td><i class="icon-globe"></i><a href="http://www.rtcnv.nl" target="_blank"> rtcnv.nl</a></td>
+										<td><i class="icon-phone"></i><a href="tel:010 - 46 26 060"> 010 - 46 26 060</a></td>
 									</tr>
 									<tr>
-										<td><div class="taxi"><a href="http://www.rtcnv.nl" target="_blank"> rtcnv.nl</a></div></td>
-										<td><div class="taxi"><a href="http://www.stadstaxirotterdam.nl" target="_blank"> stadstaxirotterdam.nl</a></div></td>
-										<td><div class="taxi"><a href="http://www.st-job.nl" target="_blank"> st-job.nl</a></div></td>
+										<td>Taxi St Job</td>
+										<td><i class="icon-globe"></i><a href="http://www.st-job.nl" target="_blank"> st-job.nl</a></td>
+										<td><i class="icon-phone"></i><a href="tel:010 - 42 57 000"> 010 - 42 57 000</a></td>
+									</tr>
+									<tr>
+										<td>Regio Taxi Rotterdam</td>
+										<td><i class="icon-globe"></i><a href="http://www.regiotaxirotterdam.com" target="_blank"> regiotaxirotterdam.com</a></td>
+										<td><i class="icon-phone"></i><a href="tel:010 - 22 65 476"> 010 - 22 65 476</a></td>
 									</tr>
 								</table>
 							</div>
