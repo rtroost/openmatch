@@ -842,75 +842,7 @@ div#zoeken_locations li:hover div + div.sort_tooltip {
 }
 
 
-.articleNavigation-wrapper {
-	padding: 0 0 30px;
-	margin: 0 0 30px;
-	border-bottom: 1px solid #eee;
-}
 
-.articleNavigation-btn {
-	width: 50%;
-	background: #fefefe;
-	height: 50px;
-	box-sizing: border-box;
-	border-top: 1px solid #eee;
-	border-bottom: 1px solid #eee;
-	overflow: hidden;
-	float: left;
-	transition: color .2s linear;
-	color: #ddd;
-	position: relative;
-}
-
-.articleNavigation-btn:hover,
-.articleNavigation-btn:hover .articleNavigation-btn-body {
-	color: #777 !important;
-}
-
-.articleNavigation-btn-link {
-	position:absolute;
-	top: 0;
-	bottom: 0;
-	width: 100%;
-}
-
-.articleNavigation-btn.left {
-	border-left: 1px solid #eee;	
-	border-right: 1px solid #eee;	
-}
-
-.articleNavigation-btn.right {
-	border-right: 1px solid #eee;
-}
-
-.articleNavigation-btn-icon {	
-	font-size: 2.625em;
-	line-height: 46px;
-	padding: 0 14px;
-}
-
-.articleNavigation-btn.left .articleNavigation-btn-icon {float: left;}
-.articleNavigation-btn.right .articleNavigation-btn-icon {float: right;}
-
-.articleNavigation-btn-body {
-	float: left;
-	padding: 4px 16px;
-	font-size: 1em;
-	color: #aaa;
-	transition: color .2s linear;
-}
-
-.articleNavigation-btn-body-title {	
-	display: block;
-	font-weight: 700;
-	font-size: 0.9em;
-}
-
-.articleNavigation-btn-body-address {	
-	display: block;
-	font-size: 0.825em;
-	margin-top: -3px;
-}
 
 /************************/
 /* Location feedback */

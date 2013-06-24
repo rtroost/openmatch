@@ -26,11 +26,8 @@ class Locations_Controller extends Base_Controller {
 				return Response::eloquent($locations);
 
 			} elseif(Input::get('action') == 'TOON') {
-				$countRows = DB::table('locations')->count();
-				for ($i = 0; $i < 5 ; $i++) { 
-					$randomIds[] = rand(1, $countRows);
-				}
-				$locations = Location::with('types')->where_in('id', $randomIds)->order_by('id', 'desc')->take(5)->get();
+				
+				$locations = Location::with('types') -> order_by(DB::raw('RAND()')) -> take(5) -> get();
 
 				$locations = locationLib::imageToLocations($locations);
 
