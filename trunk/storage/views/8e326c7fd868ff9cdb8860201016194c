@@ -162,11 +162,11 @@
 							</div>
 	
 							<div class="tab-pane locationPane" id="taxi">
-								<table>
+								<table id="taxis">
 									<tr>
-										<td><b>Rotterdamse Taxi Centrale</b></td>
-										<td><b>Stadstaxi Rotterdam</b></td>
-										<td><b>Taxi St Job</b></td>
+										<th style="text-align:left;width:230px"><b>Rotterdamse Taxi Centrale</b></th>
+										<th style="text-align:left;width:200px"><b>Stadstaxi Rotterdam</b></th>
+										<th style="text-align:left"><b>Taxi St Job</b></th>
 									</tr>
 									<tr>
 										<td><div class="taxi"><a href="tel:010 - 46 26 060"> 010 - 46 26 060</a></div></td>
