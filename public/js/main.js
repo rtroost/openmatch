@@ -23,7 +23,7 @@ $(document).ready(function() {
 		window.BASE = "http://"+ location.hostname + "/";
 	}
 	//window.BASE = "http://rotterdamonbeperkt.nl/";
-	//window.IMGLOC = BASE + "img/";
+	window.IMGLOC = BASE + "img/";
 
 	$('#reactionText').keyup(function(){
 		if($(this).val()){
