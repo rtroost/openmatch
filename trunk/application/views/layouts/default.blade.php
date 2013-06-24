@@ -58,7 +58,7 @@
             </div><!--/container-->
         </header><!--/header-->
     
-        <div id="content">
+        <div id="content" class="clearfix">
     
             @yield('content')
     
