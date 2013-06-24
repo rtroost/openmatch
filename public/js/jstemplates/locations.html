@@ -24,15 +24,15 @@
 					</td>
 	
 					<td class="fpLocation-icon" ng-switch on="!!location.website">
-						<a href="{{location.website}}" ng-switch-when="true" target="_blank"><i class="icon-globe activeLink"></i></a>
+						<a href="{{location.website}}" ng-switch-when="true" target="_blank" class="hasTooltip" title="{{location.website}}"><i class="icon-globe activeLink"></i></a>
 						<i class="icon-globe" ng-switch-default></i>
 					</td>
 					<td class="fpLocation-icon" ng-switch on="!!location.tel">
-						<a href="tel:{{location.tel}}" ng-switch-when="true" data-toggle="tooltip" title="{{location.tel}}" target="_blank"> <i class="icon-phone activeLink"></i></a>
+						<a href="tel:{{location.tel}}" ng-switch-when="true" data-toggle="tooltip" class="hasTooltip" title="{{location.tel}}" target="_blank"> <i class="icon-phone activeLink"></i></a>
 						<i class="icon-phone" ng-switch-default></i>
 					</td>
 					<td class="fpLocation-icon" ng-switch on="!!location.email">
-						<a href="mailto:{{location.email}}" ng-switch-when="true" data-toggle="tooltip" title="{{location.email}}"><i class="icon-envelope activeLink"></i></a>
+						<a href="mailto:{{location.email}}" ng-switch-when="true" data-toggle="tooltip" class="hasTooltip" title="{{location.email}}"><i class="icon-envelope activeLink"></i></a>
 						<i class="icon-envelope" ng-switch-default></i>
 					</td>
 	
