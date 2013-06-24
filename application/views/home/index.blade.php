@@ -134,13 +134,14 @@
 					<div class="span12">
 						<h3>Wat is Rotterdam Onbeperkt?</h3>
 						<p>
-							Rotterdam is een stad vol leven dat gedeeld moet worden met zijn inwoners. Hieronder vallen ook onze minder valide inwoners. Deze website is opgezet om jullie tegemoet te komen in jullie ervaring met alles dat Rotterdam te bieden heeft.
+							Op de website van Rotterdam Onbeperkt vind u alle uitgaansgelegenheden van Rotterdam, deze uitgaansgelegenheden zijn
+							mede mogelijk gemaakt door de <a href="http://www.rotterdamopendata.nl/" target="_blank">Rotterdam Open Data Store</a>. Rotterdam Onbeperkt is ontwikkeld om minder valide mensen een handvat te geven over welke uitgaansgelegenheden in Rotterdam rolstoelvriendelijk zijn. Via deze website kunt u beoordelingen en reacties over alle uitgaansgelegenheden lezen. Uiteraard kunt u zelf ook meedoen en een beoordeling of reactie achterlaten!
 						</p>
 						<p>
-							Het ontwikkelteam Djoezzy van de Hogeschool Rotterdam, bestaande uit Remco van der Kleijn, Stefan Bayarri, Nick van Leeuwen en Rob Troost, heeft ervoor gezorgt dat ook als je in een roelstoel zit je nogsteeds precies weet wat Rotterdam je te bieden heeft. De ontwikkeling van OpenMatch is gebaseerd op een 'Community Driven' principe waar de nauwkeurigheid van de website door de gebruiker verbeterd wordt. Zo helpt iedereen elkaar. Het enige dat jij hoeft te doen, is er gebruik van te maken.
+							Door middel van Rotterdam Onbeperkt kunt u direct kunt zien hoe begaanbaar en rolstoelvriendelijk de uitgaansgelegenheden van Rotterdam zijn. Via deze website kunt u eenvoudig een keuze maken als u bijvoorbeeld een dagje uit wilt of ergens wat wil gaan eten.
 						</p>
 						<p>
-							Wij danken Rotterdam Open Data voor hun uitzonderlijke hoeveelheid gegevens die de basis hebben gevormd voor dit project.
+							Hoe meer mensen reacties en beoordelingen achterlaten hoe beter onze kennis over de rolstoelvriendelijkheid van de Rotterdamse uitgaansgelegenheden wordt . Doe daarom ook mee en <a href="{{URL::to_route('register')}}">registreer</a> je in slechts enkele seconden!
 						</p>
 					</div><!--/.span6-->
 
