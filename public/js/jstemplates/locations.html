@@ -4,9 +4,9 @@
 	
 	<div class="row-fluid locationList-sortBy-wrapper">	
 		<span>Sortering: </span>
-		<span ng-click="changeSortOrder('name')" class="locationList-sortBy" ng-class="{active: sortArr.nameAsc || sortArr.nameDesc}">Naam <i class="icon-sort-up" ng-show="sortArr.nameAsc"></i><i class="icon-sort-down" ng-show="sortArr.nameDesc"></i></span>
-		<span ng-click="changeSortOrder('score')" class="locationList-sortBy" ng-class="{active: sortArr.scoreAsc || sortArr.scoreDesc}">Beoordeling <i class="icon-sort-down" ng-show="sortArr.scoreAsc"></i><i class="icon-sort-up" ng-show="sortArr.scoreDesc"></i></span>
-		<span ng-click="changeSortOrder('distance')" ng-show="distance" class="locationList-sortBy" ng-class="{active: sortArr.distanceAsc || sortArr.distanceDesc}">Afstand </i><i class="icon-sort-up" ng-show="sortArr.distanceAsc"></i><i class="icon-sort-down" ng-show="sortArr.distanceDesc"></i></span>
+		<span ng-click="changeSortOrder('name')" class="locationList-sortBy" ng-class="{active: sortArr.nameAsc || sortArr.nameDesc}"><span>Naam</span> <i class="icon-sort-up" ng-show="sortArr.nameAsc"></i><i class="icon-sort-down" ng-show="sortArr.nameDesc"></i></span>
+		<span ng-click="changeSortOrder('score')" class="locationList-sortBy" ng-class="{active: sortArr.scoreAsc || sortArr.scoreDesc}"><span>Beoordeling</span> <i class="icon-sort-down" ng-show="sortArr.scoreAsc"></i><i class="icon-sort-up" ng-show="sortArr.scoreDesc"></i></span>
+		<span ng-click="changeSortOrder('distance')" ng-show="distance" class="locationList-sortBy" ng-class="{active: sortArr.distanceAsc || sortArr.distanceDesc}"><span>Afstand</span> </i><i class="icon-sort-up" ng-show="sortArr.distanceAsc"></i><i class="icon-sort-down" ng-show="sortArr.distanceDesc"></i></span>
 	</div><!--/row-fluid-->
 	<div class="row-fluid">	
 		<table id="locationWrapper" class="fpLocation-table">
