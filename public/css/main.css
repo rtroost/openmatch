@@ -1123,7 +1123,7 @@ table {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    height: 354px;
+    height: 334px;
 }
 
 .fpLocations-sortbar {
@@ -1151,7 +1151,7 @@ table {
 	text-align: center;
 	background: rgba(0,0,0,0.01);
 	border-bottom: 1px solid rgba(0,0,0,0.07);
-	color: #777;
+	color: #999;
 }
 
 .fpLocations-sortbar li:last-child {
@@ -1160,7 +1160,7 @@ table {
 
 .fpLocations-sortbar li:hover {
 	cursor: pointer;
-	color: #333;
+	color: #666;
 }
 
 .fpLocations-right {
@@ -1244,7 +1244,7 @@ table {
 	padding: 8px 0;
 }
 /*.fpLocation-table tr:nth-child(odd) {}*/
-.fpLocation-table tr:nth-child(even) { background: rgba(0, 0, 0, 0.01); }
+.fpLocation-table tr:nth-child(even) { background: #fafafa; }
 
 .fpLocation-category {
 	width: 50px;
