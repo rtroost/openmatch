@@ -4,6 +4,6 @@
     RewriteRule ^(.*)$ public/$1 [L]
 
     # Force www in the domainname / page URLs for SEO and SSL.
-	RewriteCond %{HTTP_HOST} !^www.rotterdamonbeperkt.nl$ [NC]
-	RewriteRule ^$ http://www.rotterdamonbeperkt.nl/$1 [L,R=301]
+	RewriteCond %{HTTP_HOST} ^rotterdamonbeperkt.nl$ [NC]
+	RewriteRule ^(.*)$ http://www.rotterdamonbeperkt.nl/$1 [R=301,L]
 </IfModule>
