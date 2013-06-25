@@ -69,10 +69,10 @@ return array(
 
 		'mysql' => array(
 			'driver'   => 'mysql',
-			'host'     => 'www.webbundels.nl',
-			'database' => 'deb11569n2_openmatch',
-			'username' => 'deb11569n2_djzy',
-			'password' => 'djoezzy',
+			'host'     => 'www.rotterdamonbeperkt.nl',
+			'database' => 'rdonbeperkt_data',
+			'username' => 'rdonbeperkt_adm',
+			'password' => '4u7r&zuFRaCh',
 			'charset'  => 'utf8',
 			'prefix'   => '',
 		),
