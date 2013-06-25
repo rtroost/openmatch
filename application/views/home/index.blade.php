@@ -134,7 +134,7 @@
 					<div class="span12">
 						<h3>Wat is Rotterdam Onbeperkt?</h3>
 						<p>
-							Op de website van Rotterdam Onbeperkt vind u alle uitgaansgelegenheden van Rotterdam, deze uitgaansgelegenheden zijn
+							Op de website van Rotterdam Onbeperkt vindt u alle uitgaansgelegenheden van Rotterdam, deze uitgaansgelegenheden zijn
 							mede mogelijk gemaakt door de <a href="http://www.rotterdamopendata.nl/" target="_blank">Rotterdam Open Data Store</a>. Rotterdam Onbeperkt is ontwikkeld om minder valide mensen een handvat te geven over welke uitgaansgelegenheden in Rotterdam rolstoelvriendelijk zijn. Via deze website kunt u beoordelingen en reacties over alle uitgaansgelegenheden lezen. Uiteraard kunt u zelf ook meedoen en een beoordeling of reactie achterlaten!
 						</p>
 						<p>
