@@ -58,7 +58,7 @@
 
 				<h3>Informatie</h3>
 				<p>
-					Alle locaties op deze website zijn afkomstig van Rotterdam Open Data. Het kan voorkomen dat bepaalde gegevens van een locatie niet kloppen of niet meer actueel zijn. Via het formulier op deze pagina kunt aangeven of er iets niet klopt van de locatie. Bijvoorbeeld de website, het telefoonnummer, of het adres. De medewerkers van Rotterdam Onbeperkt zullen uw feedback controleren en zo snel mogelijk doorvoeren.
+					Alle locaties op deze website zijn afkomstig van Rotterdam Open Data. Het kan voorkomen dat bepaalde gegevens van een locatie niet kloppen of niet meer actueel zijn. Via het formulier op deze pagina kunt aangeven of er iets niet klopt van de locatie. Bijvoorbeeld de website, het telefoonnummer of het adres. De medewerkers van Rotterdam Onbeperkt zullen uw feedback controleren en zo snel mogelijk doorvoeren.
 				</p>
 			</div><!--/span6-->
 
