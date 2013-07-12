@@ -82,7 +82,6 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
         $scope.currentPage = 0;
         // now group by pages
         $scope.groupToPages();
-        $scope.addRaty();
     };
     
     // calculate page in place
@@ -113,19 +112,16 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
         if ($scope.currentPage > 0) {
             $scope.currentPage--;
         }
-        $scope.addRaty();
     };
     
     $scope.nextPage = function () {
         if ($scope.currentPage < $scope.pagedItems.length - 1) {
             $scope.currentPage++;
         }
-        $scope.addRaty();
     };
     
     $scope.setPage = function () {
         $scope.currentPage = this.n;
-        $scope.addRaty();
     };
 
 	// init the filtered items
@@ -257,9 +253,13 @@ var locationCtrl = function LocationCtrl($scope, $resource, $rootScope, $filter)
 
     }
 
-    $scope.addRaty = function(){
+    $scope.$watch('currentPage', function(){
         addRatyJQuery($scope.filteredItems);
-    }
+    });
+
+    $scope.$watch('filteredItems', function(){
+        addRatyJQuery($scope.filteredItems);
+    });
  
 };
 
@@ -296,6 +296,9 @@ var locationDirective = locationApp.directive("locations", function() {
 		restrict: "E",
 		replace: true,
 		templateUrl: window.BASE + "js/jstemplates/locations.html",
+        link: function(scope, elm, attrs) {
+            console.log("yee hij doet het na de template time");
+        }
 	}
 });
 
