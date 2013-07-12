@@ -150,7 +150,7 @@
 												
 											</div>
 											<label class="checkbox inline toparkingplace-label" style="margin-bottom: 10px;">
-										    	<input type="checkbox" name="toparkingplace"> Naar dichtstbijzijnde parkeerplaats <i class="icon-question hasTooltip" title="U wordt alleen naar een parkeerplaats verwezen als deze binnen 1 kilometer aanwezig is."></i>
+										    	<input type="checkbox" name="toparkingplace"> Naar dichtstbijzijnde invalideparkeerplaats <i class="icon-question hasTooltip" title="Invalideparkeerplaatsen worden alleen getoond als deze beschikbaar zijn binnen een straal van 1KM."></i>
 										    </label>
 										</div>
 	

@@ -20,6 +20,9 @@ $(document).ready(function() {
 	var toparkingplaceLabelVisible = true;
 	var selectTransportInput = $('select#transport-input');
 
+	var locationtyping = false;
+	var geolocationdeferred = new $.Deferred();
+
 	if(span_formatted_address.text() == "") {
 		var location_destination = span_postalcode.text() + ' ' +  span_number.text() + ' ' + span_city.text();
 	} else {
@@ -110,20 +113,25 @@ $(document).ready(function() {
 		half: true,
 		path: BASE + 'img',
 		hints: ['Zeer slecht', 'Slecht', 'Acceptabel', 'Goed', 'Zeer goed']
-	});
-
-	
+	});	
 
 	locationinput.keypress(function(e) {
+		locationtyping = true;
 	    if(e.which == 13) {
 	    	e.preventDefault();
-	        getGeolocation()
+	        getGeolocation();
 	    }
 	});
 
 	$('span#get-geolocation').on('click', getGeolocation);
 
-	function getGeolocation(){
+	function getGeolocation(def){
+		locationtyping = false;
+
+		if(def){
+			geolocationdeferred = new $.Deferred();
+		}
+
 		var successCallback = function( results ) {
 			if(results.status === 'OK'){
 				controlGroupTarget.removeClass("error");
@@ -136,15 +144,31 @@ $(document).ready(function() {
 
 				console.log("Lat = " + results.results[0].geometry.location.lat);
 				console.log("Lng = " + results.results[0].geometry.location.lng);
+				if(def){
+					geolocationdeferred.resolve();
+					console.log("hiertoch");
+					return geolocationdeferred.promise();
+				}
 			} else if(results.status === 'ZERO_RESULTS') {
 				controlGroupTarget.addClass("error");
 				locationError.show();
+				if(def){ 
+					geolocationdeferred.reject(); 
+					return geolocationdeferred.promise();
+				}
 			}
 		}
 
-		var failedCallback = function () { console.log("Something went wrong during the ajax request."); }
+		var failedCallback = function () {
+			console.log("Something went wrong during the ajax request.");
+			if(def){ 
+				geolocationdeferred.reject();
+				return geolocationdeferred.promise();
+			}
+		}
 
 		getLocationGoogleMaps(locationinput.val(), successCallback, failedCallback);
+		
 	}
 
 	console.log(selectTransportInput);
@@ -171,6 +195,24 @@ $(document).ready(function() {
 
 		e.preventDefault(); // Prevent form from submitting
 
+		roetebeschrijving();
+
+	});
+
+	function roetebeschrijving(){
+		console.log(locationtyping);
+
+		if(locationtyping){
+			getGeolocation(true);
+			geolocationdeferred.done(
+				function(){
+					roetebeschrijving();
+				}
+			);
+			return;
+		}
+		console.log("dafuq");
+
 		if(curPlaceLat == undefined){
 			controlGroupTarget.addClass("error");
 			locationError.show();
@@ -182,7 +224,7 @@ $(document).ready(function() {
 
 		var transport_mode = selectTransportInput.val();
 
-		console.log(toparkingplaceInput.prop('checked'));
+		console.log(toparkingplaceInput.prop('checked')); 
 		if(toparkingplaceLabelVisible && toparkingplaceInput.prop('checked') && transport_mode == "DRIVING" && parkingPlaces.length != 0){
 			var parkingplace = nearestParkingPlace();
 			console.log(parkingplace);
@@ -198,8 +240,7 @@ $(document).ready(function() {
 		}
 		
 		htmlbody.animate({scrollTop:0}, 'slow');
-
-	});
+	};
 
 	function animateMap(){
 		mapCanvas.animate({
