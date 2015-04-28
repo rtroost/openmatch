@@ -1,0 +1,1 @@
+Meeting site voor mensen die slecht te been zijn. De site bevat evenementen waar de mensen naar toe kunnen gaan. Alleen in de regio Rotterdam.
